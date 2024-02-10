@@ -97,6 +97,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "inputDevicePosition",
+                    "type": "PassThrough",
+                    "id": "ff7c4824-8ee4-4e45-a9c0-4fa9ef531df0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -152,6 +161,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "PrimaryWorldTouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e044f2f5-499c-4763-b2ef-e7e5f2dad029",
+                    "path": "<VisionOSSpatialPointerDevice>/inputDevicePosition",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "inputDevicePosition",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
