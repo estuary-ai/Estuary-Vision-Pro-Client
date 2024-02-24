@@ -5,34 +5,34 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Samples/PolySpatial/Scenes/ProjectLauncher.unity
     guid: 8b8b8ea8b8131004382443fe7d26cba7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Samples/PolySpatial/Scenes/BalloonGallery.unity
     guid: 4c268b318e1821b4f8da83f415cac049
-  - enabled: 1
+  - enabled: 0
     path: Assets/Samples/PolySpatial/Scenes/CharacterWalker.unity
     guid: ac4639d906f05074eab3cd0068afbf9b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Samples/PolySpatial/Scenes/InputDataVisualization.unity
     guid: 75f1bad34defd4c1cb72f9582141573c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Samples/PolySpatial/Scenes/Manipulation.unity
     guid: 139d55bb8d7b3fd4bbfbefe95464cc7f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Samples/PolySpatial/Scenes/SpatialUI.unity
     guid: 6f4448466bfd94eed8847ae973dbc228
-  - enabled: 1
+  - enabled: 0
     path: Assets/Samples/PolySpatial/Scenes/Meshing.unity
     guid: 653f9f1e3f8ba4879806269d9ded33c7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Samples/PolySpatial/Scenes/MixedReality.unity
     guid: 4062257bd31be4dc980c3241c72cef79
-  - enabled: 1
+  - enabled: 0
     path: Assets/Samples/PolySpatial/Scenes/ImageTracking.unity
     guid: fa1b05869d02c2c44941fbd777088126
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/SampleUnbounded.unity
     guid: 333fadc7a9af24e65bce4222f72a19b4
   - enabled: 0
