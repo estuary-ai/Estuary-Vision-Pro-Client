@@ -256,11 +256,19 @@ public class Mic : MonoBehaviour, IAudioInputSource
         // Can't start if inactive
         if (!gameObject.activeInHierarchy)
         {
+            Debug.Log("SafeStartMicrophone failed: GameObject is inactive");
             return;
+        }
+        Debug.Log("SafeStartMicrophone called 2  " + Devices.Count);
+        // print devices
+        foreach (var d in Devices)
+        {
+            Debug.Log("Device: " + d);
         }
         // Look for devices
         if (Devices == null || Devices.Count == 0)
         {
+            Debug.Log("SafeStartMicrophone failed: No devices found");
             // Check for devices
             RefreshMicDevices();
             // None found
@@ -274,11 +282,14 @@ public class Mic : MonoBehaviour, IAudioInputSource
         string micID = CurrentDeviceName;
         if (!string.IsNullOrEmpty(micID) && AudioClip != null && string.Equals(micID, AudioClip.name) && MicrophoneIsRecording(micID))
         {
+            Debug.Log("Mic already recording on " + micID);
             return;
         }
 
         // Set device
         ChangeDevice(CurrentDeviceIndex < 0 ? 0 : CurrentDeviceIndex);
+
+        Debug.Log("SafeStartMicrophone called 3  " + Devices.Count);
     }
 
     /// <summary>
@@ -323,11 +334,28 @@ public class Mic : MonoBehaviour, IAudioInputSource
     {
 #if !UNITY_WEBGL || UNITY_EDITOR
         VLog.I("Reserved mic " + CurrentDeviceName);
+        Debug.Log("StartMicrophone called 1  " + Devices.Count);
+        // print devices
+        foreach (var d in Devices)
+        {
+            Debug.Log("Device: " + d);
+        }
+        // print mic_clip_loop and mic_clip_channels and AudioClipSampleRate
+        Debug.Log("MIC_CLIP_LOOP: " + MIC_CLIP_LOOP);
+        Debug.Log("MIC_CLIP_CHANNELS: " + MIC_CLIP_CHANNELS);
+        Debug.Log("AudioClipSampleRate: " + AudioClipSampleRate);
+        Debug.Log("CurrentDeviceName: " + CurrentDeviceName);
+
         AudioClip = Microphone.Start(CurrentDeviceName, MIC_CLIP_LOOP, MIC_CLIP_CHANNELS, AudioClipSampleRate);
+        Debug.Log("AudioClip: " + AudioClip);
+
         AudioClip.name = CurrentDeviceName;
         // Init the num of channels from AudioClip in
         // the AudioEncoding
+        Debug.Log("AudioEncoding.numChannels: " + AudioEncoding.numChannels);
         AudioEncoding.numChannels = AudioClip.channels;
+
+        Debug.Log("StartMicrophone called 2   " + Devices.Count);
 #endif
     }
 
@@ -357,12 +385,13 @@ public class Mic : MonoBehaviour, IAudioInputSource
     /// </summary>
     public void StartRecording(int sampleLen = 10)
     {
+        Debug.Log("StartRecording called 1" + Devices.Count + " " + Devices);
         // Still unavailable, exit
         if (!IsInputAvailable)
         {
             return;
         }
-
+        Debug.Log("StartRecording called 2" + Devices.Count + " " + Devices);
         // Stop recording if doing so
         StopRecording();
 
@@ -372,20 +401,25 @@ public class Mic : MonoBehaviour, IAudioInputSource
 
         if (AudioClip)
         {
+            Debug.Log("StartRecording called 3" + Devices.Count + " " + Devices);
             Sample = new float[AudioClipSampleRate / MS_TO_SECONDS * SampleDurationMS * AudioClip.channels];
 
             StartCoroutine(ReadRawAudio());
+            Debug.Log("StartRecording called 4" + Devices.Count + " " + Devices);
 
 #if !UNITY_WEBGL || UNITY_EDITOR
             // Make sure we seek before we start reading data
             MicrophoneGetPosition(CurrentDeviceName);
             VLog.D("Started recording with " + CurrentDeviceName);
+            Debug.Log("Started recording with " + CurrentDeviceName);
 #endif
             if (OnStartRecording != null)
                 OnStartRecording.Invoke();
         }
         else
         {
+            VLog.E("Failed to start recording with " + CurrentDeviceName);
+            Debug.Log("Failed to start recording with " + CurrentDeviceName);
             OnStartRecordingFailed.Invoke();
         }
     }
@@ -402,6 +436,7 @@ public class Mic : MonoBehaviour, IAudioInputSource
         StopCoroutine(ReadRawAudio());
 
         VLog.D("Stopped recording with " + CurrentDeviceName);
+        Debug.Log("Stopped recording with " + CurrentDeviceName);
         if (OnStopRecording != null)
             OnStopRecording.Invoke();
     }

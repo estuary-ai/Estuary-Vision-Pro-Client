@@ -11,7 +11,8 @@ public class MicController : MonoBehaviour
     private AudioPacket recentAudioPacket = null;
     private AudioPacket audioToBeRecorded = null;
     private string DEBUG_PREFIX = "[MicController]";
-    private IAudioInputSource _micSource;
+    public Mic _micSource;
+    private bool isSetup = false;
     public event Action<AudioPacket> OnAudioFrameCaptured;
 
     /// <summary>
@@ -39,32 +40,44 @@ public class MicController : MonoBehaviour
         isStreamAllowed = false;
     }
 
-    // void Start()
-    // {
-    //     Mic.Instance.StartRecording(FrameLength);
-    //     // Debug.unityLogger.Log(TAG, "Start recording.");
-    //     // VoiceProcessor.Instance.StartRecording(FrameLength, SampleRate);
-    //     // Debug.Log("Available Devices: " + string.Join(",", VoiceProcessor.Instance.Devices.ToArray()));
-    //     // string[] devices = Microphone.devices;
-    //     // Debug.Log("Defaulting to first microphone: " + devices[0]);
-    //     // VoiceProcessor.Instance.ChangeDevice(0);
-    // }
+    private void FixedUpdate()
+    {
+	    // Debug.Log("Mic name:" + _micSource.CurrentDeviceName);
+    }
 
     private void OnEnable()
     {
         if (_micSource == null)
         {
-            _micSource = gameObject.GetComponentInChildren<IAudioInputSource>();
+            _micSource = gameObject.GetComponentInChildren<Mic>();
         }
 
         if (_micSource != null)
         {
-            _micSource.StartRecording(FrameLength);
-            // _micSource.OnStartRecording += OnStartRecording;
+            _micSource.OnStartRecording += OnStartRecording;
             _micSource.OnSampleReady += OnSampleCaptured;
-            // _micSource.OnStopRecording += OnStopRecording;
+            _micSource.OnStopRecording += OnStopRecording;
+        }
+        else
+        {
+	        Debug.Log($"{DEBUG_PREFIX} Mic source is null");
         }
     }
+
+    public void Init()
+    {
+	    _micSource.StartRecording(FrameLength);
+    }
+
+    private void OnStartRecording()
+	{
+		Debug.Log($"{DEBUG_PREFIX} OnStartRecording");
+	}
+
+	private void OnStopRecording()
+	{
+		Debug.Log($"{DEBUG_PREFIX} OnStopRecording");
+	}
 
 
     public void AllowStream() {
@@ -84,11 +97,11 @@ public class MicController : MonoBehaviour
             }
             _micSource.OnSampleReady -= OnSampleCaptured;
         }
-
     }
 
 
     void OnSampleCaptured(int sampleCount, float[] frame, float levelMax) {
+	    Debug.Log($"{DEBUG_PREFIX} OnFrameCapturedPreCheck");
         if (!isStreamAllowed) {
             return;
         }

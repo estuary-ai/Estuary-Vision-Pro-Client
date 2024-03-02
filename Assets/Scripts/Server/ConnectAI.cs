@@ -150,25 +150,25 @@ public class ConnectAI : MonoBehaviour
             }
             firstConnect = true;
             // TODO: Uncomment above after merging with unity branch
-            connection_status.text = "Connected";
+            // connection_status.text = "Connected";
             // suits_panel_connection_status.text = "AI Connected";
             // suits_panel_connection_status.color = new Color32(255,255,255, 255);
 
             // add to json
-            var exists = current_session_URIs.Contains(inputURI);
-            if(exists == false)
-            {
-                current_session_URIs.Add(inputURI);
-                dropdown.AddOptions(list_URIs);
-                UpdateJson();
-            }
+            // var exists = current_session_URIs.Contains(inputURI);
+            // if(exists == false)
+            // {
+            //     current_session_URIs.Add(inputURI);
+            //     dropdown.AddOptions(list_URIs);
+            //     UpdateJson();
+            // }
         }
         else
         {
             // TODO: Uncomment below after merging with unity branch
             firstConnect = false;
             // TODO: Uncomment above after merging with unity branch
-            if(!_isConnecting) connection_status.text = "Not Connected";
+            // if(!_isConnecting) connection_status.text = "Not Connected";
             // suits_panel_connection_status.text = "AI Not Connected";
             // suits_panel_connection_status.color = new Color32(255,0,0,255);
 
