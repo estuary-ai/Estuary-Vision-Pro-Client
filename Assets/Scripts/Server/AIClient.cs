@@ -59,9 +59,13 @@ public class AIClient : MonoBehaviour
         micController.OnAudioFrameCaptured += MicController_OnAudioPacketCaptured;
         // camController.OnVideoFrameCaptured += CamController_OnVideoFrameCaptured;
 
-        if (isDebugging) {
-            Debug.Log("DigitalAssistant is in DEBUG mode!");
-            StartClient(api);
+        if (isDebugging)
+        {
+            // UnityThread.executeInLateUpdate(() =>
+            // {
+                Debug.Log("DigitalAssistant is in DEBUG mode!");
+                StartClient(api);
+            // });
         }
     }
 
@@ -139,17 +143,16 @@ public class AIClient : MonoBehaviour
         {
             Debug.Log("Connected");
             socket.Emit("trial", "test");
-            UnityThread.executeInFixedUpdate(
+            UnityThread.executeInLateUpdate(
                 () => StartCoroutine(StartMicDelay())
             );
-            StartCoroutine(StartMicDelay());
         };
         socket.OnPing += (sender, e) => { Debug.Log("Ping"); };
         socket.OnPong += (sender, e) => { Debug.Log("Pong: " + e.TotalMilliseconds); };
         socket.OnDisconnected += (sender, e) => {
             Debug.Log("Disconnected.. Trying reconnecting..");
-            UnityThread.executeInLateUpdate(() => socket.Connect());
             micController.BlockStream();
+            UnityThread.executeInLateUpdate(() => socket.Connect());
         };
         socket.OnReconnectAttempt += (sender, e) =>
         {
@@ -200,20 +203,25 @@ public class AIClient : MonoBehaviour
         });
     }
 
-    public void StartCommandTransmission()
+    void StartCommandTransmission()
     {
         Debug.Log("Start Transmission");
-        botVoice.PlayActivationSound();
-        // micController.RefreshTheMic();
+        UnityThread.executeInUpdate(() => {
+            botVoice.PlayActivationSound();
+            // micController.RefreshTheMic();
+        });
         isAwake = true;
         Debug.Log("set isAwake");
+
     }
 
-    public void StopCommandTransmission()
+    void StopCommandTransmission()
     {
         Debug.Log("Stop Transmission -- Unset is Awake");
-        // socket.Emit(REQUESTS.RESET_AUDIO_STREAM);
-        botVoice.PlayTerminationSound();
+        UnityThread.executeInUpdate(() => {
+            // socket.Emit(REQUESTS.RESET_AUDIO_STREAM);
+            botVoice.PlayTerminationSound();
+        });
         isAwake = false;
     }
 
@@ -270,10 +278,10 @@ public class AIClient : MonoBehaviour
         if (socket.Connected)
         {
             // Debug.Log("Sending Audio Packet now!");
-            // Thread thread = new Thread(() => {
-            socket.Emit(REQUESTS.AUDIO_STREAM, audioPacket);
-            // });
-            // thread.Start();
+            Thread thread = new Thread(() => {
+                socket.Emit(REQUESTS.AUDIO_STREAM, audioPacket);
+            });
+            thread.Start();
         }
     }
 

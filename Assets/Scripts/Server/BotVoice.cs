@@ -2,16 +2,14 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-// [RequireComponent(typeof(AudioSource))];
+[RequireComponent(typeof(AudioSource))]
 public class BotVoice : MonoBehaviour
 {
     public AudioClip activateClip;
     public AudioClip terminateClip;
-    private Queue<AudioClip> clipQueue;
-    private AudioSource audioSource; 
-    private String activationFilepath = $"{Application.streamingAssetsPath}/DigitalAssistant/assistant_initiate.wav";
-    private String terminationFilepath = $"{Application.streamingAssetsPath}/DigitalAssistant/assistant_terminate.wav";
-    private bool isSpeaking;
+    private Queue<AudioClip> _clipQueue;
+    private AudioSource _audioSource;
+    private bool _isSpeaking;
 
     /// <summary>
     /// Singleton access
@@ -39,46 +37,45 @@ public class BotVoice : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-        clipQueue = new Queue<AudioClip>();
-        // activateClip = UnityWebRequestMultimedia.GetAudioClip(activationFilepath, AudioType.WAV).;
-        // terminateClip = new WWW(terminationFilepath).GetAudioClip();
+        _audioSource = GetComponent<AudioSource>();
+        _clipQueue = new Queue<AudioClip>();
     }
 
     void Update()
     {
-        if (audioSource.isPlaying == false) {
-            if (clipQueue.Count > 0) {
-                lock(clipQueue) {
-                    audioSource.clip = clipQueue.Dequeue();
+        if (_audioSource.isPlaying == false) {
+            // lock(_clipQueue) {
+                if (_clipQueue.Count > 0) {
+                    _audioSource.clip = _clipQueue.Dequeue();
+                    _isSpeaking = true;
+                    _audioSource.Play();
                 }
-                Log("Playing clip");
-                audioSource.Play();
-                isSpeaking = true;
-            } else {
-                isSpeaking = false;
-            }
+                else
+                {
+                    _isSpeaking = false;
+                }
+            // }
         }
     }
 
     public bool IsSpeaking()
     {
-        return isSpeaking;
+        return _isSpeaking;
     }
 
     public void PlayActivationSound() {
         Log("Queueing activation sound");
-        lock(clipQueue) {
-            clipQueue.Enqueue(activateClip);
-        }
+        // lock(_clipQueue) {
+            _clipQueue.Enqueue(activateClip);
+        // }
     }
 
     public void PlayTerminationSound() {
         // Log("Queueing termination sound 11");
-        lock(clipQueue) {
+        // lock(_clipQueue) {
             // Log("Queueing termination sound 12");
-            clipQueue.Enqueue(terminateClip);
-        }
+            _clipQueue.Enqueue(terminateClip);
+        // }
     }
 
     public static float[] Convert16BitByteArrayToAudioClipData(byte[] source)
@@ -97,23 +94,24 @@ public class BotVoice : MonoBehaviour
     }
 
     public void PlayAudioBytes(byte[] audioBytes, string audioName="bot-voice") {
-        lock(clipQueue) {
-            // Its a 16 bit audio file, so there will be two bytes (8 bits * 2 = 16 bit)
-            // per float, so we need half the floats as there are bits
-            float[] audioFloat = Convert16BitByteArrayToAudioClipData(audioBytes);
-            AudioClip clip = AudioClip.Create(
-                audioName, 
-                audioBytes.Length, 
-                1, // 1 channel
-                26000, // 22.05 is 352 kbps at 16 bit
-                false
-            );
-            clip.SetData(audioFloat, 0);
-            clipQueue.Enqueue(clip);
-        }
+        // Its a 16 bit audio file, so there will be two bytes (8 bits * 2 = 16 bit)
+        // per float, so we need half the floats as there are bits
+        float[] audioFloat = Convert16BitByteArrayToAudioClipData(audioBytes);
+        AudioClip clip = AudioClip.Create(
+            audioName,
+            audioBytes.Length,
+            1, // 1 channel
+            26000, // 22.05 is 352 kbps at 16 bit
+            false
+        );
+        clip.SetData(audioFloat, 0);
+
+        // lock(_clipQueue) {
+            _clipQueue.Enqueue(clip);
+        // }
     }
 
-    private void Log(string message)
+    private static void Log(string message)
     {
         Debug.Log("BotVoice.cs :: " + message);
     }

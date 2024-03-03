@@ -101,12 +101,12 @@ public class MicController : MonoBehaviour
 
 
     void OnSampleCaptured(int sampleCount, float[] frame, float levelMax) {
-	    Debug.Log($"{DEBUG_PREFIX} OnFrameCapturedPreCheck");
+	    // Debug.Log($"{DEBUG_PREFIX} OnFrameCapturedPreCheck");
         if (!isStreamAllowed) {
             return;
         }
 
-        Debug.Log($"{DEBUG_PREFIX} OnFrameCaptured");
+        // Debug.Log($"{DEBUG_PREFIX} OnFrameCaptured");
 
         // NOTE: Assuming one channel for the microphone
         AudioPacket newAudioPacket = new AudioPacket(
@@ -127,7 +127,7 @@ public class MicController : MonoBehaviour
             // ~20ms*NumFramesInBatch
 
             OnAudioFrameCaptured?.Invoke(recentAudioPacket);
-            RecordAudio(recentAudioPacket);
+            // RecordAudio(recentAudioPacket);
             recentAudioPacket = null; // Zero it out once sent
         }
     }
