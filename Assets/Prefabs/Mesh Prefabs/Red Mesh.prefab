@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8320835365685099229}
   - component: {fileID: 9104170259383892575}
   m_Layer: 29
-  m_Name: Mesh Prefab
+  m_Name: Red Mesh
   m_TagString: Navigable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

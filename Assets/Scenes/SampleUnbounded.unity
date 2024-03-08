@@ -1036,6 +1036,8 @@ GameObject:
   m_Component:
   - component: {fileID: 659567572}
   - component: {fileID: 659567573}
+  - component: {fileID: 659567575}
+  - component: {fileID: 659567574}
   m_Layer: 0
   m_Name: AR Mesh Manager
   m_TagString: Untagged
@@ -1070,13 +1072,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 968053edfd89749c48f4ea5d444abf64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MeshPrefab: {fileID: 1369762456386383400, guid: c6ae28a6043a7416d82af33a6f449dd6, type: 3}
+  m_MeshPrefab: {fileID: 6427989023023856471, guid: e32b0ed89bb0d427dad3686394925ae5, type: 3}
   m_Density: 0.5
   m_Normals: 1
   m_Tangents: 0
   m_TextureCoordinates: 0
   m_Colors: 0
   m_ConcurrentQueueSize: 4
+--- !u!114 &659567574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 659567571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 682f389d7a22a4a7ca6582cbc64ddbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MeshManager: {fileID: 659567573}
+  m_NoneMeshPrefab: {fileID: 6202378973700837002, guid: c50dfdda9d8ce466b9a57c44aa4aa8b2, type: 3}
+  m_WallMeshPrefab: {fileID: 3474271192428087024, guid: 9979a789e2b2d41ccb1b012de1bb42a7, type: 3}
+  m_FloorMeshPrefab: {fileID: 3759953987800492041, guid: cd751d4e7143b4c8fb3c45e4de350633, type: 3}
+  m_CeilingMeshPrefab: {fileID: 1113424142426548330, guid: 418814667ef8b46b89e24c6b7a6a106e, type: 3}
+  m_TableMeshPrefab: {fileID: 3988913343676574928, guid: 8157394583c784557973020dffda78a6, type: 3}
+  m_SeatMeshPrefab: {fileID: 7697024825637311248, guid: 002f1d68edcef41e4843436a135b63cc, type: 3}
+  m_WindowMeshPrefab: {fileID: 4810235479291407990, guid: 7d9753da17bc04a6192a08b99ba2bdca, type: 3}
+  m_DoorMeshPrefab: {fileID: 6108169453717286223, guid: 14e63041dac8a44e29c7c7dc16e78f3c, type: 3}
+--- !u!114 &659567575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 659567571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f46ba24aa53f34cf5b4c06ba5508b7af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MeshManager: {fileID: 659567573}
+  m_ClassificationEnabled: 1
 --- !u!1 &857637862
 GameObject:
   m_ObjectHideFlags: 0
@@ -2576,8 +2613,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b53280e2376da4fb7bdf5c34017f4600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugFloorText: {fileID: 1343125972}
-  navMeshSurface: {fileID: 0}
 --- !u!4 &1701802646
 Transform:
   m_ObjectHideFlags: 0

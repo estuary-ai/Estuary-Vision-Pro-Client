@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using UnityEngine.XR.VisionOS;
 #if UNITY_IOS && !UNITY_EDITOR
 using UnityEngine.XR.ARKit;
 #endif // UNITY_IOS && !UNITY_EDITOR
@@ -65,7 +66,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
         /// </summary>
         public MeshFilter m_DoorMeshPrefab;
 
-    #if UNITY_IOS && !UNITY_EDITOR
+    // #if UNITY_IOS && !UNITY_EDITOR
 
         /// <summary>
         /// A mapping from tracking ID to instantiated mesh filters.
@@ -332,6 +333,6 @@ namespace UnityEngine.XR.ARFoundation.Samples
 
             m_MeshFrackingMap.Remove(meshId);
         }
-    #endif // UNITY_IOS && !UNITY_EDITOR
+    // #endif // UNITY_IOS && !UNITY_EDITOR
     }
 }
