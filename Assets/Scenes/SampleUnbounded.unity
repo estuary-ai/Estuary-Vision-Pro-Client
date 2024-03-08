@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1802846, g: 0.22571594, b: 0.30692336, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028468, g: 0.22571594, b: 0.3069237, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -945,7 +945,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 549449729}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.3
   m_Speed: 1
@@ -1093,13 +1093,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MeshManager: {fileID: 659567573}
   m_NoneMeshPrefab: {fileID: 6202378973700837002, guid: c50dfdda9d8ce466b9a57c44aa4aa8b2, type: 3}
-  m_WallMeshPrefab: {fileID: 3474271192428087024, guid: 9979a789e2b2d41ccb1b012de1bb42a7, type: 3}
-  m_FloorMeshPrefab: {fileID: 3759953987800492041, guid: cd751d4e7143b4c8fb3c45e4de350633, type: 3}
+  m_BedMeshPrefab: {fileID: 1113424142426548330, guid: 5df2a346f397247498d852cb6da42c91, type: 3}
+  m_BlindsMeshPrefab: {fileID: 1113424142426548330, guid: d3105a0f128bea5488aa4c9d7dc44340, type: 3}
+  m_CabinetMeshPrefab: {fileID: 1113424142426548330, guid: 438d38b9cc1a41b4785d9ef3e401136b, type: 3}
   m_CeilingMeshPrefab: {fileID: 1113424142426548330, guid: 418814667ef8b46b89e24c6b7a6a106e, type: 3}
-  m_TableMeshPrefab: {fileID: 3988913343676574928, guid: 8157394583c784557973020dffda78a6, type: 3}
-  m_SeatMeshPrefab: {fileID: 7697024825637311248, guid: 002f1d68edcef41e4843436a135b63cc, type: 3}
-  m_WindowMeshPrefab: {fileID: 4810235479291407990, guid: 7d9753da17bc04a6192a08b99ba2bdca, type: 3}
+  m_CounterMeshPrefab: {fileID: 1113424142426548330, guid: f1b10398e436fb940ae5eaf1b9a8f58a, type: 3}
   m_DoorMeshPrefab: {fileID: 6108169453717286223, guid: 14e63041dac8a44e29c7c7dc16e78f3c, type: 3}
+  m_DoorFrameMeshPrefab: {fileID: 1113424142426548330, guid: 6095b8984132132419f3646546a1d887, type: 3}
+  m_FireplaceMeshPrefab: {fileID: 1113424142426548330, guid: d453abd70f09a1b4586ba178bcee646a, type: 3}
+  m_FloorMeshPrefab: {fileID: 3759953987800492041, guid: cd751d4e7143b4c8fb3c45e4de350633, type: 3}
+  m_HomeApplianceMeshPrefab: {fileID: 1113424142426548330, guid: 44db07c123960924693364d993703de6, type: 3}
+  m_PlantMeshPrefab: {fileID: 1113424142426548330, guid: eec9c7bcfbc10ec4eaf8709faefbfa6b, type: 3}
+  m_SeatMeshPrefab: {fileID: 7697024825637311248, guid: 002f1d68edcef41e4843436a135b63cc, type: 3}
+  m_StairsMeshPrefab: {fileID: 1113424142426548330, guid: e238aee218ca3a84b9b708426727ae1c, type: 3}
+  m_TVMeshPrefab: {fileID: 1113424142426548330, guid: a8409e71326c4b94fb44c5c0fd9ab2ce, type: 3}
+  m_TableMeshPrefab: {fileID: 3988913343676574928, guid: 8157394583c784557973020dffda78a6, type: 3}
+  m_WallMeshPrefab: {fileID: 3474271192428087024, guid: 9979a789e2b2d41ccb1b012de1bb42a7, type: 3}
+  m_WallDecorationMeshPrefab: {fileID: 3474271192428087024, guid: 886424da2571bb44dac1af403641a7a0, type: 3}
+  m_WhiteboardMeshPrefab: {fileID: 3474271192428087024, guid: 1db5c62192583644e8c5379792f9acb5, type: 3}
+  m_WindowMeshPrefab: {fileID: 4810235479291407990, guid: 7d9753da17bc04a6192a08b99ba2bdca, type: 3}
 --- !u!114 &659567575
 MonoBehaviour:
   m_ObjectHideFlags: 0
