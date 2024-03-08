@@ -24,6 +24,6 @@ public class NavManager : MonoBehaviour
 {
     public void FixedUpdate()
     {
-        List<GameObject> GameObject.FindGameObjectsWithTag("Navigable");
+        // List<GameObject> GameObject.FindGameObjectsWithTag("Navigable");
     }
 }

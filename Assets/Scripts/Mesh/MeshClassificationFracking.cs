@@ -65,7 +65,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
         /// </summary>
         public MeshFilter m_DoorMeshPrefab;
 
-    // #if UNITY_IOS && !UNITY_EDITOR
+    #if UNITY_IOS && !UNITY_EDITOR
 
         /// <summary>
         /// A mapping from tracking ID to instantiated mesh filters.
