@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.AI.Navigation;
 using UnityEngine;
+using UnityEngine.AI;
 
 // #if UNITY_INCLUDE_ARFOUNDATION
 using UnityEngine.XR.ARFoundation;
@@ -10,23 +12,18 @@ using UnityEngine.XR.ARSubsystems;
 
 // #endif
 
+[Serializable]
+public class NavigationSurface
+{
+    public ARPlane plane;
+    public NavMeshSurface surface;
+    public bool isUpdating = false;
+}
+
 public class NavManager : MonoBehaviour
 {
-    [SerializeField] private TMP_Text debugFloorText;
-// #if UNITY_INCLUDE_ARFOUNDATION
-    public void Update()
+    public void FixedUpdate()
     {
-        int floorCount = 0;
-        ARPlane[] planes = FindObjectsOfType<ARPlane>();
-        foreach (var p in planes)
-        {
-            if (p.classification == PlaneClassification.Floor)
-            {
-                floorCount++;
-                // Debug.Log("Floor found: " + floorCount);
-            }
-        }
-        if (debugFloorText != null) debugFloorText.text = "Floor Count: " + floorCount;
+
     }
-// #endif
 }
