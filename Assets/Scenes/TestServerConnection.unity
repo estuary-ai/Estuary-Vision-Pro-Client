@@ -542,7 +542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manualConnect: 1
-  manualURI: 192.168.1.177
+  manualURI: 127.0.0.1
   dropdown: {fileID: 0}
   inputField: {fileID: 0}
   connection_status: {fileID: 0}
