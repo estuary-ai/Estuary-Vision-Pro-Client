@@ -129,6 +129,7 @@ public class MeshClassificationFracking : MonoBehaviour
         m_BreakupMeshAction = new Action<MeshFilter>(BreakupMesh);
         m_UpdateMeshAction = new Action<MeshFilter>(UpdateMesh);
         m_RemoveMeshAction = new Action<MeshFilter>(RemoveMesh);
+        Debug.Log("[FRACK YOU] We have awakened the MeshClassificationFracking!");
     }
 
     /// <summary>
@@ -138,6 +139,7 @@ public class MeshClassificationFracking : MonoBehaviour
     {
         Debug.Assert(m_MeshManager != null, "mesh manager cannot be null");
         m_MeshManager.meshesChanged += OnMeshesChanged;
+        Debug.Log("[FRACK YOU] Frack enabled");
     }
 
     /// <summary>
@@ -168,6 +170,7 @@ public class MeshClassificationFracking : MonoBehaviour
         {
             args.removed.ForEach(m_RemoveMeshAction);
         }
+        Debug.Log("[FRACK YOU] Meshes changes");
     }
 
     /// <summary>
@@ -343,6 +346,7 @@ public class MeshClassificationFracking : MonoBehaviour
     /// <param name="meshFilter">The mesh filter for the base mesh with multiple face classifications.</param>
     void UpdateMesh(MeshFilter meshFilter)
     {
+        Debug.Log("[FRACK YOU] Update Mesh");
         XRMeshSubsystem meshSubsystem = m_MeshManager.subsystem as XRMeshSubsystem;
         if (meshSubsystem == null)
         {

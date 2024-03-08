@@ -32,7 +32,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Samples/PolySpatial/Scenes/ImageTracking.unity
     guid: fa1b05869d02c2c44941fbd777088126
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/SampleUnbounded.unity
     guid: 333fadc7a9af24e65bce4222f72a19b4
   - enabled: 0
@@ -41,7 +41,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/TestServerConnection.unity
     guid: 41b198b27eea0ca4e81b6cb71450ca3f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ConnectionTestbed.unity
     guid: 14d21be8e2270449b8ca5520d91ac3af
   m_configObjects:

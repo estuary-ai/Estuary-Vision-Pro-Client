@@ -44,7 +44,7 @@ public class BotVoice : MonoBehaviour
     void Update()
     {
         if (_audioSource.isPlaying == false) {
-            // lock(_clipQueue) {
+            lock(_clipQueue) {
                 if (_clipQueue.Count > 0) {
                     _audioSource.clip = _clipQueue.Dequeue();
                     _isSpeaking = true;
@@ -54,7 +54,7 @@ public class BotVoice : MonoBehaviour
                 {
                     _isSpeaking = false;
                 }
-            // }
+            }
         }
     }
 
