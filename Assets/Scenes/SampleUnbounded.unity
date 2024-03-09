@@ -844,7 +844,7 @@ GameObject:
   - component: {fileID: 549449730}
   - component: {fileID: 549449734}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Puppy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -947,7 +947,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 549449729}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.3
+  m_Radius: 0.2
   m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50

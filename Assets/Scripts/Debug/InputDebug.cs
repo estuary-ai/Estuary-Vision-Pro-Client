@@ -119,7 +119,7 @@ namespace PolySpatial.Samples
                             output = GetObjectFromFingerCast(indexPose);
                             activeFlag = true;
                         }
-                        else
+                        if(!right)
                         {
                             GameObject destNode = SetNavDest(indexPos);
                             appRef.navManager.MakeNavigate(destNode);
@@ -128,7 +128,6 @@ namespace PolySpatial.Samples
                     }
                 }
                 else activeFlag = false;
-
                 return output;
             }
             return null;
@@ -207,10 +206,7 @@ namespace PolySpatial.Samples
                 appRef.navManager.navNode.transform.position = position;
                 return appRef.navManager.navNode;
             }
-            else
-            {
-                return Instantiate(leftSpawnPrefab, position, Quaternion.identity);
-            }
+            return Instantiate(leftSpawnPrefab, position, Quaternion.identity);
         }
 // #endif
     }
