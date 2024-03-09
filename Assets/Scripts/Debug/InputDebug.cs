@@ -123,6 +123,7 @@ namespace PolySpatial.Samples
                         {
                             GameObject destNode = SetNavDest(indexPos);
                             appRef.navManager.MakeNavigate(destNode);
+                            activeFlag = true;
                         }
                     }
                 }
@@ -139,7 +140,7 @@ namespace PolySpatial.Samples
             Debug.Log("[INPUT DEBUG] Pinch Location: " + indexPos.position);
             // shoot a raycast in the direction indexPos is pointing with a layer mask for checking only objects on layer 29
             RaycastHit hit;
-            if (Physics.Raycast(indexPos.position, polyspatialCamTransform.forward, out hit, 100f, 1<<29))
+            if (Physics.Raycast(indexPos.position, GameObject.FindWithTag("MainCamera").transform.forward, out hit, 100f, 1<<29))
             {
                 Debug.Log("[INPUT DEBUG] Pinch Object: " + hit.transform.name);
                 return hit.transform.gameObject;
@@ -201,7 +202,15 @@ namespace PolySpatial.Samples
 
         private GameObject SetNavDest(Vector3 position)
         {
-            return Instantiate(leftSpawnPrefab, position, Quaternion.identity);
+            if (appRef.navManager.navNode != null)
+            {
+                appRef.navManager.navNode.transform.position = position;
+                return appRef.navManager.navNode;
+            }
+            else
+            {
+                return Instantiate(leftSpawnPrefab, position, Quaternion.identity);
+            }
         }
 // #endif
     }

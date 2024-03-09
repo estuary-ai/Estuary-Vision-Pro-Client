@@ -867,7 +867,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.3
   m_Height: 1.75
@@ -1417,9 +1417,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   appRef: {fileID: 1260834561}
   rightSpawnPrefab: {fileID: 3701147846425270125, guid: 91a438f9f36854aa4a5477fd3af6654f, type: 3}
-  leftSpawnPrefab: {fileID: 9009630197473288010, guid: 6aaa1e21e33664d61ba03c06a3618c5e, type: 3}
+  leftSpawnPrefab: {fileID: 7334852416975427255, guid: 42483656567e942669d0454b9b443a91, type: 3}
   polyspatialCamTransform: {fileID: 2026256748}
-  highlightMaterial: {fileID: 2100000, guid: da08309e2e3c54c4b80fea54af541190, type: 2}
+  highlightMaterial: {fileID: 2100000, guid: afed65409d0494206adc4526266433aa, type: 2}
 --- !u!4 &1222491706
 Transform:
   m_ObjectHideFlags: 0
@@ -2614,7 +2614,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1701802645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2627,6 +2627,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b53280e2376da4fb7bdf5c34017f4600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  navMeshAgent: {fileID: 549449734}
+  navNode: {fileID: 0}
 --- !u!4 &1701802646
 Transform:
   m_ObjectHideFlags: 0
