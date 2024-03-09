@@ -45,7 +45,7 @@ public class NavManager : MonoBehaviour
      * Add a navigable object to the list of navigable objects
      * Used in InputDebug.cs for adding meshes that are tapped (user selects the floor meshes)
      */
-    public void addNavigable(GameObject n)
+    public void AddNavigable(GameObject n)
     {
         if (navigableObjects.ContainsKey(n) == false)
         {

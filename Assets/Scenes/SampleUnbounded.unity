@@ -849,7 +849,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!136 &549449730
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -945,7 +945,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 549449729}
-  m_Enabled: 0
+  m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.3
   m_Speed: 1
@@ -1415,6 +1415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1680cabf7863472cb8e2058ba0bb58f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  appRef: {fileID: 1260834561}
   rightSpawnPrefab: {fileID: 3701147846425270125, guid: 91a438f9f36854aa4a5477fd3af6654f, type: 3}
   leftSpawnPrefab: {fileID: 9009630197473288010, guid: 6aaa1e21e33664d61ba03c06a3618c5e, type: 3}
   polyspatialCamTransform: {fileID: 2026256748}

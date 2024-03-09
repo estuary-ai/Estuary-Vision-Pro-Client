@@ -12,11 +12,11 @@ namespace PolySpatial.Samples
 {
     public class InputDebug : MonoBehaviour
     {
+        [SerializeField] private ApplicationReferences appRef;
         [SerializeField] private GameObject rightSpawnPrefab;
         [SerializeField] private GameObject leftSpawnPrefab;
         [SerializeField] private Transform polyspatialCamTransform;
         [SerializeField] private Material highlightMaterial;
-        [SerializeField] private NavManager navManager;
 
 
 // #if UNITY_INCLUDE_XR_HANDS
@@ -47,7 +47,7 @@ namespace PolySpatial.Samples
                 Debug.Log("[INPUT DEBUG] Tapped Object: " + tappedObj.name);
                 tappedObj.GetComponent<MeshRenderer>().material = highlightMaterial;
                 // add to navigableObjects
-                navManager.addNavigable(tappedObj);
+                appRef.navManager.AddNavigable(tappedObj);
             }
         }
 
@@ -113,9 +113,16 @@ namespace PolySpatial.Samples
                 {
                     if (!activeFlag)
                     {
-                        // Instantiate(spawnObject, indexPos, Quaternion.identity);
-                        output = GetObjectFromFingerCast(indexPose);
-                        activeFlag = true;
+                        if (right)
+                        {
+                            // Instantiate(spawnObject, indexPos, Quaternion.identity);
+                            output = GetObjectFromFingerCast(indexPose);
+                            activeFlag = true;
+                        }
+                        else
+                        {
+                            GameObject destNode = SetNavDest(indexPos);
+                        }
                     }
                 }
                 else activeFlag = false;
@@ -189,6 +196,11 @@ namespace PolySpatial.Samples
             }
 
             return null;
+        }
+
+        private GameObject SetNavDest(Vector3 position)
+        {
+            return Instantiate(leftSpawnPrefab, position, Quaternion.identity);
         }
 // #endif
     }
