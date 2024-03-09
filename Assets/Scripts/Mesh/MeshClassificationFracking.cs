@@ -7,7 +7,7 @@ using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using UnityEngine.XR.VisionOS;
 // #if UNITY_IOS && !UNITY_EDITOR
-     using UnityEngine.XR.ARKit;
+     // using UnityEngine.XR.ARKit;
 // #endif // UNITY_IOS && !UNITY_EDITOR
 
 using Object = UnityEngine.Object;
@@ -259,6 +259,8 @@ namespace UnityEngine.XR.VisionOS
             Debug.Log("[FRACK YOU] Mesh ID: " + meshId);
 
             var faceClassifications = meshSubsystem.GetFaceClassifications(meshId, Allocator.Persistent);
+
+            Debug.Log("[FRACK YOU] Face classifications: " + faceClassifications.ToString());
 
             if (!faceClassifications.IsCreated)
             {
