@@ -41,6 +41,17 @@ public class NavManager : MonoBehaviour
             }
         }
 
+        if (navNode != null) {
+            // if the char has reached the destination node
+            if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance) {
+                if (!navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude == 0f) {
+                    if (navMeshAgent.gameObject.GetComponent<Animation>() != null) {
+                        navMeshAgent.gameObject.GetComponent<Animation>().Play("Idle");
+                    }
+                }
+            }
+        }
+
     }
 
     /**
@@ -82,6 +93,11 @@ public class NavManager : MonoBehaviour
             // move the user to the selected position
             navMeshAgent.SetDestination(destNode.transform.position);
             navNode = destNode;
+
+            if (navMeshAgent.gameObject.GetComponent<Animation>() != null) {
+                navMeshAgent.gameObject.GetComponent<Animation>().Play("Walking");
+            }
+            
         }
         else
         {
