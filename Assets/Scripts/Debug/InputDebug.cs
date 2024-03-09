@@ -16,6 +16,7 @@ namespace PolySpatial.Samples
         [SerializeField] private GameObject leftSpawnPrefab;
         [SerializeField] private Transform polyspatialCamTransform;
         [SerializeField] private Material highlightMaterial;
+        [SerializeField] private NavManager navManager;
 
 
 // #if UNITY_INCLUDE_XR_HANDS
@@ -45,6 +46,8 @@ namespace PolySpatial.Samples
             {
                 Debug.Log("[INPUT DEBUG] Tapped Object: " + tappedObj.name);
                 tappedObj.GetComponent<MeshRenderer>().material = highlightMaterial;
+                // add to navigableObjects
+                navManager.addNavigable(tappedObj);
             }
         }
 
