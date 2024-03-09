@@ -19,6 +19,7 @@ public class NavManager : MonoBehaviour
     // Dictionary of the GameObject meshes and their NavMeshSurfaces that are attached as components
     public Dictionary<GameObject, NavMeshSurface> navigableObjects = new();
     private bool isUpdating = false;
+    private string DEBUG_TAG = "[NAV MANAGER]: ";
     public void FixedUpdate()
     {
         // // find all game objects that use the Navigable tag
@@ -27,7 +28,7 @@ public class NavManager : MonoBehaviour
 
         if (navigableObjects.Count <= 0)
         {
-            Debug.Log("No navigable objects have been added.");
+            Debug.Log(DEBUG_TAG + "No navigable objects have been added.");
         }
         
         foreach (KeyValuePair<GameObject, NavMeshSurface> pair in navigableObjects)
@@ -48,9 +49,12 @@ public class NavManager : MonoBehaviour
     {
         if (navigableObjects.ContainsKey(n) == false)
         {
+            Debug.Log(DEBUG_TAG + "Adding navigable object: " + n.ToString());
             NavMeshSurface navMeshSurface = n.AddComponent<NavMeshSurface>();
             navMeshSurface.useGeometry = NavMeshCollectGeometry.PhysicsColliders;
             navigableObjects.Add(n, navMeshSurface);
+        } else {
+            Debug.Log(DEBUG_TAG + "Navigable object already exists: " + n.ToString());
         }
     }
 
@@ -59,10 +63,12 @@ public class NavManager : MonoBehaviour
         if (navMeshSurface != null)
         {
             isUpdating = true;
-            Debug.Log("Updating NavMeshSurface");
+            Debug.Log(DEBUG_TAG + "Updating NavMeshSurface");
             navMeshSurface.BuildNavMesh();
             yield return new WaitForSeconds(1.5f);
             isUpdating = false;
+        } else {
+            Debug.Log(DEBUG_TAG + "NavMeshSurface is null");
         }
     }
 }
