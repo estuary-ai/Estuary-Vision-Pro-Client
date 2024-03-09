@@ -20,6 +20,7 @@ public class NavManager : MonoBehaviour
     public Dictionary<GameObject, NavMeshSurface> navigableObjects = new();
     private bool isUpdating = false;
     private string DEBUG_TAG = "[NAV MANAGER]: ";
+    [SerializeField] public NavMeshAgent navMeshAgent;
     public void FixedUpdate()
     {
         // // find all game objects that use the Navigable tag
@@ -69,6 +70,20 @@ public class NavManager : MonoBehaviour
             isUpdating = false;
         } else {
             Debug.Log(DEBUG_TAG + "NavMeshSurface is null");
+        }
+    }
+
+    public void MakeNavigate(GameObject destNode) {
+
+        if (destNode != null)
+        {
+            Debug.Log(DEBUG_TAG + "Navigating to: " + destNode.transform.position);
+            // move the user to the selected position
+            navMeshAgent.SetDestination(destNode.transform.position);
+        }
+        else
+        {
+            Debug.Log(DEBUG_TAG + "No navigation position found");
         }
     }
 }

@@ -122,6 +122,7 @@ namespace PolySpatial.Samples
                         else
                         {
                             GameObject destNode = SetNavDest(indexPos);
+                            appRef.navManager.MakeNavigate(destNode);
                         }
                     }
                 }

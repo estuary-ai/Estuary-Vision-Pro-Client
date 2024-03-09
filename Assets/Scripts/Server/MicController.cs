@@ -12,7 +12,7 @@ public class MicController : MonoBehaviour
     private AudioPacket audioToBeRecorded = null;
     private string DEBUG_PREFIX = "[MicController]";
     public Mic _micSource;
-    private bool isSetup = false;
+    // private bool isSetup = false;
     public event Action<AudioPacket> OnAudioFrameCaptured;
 
     /// <summary>
