@@ -78,7 +78,7 @@ public class NavManager : MonoBehaviour
             isUpdating = true;
             Debug.Log(DEBUG_TAG + "Updating NavMeshSurface");
             navMeshSurface.BuildNavMesh();
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1f);
             isUpdating = false;
         } else {
             Debug.Log(DEBUG_TAG + "NavMeshSurface is null");
