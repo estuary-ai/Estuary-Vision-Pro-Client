@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -55,6 +56,8 @@ public class BotVoice : MonoBehaviour
                     _isSpeaking = false;
                 }
             }
+        } else {
+            Debug.Log("Audio source is playing!!!");
         }
     }
 
@@ -78,6 +81,7 @@ public class BotVoice : MonoBehaviour
         // }
     }
 
+
     public static float[] Convert16BitByteArrayToAudioClipData(byte[] source)
     {
         int x = sizeof(Int16); 
@@ -93,18 +97,40 @@ public class BotVoice : MonoBehaviour
         return data;
     }
 
+    // public void PlayAudioBytes(byte[] audioBytes, string audioName="bot-voice") {
+    //     // Its a 16 bit audio file, so there will be two bytes (8 bits * 2 = 16 bit)
+    //     // per float, so we need half the floats as there are bits
+    //     float[] audioFloat = Convert16BitByteArrayToAudioClipData(audioBytes);
+    //     AudioClip clip = AudioClip.Create(
+    //         audioName,
+    //         audioBytes.Length,
+    //         1, // 1 channel
+    //         26000, // 22.05 is 352 kbps at 16 bit
+    //         false
+    //     );
+    //     clip.SetData(audioFloat, 0);
+
+
+    //     // lock(_clipQueue) {
+    //         _clipQueue.Enqueue(clip);
+    //     // }
+    // }
+
+    
+    public static AudioClip ConvertBytesToAudioClip(byte[] source, string NAME="bot-voice")
+    {
+        string filepath = Application.persistentDataPath + "/__tmp__.mp3";
+        Debug.Log("Saving audio to be played to " + filepath);
+        File.WriteAllBytes(filepath, source);
+        WWW www = new WWW("file://" + filepath);
+        while (!www.isDone) { }
+        return www.GetAudioClip(false, false, AudioType.MPEG);
+    }
+        
+        
+
     public void PlayAudioBytes(byte[] audioBytes, string audioName="bot-voice") {
-        // Its a 16 bit audio file, so there will be two bytes (8 bits * 2 = 16 bit)
-        // per float, so we need half the floats as there are bits
-        float[] audioFloat = Convert16BitByteArrayToAudioClipData(audioBytes);
-        AudioClip clip = AudioClip.Create(
-            audioName,
-            audioBytes.Length,
-            1, // 1 channel
-            26000, // 22.05 is 352 kbps at 16 bit
-            false
-        );
-        clip.SetData(audioFloat, 0);
+        AudioClip clip = ConvertBytesToAudioClip(audioBytes, audioName);
 
         // lock(_clipQueue) {
             _clipQueue.Enqueue(clip);

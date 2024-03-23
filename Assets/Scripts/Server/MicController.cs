@@ -218,7 +218,7 @@ public class MicController : MonoBehaviour
 		fileStream.Write(bytesData, 0, bytesData.Length);
 	}
 
-    	static void WriteHeader(FileStream fileStream, AudioClip clip) {
+    static void WriteHeader(FileStream fileStream, AudioClip clip) {
 
 		var hz = clip.frequency;
 		var channels = clip.channels;
