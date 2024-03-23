@@ -1609,6 +1609,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   m_Button: {fileID: 517683614}
   micController: {fileID: 96944530}
+  autoStart: 1
 --- !u!4 &1184893517
 Transform:
   m_ObjectHideFlags: 0
