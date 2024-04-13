@@ -121,8 +121,8 @@ namespace PolySpatial.Samples
                         }
                         if(!right)
                         {
-                            GameObject destNode = SetNavDest(indexPos);
-                            appRef.navManager.MakeNavigate(destNode);
+                            // GameObject destNode = SetNavDest(indexPos);
+                            // appRef.navManager.MakeNavigate(destNode);
                             activeFlag = true;
                         }
                     }

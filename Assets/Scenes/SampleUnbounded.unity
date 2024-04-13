@@ -595,7 +595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3711822128842703614, guid: ae1e1ea4162824872a67aeb64c6cf077, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6105789478677744536, guid: ae1e1ea4162824872a67aeb64c6cf077, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1069,6 +1069,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MeshManager: {fileID: 659567573}
   m_ClassificationEnabled: 1
+--- !u!1 &705134288
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 705134289}
+  m_Layer: 0
+  m_Name: Ground Detector Origin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &705134289
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705134288}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2121586914}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &728875157
 GameObject:
   m_ObjectHideFlags: 0
@@ -2439,6 +2470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b53280e2376da4fb7bdf5c34017f4600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundDetectorOrigin: {fileID: 705134289}
   navMeshAgent: {fileID: 138268051}
   agentAnimator: {fileID: 1116371902162564801}
   navNode: {fileID: 0}
@@ -2802,6 +2834,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 572225845}
+  - {fileID: 705134289}
   m_Father: {fileID: 1517854672}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2121586915

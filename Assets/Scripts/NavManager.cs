@@ -20,6 +20,7 @@ public class NavManager : MonoBehaviour
     public Dictionary<GameObject, NavMeshSurface> navigableObjects = new();
     private bool isUpdating = false;
     private string DEBUG_TAG = "[NAV MANAGER]: ";
+    [SerializeField] private Transform groundDetectorOrigin;
     [SerializeField] public NavMeshAgent navMeshAgent;
     [SerializeField] private Animator agentAnimator;
     public GameObject navNode;
@@ -30,6 +31,21 @@ public class NavManager : MonoBehaviour
         // // find all game objects that use the Navigable tag
         //     // mesh will be generated from prefab with "Navigable" tag
         // navigableObjects = GameObject.FindGameObjectsWithTag("Navigable");
+
+        // perform a raycast from groundDectorOrigin to the ground and add navigable
+        RaycastHit hit;
+        if (Physics.Raycast(groundDetectorOrigin.position, Vector3.down, out hit, 10f))
+        {
+            if (hit.collider.gameObject.CompareTag("Navigable"))
+            {
+                Debug.Log(DEBUG_TAG + "Navigable object found: " + hit.collider.gameObject.name);
+                AddNavigable(hit.collider.gameObject);
+            }
+        }
+        else
+        {
+            Debug.Log(DEBUG_TAG + "No navigable object found");
+        }
 
         if (navigableObjects.Count <= 0)
         {
