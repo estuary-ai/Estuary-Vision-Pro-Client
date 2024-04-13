@@ -180,7 +180,9 @@ public class AIClient : MonoBehaviour
         {
             Debug.Log($"WakeUp: {result}");
             appRef.navManager.CallPuppy();
+            Debug.Log("before StartCommandTransmission");
             StartCommandTransmission();
+            Debug.Log("after StartCommandTransmission");
         });
         socket.On(EVENTS.STT_RES, (result) =>
         {

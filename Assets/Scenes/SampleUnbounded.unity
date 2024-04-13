@@ -1524,6 +1524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fe40c0e4d4824e0d99a20598b15a92e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camTrans: {fileID: 2121586914}
   navManager: {fileID: 1701802645}
 --- !u!1 &1265836881
 GameObject:
@@ -2474,6 +2475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b53280e2376da4fb7bdf5c34017f4600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  appRef: {fileID: 0}
   groundDetectorOrigin: {fileID: 705134289}
   navMeshAgent: {fileID: 138268051}
   agentAnimator: {fileID: 1116371902162564801}
@@ -2800,8 +2802,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1760703bbd54c04488a8d10600262ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PlanePrefab: {fileID: 0}
-  m_DetectionMode: -1
 --- !u!1 &2121586913
 GameObject:
   m_ObjectHideFlags: 0

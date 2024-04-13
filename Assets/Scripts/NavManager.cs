@@ -20,6 +20,7 @@ public class NavManager : MonoBehaviour
     public Dictionary<GameObject, NavMeshSurface> navigableObjects = new();
     private bool isUpdating = false;
     private string DEBUG_TAG = "[NAV MANAGER]: ";
+    public ApplicationReferences appRef;
     [SerializeField] private Transform groundDetectorOrigin;
     [SerializeField] public NavMeshAgent navMeshAgent;
     [SerializeField] private Animator agentAnimator;
@@ -134,7 +135,9 @@ public class NavManager : MonoBehaviour
     public void CallPuppy() {
         Debug.Log(DEBUG_TAG + "Calling the puppy to you");
         GameObject yourPos = new GameObject();
-        yourPos.transform.position = Camera.main.transform.position;
+        yourPos.transform.position = appRef.camTrans.position;
+        Debug.Log(DEBUG_TAG + "Your position: " + yourPos.transform.position);
         MakeNavigate(yourPos);
+        Debug.Log(DEBUG_TAG + "Puppy is on the way!");
     }
 }

@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class ApplicationReferences : MonoBehaviour
 {
+    public Transform camTrans;
     public NavManager navManager;
 }
