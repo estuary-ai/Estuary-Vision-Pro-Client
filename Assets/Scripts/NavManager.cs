@@ -130,4 +130,11 @@ public class NavManager : MonoBehaviour
             Debug.Log(DEBUG_TAG + "No navigation position found");
         }
     }
+
+    public void CallPuppy() {
+        Debug.Log(DEBUG_TAG + "Calling the puppy to you");
+        GameObject yourPos = new GameObject();
+        yourPos.transform.position = Camera.main.transform.position;
+        MakeNavigate(yourPos);
+    }
 }

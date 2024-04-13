@@ -19,6 +19,7 @@ public class AIClient : MonoBehaviour
     private BotResponseHandler botResponseHandler;
     private MicController micController;
     private BotVoice botVoice;
+    [SerializeField] private ApplicationReferences appRef;
 
     [field:SerializeField]
     public string api = "ws://localhost:4000";
@@ -178,6 +179,7 @@ public class AIClient : MonoBehaviour
         socket.On(EVENTS.WAKE_UP, (result) =>
         {
             Debug.Log($"WakeUp: {result}");
+            appRef.navManager.CallPuppy();
             StartCommandTransmission();
         });
         socket.On(EVENTS.STT_RES, (result) =>
