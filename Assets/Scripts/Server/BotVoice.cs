@@ -9,7 +9,7 @@ public class BotVoice : MonoBehaviour
     public AudioClip activateClip;
     public AudioClip terminateClip;
     private Queue<AudioClip> _clipQueue;
-    private AudioSource _audioSource;
+    [SerializeField] private AudioSource _audioSource;
     private bool _isSpeaking;
 
     /// <summary>
@@ -38,7 +38,7 @@ public class BotVoice : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _audioSource = GetComponent<AudioSource>();
+        if(!_audioSource) _audioSource = GetComponent<AudioSource>();
         _clipQueue = new Queue<AudioClip>();
     }
 
@@ -119,12 +119,16 @@ public class BotVoice : MonoBehaviour
     
     public static AudioClip ConvertBytesToAudioClip(byte[] source, string NAME="bot-voice")
     {
-        string filepath = Application.persistentDataPath + "/__tmp__.mp3";
+        string filepath = Application.persistentDataPath + "/__tmp__.wav";
         Debug.Log("Saving audio to be played to " + filepath);
         File.WriteAllBytes(filepath, source);
         WWW www = new WWW("file://" + filepath);
         while (!www.isDone) { }
-        return www.GetAudioClip(false, false, AudioType.MPEG);
+        AudioClip audioClip = www.GetAudioClip(false, false, AudioType.WAV);
+        // delete the file
+        // File.Delete(filepath);
+        audioClip.name = NAME;
+        return audioClip;
     }
         
         

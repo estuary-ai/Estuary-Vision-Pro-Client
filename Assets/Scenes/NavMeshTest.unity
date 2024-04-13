@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028468, g: 0.22571594, b: 0.3069237, a: 1}
+  m_IndirectSpecularColor: {r: 0.1802846, g: 0.22571594, b: 0.30692336, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -142,7 +142,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!195 &148730555
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1397,6 +1397,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1760703bbd54c04488a8d10600262ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_PlanePrefab: {fileID: 0}
+  m_DetectionMode: -1
 --- !u!114 &1140619890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1695,6 +1697,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b53280e2376da4fb7bdf5c34017f4600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  navMeshAgent: {fileID: 0}
+  navNode: {fileID: 0}
 --- !u!4 &1345153343
 Transform:
   m_ObjectHideFlags: 0
@@ -2332,6 +2336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1680cabf7863472cb8e2058ba0bb58f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  appRef: {fileID: 0}
   rightSpawnPrefab: {fileID: 3701147846425270125, guid: 91a438f9f36854aa4a5477fd3af6654f, type: 3}
   leftSpawnPrefab: {fileID: 9009630197473288010, guid: 6aaa1e21e33664d61ba03c06a3618c5e, type: 3}
   polyspatialCamTransform: {fileID: 181006675}

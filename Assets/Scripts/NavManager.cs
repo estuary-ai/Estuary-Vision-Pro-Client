@@ -21,7 +21,10 @@ public class NavManager : MonoBehaviour
     private bool isUpdating = false;
     private string DEBUG_TAG = "[NAV MANAGER]: ";
     [SerializeField] public NavMeshAgent navMeshAgent;
+    [SerializeField] private Animator agentAnimator;
     public GameObject navNode;
+    private static readonly int IsWalking = Animator.StringToHash("isRunning");
+
     public void FixedUpdate()
     {
         // // find all game objects that use the Navigable tag
@@ -49,6 +52,11 @@ public class NavManager : MonoBehaviour
                         navMeshAgent.gameObject.GetComponent<Animation>().Play("Idle");
                     }
                 }
+                agentAnimator.SetBool(IsWalking, false);
+            }
+            else
+            {
+                agentAnimator.SetBool(IsWalking, true);
             }
         }
 
@@ -94,10 +102,12 @@ public class NavManager : MonoBehaviour
             navMeshAgent.SetDestination(destNode.transform.position);
             navNode = destNode;
 
+            // animations
+            agentAnimator.SetBool(IsWalking, true);
+
             if (navMeshAgent.gameObject.GetComponent<Animation>() != null) {
                 navMeshAgent.gameObject.GetComponent<Animation>().Play("Walking");
             }
-            
         }
         else
         {

@@ -29,7 +29,7 @@ namespace PolySpatial.Samples
         private bool activeLeftPinch;
         private float scaledThreshold;
 
-        private const float k_PinchThreshold = 0.02f;
+        private const float k_PinchThreshold = 0.03f;
 
         private bool isPressed;
         void OnEnable()

@@ -67,6 +67,7 @@ public class AIClient : MonoBehaviour
                 StartClient(api);
             // });
         }
+        micController.Init();
     }
 
     public void RequestBotToRead(DataReadingInfo dataReadingInfo)
