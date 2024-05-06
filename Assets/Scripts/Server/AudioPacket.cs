@@ -1,10 +1,26 @@
 using System;
 
 [Serializable]
+public class IncomingAudioPacket
+{
+    public byte[] audio_bytes;
+    public int frame_rate;
+    public int channels;
+    public int sample_width;
+
+    public String ToString()
+    {
+        return "Audio Bytes: " + audio_bytes + " Frame Rate: " + frame_rate + " Channels: " + channels + " Sample Width: " + sample_width;
+    }
+}
+
+
+[Serializable]
 public class AudioPacket {
     public float[] audio;
     public int numChannels;
     public int sampleRate;
+    public int sampleWidth;
     public int timestamp; // miliseconds
     public long packetID;
     public int Length {
@@ -21,7 +37,8 @@ public class AudioPacket {
 
     public static long currentPacketID = 0;
 
-    public AudioPacket(float[] audio, int numChannels, int sampleRate, double timestampMS) {
+    // TODO: check sampleWidth default for mic
+    public AudioPacket(float[] audio, int numChannels, int sampleRate, double timestampMS, int sampleWidth=2) {
         this.packetID = currentPacketID;
         currentPacketID += 1; // CLASS LEVEL
         this.audio = audio;

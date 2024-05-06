@@ -6,8 +6,11 @@ using SocketIOClient;
 using SocketIOClient.Newtonsoft.Json;
 using UnityEngine;
 
-// TODO: get SocketIOClient package from here: https://github.com/itisnajim/SocketIOUnity
-
+public class IncomingDataPacket<T>
+{
+    public int status;
+    public T data;
+}
 
 public class AIClient : MonoBehaviour
 {
@@ -19,6 +22,7 @@ public class AIClient : MonoBehaviour
     private BotResponseHandler botResponseHandler;
     private MicController micController;
     private BotVoice botVoice;
+    private int status;
     [SerializeField] private ApplicationReferences appRef;
 
     [field:SerializeField]
@@ -71,23 +75,17 @@ public class AIClient : MonoBehaviour
         micController.Init();
     }
 
-    public void RequestBotToRead(DataReadingInfo dataReadingInfo)
-    {
-        Debug.Log("Request to Read Data " + dataReadingInfo.ToString());
-        // lock(socket) {
-        socket.Emit(REQUESTS.TTS_READ, dataReadingInfo);
-        // }
-    }
-
-    public void RequestBotToRead(string stringToRead)
-    {
-        Debug.Log("Request to Read String " + stringToRead);
-        // lock(socket) {
-        socket.Emit(REQUESTS.TTS_READ, stringToRead);
-        // }
-    }
-
-
+    // public void RequestBotToRead(DataReadingInfo dataReadingInfo)
+    // {
+    //     Debug.Log("Request to Read Data " + dataReadingInfo.ToString());
+    //     Emit(REQUESTS.TTS_READ, dataReadingInfo);
+    // }
+    //
+    // public void RequestBotToRead(string stringToRead)
+    // {
+    //     Debug.Log("Request to Read String " + stringToRead);
+    //     Emit(REQUESTS.TTS_READ, stringToRead);
+    // }
 
     public void StartClient(String retrieved_api)
     {
@@ -144,7 +142,7 @@ public class AIClient : MonoBehaviour
         socket.OnConnected += (sender, e) =>
         {
             Debug.Log("Connected");
-            socket.Emit("trial", "test");
+            Emit("trial", "test");
             UnityThread.executeInLateUpdate(
                 () => StartCoroutine(StartMicDelay())
             );
@@ -178,8 +176,10 @@ public class AIClient : MonoBehaviour
 
         socket.On(EVENTS.WAKE_UP, (result) =>
         {
-            Debug.Log($"WakeUp: {result}");
-            appRef.navManager.CallPuppy();
+            Debug.Log("WAKE UP EVENT RECEIVED");
+            // result.GetValue<IncomingDataPacket<short>>();
+            // Debug.Log($"WakeUp: {result}");
+            if(appRef && appRef.navManager) appRef.navManager.CallPuppy();
             Debug.Log("before StartCommandTransmission");
             StartCommandTransmission();
             Debug.Log("after StartCommandTransmission");
@@ -194,17 +194,25 @@ public class AIClient : MonoBehaviour
             Debug.Log($"bot-response: {result}");
             botResponseHandler.Handle(result.GetValue<BotResponse>());
         });
-        socket.On(EVENTS.BOT_VOICE, (audioBytesObject) =>
+        socket.On(EVENTS.BOT_VOICE, (audioPacket) =>
         {
             Debug.Log(
                 $"{EVENTS.BOT_VOICE} -- Playing SENVA voice.. " +
-                $"recieved {audioBytesObject.InComingBytes.ToArray().Length} lists of bytes"
+                $"recieved {audioPacket.InComingBytes.ToArray().Length} lists of bytes"
             );
             // TODO verify and debug audioBytes / test FixedUpdate
             UnityThread.executeInUpdate(() =>
             {
-                botVoice.PlayAudioBytes(audioBytesObject.InComingBytes[0]);
+                // botVoice.PlayAudioBytes(audioPacket.InComingBytes[0]);
+                IncomingAudioPacket packet = audioPacket.GetValue<IncomingAudioPacket>();
+                Debug.Log("audioPacket content: " + packet.ToString());
+                botVoice.ProcessAndPlayAudioBytes(packet);
             });
+        });
+        socket.On(EVENTS.UPDATE_STATUS, (result) =>
+        {
+            Debug.Log($"update-status: {result}");
+            status = result.GetValue<int>();
         });
     }
 
@@ -215,20 +223,20 @@ public class AIClient : MonoBehaviour
             botVoice.PlayActivationSound();
             // micController.RefreshTheMic();
         });
+        // botVoice.PlayActivationSound();
         isAwake = true;
         Debug.Log("set isAwake");
-
     }
 
     void StopCommandTransmission()
     {
         Debug.Log("Stop Transmission -- Unset is Awake");
         UnityThread.executeInUpdate(() => {
-            // socket.Emit(REQUESTS.RESET_AUDIO_STREAM);
             botVoice.PlayTerminationSound();
         });
         isAwake = false;
     }
+
 
     void OnDisable()
     {
@@ -279,12 +287,16 @@ public class AIClient : MonoBehaviour
             Debug.Log("Socket is null. Can't send audio packet");
             return;
         }
+        Emit(REQUESTS.AUDIO_STREAM, audioPacket);
+    }
 
+    private void Emit(string eventName, object data)
+    {
         if (socket.Connected)
         {
-            // Debug.Log("Sending Audio Packet now!");
             Thread thread = new Thread(() => {
-                socket.Emit(REQUESTS.AUDIO_STREAM, audioPacket);
+                // convert data into array containing status
+                socket.Emit(eventName, new object[] {data, status});
             });
             thread.Start();
         }
@@ -292,44 +304,13 @@ public class AIClient : MonoBehaviour
 
     // private void CamController_OnVideoFrameCaptured(VideoFrame videoFrame)
     // {
-    //     if(socket.Connected)
-    //     {
-    //         Thread thread = new Thread(() => {
-    //             socket.Emit(REQUESTS.VIDEO_STREAM, videoFrame);
-    //         });
-    //         thread.Start();
-    //     }
+    //     Emit(REQUESTS.VIDEO_STREAM, videoFrame);
     // }
-
-    public void TextInitiator_OnTextCommmandIntiated(string commandString)
-    {
-        if(socket.Connected)
-        {
-            Debug.Log($"Debug onTextCommand: {commandString}");
-            commandString = commandString.Replace("\u200B", "");
-            Thread thread = new Thread(() => {
-                socket.Emit(REQUESTS.TEXT_STREAM, commandString);
-            });
-            thread.Start();
-        }
-    }
 
     public void Debugger_OnTrialMsg(string debugStatement)
     {
-        if(socket.Connected)
-        {
-            debugStatement = debugStatement.Replace("\u200B", "");
-            Thread thread = new Thread(() => {
-                socket.Emit("trial", debugStatement);
-            });
-            thread.Start();
-        }
-    }
-
-    public void IssueTaggingSample()
-    {
-        if (socket.Connected)
-            socket.Emit(REQUESTS.TEXT_STREAM, "tag a sample");
+        debugStatement = debugStatement.Replace("\u200B", "");
+        Emit("trial", debugStatement);
     }
 
     class EVENTS {
@@ -337,13 +318,12 @@ public class AIClient : MonoBehaviour
         public static readonly string BOT_VOICE = "bot_voice";
         public static readonly string STT_RES = "stt_response";
         public static readonly string WAKE_UP = "wake_up";
+        public static readonly string UPDATE_STATUS = "update_status";
     }
 
     class REQUESTS {
         public static readonly string AUDIO_STREAM = "stream_audio";
-        public static readonly string TTS_READ = "read_tts";
-        public static readonly string TEXT_STREAM = "stream_text";
         public static readonly string VIDEO_STREAM = "stream_video";
-        public static readonly string TELEMETRY_STREAM = "update_world_state";
+        public static readonly string UPDATE_WORLD_STATE = "update_world_state";
     }
 }

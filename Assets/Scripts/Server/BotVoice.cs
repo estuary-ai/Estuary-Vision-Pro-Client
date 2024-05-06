@@ -9,54 +9,62 @@ public class BotVoice : MonoBehaviour
     public AudioClip activateClip;
     public AudioClip terminateClip;
     private Queue<AudioClip> _clipQueue;
-    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioSource audioSource;
     private bool _isSpeaking;
 
     /// <summary>
     /// Singleton access
     /// </summary>
     private static BotVoice _instance;
+
     public static BotVoice Instance
     {
         get
         {
             if (_instance == null)
             {
-                throw new Exception ("BotVoice could not find the BotVoice object.");
+                throw new Exception("BotVoice could not find the BotVoice object.");
             }
+
             return _instance;
         }
     }
 
-    void Awake() {
+    void Awake()
+    {
         if (_instance == null)
         {
             _instance = this;
-        } 
+        }
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        if(!_audioSource) _audioSource = GetComponent<AudioSource>();
+        if (!audioSource) audioSource = GetComponent<AudioSource>();
         _clipQueue = new Queue<AudioClip>();
     }
 
     void Update()
     {
-        if (_audioSource.isPlaying == false) {
-            lock(_clipQueue) {
-                if (_clipQueue.Count > 0) {
-                    _audioSource.clip = _clipQueue.Dequeue();
+        if (audioSource.isPlaying == false)
+        {
+            lock (_clipQueue)
+            {
+                if (_clipQueue.Count > 0)
+                {
+                    audioSource.clip = _clipQueue.Dequeue();
                     _isSpeaking = true;
-                    _audioSource.Play();
+                    audioSource.Play();
                 }
                 else
                 {
                     _isSpeaking = false;
                 }
             }
-        } else {
+        }
+        else
+        {
             Debug.Log("Audio source is playing!!!");
         }
     }
@@ -66,25 +74,31 @@ public class BotVoice : MonoBehaviour
         return _isSpeaking;
     }
 
-    public void PlayActivationSound() {
-        Log("Queueing activation sound");
+    public void PlayActivationSound()
+    {
+        Log("Playing activation sound");
         // lock(_clipQueue) {
-            _clipQueue.Enqueue(activateClip);
+        // _clipQueue.Enqueue(activateClip);
         // }
+        if(audioSource.isPlaying) audioSource.Stop();
+        audioSource.PlayOneShot(activateClip);
     }
 
-    public void PlayTerminationSound() {
-        // Log("Queueing termination sound 11");
+    public void PlayTerminationSound()
+    {
+        Log("Playing termination sound");
         // lock(_clipQueue) {
-            // Log("Queueing termination sound 12");
-            _clipQueue.Enqueue(terminateClip);
+        // Log("Queueing termination sound 12");
+        // _clipQueue.Enqueue(terminateClip);
         // }
+        if(audioSource.isPlaying) audioSource.Stop();
+        audioSource.PlayOneShot(terminateClip);
     }
 
 
     public static float[] Convert16BitByteArrayToAudioClipData(byte[] source)
     {
-        int x = sizeof(Int16); 
+        int x = sizeof(Int16);
         int convertedSize = source.Length / x;
         float[] data = new float[convertedSize];
         Int16 maxValue = Int16.MaxValue;
@@ -94,6 +108,7 @@ public class BotVoice : MonoBehaviour
             int offset = i * x;
             data[i] = (float)BitConverter.ToInt16(source, offset) / maxValue;
         }
+
         return data;
     }
 
@@ -116,24 +131,40 @@ public class BotVoice : MonoBehaviour
     //     // }
     // }
 
-    
-    public static AudioClip ConvertBytesToAudioClip(byte[] source, string NAME="bot-voice")
+
+    public static AudioClip ConvertBytesToAudioClip(byte[] source, string NAME = "bot-voice")
     {
         string filepath = Application.persistentDataPath + "/__tmp__.wav";
         Debug.Log("Saving audio to be played to " + filepath);
         File.WriteAllBytes(filepath, source);
         WWW www = new WWW("file://" + filepath);
-        while (!www.isDone) { }
+        while (!www.isDone)
+        {
+        }
+
         AudioClip audioClip = www.GetAudioClip(false, false, AudioType.WAV);
         // delete the file
         // File.Delete(filepath);
         audioClip.name = NAME;
         return audioClip;
     }
-        
-        
 
-    public void PlayAudioBytes(byte[] audioBytes, string audioName="bot-voice") {
+    public void ProcessAndPlayAudioBytes(IncomingAudioPacket packet)
+    {
+        // convert audio bytes int16 to float
+        float[] samples = BotVoice.Convert16BitByteArrayToAudioClipData(packet.audio_bytes);
+        // float[] samples = new float[packet.audio_bytes.Length / 4]; //size of a float is 4 bytes
+
+        // Buffer.BlockCopy(packet.audio_bytes, 0, samples, 0, packet.audio_bytes.Length);
+
+        AudioClip clip = AudioClip.Create("ClipName", samples.Length, packet.channels, packet.frame_rate, false);
+        clip.SetData(samples, 0);
+        if (audioSource.isPlaying) audioSource.Stop();
+        audioSource.PlayOneShot(clip);
+    }
+
+
+public void PlayAudioBytes(byte[] audioBytes, string audioName="bot-voice") {
         AudioClip clip = ConvertBytesToAudioClip(audioBytes, audioName);
 
         // lock(_clipQueue) {
