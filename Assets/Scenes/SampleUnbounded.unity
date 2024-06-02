@@ -639,7 +639,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9122925985822491782, guid: ae1e1ea4162824872a67aeb64c6cf077, type: 3}
       propertyPath: api
-      value: ws://192.168.0.254:4000
+      value: ws://172.26.62.166:4000
       objectReference: {fileID: 0}
     - target: {fileID: 9122925985822491782, guid: ae1e1ea4162824872a67aeb64c6cf077, type: 3}
       propertyPath: appRef
@@ -2802,6 +2802,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1760703bbd54c04488a8d10600262ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_PlanePrefab: {fileID: 0}
+  m_DetectionMode: -1
 --- !u!1 &2121586913
 GameObject:
   m_ObjectHideFlags: 0

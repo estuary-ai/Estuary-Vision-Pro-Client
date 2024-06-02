@@ -30,7 +30,6 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-
 public class Mic : MonoBehaviour, IAudioInputSource
 {
     // ================================================
@@ -71,6 +70,7 @@ public class Mic : MonoBehaviour, IAudioInputSource
                 // Try begin
                 SafeStartMicrophone();
             }
+
             // True if audio clip exists
             return AudioClip;
         }
@@ -94,8 +94,11 @@ public class Mic : MonoBehaviour, IAudioInputSource
     /// </summary>
     public AudioClip AudioClip { get; private set; }
 
-    [SerializeField] [Tooltip("Sample rate for mic audio to be captured at, it will be resampled using AudioEncoding.samplerate prior to transmission")]
+    [SerializeField]
+    [Tooltip(
+        "Sample rate for mic audio to be captured at, it will be resampled using AudioEncoding.samplerate prior to transmission")]
     private int _audioClipSampleRate = 16000;
+
     public int AudioClipSampleRate
     {
         get => _audioClipSampleRate;
@@ -103,7 +106,8 @@ public class Mic : MonoBehaviour, IAudioInputSource
         {
             if (IsRecording)
             {
-                Debug.LogError($"Mic - Cannot set audio sample rate once already recording\nRecording Rate: {_audioClipSampleRate}\nDesired Rate: {value}");
+                Debug.LogError(
+                    $"Mic - Cannot set audio sample rate once already recording\nRecording Rate: {_audioClipSampleRate}\nDesired Rate: {value}");
             }
             else
             {
@@ -128,9 +132,11 @@ public class Mic : MonoBehaviour, IAudioInputSource
             {
                 RefreshMicDevices();
             }
+
             return _devices;
         }
     }
+
     private List<string> _devices;
 
     /// <summary>
@@ -203,6 +209,7 @@ public class Mic : MonoBehaviour, IAudioInputSource
                 m_Instance = new GameObject("UniMic.Mic").AddComponent<Mic>();
                 DontDestroyOnLoad(m_Instance.gameObject);
             }
+
             return m_Instance;
         }
     }
@@ -219,7 +226,7 @@ public class Mic : MonoBehaviour, IAudioInputSource
 
     private void OnApplicationFocus(bool hasFocus)
     {
-        #if UNITY_ANDROID && !UNITY_EDITOR
+#if UNITY_ANDROID && !UNITY_EDITOR
         if (hasFocus && IsRecording)
         {
             VLog.D($"Mic was recording and app is resumed, resuming listening on {CurrentDeviceName}");
@@ -231,18 +238,18 @@ public class Mic : MonoBehaviour, IAudioInputSource
             VLog.D($"Stopping listening on {CurrentDeviceName} due to loss of focus.");
             StopMicrophone();
         }
-        #endif
+#endif
     }
 
     private void OnApplicationPause(bool pauseStatus)
     {
-        #if UNITY_ANDROID && !UNITY_EDITOR
+#if UNITY_ANDROID && !UNITY_EDITOR
         if (pauseStatus)
         {
             VLog.D($"Stopping listening on {CurrentDeviceName} due to application pause.");
             StopMicrophone();
         }
-        #endif
+#endif
     }
 
     private void OnDestroy()
@@ -273,7 +280,8 @@ public class Mic : MonoBehaviour, IAudioInputSource
 
         // Ignore if already setup & recording
         string micID = CurrentDeviceName;
-        if (!string.IsNullOrEmpty(micID) && AudioClip != null && string.Equals(micID, AudioClip.name) && MicrophoneIsRecording(micID))
+        if (!string.IsNullOrEmpty(micID) && AudioClip != null && string.Equals(micID, AudioClip.name) &&
+            MicrophoneIsRecording(micID))
         {
             return;
         }
@@ -330,6 +338,7 @@ public class Mic : MonoBehaviour, IAudioInputSource
         {
             Debug.Log("Device: " + d);
         }
+
         // print mic_clip_loop and mic_clip_channels and AudioClipSampleRate
         Debug.Log("MIC_CLIP_LOOP: " + MIC_CLIP_LOOP);
         Debug.Log("MIC_CLIP_CHANNELS: " + MIC_CLIP_CHANNELS);
@@ -358,12 +367,14 @@ public class Mic : MonoBehaviour, IAudioInputSource
             Microphone.End(CurrentDeviceName);
 #endif
         }
+
         if (AudioClip != null)
         {
             AudioClip.DestroySafely();
             AudioClip = null;
         }
     }
+
     #endregion
 
     // ================================================
@@ -380,6 +391,7 @@ public class Mic : MonoBehaviour, IAudioInputSource
         {
             return;
         }
+
         // Stop recording if doing so
         StopRecording();
 
@@ -477,6 +489,7 @@ public class Mic : MonoBehaviour, IAudioInputSource
     #endregion
 
     #region NO_MIC_WRAPPERS
+
     // Wrapper methods to handle platforms where the UnityEngine.Microphone class is non-existent
     private bool MicrophoneIsRecording(string device)
     {
@@ -506,6 +519,7 @@ public class Mic : MonoBehaviour, IAudioInputSource
         return Microphone.GetPosition(device);
 #endif
     }
+
     #endregion
 }
 #endif
