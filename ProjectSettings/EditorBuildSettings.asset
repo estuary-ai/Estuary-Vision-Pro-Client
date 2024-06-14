@@ -18,14 +18,14 @@ EditorBuildSettings:
     path: Assets/Samples/PolySpatial/Scenes/InputDataVisualization.unity
     guid: 75f1bad34defd4c1cb72f9582141573c
   - enabled: 0
-    path: Assets/Samples/PolySpatial/Scenes/Manipulation.unity
+    path: Assets/Samples/PolySpatial/Scenes/Manipulation_XRI.unity
     guid: 139d55bb8d7b3fd4bbfbefe95464cc7f
   - enabled: 0
     path: Assets/Samples/PolySpatial/Scenes/SpatialUI.unity
     guid: 6f4448466bfd94eed8847ae973dbc228
   - enabled: 0
     path: Assets/Samples/PolySpatial/Scenes/Meshing.unity
-    guid: 653f9f1e3f8ba4879806269d9ded33c7
+    guid: 294dd2730251a4021a900b103e4d66a9
   - enabled: 0
     path: Assets/Samples/PolySpatial/Scenes/MixedReality.unity
     guid: 4062257bd31be4dc980c3241c72cef79

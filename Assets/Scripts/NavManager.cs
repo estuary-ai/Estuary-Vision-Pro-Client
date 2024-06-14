@@ -65,20 +65,26 @@ public class NavManager : MonoBehaviour
             }
         }
 
-        if (navNode != null) {
-            // if the char has reached the destination node
-            if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance + 0.1f) {
-                if (!navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude == 0f) {
-                    if (navMeshAgent.gameObject.GetComponent<Animation>() != null) {
-                        navMeshAgent.gameObject.GetComponent<Animation>().Play("Idle");
-                    }
-                }
-                agentAnimator.SetBool(IsWalking, false);
-            }
-            else
-            {
-                agentAnimator.SetBool(IsWalking, true);
-            }
+        // if (navNode != null) {
+        //     // if the char has reached the destination node
+        //     if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance + 0.1f) {
+        //         if (!navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude == 0f) {
+        //             if (navMeshAgent.gameObject.GetComponent<Animation>() != null) {
+        //                 navMeshAgent.gameObject.GetComponent<Animation>().Play("Idle");
+        //             }
+        //         }
+        //         agentAnimator.SetBool(IsWalking, false);
+        //     }
+        //     else
+        //     {
+        //         agentAnimator.SetBool(IsWalking, true);
+        //     }
+        // }
+
+        if(Vector3.Distance(navMeshAgent.gameObject.transform.position, navMeshAgent.destination) <= 0.2f)
+        {
+            Debug.Log(DEBUG_TAG + "Reached destination");
+            agentAnimator.SetBool(IsWalking, false);
         }
 
     }
@@ -118,7 +124,7 @@ public class NavManager : MonoBehaviour
 
         if (destNode != null)
         {
-            Vector3 destPos = new Vector3(destNode.transform.position.x, 0, destNode.transform.position.z);
+            Vector3 destPos = destNode.transform.position;
             Debug.Log(DEBUG_TAG + "Navigating to: " + destPos);
             // move the user to the selected position
             navMeshAgent.SetDestination(destPos);
@@ -137,6 +143,20 @@ public class NavManager : MonoBehaviour
         }
     }
 
+    public void MakeNavigate(Vector3 destCoords) {
+        Vector3 destPos = new Vector3(destCoords.x, 0, destCoords.z);
+        Debug.Log(DEBUG_TAG + "Navigating to: " + destPos);
+        // move the user to the selected position
+        navMeshAgent.SetDestination(destPos);
+
+        // animations
+        agentAnimator.SetBool(IsWalking, true);
+
+        if (navMeshAgent.gameObject.GetComponent<Animation>() != null) {
+            navMeshAgent.gameObject.GetComponent<Animation>().Play("Walking");
+        }
+    }
+
     public void CallPuppy() {
         Debug.Log(DEBUG_TAG + "Calling the puppy to you");
         GameObject yourPos = new GameObject();
@@ -152,18 +172,22 @@ public class NavManager : MonoBehaviour
         // find the nearest seat in seats
         GameObject nearestSeat = null;
         float minDistance = Mathf.Infinity;
+        Vector3 targetPos = Vector3.zero;
         foreach (GameObject seat in seats)
         {
-            float distance = Vector3.Distance(seat.transform.position, appRef.camTrans.position);
+            Vector3 seatPos = seat.transform.GetComponent<MeshRenderer>().bounds.center;
+            Debug.Log(DEBUG_TAG + "Seat position: " + seatPos);
+            float distance = Vector3.Distance(seatPos, appRef.camTrans.position);
             if (distance < minDistance)
             {
                 nearestSeat = seat;
+                targetPos = seatPos;
                 minDistance = distance;
             }
         }
-        if(nearestSeat) Debug.Log(DEBUG_TAG + "Navigating to seat at position " + nearestSeat.transform.position);
+        if(nearestSeat) Debug.Log(DEBUG_TAG + "Navigating to seat at position " + targetPos);
         Debug.Log(DEBUG_TAG + "Your position: " + appRef.camTrans.position);
-        MakeNavigate(nearestSeat);
+        MakeNavigate(targetPos);
         Debug.Log(DEBUG_TAG + "Puppy is on the way!");
     }
 }
