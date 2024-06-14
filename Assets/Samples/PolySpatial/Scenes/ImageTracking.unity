@@ -726,6 +726,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8805378566288379837, guid: 18184386a48784570818c7a765714fb6, type: 3}
+      propertyPath: m_ARSession
+      value: 
+      objectReference: {fileID: 248604194}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1052,7 +1056,7 @@ MonoBehaviour:
   m_Dimensions: {x: 1, y: 1, z: 1}
   m_IsUniformScale: 0
   m_OutputConfiguration: {fileID: 11400000, guid: 724776171a2184c16b69358d20ac9b90, type: 2}
-  CullingMask:
+  m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
   OpenWindowOnLoad: 1

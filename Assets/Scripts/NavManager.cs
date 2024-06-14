@@ -42,6 +42,10 @@ public class NavManager : MonoBehaviour
                 Debug.Log(DEBUG_TAG + "Navigable object found: " + hit.collider.gameObject.name);
                 AddNavigable(hit.collider.gameObject);
             }
+            else
+            {
+                Debug.Log(DEBUG_TAG + "Collider hit, but no navigable object tag: " + hit.collider.gameObject.tag);
+            }
         }
         else
         {
@@ -63,7 +67,7 @@ public class NavManager : MonoBehaviour
 
         if (navNode != null) {
             // if the char has reached the destination node
-            if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance) {
+            if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance + 0.1f) {
                 if (!navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude == 0f) {
                     if (navMeshAgent.gameObject.GetComponent<Animation>() != null) {
                         navMeshAgent.gameObject.GetComponent<Animation>().Play("Idle");
@@ -114,9 +118,10 @@ public class NavManager : MonoBehaviour
 
         if (destNode != null)
         {
-            Debug.Log(DEBUG_TAG + "Navigating to: " + destNode.transform.position);
+            Vector3 destPos = new Vector3(destNode.transform.position.x, 0, destNode.transform.position.z);
+            Debug.Log(DEBUG_TAG + "Navigating to: " + destPos);
             // move the user to the selected position
-            navMeshAgent.SetDestination(destNode.transform.position);
+            navMeshAgent.SetDestination(destPos);
             navNode = destNode;
 
             // animations
@@ -138,6 +143,27 @@ public class NavManager : MonoBehaviour
         yourPos.transform.position = appRef.camTrans.position;
         Debug.Log(DEBUG_TAG + "Your position: " + yourPos.transform.position);
         MakeNavigate(yourPos);
+        Debug.Log(DEBUG_TAG + "Puppy is on the way!");
+    }
+    public void MoveAgentToNearestSeat() {
+        Debug.Log(DEBUG_TAG + "Calling the puppy to seat");
+        var seats = GameObject.FindGameObjectsWithTag("Seat");
+        Debug.Log(DEBUG_TAG + "Number of seats: " + seats.Length);
+        // find the nearest seat in seats
+        GameObject nearestSeat = null;
+        float minDistance = Mathf.Infinity;
+        foreach (GameObject seat in seats)
+        {
+            float distance = Vector3.Distance(seat.transform.position, appRef.camTrans.position);
+            if (distance < minDistance)
+            {
+                nearestSeat = seat;
+                minDistance = distance;
+            }
+        }
+        if(nearestSeat) Debug.Log(DEBUG_TAG + "Navigating to seat at position " + nearestSeat.transform.position);
+        Debug.Log(DEBUG_TAG + "Your position: " + appRef.camTrans.position);
+        MakeNavigate(nearestSeat);
         Debug.Log(DEBUG_TAG + "Puppy is on the way!");
     }
 }

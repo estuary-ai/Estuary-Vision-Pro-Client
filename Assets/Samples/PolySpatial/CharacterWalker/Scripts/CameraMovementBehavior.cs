@@ -16,6 +16,13 @@ namespace PolySpatial.Samples
         [SerializeField]
         float m_CameraMovementSpeed = 0.175f;
 
+        float m_CameraHeight;
+
+        void Start()
+        {
+            m_CameraHeight = m_VolumeCameraTransfrom.position.y;
+        }
+
         void Update()
         {
             if (m_VolumeCameraTransfrom != null && m_CharacterTransform != null)
@@ -26,8 +33,9 @@ namespace PolySpatial.Samples
                 {
                     var direction = m_CharacterTransform.position - m_VolumeCameraTransfrom.position;
                     var clampedSpeed = Mathf.Min(distance, m_CameraMovementSpeed * Time.deltaTime);
-                    var clampedImpulse = direction.normalized * clampedSpeed;
-                    m_VolumeCameraTransfrom.position += clampedImpulse;
+                    var impulse = direction.normalized * clampedSpeed;
+                    m_VolumeCameraTransfrom.position += impulse;
+                    m_VolumeCameraTransfrom.position = new Vector3(m_VolumeCameraTransfrom.position.x, m_CameraHeight, m_VolumeCameraTransfrom.position.z);
                 }
             }
         }

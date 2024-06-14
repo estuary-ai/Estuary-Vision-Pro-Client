@@ -1,11 +1,17 @@
 using System;
 using System.Collections.Generic;
 using Unity.Collections;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using UnityEngine.XR.VisionOS;
+
+
+// # if UNITY_VISIONOS && !UNITY_EDITOR
+//     using UnityEngine.XR.VisionOS;
+// #endif
 // #if UNITY_IOS && !UNITY_EDITOR
     //  using UnityEngine.XR.ARKit;
 // #endif // UNITY_IOS && !UNITY_EDITOR
@@ -89,7 +95,7 @@ public class MeshClassificationFracking : MonoBehaviour
     // /// </summary>
     // public MeshFilter m_DoorMeshPrefab;
 
-#if UNITY_IOS || UNITY_VISIONOS
+#if UNITY_VISIONOS && !UNITY_EDITOR
 
     /// <summary>
     /// A mapping from tracking ID to instantiated mesh filters.
@@ -274,7 +280,7 @@ public class MeshClassificationFracking : MonoBehaviour
                 return;
             }
 
-            var parent = meshFilter.transform.parent;
+            var parent = meshFilter.transform;
 
             MeshFilter[] meshFilters = new MeshFilter[k_NumClassifications];
 
@@ -421,6 +427,6 @@ public class MeshClassificationFracking : MonoBehaviour
 
         m_MeshFrackingMap.Remove(meshId);
     }
-#endif // UNITY_IOS || UNITY_VISIONOS
+#endif
 }
 // }

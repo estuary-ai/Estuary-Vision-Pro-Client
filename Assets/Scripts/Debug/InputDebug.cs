@@ -45,7 +45,7 @@ namespace PolySpatial.Samples
             if (tappedObj != null && tappedObj.CompareTag("Navigable"))
             {
                 Debug.Log("[INPUT DEBUG] Tapped Object: " + tappedObj.name);
-                tappedObj.GetComponent<MeshRenderer>().material = highlightMaterial;
+                // tappedObj.GetComponent<MeshRenderer>().material = highlightMaterial;
                 // add to navigableObjects
                 appRef.navManager.AddNavigable(tappedObj);
             }
@@ -117,6 +117,7 @@ namespace PolySpatial.Samples
                         {
                             // Instantiate(spawnObject, indexPos, Quaternion.identity);
                             output = GetObjectFromFingerCast(indexPose);
+                            // appRef.navManager.MoveAgentToNearestSeat();
                             activeFlag = true;
                         }
                         if(!right)
