@@ -25,7 +25,7 @@ EditorBuildSettings:
     guid: 6f4448466bfd94eed8847ae973dbc228
   - enabled: 0
     path: Assets/Samples/PolySpatial/Scenes/Meshing.unity
-    guid: 653f9f1e3f8ba4879806269d9ded33c7
+    guid: 294dd2730251a4021a900b103e4d66a9
   - enabled: 0
     path: Assets/Samples/PolySpatial/Scenes/MixedReality.unity
     guid: 4062257bd31be4dc980c3241c72cef79

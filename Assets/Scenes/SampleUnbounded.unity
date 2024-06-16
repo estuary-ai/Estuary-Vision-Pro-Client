@@ -1056,7 +1056,7 @@ MonoBehaviour:
   m_TVMeshPrefab: {fileID: 1369762456386383400, guid: 0b31c1978805a4eebb5a46e5a1f68b34, type: 3}
   m_TableMeshPrefab: {fileID: 1369762456386383400, guid: 2da23f9f2f81547a3a6106339001b1ce, type: 3}
   m_WallMeshPrefab: {fileID: 1369762456386383400, guid: aca2490cc49a84f289cef6075abd3f91, type: 3}
-  m_WallDecorationMeshPrefab: {fileID: 3474271192428087024, guid: 886424da2571bb44dac1af403641a7a0, type: 3}
+  m_WallDecorationMeshPrefab: {fileID: 1369762456386383400, guid: fbf0585171ded4cc3bb9e415688033a3, type: 3}
   m_WhiteboardMeshPrefab: {fileID: 3474271192428087024, guid: 1db5c62192583644e8c5379792f9acb5, type: 3}
   m_WindowMeshPrefab: {fileID: 4810235479291407990, guid: 7d9753da17bc04a6192a08b99ba2bdca, type: 3}
 --- !u!114 &659567575
@@ -2506,7 +2506,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 2121586914}
     m_Modifications:
     - target: {fileID: 787364311855381700, guid: da6e57a63d92541a9b47f1b99194ba1e, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2626,7 +2626,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3441062821758905917, guid: da6e57a63d92541a9b47f1b99194ba1e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1.325
       objectReference: {fileID: 0}
     - target: {fileID: 3441062821758905917, guid: da6e57a63d92541a9b47f1b99194ba1e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2650,7 +2650,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3441062821758905917, guid: da6e57a63d92541a9b47f1b99194ba1e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.581
+      value: 0.017
       objectReference: {fileID: 0}
     - target: {fileID: 3441062821758905917, guid: da6e57a63d92541a9b47f1b99194ba1e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2737,6 +2737,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da6e57a63d92541a9b47f1b99194ba1e, type: 3}
+--- !u!224 &1968318308 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3441062821758905917, guid: da6e57a63d92541a9b47f1b99194ba1e, type: 3}
+  m_PrefabInstance: {fileID: 1968318307}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2026256746
 GameObject:
   m_ObjectHideFlags: 0
@@ -3066,6 +3071,7 @@ Transform:
   m_Children:
   - {fileID: 572225845}
   - {fileID: 705134289}
+  - {fileID: 1968318308}
   m_Father: {fileID: 1517854672}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2121586915
@@ -3361,6 +3367,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skelly Boi
       objectReference: {fileID: 0}
+    - target: {fileID: 8703001884262454122, guid: a4cfae9dec84a40d7aa411d4e923a8f6, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3385,4 +3395,3 @@ SceneRoots:
   - {fileID: 1913524968269592765}
   - {fileID: 486695291}
   - {fileID: 358426376}
-  - {fileID: 1968318307}

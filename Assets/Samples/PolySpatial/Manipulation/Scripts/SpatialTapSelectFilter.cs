@@ -4,7 +4,7 @@ using Unity.PolySpatial.InputDevices;
 using UnityEngine;
 using UnityEngine.InputSystem.LowLevel;
 #if UNITY_INCLUDE_XRI
-using UnityEngine.XR.Interaction.Toolkit;
+
 using UnityEngine.XR.Interaction.Toolkit.Filtering;
 #endif
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
@@ -13,7 +13,7 @@ using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 public class SpatialTapSelectFilter : MonoBehaviour, IXRSelectFilter
 {
 
-    public bool Process(IXRSelectInteractor interactor, IXRSelectInteractable interactable)
+    public bool Process(UnityEngine.XR.Interaction.Toolkit.Interactors.IXRSelectInteractor interactor, UnityEngine.XR.Interaction.Toolkit.Interactables.IXRSelectInteractable interactable)
     {
 
         var activeTouches = Touch.activeTouches;
