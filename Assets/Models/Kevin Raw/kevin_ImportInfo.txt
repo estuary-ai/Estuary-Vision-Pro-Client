@@ -1,0 +1,13 @@
+logType=None
+generation=G3Plus
+isLOD=false
+qualEyes=Parallax
+qualHair=TwoPass
+bakeIsBaked=false
+tempHairBake=false
+bakeCustomShaders=true
+bakeSeparatePrefab=true
+shaderFlags=16
+animationSetup=false
+animationRetargeted=0
+rigOverride=Humanoid
