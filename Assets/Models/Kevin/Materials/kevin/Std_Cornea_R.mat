@@ -16,6 +16,7 @@ Material:
   m_InvalidKeywords:
   - _DISABLE_SSR_TRANSPARENT
   - _ENABLE_FOG_ON_TRANSPARENT
+  - _ISLEFTEYE_ON
   - _SURFACE_TYPE_TRANSPARENT
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -69,6 +70,7 @@ Material:
     - _ColorBlendStrength: 0
     - _CorneaSmoothness: 0.897
     - _DepthRadius: 0.8
+    - _EnvironmentReflections: 1
     - _IOR: 1.457
     - _IrisBrightness: 2.5770001
     - _IrisDepth: 0.247419
@@ -84,6 +86,7 @@ Material:
     - _PMod: 6.4
     - _ParallaxRadius: 0.1175
     - _PupilScale: 0.7245
+    - _ReceiveShadows: 1
     - _ScleraBrightness: 0.8880129
     - _ScleraHue: 0.51
     - _ScleraNormalStrength: -0.20000005
@@ -94,6 +97,7 @@ Material:
     - _ScleraSubsurfaceScale: 0.5
     - _ShadowHardness: 0
     - _ShadowRadius: 0.28
+    - _SpecularHighlights: 1
     - _TransAmbient: 0.1
     - _TransDirect: 0.9
     - _TransNormal: 0.95
