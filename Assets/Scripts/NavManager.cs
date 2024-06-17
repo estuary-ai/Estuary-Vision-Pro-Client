@@ -28,6 +28,8 @@ public class NavManager : MonoBehaviour
     public GameObject debugNode;
     public GameObject classifiedDebugNode;
     private static readonly int IsWalking = Animator.StringToHash("isRunning");
+    private static readonly int DoJump = Animator.StringToHash("doJump");
+    private bool isSeating = false;
 
     public void FixedUpdate()
     {
@@ -88,7 +90,15 @@ public class NavManager : MonoBehaviour
             Debug.Log(DEBUG_TAG + "Reached destination");
             agentAnimator.SetBool(IsWalking, false);
             navMeshAgent.ResetPath();
+            if (isSeating)
+            {
+                Debug.Log(DEBUG_TAG + "Seating animation");
+                agentAnimator.SetTrigger(DoJump);
+                isSeating = false;
+            }
         }
+
+
 
     }
 
@@ -193,6 +203,7 @@ public class NavManager : MonoBehaviour
         Debug.Log(DEBUG_TAG + "Your position: " + appRef.camTrans.position);
         MakeNavigate(targetPos);
         Debug.Log(DEBUG_TAG + "Puppy is on the way!");
+        isSeating = true;
     }
 
     public void MoveAgentToNearestSeatPlane() {
