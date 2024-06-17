@@ -49,7 +49,8 @@ public class AutoBlink : MonoBehaviour
         {
             //Wait until we need to blink
             // slightly randomize the blink interval
-            var tempInterval = blinkInterval + Random.Range(-intervalRandomizer, intervalRandomizer);
+            var tempInterval = blinkInterval + Random.Range(0, intervalRandomizer);
+            Debug.Log("tempInterval: " + tempInterval);
             yield return new WaitForSeconds(tempInterval);
 
             //Close eyes
@@ -63,8 +64,8 @@ public class AutoBlink : MonoBehaviour
                 skinnedMesh.SetBlendShapeWeight(squintIndexR, value * 20);
                 skinnedMesh.SetBlendShapeWeight(doubleEyelidUpIndexL, value * 60);
                 skinnedMesh.SetBlendShapeWeight(doubleEyelidUpIndexR, value * 60);
-                skinnedMesh.SetBlendShapeWeight(cheekRaiseIndexL, value * 15);
-                skinnedMesh.SetBlendShapeWeight(cheekRaiseIndexR, value * 15);
+                skinnedMesh.SetBlendShapeWeight(cheekRaiseIndexL, value * 10);
+                skinnedMesh.SetBlendShapeWeight(cheekRaiseIndexR, value * 10);
                 value += Time.deltaTime * closeSpeed;
                 yield return null;
             }
@@ -74,15 +75,16 @@ public class AutoBlink : MonoBehaviour
             skinnedMesh.SetBlendShapeWeight(squintIndexR, 20);
             skinnedMesh.SetBlendShapeWeight(doubleEyelidUpIndexL, 60);
             skinnedMesh.SetBlendShapeWeight(doubleEyelidUpIndexR, 60);
-            skinnedMesh.SetBlendShapeWeight(cheekRaiseIndexL, 15);
-            skinnedMesh.SetBlendShapeWeight(cheekRaiseIndexR, 15);
+            skinnedMesh.SetBlendShapeWeight(cheekRaiseIndexL, 10);
+            skinnedMesh.SetBlendShapeWeight(cheekRaiseIndexR, 10);
 
             //Wait to open our eyes
             yield return new WaitForSeconds(blinkEyeCloseDuration);
 
             //Open eyes
             value = 1f;
-            var tempOpening = blinkOpeningSeconds + Random.Range(-openingRandomizer, openingRandomizer);
+            var tempOpening =  blinkOpeningSeconds + Random.Range(0, openingRandomizer);
+            Debug.Log("temp opening: " + tempOpening);
             var openSpeed = 1.0f / tempOpening;
             while (value > 0)
             {
@@ -92,8 +94,8 @@ public class AutoBlink : MonoBehaviour
                 skinnedMesh.SetBlendShapeWeight(squintIndexR, value * 20);
                 skinnedMesh.SetBlendShapeWeight(doubleEyelidUpIndexL, value * 60);
                 skinnedMesh.SetBlendShapeWeight(doubleEyelidUpIndexR, value * 60);
-                skinnedMesh.SetBlendShapeWeight(cheekRaiseIndexL, value * 15);
-                skinnedMesh.SetBlendShapeWeight(cheekRaiseIndexR, value * 15);
+                skinnedMesh.SetBlendShapeWeight(cheekRaiseIndexL, value * 10);
+                skinnedMesh.SetBlendShapeWeight(cheekRaiseIndexR, value * 10);
                 value -= Time.deltaTime * openSpeed;
                 yield return null;
             }
