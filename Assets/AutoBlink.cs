@@ -50,7 +50,7 @@ public class AutoBlink : MonoBehaviour
             //Wait until we need to blink
             // slightly randomize the blink interval
             var tempInterval = blinkInterval + Random.Range(0, intervalRandomizer);
-            Debug.Log("tempInterval: " + tempInterval);
+            // Debug.Log("tempInterval: " + tempInterval);
             yield return new WaitForSeconds(tempInterval);
 
             //Close eyes
@@ -84,7 +84,7 @@ public class AutoBlink : MonoBehaviour
             //Open eyes
             value = 1f;
             var tempOpening =  blinkOpeningSeconds + Random.Range(0, openingRandomizer);
-            Debug.Log("temp opening: " + tempOpening);
+            // Debug.Log("temp opening: " + tempOpening);
             var openSpeed = 1.0f / tempOpening;
             while (value > 0)
             {

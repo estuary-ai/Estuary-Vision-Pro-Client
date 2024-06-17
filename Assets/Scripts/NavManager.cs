@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using PolySpatial.Samples;
 using TMPro;
 using Unity.AI.Navigation;
 using UnityEngine;
@@ -29,7 +30,8 @@ public class NavManager : MonoBehaviour
     public GameObject classifiedDebugNode;
     private static readonly int IsWalking = Animator.StringToHash("isRunning");
     private static readonly int DoJump = Animator.StringToHash("doJump");
-    private bool isSeating = false;
+    private bool isSeating;
+    private bool isMoving;
 
     public void FixedUpdate()
     {
@@ -85,15 +87,20 @@ public class NavManager : MonoBehaviour
         //     }
         // }
 
-        if(Vector3.Distance(navMeshAgent.gameObject.transform.position, navMeshAgent.destination) <= 0.2f)
+        if(isMoving && Vector3.Distance(navMeshAgent.gameObject.transform.position, navMeshAgent.destination) <= 0.2f)
         {
             Debug.Log(DEBUG_TAG + "Reached destination");
             agentAnimator.SetBool(IsWalking, false);
+            isMoving = false;
             navMeshAgent.ResetPath();
+            Debug.Log(DEBUG_TAG + "isseating:" + isSeating);
             if (isSeating)
             {
                 Debug.Log(DEBUG_TAG + "Seating animation");
                 agentAnimator.SetTrigger(DoJump);
+
+                // move agent up z axis
+                MoveAgentUpToSeat(navMeshAgent.destination);
                 isSeating = false;
             }
         }
@@ -146,6 +153,8 @@ public class NavManager : MonoBehaviour
             // animations
             agentAnimator.SetBool(IsWalking, true);
 
+            isMoving = true;
+
             if (navMeshAgent.gameObject.GetComponent<Animation>() != null) {
                 navMeshAgent.gameObject.GetComponent<Animation>().Play("Walking");
             }
@@ -157,6 +166,8 @@ public class NavManager : MonoBehaviour
     }
 
     public void MakeNavigate(Vector3 destCoords) {
+        navMeshAgent.gameObject.GetComponent<NavMeshAgent>().enabled = true;
+
         Vector3 destPos = new Vector3(destCoords.x, 0, destCoords.z);
         Debug.Log(DEBUG_TAG + "Navigating to: " + destPos);
         // move the user to the selected position
@@ -165,6 +176,8 @@ public class NavManager : MonoBehaviour
 
         // animations
         agentAnimator.SetBool(IsWalking, true);
+
+        isMoving = true;
 
         if (navMeshAgent.gameObject.GetComponent<Animation>() != null) {
             navMeshAgent.gameObject.GetComponent<Animation>().Play("Walking");
@@ -233,5 +246,23 @@ public class NavManager : MonoBehaviour
         Debug.Log(DEBUG_TAG + "Your position: " + appRef.camTrans.position);
         MakeNavigate(targetPos);
         Debug.Log(DEBUG_TAG + "Puppy is on the way!");
+        isSeating = true;
+    }
+
+    public void MoveAgentUpToSeat(Vector3 seatPos)
+    {
+        seatPos = new Vector3(0, 0.6f, 0);
+
+        // disable navmeshagent component
+        navMeshAgent.gameObject.GetComponent<NavMeshAgent>().enabled = false;
+
+        // over time, move the agent up to the seat position
+        while (Vector3.Distance(navMeshAgent.gameObject.transform.position, seatPos) >= 0.08f)
+        {
+            navMeshAgent.gameObject.transform.position = Vector3.MoveTowards(navMeshAgent.gameObject.transform.position,
+                seatPos, 0.1f*Time.deltaTime);
+            Debug.Log(DEBUG_TAG + "Moving agent up to seat position: " + seatPos);
+        }
+
     }
 }
