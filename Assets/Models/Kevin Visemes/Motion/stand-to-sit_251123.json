@@ -1,0 +1,17 @@
+﻿{
+    "stand-to-sit_251123": {
+        "Version": "1.10.1822.1",
+        "Scene": {
+            "Name": true,
+            "SupportShaderSelect": true
+        },
+        "Export Directory": "C:/RLConverterServices/RLConverter/TempData/Convert/77cc436149348e04/JIC7b6e0fe7e3f53c288",
+        "Object": {
+            "stand-to-sit_251123": {
+                "Generation": "AccuRig",
+                "Physics": {},
+                "Meshes": {}
+            }
+        }
+    }
+}
