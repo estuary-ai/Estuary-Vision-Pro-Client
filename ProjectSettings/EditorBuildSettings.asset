@@ -36,14 +36,8 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleUnbounded.unity
     guid: 333fadc7a9af24e65bce4222f72a19b4
   - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
-    path: Assets/Scenes/TestServerConnection.unity
-    guid: 41b198b27eea0ca4e81b6cb71450ca3f
-  - enabled: 0
-    path: Assets/Scenes/ConnectionTestbed.unity
-    guid: 14d21be8e2270449b8ca5520d91ac3af
+    path: Assets/Samples/XR Interaction Toolkit/3.0.3/visionOS/VolumeDemo.unity
+    guid: f8dac43642fcf437b9bd0239b89eb6db
   m_configObjects:
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 71e7c2998302442fa95f0eaa1a968151, type: 2}
     UnityEditor.XR.VisionOS.VisionOSSettings: {fileID: 11400000, guid: 25e1f68848051c946b9048e8426e646c, type: 2}
