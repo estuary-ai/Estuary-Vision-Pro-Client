@@ -25,6 +25,8 @@ public class NavManager : MonoBehaviour
     [SerializeField] public NavMeshAgent navMeshAgent;
     [SerializeField] private Animator agentAnimator;
     public GameObject navNode;
+    public GameObject debugNode;
+    public GameObject classifiedDebugNode;
     private static readonly int IsWalking = Animator.StringToHash("isRunning");
 
     public void FixedUpdate()
@@ -85,6 +87,7 @@ public class NavManager : MonoBehaviour
         {
             Debug.Log(DEBUG_TAG + "Reached destination");
             agentAnimator.SetBool(IsWalking, false);
+            navMeshAgent.ResetPath();
         }
 
     }
@@ -148,6 +151,7 @@ public class NavManager : MonoBehaviour
         Debug.Log(DEBUG_TAG + "Navigating to: " + destPos);
         // move the user to the selected position
         navMeshAgent.SetDestination(destPos);
+        if(debugNode) Instantiate(debugNode, destPos, Quaternion.identity);
 
         // animations
         agentAnimator.SetBool(IsWalking, true);
@@ -165,8 +169,8 @@ public class NavManager : MonoBehaviour
         MakeNavigate(yourPos);
         Debug.Log(DEBUG_TAG + "Puppy is on the way!");
     }
-    public void MoveAgentToNearestSeat() {
-        Debug.Log(DEBUG_TAG + "Calling the puppy to seat");
+    public void MoveAgentToNearestSeatMesh() {
+        Debug.Log(DEBUG_TAG + "Calling the puppy to seat mesh");
         var seats = GameObject.FindGameObjectsWithTag("Seat");
         Debug.Log(DEBUG_TAG + "Number of seats: " + seats.Length);
         // find the nearest seat in seats
@@ -186,6 +190,35 @@ public class NavManager : MonoBehaviour
             }
         }
         if(nearestSeat) Debug.Log(DEBUG_TAG + "Navigating to seat at position " + targetPos);
+        Debug.Log(DEBUG_TAG + "Your position: " + appRef.camTrans.position);
+        MakeNavigate(targetPos);
+        Debug.Log(DEBUG_TAG + "Puppy is on the way!");
+    }
+
+    public void MoveAgentToNearestSeatPlane() {
+        Debug.Log(DEBUG_TAG + "Calling the puppy to seat plane");
+        var planes = GameObject.FindGameObjectsWithTag("Plane");
+        Debug.Log(DEBUG_TAG + "Number of planes: " + planes.Length);
+        // find the nearest seat in seats
+        GameObject nearestSeat = null;
+        float minDistance = Mathf.Infinity;
+        Vector3 targetPos = Vector3.zero;
+        foreach (GameObject seat in planes)
+        {
+            if (seat.GetComponent<ARPlane>().classification == PlaneClassification.Seat)
+            {
+                Vector3 seatPos = seat.transform.position;
+                Debug.Log(DEBUG_TAG + "Seat plane position: " + seatPos);
+                float distance = Vector3.Distance(seatPos, appRef.camTrans.position);
+                if (distance < minDistance)
+                {
+                    nearestSeat = seat;
+                    targetPos = seatPos;
+                    minDistance = distance;
+                }
+            }
+        }
+        if(nearestSeat) Debug.Log(DEBUG_TAG + "Navigating to seat plane at position " + targetPos);
         Debug.Log(DEBUG_TAG + "Your position: " + appRef.camTrans.position);
         MakeNavigate(targetPos);
         Debug.Log(DEBUG_TAG + "Puppy is on the way!");

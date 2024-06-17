@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028468, g: 0.22571594, b: 0.3069237, a: 1}
+  m_IndirectSpecularColor: {r: 0.1802846, g: 0.22571594, b: 0.30692336, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1098,7 +1098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MeshManager: {fileID: 659567573}
-  m_ClassificationEnabled: 1
+  m_ClassificationEnabled: 0
 --- !u!1 &705134288
 GameObject:
   m_ObjectHideFlags: 0
@@ -1506,6 +1506,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dff16b3022a34a01bae979427dc6346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1254363769 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fed97d6cba6f33a47adced185dd42f8b, type: 3}
+  m_PrefabInstance: {fileID: 2036801384}
+  m_PrefabAsset: {fileID: 0}
+--- !u!195 &1254363771
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254363769}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.1
+  m_Speed: 1
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 100
+  m_StoppingDistance: 0.1
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1.75
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1260834559
 GameObject:
   m_ObjectHideFlags: 0
@@ -2163,19 +2190,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 026d696bc06665846a772214cd34cdda, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.007507259
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 026d696bc06665846a772214cd34cdda, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.304
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 026d696bc06665846a772214cd34cdda, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1.3194436
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 026d696bc06665846a772214cd34cdda, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 026d696bc06665846a772214cd34cdda, type: 3}
       propertyPath: m_LocalRotation.x
@@ -2183,7 +2210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 026d696bc06665846a772214cd34cdda, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 026d696bc06665846a772214cd34cdda, type: 3}
       propertyPath: m_LocalRotation.z
@@ -2195,7 +2222,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 026d696bc06665846a772214cd34cdda, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 026d696bc06665846a772214cd34cdda, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -2205,18 +2232,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: autorig_actor
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 026d696bc06665846a772214cd34cdda, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 026d696bc06665846a772214cd34cdda, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 026d696bc06665846a772214cd34cdda, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: a187f698bb1d4ec4eb980aac80363ee9, type: 2}
     - target: {fileID: 5866666021909216657, guid: 026d696bc06665846a772214cd34cdda, type: 3}
       propertyPath: m_WarningMessage
-      value: "\nBinding warning: Some generic clip(s) animate transforms that are
-        already bound by a Humanoid avatar. These transforms can only be changed
-        by Humanoid clips.\n\tTransform 'index_03_l'\n\tTransform 'lowerarm_l'\n\tTransform
-        'root'\n\tTransform 'pinky_03_l'\n\tTransform 'neck_01'\n\tTransform 'pinky_03_r'\n\tTransform
-        'ring_02_l'\n\tTransform 'hand_l'\n\tTransform 'ring_01_r'\n\tTransform 'index_03_r'\n\tand
-        more ...\n\tFrom animation clip 'stand-to-sit_251123'"
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2576,6 +2606,8 @@ MonoBehaviour:
   navMeshAgent: {fileID: 138268051}
   agentAnimator: {fileID: 1116371902162564801}
   navNode: {fileID: 0}
+  debugNode: {fileID: 7334852416975427255, guid: 42483656567e942669d0454b9b443a91, type: 3}
+  classifiedDebugNode: {fileID: 0}
 --- !u!4 &1701802646
 Transform:
   m_ObjectHideFlags: 0
@@ -2710,7 +2742,7 @@ PrefabInstance:
       objectReference: {fileID: 1701802645}
     - target: {fileID: 2094733081410129936, guid: da6e57a63d92541a9b47f1b99194ba1e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MoveAgentToNearestSeat
+      value: MoveAgentToNearestSeatPlane
       objectReference: {fileID: 0}
     - target: {fileID: 2094733081410129936, guid: da6e57a63d92541a9b47f1b99194ba1e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -2843,6 +2875,10 @@ PrefabInstance:
     - target: {fileID: 5437768868054998102, guid: da6e57a63d92541a9b47f1b99194ba1e, type: 3}
       propertyPath: m_Name
       value: Spatial Panel Scroll
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437768868054998102, guid: da6e57a63d92541a9b47f1b99194ba1e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6138527627920512448, guid: da6e57a63d92541a9b47f1b99194ba1e, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3021,18 +3057,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5456616829999408205, guid: fed97d6cba6f33a47adced185dd42f8b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -488307487440203942, guid: fed97d6cba6f33a47adced185dd42f8b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fed97d6cba6f33a47adced185dd42f8b, type: 3}
       propertyPath: m_Name
       value: Kevin
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fed97d6cba6f33a47adced185dd42f8b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3727981321400692832, guid: fed97d6cba6f33a47adced185dd42f8b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7155127600687867609, guid: fed97d6cba6f33a47adced185dd42f8b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fed97d6cba6f33a47adced185dd42f8b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1254363771}
   m_SourcePrefab: {fileID: 100100000, guid: fed97d6cba6f33a47adced185dd42f8b, type: 3}
 --- !u!1 &2105622931
 GameObject:
@@ -3269,8 +3324,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1760703bbd54c04488a8d10600262ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PlanePrefab: {fileID: 0}
-  m_DetectionMode: -1
+  m_PlanePrefab: {fileID: 680114521416276321, guid: 4f670e8dafe10433288ef12c82d36ce9, type: 3}
+  m_DetectionMode: 1
 --- !u!1 &2121586913
 GameObject:
   m_ObjectHideFlags: 0
@@ -3606,7 +3661,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8703001884262454122, guid: a4cfae9dec84a40d7aa411d4e923a8f6, type: 3}
       propertyPath: m_StoppingDistance
-      value: 0.1
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
