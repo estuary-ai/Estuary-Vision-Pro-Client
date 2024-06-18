@@ -126,28 +126,28 @@ public class NavManager : MonoBehaviour
 
         if (goal.goalType != Goal.GoalType.Unset && navState != NavState.IsJumping)
         {
+            goal.Unset();
             // there is a delayed goal to complete (navigation)
             // completed jumping anim
             if (goal.goalType == Goal.GoalType.Floor)
             {
                 MakeNavigate(goal.floorCoords);
-                goal.Unset();
             }
             else if (goal.goalType == Goal.GoalType.Node)
             {
                 MakeNavigate(goal.destNodes);
-                goal.Unset();
             }
             else if (goal.goalType == Goal.GoalType.Seat)
             {
                 wantToSit = true;
                 MakeNavigate(goal.seatCoords);
-                goal.Unset();
             }
         }
 
         if(navState == NavState.Walking && Vector3.Distance(navMeshAgent.gameObject.transform.position, navMeshAgent.destination) <= 0.2f)
         {
+            Debug.Log(DEBUG_TAG + "Position: " + navMeshAgent.gameObject.transform.position);
+            Debug.Log(DEBUG_TAG + "Destination: " + navMeshAgent.destination);
             Debug.Log(DEBUG_TAG + "Reached destination");
             navMeshAgent.ResetPath();
 
@@ -155,17 +155,16 @@ public class NavManager : MonoBehaviour
 
             if (wantToSit)
             {
+                wantToSit = false;
+
                 Debug.Log(DEBUG_TAG + "Seating animation");
                 StartCoroutine(MoveAgentUpToSeat(navMeshAgent.destination));
-                wantToSit = false;
             }
             else
             {
                 navState = NavState.Standing;
             }
         }
-
-
 
     }
 
@@ -202,12 +201,6 @@ public class NavManager : MonoBehaviour
 
     public void MakeNavigate(GameObject destNode) {
         // TODO: assumes that navagent is on floor!!!
-
-        // if (navState == NavState.Seated)
-        // {
-        //     StartCoroutine(MoveAgentDownFromSeatThenMove(destNode));
-        //     return;
-        // }
 
         if (destNode != null)
         {
@@ -258,6 +251,7 @@ public class NavManager : MonoBehaviour
         if (navState == NavState.IsJumping)
         {
             Debug.Log(DEBUG_TAG + "Ignoring call to puppy while jumping");
+            return;
         }
         Debug.Log(DEBUG_TAG + "Calling the puppy to you");
         GameObject yourPos = new GameObject();
@@ -265,14 +259,17 @@ public class NavManager : MonoBehaviour
         Debug.Log(DEBUG_TAG + "Your position: " + yourPos.transform.position);
         if (navState == NavState.Seated)
         {
-            Debug.Log(DEBUG_TAG + "Puppy is seated, delaying navigation until after finishing jumping");
-            goal.SetNode(yourPos);
+            Debug.Log(DEBUG_TAG + "Puppy is seated, delaying navigation until after finishing jumping to position: " + yourPos.transform.position);
+            goal.SetFloor(yourPos.transform.position);
 
             StartCoroutine(MoveAgentDownFromSeat());
             return;
         }
-        MakeNavigate(yourPos);
-        Debug.Log(DEBUG_TAG + "Puppy is on the way!");
+        else
+        {
+            MakeNavigate(yourPos);
+            Debug.Log(DEBUG_TAG + "Puppy is on the way!");
+        }
     }
     public void MoveAgentToNearestSeatMesh() {
         Debug.Log(DEBUG_TAG + "Calling the puppy to seat mesh");
@@ -304,6 +301,7 @@ public class NavManager : MonoBehaviour
         if (navState == NavState.IsJumping)
         {
             Debug.Log(DEBUG_TAG + "Ignoring call to puppy while jumping");
+            return;
         }
         Debug.Log(DEBUG_TAG + "Calling the puppy to seat plane");
         var planes = GameObject.FindGameObjectsWithTag("Plane");
@@ -342,7 +340,7 @@ public class NavManager : MonoBehaviour
             }
         }
         Debug.Log(DEBUG_TAG + "Your position: " + appRef.camTrans.position);
-        if (navState == NavState.Seated || navState == NavState.IsJumping)
+        if (navState == NavState.Seated)
         {
             Debug.Log(DEBUG_TAG + "Puppy is seated, delaying navigation until after finishing jumping");
             goal.SetSeat(targetPos);
