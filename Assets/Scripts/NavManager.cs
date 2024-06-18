@@ -33,6 +33,8 @@ public class NavManager : MonoBehaviour
     private bool isSeating;
     private bool isMoving;
 
+    private bool DEBUG = true;
+
     public void FixedUpdate()
     {
         // // find all game objects that use the Navigable tag
@@ -90,8 +92,6 @@ public class NavManager : MonoBehaviour
         if(isMoving && Vector3.Distance(navMeshAgent.gameObject.transform.position, navMeshAgent.destination) <= 0.2f)
         {
             Debug.Log(DEBUG_TAG + "Reached destination");
-            agentAnimator.SetBool(IsWalking, false);
-            isMoving = false;
             navMeshAgent.ResetPath();
             Debug.Log(DEBUG_TAG + "isseating:" + isSeating);
             if (isSeating)
@@ -99,10 +99,12 @@ public class NavManager : MonoBehaviour
                 Debug.Log(DEBUG_TAG + "Seating animation");
                 agentAnimator.SetTrigger(DoJump);
 
-                // move agent up z axis
-                MoveAgentUpToSeat(navMeshAgent.destination);
-                isSeating = false;
+                StartCoroutine(MoveAgentUpToSeat(navMeshAgent.destination));
+
             }
+
+            agentAnimator.SetBool(IsWalking, false);
+            isMoving = false;
         }
 
 
@@ -243,26 +245,66 @@ public class NavManager : MonoBehaviour
             }
         }
         if(nearestSeat) Debug.Log(DEBUG_TAG + "Navigating to seat plane at position " + targetPos);
+
+        if (DEBUG)
+        {
+            Debug.Log(DEBUG_TAG + "DEBUG MODE: Using default seat position 1");
+            targetPos = new Vector3(0.5f, 0.6f, 0.5f);
+        }
         Debug.Log(DEBUG_TAG + "Your position: " + appRef.camTrans.position);
         MakeNavigate(targetPos);
         Debug.Log(DEBUG_TAG + "Puppy is on the way!");
         isSeating = true;
     }
 
-    public void MoveAgentUpToSeat(Vector3 seatPos)
+    private IEnumerator MoveAgentUpToSeat(Vector3 seatPos)
     {
-        seatPos = new Vector3(0, 0.6f, 0);
-
-        // disable navmeshagent component
         navMeshAgent.gameObject.GetComponent<NavMeshAgent>().enabled = false;
+        yield return new WaitForSeconds(0.5f);
 
-        // over time, move the agent up to the seat position
-        while (Vector3.Distance(navMeshAgent.gameObject.transform.position, seatPos) >= 0.08f)
+        if (DEBUG)
         {
-            navMeshAgent.gameObject.transform.position = Vector3.MoveTowards(navMeshAgent.gameObject.transform.position,
-                seatPos, 0.1f*Time.deltaTime);
-            Debug.Log(DEBUG_TAG + "Moving agent up to seat position: " + seatPos);
+            Debug.Log(DEBUG_TAG + "DEBUG MODE: Using default seat position 2");
+            seatPos = new Vector3(0.5f, 0.6f, 0.5f);
         }
+
+        var startPosition = navMeshAgent.gameObject.transform.parent.position;
+
+        var stepSize = 0.9f;
+        var progress = 0f;
+        var arrived = false;
+
+        var arcHeight = 0.5f;
+        arcHeight = arcHeight * Vector3.Distance(startPosition, seatPos);
+
+        while (!arrived)
+        {
+            // Increment our progress from 0 at the start, to 1 when we arrive.
+            progress = Mathf.Min(progress + Time.fixedDeltaTime * stepSize, 1.0f);
+
+            // Turn this 0-1 value into a parabola that goes from 0 to 1, then back to 0.
+            float parabola = 1.0f - 4.0f * (progress - 0.5f) * (progress - 0.5f);
+
+            // Travel in a straight line from our start position to the target.
+            Vector3 nextPos = Vector3.Lerp(startPosition, seatPos, progress);
+
+            // Then add a vertical arc in excess of this.
+            nextPos.y += parabola * arcHeight;
+
+            // Continue as before.
+            // navMeshAgent.gameObject.transform.parent.LookAt(nextPos, Vector3.up);
+            navMeshAgent.gameObject.transform.parent.position = nextPos;
+
+            // yield return new WaitForSeconds(0.005f);
+            yield return new WaitForFixedUpdate();
+
+            if (progress == 1.0f)
+            {
+                arrived = true;
+            }
+        }
+
+        isSeating = false;
 
     }
 }
