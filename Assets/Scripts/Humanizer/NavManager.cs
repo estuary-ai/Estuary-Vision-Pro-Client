@@ -32,43 +32,6 @@ public class NavManager : MonoBehaviour
     private static readonly int IsWalking = Animator.StringToHash("isRunning");
     private static readonly int DoJump = Animator.StringToHash("doJump");
 
-    private class Goal
-    {
-        public enum GoalType
-        {
-            Unset,
-            Floor,
-            Node,
-            Seat
-        }
-        public GoalType goalType = GoalType.Unset;
-        public Vector3 floorCoords;
-        public GameObject destNodes;
-        public Vector3 seatCoords;
-
-        public void SetFloor(Vector3 coords)
-        {
-            goalType = GoalType.Floor;
-            floorCoords = coords;
-        }
-        public void SetNode(GameObject node)
-        {
-            goalType = GoalType.Node;
-            destNodes = node;
-        }
-        public void SetSeat(Vector3 coords)
-        {
-            goalType = GoalType.Seat;
-            seatCoords = coords;
-        }
-        public void Unset()
-        {
-            goalType = GoalType.Unset;
-        }
-    }
-
-    private Goal goal = new Goal();
-
     private Vector3 lastFloorPos;
     private bool wantToSit = false;
 
@@ -121,26 +84,6 @@ public class NavManager : MonoBehaviour
             if (isUpdating == false)
             {
                 StartCoroutine(UpdateNavMesh(pair.Value));
-            }
-        }
-
-        if (goal.goalType != Goal.GoalType.Unset && navState != NavState.IsJumping)
-        {
-            goal.Unset();
-            // there is a delayed goal to complete (navigation)
-            // completed jumping anim
-            if (goal.goalType == Goal.GoalType.Floor)
-            {
-                MakeNavigate(goal.floorCoords);
-            }
-            else if (goal.goalType == Goal.GoalType.Node)
-            {
-                MakeNavigate(goal.destNodes);
-            }
-            else if (goal.goalType == Goal.GoalType.Seat)
-            {
-                wantToSit = true;
-                MakeNavigate(goal.seatCoords);
             }
         }
 
@@ -260,14 +203,12 @@ public class NavManager : MonoBehaviour
         if (navState == NavState.Seated)
         {
             Debug.Log(DEBUG_TAG + "Puppy is seated, delaying navigation until after finishing jumping to position: " + yourPos.transform.position);
-            goal.SetFloor(yourPos.transform.position);
-
-            StartCoroutine(MoveAgentDownFromSeat());
+            StartCoroutine(MoveAgentDownFromSeatThenMove(yourPos.transform.position));
             return;
         }
         else
         {
-            MakeNavigate(yourPos);
+            MakeNavigate(yourPos.transform.position);
             Debug.Log(DEBUG_TAG + "Puppy is on the way!");
         }
     }
@@ -343,9 +284,8 @@ public class NavManager : MonoBehaviour
         if (navState == NavState.Seated)
         {
             Debug.Log(DEBUG_TAG + "Puppy is seated, delaying navigation until after finishing jumping");
-            goal.SetSeat(targetPos);
-
-            StartCoroutine(MoveAgentDownFromSeat());
+            wantToSit = true;
+            StartCoroutine(MoveAgentDownFromSeatThenMove(targetPos));
         }
         else
         {
@@ -426,7 +366,7 @@ public class NavManager : MonoBehaviour
         yield return null;
     }
 
-    private IEnumerator MoveAgentDownFromSeat()
+    private IEnumerator MoveAgentDownFromSeatThenMove(Vector3 destPos)
     {
         agentAnimator.SetTrigger(DoJump);
         navState = NavState.IsJumping;
@@ -470,8 +410,10 @@ public class NavManager : MonoBehaviour
             }
         }
 
-        navMeshAgent.gameObject.GetComponent<NavMeshAgent>().enabled = true;
+        navMeshAgent.enabled = true;
         navState = NavState.Walking;
+
+        MakeNavigate(destPos);
 
         yield return null;
     }
