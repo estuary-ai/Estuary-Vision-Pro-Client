@@ -363,6 +363,16 @@ public class NavManager : MonoBehaviour
 
         navState = NavState.Seated;
 
+        // turn around to face the camera
+        navMeshAgent.gameObject.transform.LookAt(new Vector3(appRef.camTrans.position.x, navMeshAgent.gameObject.transform.position.y, appRef.camTrans.position.z));
+        // float yRotation = appRef.camTrans.eulerAngles.y;
+        //
+        // while (navMeshAgent.gameObject.transform.eulerAngles.y < yRotation + 0.01f && navMeshAgent.gameObject.transform.eulerAngles.y > yRotation - 0.01f)
+        // {
+        //     navMeshAgent.gameObject.transform.eulerAngles = Quaternion.Lerp(appRef.camTrans.rotation, navMeshAgent.gameObject.transform.rotation, 0.5f * Time.fixedDeltaTime).eulerAngles;
+        //     yield return null;
+        // }
+
         yield return null;
     }
 
