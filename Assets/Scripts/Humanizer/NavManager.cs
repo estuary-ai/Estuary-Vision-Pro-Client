@@ -34,6 +34,7 @@ public class NavManager : MonoBehaviour
 
     private Vector3 lastFloorPos;
     private bool wantToSit = false;
+    private Vector3 seatPos = Vector3.zero;
 
     enum NavState
     {
@@ -46,8 +47,9 @@ public class NavManager : MonoBehaviour
     NavState navState = NavState.Standing;
 
 
-    private bool DEBUG = true;
+    private bool DEBUG_SEAT = false;
     private int DEBUG_COUNT = 0;
+    private bool DEBUG_MESH = false;
 
     public void FixedUpdate()
     {
@@ -61,22 +63,22 @@ public class NavManager : MonoBehaviour
         {
             if (hit.collider.gameObject.CompareTag("Navigable"))
             {
-                Debug.Log(DEBUG_TAG + "Navigable object found: " + hit.collider.gameObject.name);
+                if (DEBUG_MESH) Debug.Log(DEBUG_TAG + "Navigable object found: " + hit.collider.gameObject.name);
                 AddNavigable(hit.collider.gameObject);
             }
             else
             {
-                Debug.Log(DEBUG_TAG + "Collider hit, but no navigable object tag: " + hit.collider.gameObject.tag);
+                if (DEBUG_MESH) Debug.Log(DEBUG_TAG + "Collider hit, but no navigable object tag: " + hit.collider.gameObject.tag);
             }
         }
         else
         {
-            Debug.Log(DEBUG_TAG + "No navigable object found");
+            if (DEBUG_MESH) Debug.Log(DEBUG_TAG + "No navigable object found");
         }
 
         if (navigableObjects.Count <= 0)
         {
-            Debug.Log(DEBUG_TAG + "No navigable objects have been added.");
+            if (DEBUG_MESH) Debug.Log(DEBUG_TAG + "No navigable objects have been added.");
         }
 
         foreach (KeyValuePair<GameObject, NavMeshSurface> pair in navigableObjects)
@@ -100,8 +102,8 @@ public class NavManager : MonoBehaviour
             {
                 wantToSit = false;
 
-                Debug.Log(DEBUG_TAG + "Seating animation");
-                StartCoroutine(MoveAgentUpToSeat(navMeshAgent.destination));
+                Debug.Log(DEBUG_TAG + "Seating animation to position: " + navMeshAgent.destination);
+                StartCoroutine(MoveAgentUpToSeat(seatPos));
             }
             else
             {
@@ -119,12 +121,12 @@ public class NavManager : MonoBehaviour
     {
         if (navigableObjects.ContainsKey(n) == false)
         {
-            Debug.Log(DEBUG_TAG + "Adding navigable object: " + n.ToString());
+            if (DEBUG_MESH) Debug.Log(DEBUG_TAG + "Adding navigable object: " + n.ToString());
             NavMeshSurface navMeshSurface = n.AddComponent<NavMeshSurface>();
             navMeshSurface.useGeometry = NavMeshCollectGeometry.PhysicsColliders;
             navigableObjects.Add(n, navMeshSurface);
         } else {
-            Debug.Log(DEBUG_TAG + "Navigable object already exists: " + n.ToString());
+            if (DEBUG_MESH) Debug.Log(DEBUG_TAG + "Navigable object already exists: " + n.ToString());
         }
     }
 
@@ -133,7 +135,7 @@ public class NavManager : MonoBehaviour
         if (navMeshSurface != null)
         {
             isUpdating = true;
-            Debug.Log(DEBUG_TAG + "Updating NavMeshSurface");
+            if (DEBUG_MESH) Debug.Log(DEBUG_TAG + "Updating NavMeshSurface");
             navMeshSurface.BuildNavMesh();
             yield return new WaitForSeconds(1f);
             isUpdating = false;
@@ -176,6 +178,11 @@ public class NavManager : MonoBehaviour
         // }
 
         Vector3 destPos = new Vector3(destCoords.x, 0, destCoords.z);
+        if (wantToSit)
+        {
+            if (DEBUG_SEAT) Debug.Log(DEBUG_TAG + "Remembering seat height to: " + destCoords.y);
+            seatPos = destCoords;
+        }
         Debug.Log(DEBUG_TAG + "Navigating to: " + destPos);
         // move the user to the selected position
         navMeshAgent.SetDestination(destPos);
@@ -184,6 +191,8 @@ public class NavManager : MonoBehaviour
         // animations
         agentAnimator.SetBool(IsWalking, true);
         navState = NavState.Walking;
+
+        if (DEBUG_SEAT) Debug.Log(DEBUG_TAG + "Puppy has set destination: " + navMeshAgent.destination + " and is pending path?: " + navMeshAgent.pathPending);
 
         if (navMeshAgent.gameObject.GetComponent<Animation>() != null) {
             navMeshAgent.gameObject.GetComponent<Animation>().Play("Walking");
@@ -202,7 +211,7 @@ public class NavManager : MonoBehaviour
         Debug.Log(DEBUG_TAG + "Your position: " + yourPos.transform.position);
         if (navState == NavState.Seated)
         {
-            Debug.Log(DEBUG_TAG + "Puppy is seated, delaying navigation until after finishing jumping to position: " + yourPos.transform.position);
+            Debug.Log(DEBUG_TAG + "Puppy is seated, delaying navigation until after finishing jumping, then headed to position: " + yourPos.transform.position);
             StartCoroutine(MoveAgentDownFromSeatThenMove(yourPos.transform.position));
             return;
         }
@@ -266,9 +275,20 @@ public class NavManager : MonoBehaviour
                 }
             }
         }
-        if(nearestSeat) Debug.Log(DEBUG_TAG + "Navigating to seat plane at position " + targetPos);
 
-        if (DEBUG)
+        if (nearestSeat || DEBUG_SEAT)
+        {
+            Debug.Log(DEBUG_TAG + "Navigating to seat plane at position " + targetPos);
+            wantToSit = true;
+        }
+        else
+        {
+            Debug.Log(DEBUG_TAG + "No seat plane found. Calling puppy to you instead.");
+            CallPuppy();
+            return;
+        }
+
+        if (DEBUG_SEAT)
         {
             Debug.Log(DEBUG_TAG + "DEBUG MODE: Using default seat position 1");
             if (DEBUG_COUNT == 0)
@@ -283,15 +303,14 @@ public class NavManager : MonoBehaviour
         Debug.Log(DEBUG_TAG + "Your position: " + appRef.camTrans.position);
         if (navState == NavState.Seated)
         {
-            Debug.Log(DEBUG_TAG + "Puppy is seated, delaying navigation until after finishing jumping");
-            wantToSit = true;
+            Debug.Log(DEBUG_TAG + "Puppy is seated, delaying navigation until after finishing jumping, then headed to pos: " + targetPos);
             StartCoroutine(MoveAgentDownFromSeatThenMove(targetPos));
         }
         else
         {
+            Debug.Log(DEBUG_TAG + "Puppy is not seated, calling MakeNavigate to seat plane at position " + targetPos);
             MakeNavigate(targetPos);
             Debug.Log(DEBUG_TAG + "Puppy is on the way!");
-            wantToSit = true;
         }
     }
 
@@ -304,7 +323,7 @@ public class NavManager : MonoBehaviour
         navMeshAgent.gameObject.GetComponent<NavMeshAgent>().enabled = false;
         yield return new WaitForSeconds(0.5f);
 
-        if (DEBUG)
+        if (DEBUG_SEAT)
         {
             Debug.Log(DEBUG_TAG + "DEBUG MODE: Using default seat position 2");
             if (DEBUG_COUNT == 0)
@@ -364,14 +383,32 @@ public class NavManager : MonoBehaviour
         navState = NavState.Seated;
 
         // turn around to face the camera
-        navMeshAgent.gameObject.transform.LookAt(new Vector3(appRef.camTrans.position.x, navMeshAgent.gameObject.transform.position.y, appRef.camTrans.position.z));
-        // float yRotation = appRef.camTrans.eulerAngles.y;
+        float dur = 0.8f;
+        Quaternion start = navMeshAgent.gameObject.transform.rotation;
+        Quaternion end = Quaternion.LookRotation(new Vector3(appRef.camTrans.position.x, navMeshAgent.gameObject.transform.position.y, appRef.camTrans.position.z) - navMeshAgent.gameObject.transform.position);
+        float rotationTime = 0f;
+        while (rotationTime < dur)
+        {
+            navMeshAgent.gameObject.transform.rotation = Quaternion.Slerp(start, end, rotationTime / dur);
+            yield return null;
+            rotationTime += Time.fixedDeltaTime;
+        }
+
+
+        // Vector3 startPos = navMeshAgent.gameObject.transform.position;
+        // Vector3 targetPos = new Vector3(appRef.camTrans.position.x, navMeshAgent.gameObject.transform.position.y, appRef.camTrans.position.z);
         //
-        // while (navMeshAgent.gameObject.transform.eulerAngles.y < yRotation + 0.01f && navMeshAgent.gameObject.transform.eulerAngles.y > yRotation - 0.01f)
+        // float temp = 0.0f;
+        // float speed = 0.01f;
+        // while (navMeshAgent.gameObject.transform.rotation.eulerAngles.y < appRef.camTrans.rotation.eulerAngles.y - 180.0f + 0.01f &&
+        //        navMeshAgent.gameObject.transform.rotation.eulerAngles.y > appRef.camTrans.rotation.eulerAngles.y - 180.0f - 0.01f)
         // {
-        //     navMeshAgent.gameObject.transform.eulerAngles = Quaternion.Lerp(appRef.camTrans.rotation, navMeshAgent.gameObject.transform.rotation, 0.5f * Time.fixedDeltaTime).eulerAngles;
-        //     yield return null;
+        //     navMeshAgent.gameObject.transform.LookAt(Vector3.Lerp(startPos, targetPos, speed * temp));
+        //     temp += Time.fixedDeltaTime;
+        //     // navMeshAgent.gameObject.transform.LookAt(new Vector3(appRef.camTrans.position.x, navMeshAgent.gameObject.transform.position.y, appRef.camTrans.position.z));
+        //     yield return new WaitForFixedUpdate();
         // }
+
 
         yield return null;
     }
@@ -421,7 +458,9 @@ public class NavManager : MonoBehaviour
         }
 
         navMeshAgent.enabled = true;
-        navState = NavState.Walking;
+
+        // skelly boy needs rest
+        yield return new WaitForSeconds(0.5f);
 
         MakeNavigate(destPos);
 

@@ -906,6 +906,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LipSyncDebugConsole
       objectReference: {fileID: 0}
+    - target: {fileID: 130260, guid: e4c63fc874ed2ed42b7808b1a310238a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 22402796, guid: e4c63fc874ed2ed42b7808b1a310238a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1147,6 +1151,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LipSyncInterface
       objectReference: {fileID: 0}
+    - target: {fileID: 135588, guid: 4dd277bd9572488489906165e0931952, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 452380, guid: 4dd277bd9572488489906165e0931952, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1214,7 +1222,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3711822128842703614, guid: ae1e1ea4162824872a67aeb64c6cf077, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6105789478677744536, guid: ae1e1ea4162824872a67aeb64c6cf077, type: 3}
       propertyPath: m_LocalPosition.x
