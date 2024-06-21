@@ -50,6 +50,10 @@ public class NavManager : MonoBehaviour
     private bool DEBUG_SEAT = false;
     private int DEBUG_COUNT = 0;
     private bool DEBUG_MESH = false;
+    private bool DEBUG_DISPLAY_MESH = true;
+
+    private bool IVA_DEMO = true;
+    private int IVA_STEP = 0;
 
     public void FixedUpdate()
     {
@@ -89,6 +93,8 @@ public class NavManager : MonoBehaviour
             }
         }
 
+
+
         if(navState == NavState.Walking && Vector3.Distance(navMeshAgent.gameObject.transform.position, navMeshAgent.destination) <= 0.2f)
         {
             Debug.Log(DEBUG_TAG + "Position: " + navMeshAgent.gameObject.transform.position);
@@ -101,12 +107,14 @@ public class NavManager : MonoBehaviour
             if (wantToSit && Vector3.Distance(navMeshAgent.gameObject.transform.position, seatPos) <= 1.0f)
             {
                 wantToSit = false;
+                IVA_DEMO = false;
 
-                Debug.Log(DEBUG_TAG + "Seating animation to position: " + navMeshAgent.destination);
+                Debug.Log(DEBUG_TAG + "Seating animation to position: " + seatPos);
                 StartCoroutine(MoveAgentUpToSeat(seatPos));
             }
             else if (wantToSit)
             {
+                IVA_STEP = 0;
                 // want to sit, but not at seat yet... keep trying!
                 Debug.Log(DEBUG_TAG + "Want to sit, but not at seat yet :( Not trying again.");
                 Debug.Log(DEBUG_TAG + "Position: " + navMeshAgent.gameObject.transform.position);
@@ -119,6 +127,8 @@ public class NavManager : MonoBehaviour
             else
             {
                 navState = NavState.Standing;
+
+                StartCoroutine(TurnToCamera());
             }
         }
 
@@ -197,7 +207,7 @@ public class NavManager : MonoBehaviour
         Debug.Log(DEBUG_TAG + "Navigating to: " + destPos);
         // move the user to the selected position
         navMeshAgent.SetDestination(destPos);
-        if(DEBUG_MESH && debugNode) Instantiate(debugNode, destPos, Quaternion.identity);
+        if(DEBUG_DISPLAY_MESH && debugNode) Instantiate(debugNode, destPos, Quaternion.identity);
 
         // animations
         agentAnimator.SetBool(IsWalking, true);
@@ -296,6 +306,7 @@ public class NavManager : MonoBehaviour
         {
             Debug.Log(DEBUG_TAG + "No seat plane found. Calling puppy to you instead.");
             CallPuppy();
+            if (IVA_DEMO) IVA_STEP = 0;
             return;
         }
 
@@ -476,6 +487,65 @@ public class NavManager : MonoBehaviour
         MakeNavigate(destPos);
 
         yield return null;
+    }
+
+    public void ResetIVA()
+    {
+        IVA_DEMO = true;
+        IVA_STEP = 0;
+        StartCoroutine(IVACoroutine());
+    }
+
+    private IEnumerator IVACoroutine()
+    {
+        yield return new WaitForSecondsRealtime(8.0f);
+        while (IVA_DEMO)
+        {
+            Debug.Log(DEBUG_TAG + "IVA Demo: " + IVA_STEP);
+            if (navState == NavState.Standing)
+            {
+                if (IVA_STEP == 0)
+                {
+                    // continuously call puppy until it's near camera
+
+                    if (Vector3.Distance(navMeshAgent.gameObject.transform.position, new Vector3(appRef.camTrans.position.x, 0, appRef.camTrans.position.z)) <= 1.0f)
+                    {
+                        Debug.Log(DEBUG_TAG + "IVA DEMO: Puppy is near camera, moving to seat");
+                        IVA_STEP++;
+                    }
+                    else
+                    {
+                        Debug.Log(DEBUG_TAG + "IVA DEMO: Puppy is not near camera, calling puppy to camera. Distance: " + Vector3.Distance(navMeshAgent.gameObject.transform.position, new Vector3(appRef.camTrans.position.x, 0, appRef.camTrans.position.z)));
+                        CallPuppy();
+                    }
+                } else if (IVA_STEP == 1)
+                {
+                    // call puppy to seat
+                    MoveAgentToNearestSeatPlane();
+                    IVA_STEP++;
+                }
+            }
+
+            yield return new WaitForSecondsRealtime(3.0f);
+        }
+
+        yield return null;
+
+    }
+
+    private IEnumerator TurnToCamera()
+    {
+        // turn around to face the camera
+        float dur = 0.8f;
+        Quaternion start = navMeshAgent.gameObject.transform.rotation;
+        Quaternion end = Quaternion.LookRotation(new Vector3(appRef.camTrans.position.x, navMeshAgent.gameObject.transform.position.y, appRef.camTrans.position.z) - navMeshAgent.gameObject.transform.position);
+        float rotationTime = 0f;
+        while (rotationTime < dur)
+        {
+            navMeshAgent.gameObject.transform.rotation = Quaternion.Slerp(start, end, rotationTime / dur);
+            yield return null;
+            rotationTime += Time.fixedDeltaTime;
+        }
     }
 
 
