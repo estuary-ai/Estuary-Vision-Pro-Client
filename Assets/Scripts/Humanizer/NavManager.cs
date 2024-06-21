@@ -98,12 +98,23 @@ public class NavManager : MonoBehaviour
 
             agentAnimator.SetBool(IsWalking, false);
 
-            if (wantToSit)
+            if (wantToSit && Vector3.Distance(navMeshAgent.gameObject.transform.position, seatPos) <= 1.0f)
             {
                 wantToSit = false;
 
                 Debug.Log(DEBUG_TAG + "Seating animation to position: " + navMeshAgent.destination);
                 StartCoroutine(MoveAgentUpToSeat(seatPos));
+            }
+            else if (wantToSit)
+            {
+                // want to sit, but not at seat yet... keep trying!
+                Debug.Log(DEBUG_TAG + "Want to sit, but not at seat yet :( Not trying again.");
+                Debug.Log(DEBUG_TAG + "Position: " + navMeshAgent.gameObject.transform.position);
+                Debug.Log(DEBUG_TAG + "Seat Pos: " + seatPos);
+                Debug.Log(DEBUG_TAG + "Distance: " + Vector3.Distance(navMeshAgent.gameObject.transform.position, seatPos));
+                // MoveAgentToNearestSeatMesh();
+                wantToSit = false;
+                navState = NavState.Standing;
             }
             else
             {
