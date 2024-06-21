@@ -50,7 +50,7 @@ public class NavManager : MonoBehaviour
     private bool DEBUG_SEAT = false;
     private int DEBUG_COUNT = 0;
     private bool DEBUG_MESH = false;
-    private bool DEBUG_DISPLAY_MESH = true;
+    private bool DEBUG_DISPLAY_MESH = false;
 
     private bool IVA_DEMO = true;
     private int IVA_STEP = 0;
@@ -494,6 +494,10 @@ public class NavManager : MonoBehaviour
         IVA_DEMO = true;
         IVA_STEP = 0;
         StartCoroutine(IVACoroutine());
+        // get game object by name
+        GameObject panel = GameObject.Find("Spatial Panel Scroll");
+        // disable panel
+        panel.SetActive(false);
     }
 
     private IEnumerator IVACoroutine()
