@@ -197,7 +197,7 @@ public class NavManager : MonoBehaviour
         Debug.Log(DEBUG_TAG + "Navigating to: " + destPos);
         // move the user to the selected position
         navMeshAgent.SetDestination(destPos);
-        if(debugNode) Instantiate(debugNode, destPos, Quaternion.identity);
+        if(DEBUG_MESH && debugNode) Instantiate(debugNode, destPos, Quaternion.identity);
 
         // animations
         agentAnimator.SetBool(IsWalking, true);
