@@ -494,10 +494,14 @@ public class NavManager : MonoBehaviour
         IVA_DEMO = true;
         IVA_STEP = 0;
         StartCoroutine(IVACoroutine());
-        // get game object by name
-        GameObject panel = GameObject.Find("Spatial Panel Scroll");
-        // disable panel
-        panel.SetActive(false);
+        if (!DEBUG_DISPLAY_MESH)
+        {
+            // get game object by name
+            GameObject panel = GameObject.Find("Spatial Panel Scroll");
+            // disable panel
+            panel.SetActive(false);
+        }
+
     }
 
     private IEnumerator IVACoroutine()
