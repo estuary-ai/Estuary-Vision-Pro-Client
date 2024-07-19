@@ -8,24 +8,17 @@ using UnityEngine;
 
 namespace Mangrove
 {
-    public class IncomingDataPacket<T>
-    {
-        public int status;
-        public T data;
-    }
-
     public class AIClient : MonoBehaviour
     {
-        private const string DEBUG_PREFIX = "AIClient.cs :: ";
-
         // Supported Events and Requests defined at the bottom
         public bool isDebugging = false;
+
         private SocketIOUnity socket;
-        private bool isAwake = false;
+
+        // private bool isAwake = false;
         private BotResponseHandler botResponseHandler;
         private MicController micController;
         private BotVoice botVoice;
-        private int status;
 
         [field: SerializeField] public string api = "ws://localhost:4000";
 
@@ -173,83 +166,54 @@ namespace Mangrove
             socket.OnReconnectFailed += (sender, e) =>
             {
                 Debug.Log($"Event Reconnect Failed with {api} due to {e} from {sender}");
-                if (isAwake)
-                {
-                    StopCommandTransmission();
-                }
+                // if (isAwake) {
+                //     StopCommandTransmission();
+                // }
             };
             socket.OnReconnectError += (sender, e) =>
             {
                 Debug.Log($"Event Reconnect Error with {api} due to {e} from {sender}");
-                if (isAwake)
-                {
-                    StopCommandTransmission();
-                }
+                // if (isAwake) {
+                //     StopCommandTransmission();
+                // }
             };
             /////////////////////
 
-            socket.On(EVENTS.WAKE_UP, (result) =>
-            {
-                Debug.Log("WAKE UP EVENT RECEIVED");
-                // result.GetValue<IncomingDataPacket<short>>();
-                // Debug.Log($"WakeUp: {result}");
-                // if (appRef && appRef.navManager) appRef.navManager.CallPuppy();
-                Debug.Log("before StartCommandTransmission");
-                StartCommandTransmission();
-                Debug.Log("after StartCommandTransmission");
-            });
+            // socket.On(EVENTS.WAKE_UP, (result) =>
+            // {
+            //     Debug.Log("WAKE UP EVENT RECEIVED");
+            //     // result.GetValue<IncomingDataPacket<short>>();
+            //     // Debug.Log($"WakeUp: {result}");
+            //     if(appRef && appRef.navManager) appRef.navManager.CallPuppy();
+            //     Debug.Log("before StartCommandTransmission");
+            //     StartCommandTransmission();
+            //     Debug.Log("after StartCommandTransmission");
+            // });
+
             socket.On(EVENTS.STT_RES, (result) =>
             {
                 Debug.Log($"stt-response: {result}");
-                StopCommandTransmission();
+                // StopCommandTransmission();
             });
             socket.On(EVENTS.BOT_RES, (result) =>
             {
                 Debug.Log($"bot-response: {result}");
                 botResponseHandler.Handle(result.GetValue<BotResponse>());
             });
-            socket.On(EVENTS.BOT_VOICE, (audioPacket) =>
+            socket.On(EVENTS.BOT_VOICE, (result) =>
             {
-                Debug.Log(
-                    $"{EVENTS.BOT_VOICE} -- Playing SENVA voice.. " +
-                    $"recieved {audioPacket.InComingBytes.ToArray().Length} lists of bytes"
-                );
+                Debug.Log($"bot-voice: {result}");
+                IncomingAudioPacket packet = result.GetValue<IncomingAudioPacket>();
+
                 // TODO verify and debug audioBytes / test FixedUpdate
                 UnityThread.executeInUpdate(() =>
                 {
                     // botVoice.PlayAudioBytes(audioPacket.InComingBytes[0]);
-                    IncomingAudioPacket packet = audioPacket.GetValue<IncomingAudioPacket>();
-                    Debug.Log("audioPacket content: " + packet.ToString());
                     botVoice.ProcessAndPlayAudioBytes(packet);
                 });
-            });
-            socket.On(EVENTS.UPDATE_STATUS, (result) =>
-            {
-                Debug.Log($"update-status: {result}");
-                status = result.GetValue<int>();
+
             });
         }
-
-        void StartCommandTransmission()
-        {
-            Debug.Log("Start Transmission");
-            UnityThread.executeInUpdate(() =>
-            {
-                botVoice.PlayActivationSound();
-                // micController.RefreshTheMic();
-            });
-            // botVoice.PlayActivationSound();
-            isAwake = true;
-            Debug.Log("set isAwake");
-        }
-
-        void StopCommandTransmission()
-        {
-            Debug.Log("Stop Transmission -- Unset is Awake");
-            UnityThread.executeInUpdate(() => { botVoice.PlayTerminationSound(); });
-            isAwake = false;
-        }
-
 
         void OnDisable()
         {
@@ -273,8 +237,7 @@ namespace Mangrove
                 {
                     Debug.Log(e.Message);
                 }
-
-                isAwake = false;
+                // isAwake = false;
             }
         }
 
@@ -313,11 +276,7 @@ namespace Mangrove
         {
             if (socket.Connected)
             {
-                Thread thread = new Thread(() =>
-                {
-                    // convert data into array containing status
-                    socket.Emit(eventName, new object[] { data, status });
-                });
+                Thread thread = new Thread(() => { socket.Emit(eventName, data); });
                 thread.Start();
             }
         }
@@ -327,26 +286,17 @@ namespace Mangrove
         //     Emit(REQUESTS.VIDEO_STREAM, videoFrame);
         // }
 
-        public void Debugger_OnTrialMsg(string debugStatement)
-        {
-            debugStatement = debugStatement.Replace("\u200B", "");
-            Emit("trial", debugStatement);
-        }
-
         class EVENTS
         {
             public static readonly string BOT_RES = "bot_response";
             public static readonly string BOT_VOICE = "bot_voice";
             public static readonly string STT_RES = "stt_response";
-            public static readonly string WAKE_UP = "wake_up";
-            public static readonly string UPDATE_STATUS = "update_status";
         }
 
         class REQUESTS
         {
             public static readonly string AUDIO_STREAM = "stream_audio";
             public static readonly string VIDEO_STREAM = "stream_video";
-            public static readonly string UPDATE_WORLD_STATE = "update_world_state";
         }
     }
 }

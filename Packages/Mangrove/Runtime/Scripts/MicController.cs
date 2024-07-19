@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Collections;
 using System.IO;
 
 namespace Mangrove
@@ -8,7 +9,7 @@ namespace Mangrove
 	public class MicController : MonoBehaviour
 	{
 		public int NumFramesInBatch = 1;
-		public int FrameLength = 64;
+		public int FrameLength = 256;
 		private bool isStreamAllowed = false;
 		private AudioPacket recentAudioPacket = null;
 		private AudioPacket audioToBeRecorded = null;
@@ -74,6 +75,12 @@ namespace Mangrove
 
 		public void Init()
 		{
+			StartCoroutine(InitMic());
+		}
+
+		private IEnumerator InitMic()
+		{
+			yield return new WaitForSeconds(3f);
 			_micSource.StartRecording(FrameLength);
 		}
 

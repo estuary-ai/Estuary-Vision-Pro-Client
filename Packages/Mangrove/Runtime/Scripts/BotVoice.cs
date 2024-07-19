@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,8 +9,8 @@ namespace Mangrove
     [RequireComponent(typeof(AudioSource))]
     public class BotVoice : MonoBehaviour
     {
-        public AudioClip activateClip;
-        public AudioClip terminateClip;
+        // public AudioClip activateClip;
+        // public AudioClip terminateClip;
         private Queue<AudioClip> _clipQueue;
         [SerializeField] private AudioSource audioSource;
         private bool _isSpeaking;
@@ -47,6 +48,8 @@ namespace Mangrove
             _clipQueue = new Queue<AudioClip>();
         }
 
+
+
         void Update()
         {
             if (audioSource.isPlaying == false)
@@ -55,9 +58,9 @@ namespace Mangrove
                 {
                     if (_clipQueue.Count > 0)
                     {
-                        audioSource.clip = _clipQueue.Dequeue();
+                        AudioClip clip = _clipQueue.Dequeue();
                         _isSpeaking = true;
-                        audioSource.Play();
+                        audioSource.PlayOneShot(clip);
                     }
                     else
                     {
@@ -65,37 +68,34 @@ namespace Mangrove
                     }
                 }
             }
-            else
-            {
-                Debug.Log("Audio source is playing!!!");
-            }
         }
+
 
         public bool IsSpeaking()
         {
             return _isSpeaking;
         }
 
-        public void PlayActivationSound()
-        {
-            Log("Playing activation sound");
-            // lock(_clipQueue) {
-            // _clipQueue.Enqueue(activateClip);
-            // }
-            if (audioSource.isPlaying) audioSource.Stop();
-            audioSource.PlayOneShot(activateClip);
-        }
+        // public void PlayActivationSound()
+        // {
+        //     Log("Playing activation sound");
+        //     // lock(_clipQueue) {
+        //     // _clipQueue.Enqueue(activateClip);
+        //     // }
+        //     if(audioSource.isPlaying) audioSource.Stop();
+        //     audioSource.PlayOneShot(activateClip);
+        // }
 
-        public void PlayTerminationSound()
-        {
-            Log("Playing termination sound");
-            // lock(_clipQueue) {
-            // Log("Queueing termination sound 12");
-            // _clipQueue.Enqueue(terminateClip);
-            // }
-            if (audioSource.isPlaying) audioSource.Stop();
-            audioSource.PlayOneShot(terminateClip);
-        }
+        // public void PlayTerminationSound()
+        // {
+        //     Log("Playing termination sound");
+        //     // lock(_clipQueue) {
+        //     // Log("Queueing termination sound 12");
+        //     // _clipQueue.Enqueue(terminateClip);
+        //     // }
+        //     if(audioSource.isPlaying) audioSource.Stop();
+        //     audioSource.PlayOneShot(terminateClip);
+        // }
 
 
         public static float[] Convert16BitByteArrayToAudioClipData(byte[] source)
@@ -134,46 +134,66 @@ namespace Mangrove
         // }
 
 
-        public static AudioClip ConvertBytesToAudioClip(byte[] source, string NAME = "bot-voice")
-        {
-            string filepath = Application.persistentDataPath + "/__tmp__.wav";
-            Debug.Log("Saving audio to be played to " + filepath);
-            File.WriteAllBytes(filepath, source);
-            WWW www = new WWW("file://" + filepath);
-            while (!www.isDone)
-            {
-            }
-
-            AudioClip audioClip = www.GetAudioClip(false, false, AudioType.WAV);
-            // delete the file
-            // File.Delete(filepath);
-            audioClip.name = NAME;
-            return audioClip;
-        }
+        // public static AudioClip ConvertBytesToAudioClip(byte[] source, string NAME = "bot-voice")
+        // {
+        //     string filepath = Application.persistentDataPath + "/__tmp__.wav";
+        //     Debug.Log("Saving audio to be played to " + filepath);
+        //     File.WriteAllBytes(filepath, source);
+        //     WWW www = new WWW("file://" + filepath);
+        //     while (!www.isDone)
+        //     {
+        //     }
+        //
+        //     AudioClip audioClip = www.GetAudioClip(false, false, AudioType.WAV);
+        //     // delete the file
+        //     // File.Delete(filepath);
+        //     audioClip.name = NAME;
+        //     return audioClip;
+        // }
 
         public void ProcessAndPlayAudioBytes(IncomingAudioPacket packet)
         {
-            // convert audio bytes int16 to float
-            float[] samples = BotVoice.Convert16BitByteArrayToAudioClipData(packet.audio_bytes);
-            // float[] samples = new float[packet.audio_bytes.Length / 4]; //size of a float is 4 bytes
+            Debug.Log($"Playing SENVA voice.. recieved {packet.ToString()}");
 
-            // Buffer.BlockCopy(packet.audio_bytes, 0, samples, 0, packet.audio_bytes.Length);
+            float[] samples;
+            if (packet.sampleWidth == 2)
+            {
+                samples = BotVoice.Convert16BitByteArrayToAudioClipData(packet.bytes);
+            }
+            else
+            {
+                if (packet.sampleWidth != 4)
+                {
+                    Debug.LogError($"Unsupported sample width: {packet.sampleWidth}. Expected 2 or 4.");
+                    return;
+                }
 
-            AudioClip clip = AudioClip.Create("ClipName", samples.Length, packet.channels, packet.frame_rate, false);
+                samples = new float[packet.bytes.Length / 4]; //size of a float is 4 bytes
+                Buffer.BlockCopy(packet.bytes, 0, samples, 0, packet.bytes.Length);
+            }
+
+            AudioClip clip = AudioClip.Create("ClipName", samples.Length, packet.numChannels, packet.sampleRate, false);
             clip.SetData(samples, 0);
-            if (audioSource.isPlaying) audioSource.Stop();
-            audioSource.PlayOneShot(clip);
-        }
-
-
-        public void PlayAudioBytes(byte[] audioBytes, string audioName = "bot-voice")
-        {
-            AudioClip clip = ConvertBytesToAudioClip(audioBytes, audioName);
-
-            // lock(_clipQueue) {
             _clipQueue.Enqueue(clip);
-            // }
+            // StartCoroutine(playAfterSilence(clip));
         }
+
+        // IEnumerator playAfterSilence(AudioClip clip)
+        // {
+        //     while (audioSource.isPlaying)
+        //     {
+        //         yield return null;
+        //     }
+        //     audioSource.PlayOneShot(clip);
+        // }
+
+        // public void PlayAudioBytes(byte[] audioBytes, string audioName="bot-voice") {
+        //     AudioClip clip = ConvertBytesToAudioClip(audioBytes, audioName);
+        //
+        //     // lock(_clipQueue) {
+        //         _clipQueue.Enqueue(clip);
+        //     // }
+        // }
 
         private static void Log(string message)
         {

@@ -2,7 +2,7 @@
   "name": "com.estuary.mangrove",
   "version": "1.0.1",
   "displayName": "Mangrove SDK",
-  "description": "This is an example package",
+  "description": "Mangrove SDK is a Unity package to facilitate connecting to the Estuary framework",
   "documentationUrl": "https://example.com/",
   "changelogUrl": "https://example.com/changelog.html",
   "licensesUrl": "https://example.com/licensing.html",
@@ -10,19 +10,19 @@
     "com.unity.textmeshpro": "3.0.7"
   },
   "keywords": [
-    "keyword1",
-    "keyword2",
-    "keyword3"
+    "AI",
+    "Conversational Agents",
+    "Open-Source"
   ],
   "author": {
-    "name": "Unity",
-    "email": "unity@example.com",
-    "url": "https://www.unity3d.com"
+    "name": "Estuary",
+    "email": "linspenc@usc.edu",
+    "url": "https://github.com/Al-Estuary"
   },
   "samples": [
     {
       "displayName": "Server Connection",
-      "description": "Contains a barebones scene that connects to a mangrove server",
+      "description": "Contains a barebones scene that connects to a Mangrove server",
       "path": "Samples~/ServerConnection"
     }
   ]
