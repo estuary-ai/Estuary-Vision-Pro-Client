@@ -10,9 +10,9 @@
     "com.unity.textmeshpro": "3.0.7"
   },
   "keywords": [
-    "keyword1",
-    "keyword2",
-    "keyword3"
+    "AI",
+    "Machine Learning",
+    "Open-Source"
   ],
   "author": {
     "name": "Estuary",
@@ -22,7 +22,7 @@
     {
       "displayName": "Server Connection",
       "description": "Contains a simple scene that connects to a Mangrove server",
-      "path": "Samples~/ServerConnection"
+      "path": "Samples/ServerConnection"
     }
   ]
 }
