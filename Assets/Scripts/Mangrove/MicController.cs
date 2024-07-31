@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Collections;
 using System.IO;
 
 [RequireComponent(typeof(AudioSource))]
@@ -66,6 +67,12 @@ public class MicController : MonoBehaviour
 
     public void Init()
     {
+	    StartCoroutine(InitMic());
+    }
+
+    private IEnumerator InitMic()
+    {
+	    yield return new WaitForSeconds(3f);
 	    _micSource.StartRecording(FrameLength);
     }
 

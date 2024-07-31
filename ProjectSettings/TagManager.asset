@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Navigable
   - Seat
+  - Plane
   layers:
   - Default
   - TransparentFX

@@ -3,14 +3,17 @@ using System;
 [Serializable]
 public class IncomingAudioPacket
 {
-    public byte[] audio_bytes;
-    public int frame_rate;
-    public int channels;
-    public int sample_width;
+    public byte[] bytes;
+    public int sampleRate;
+    public int numChannels;
+    public int sampleWidth;
+    // public int packetID;
 
     public String ToString()
     {
-        return "Audio Bytes: " + audio_bytes + " Frame Rate: " + frame_rate + " Channels: " + channels + " Sample Width: " + sample_width;
+        return "Audio Bytes:  " + bytes + " Sample Rate: " + sampleRate + " Num Channels: " + numChannels +
+               " Sample Width: " + sampleWidth + " Length: " + bytes.Length;
+        // + " Packet ID: " + packetID;
     }
 }
 
@@ -44,14 +47,16 @@ public class AudioPacket {
         this.audio = audio;
         this.numChannels = numChannels;
         this.sampleRate = sampleRate;
+        this.sampleWidth = sampleWidth;
         this.timestamp = (int) timestampMS;
     }
 
-    public AudioPacket(float[] audio, int numChannels, int sampleRate, double timestampMS, long packetID) {
+    public AudioPacket(float[] audio, int numChannels, int sampleRate, double timestampMS, long packetID, int sampleWidth=2) {
         this.packetID = packetID;
         this.audio = audio;
         this.numChannels = numChannels;
         this.sampleRate = sampleRate;
+        this.sampleWidth = sampleWidth;
         this.timestamp = (int) timestampMS;
     }
 

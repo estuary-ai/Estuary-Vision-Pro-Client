@@ -49,6 +49,14 @@ namespace PolySpatial.Samples
                 // add to navigableObjects
                 appRef.navManager.AddNavigable(tappedObj);
             }
+
+            // move this gameobject to random position
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Debug.Log("[INPUT DEBUG] Space key pressed. Setting destination to a random location.");
+                this.gameObject.transform.position = new Vector3(Random.Range(-5, 5), 0, Random.Range(-5, 5));
+                appRef.navManager.AddNavigable(this.gameObject);
+            }
         }
 
         void GetHandSubsystem()
