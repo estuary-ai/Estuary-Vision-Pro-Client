@@ -2,7 +2,7 @@
   "name": "com.estuary.mangrove",
   "version": "1.0.1",
   "displayName": "Mangrove SDK",
-  "description": "This is an example package",
+  "description": "Mangrove SDK is a Unity plugin to facilitate connecting to the Estuary framework",
   "documentationUrl": "https://example.com/",
   "changelogUrl": "https://example.com/changelog.html",
   "licensesUrl": "https://example.com/licensing.html",
@@ -15,14 +15,13 @@
     "keyword3"
   ],
   "author": {
-    "name": "Unity",
-    "email": "unity@example.com",
-    "url": "https://www.unity3d.com"
+    "name": "Estuary",
+    "url": "al-estuary.github.io"
   },
   "samples": [
     {
       "displayName": "Server Connection",
-      "description": "Contains a barebones scene that connects to a mangrove server",
+      "description": "Contains a simple scene that connects to a Mangrove server",
       "path": "Samples~/ServerConnection"
     }
   ]
