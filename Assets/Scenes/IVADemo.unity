@@ -637,9 +637,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6616408371094748477, guid: ae1e1ea4162824872a67aeb64c6cf077, type: 3}
+      propertyPath: FrameLength
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 9122925985822491782, guid: ae1e1ea4162824872a67aeb64c6cf077, type: 3}
       propertyPath: api
-      value: ws://172.26.62.166:4000
+      value: ws://192.168.1.163:4001
       objectReference: {fileID: 0}
     - target: {fileID: 9122925985822491782, guid: ae1e1ea4162824872a67aeb64c6cf077, type: 3}
       propertyPath: appRef
@@ -1072,7 +1076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MeshManager: {fileID: 659567573}
-  m_ClassificationEnabled: 1
+  m_ClassificationEnabled: 0
 --- !u!1 &705134288
 GameObject:
   m_ObjectHideFlags: 0
@@ -1170,6 +1174,10 @@ PrefabInstance:
     - target: {fileID: 135588, guid: 4dd277bd9572488489906165e0931952, type: 3}
       propertyPath: m_Name
       value: LipSyncInterface
+      objectReference: {fileID: 0}
+    - target: {fileID: 135588, guid: 4dd277bd9572488489906165e0931952, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 452380, guid: 4dd277bd9572488489906165e0931952, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1510,6 +1518,7 @@ MonoBehaviour:
   leftSpawnPrefab: {fileID: 7334852416975427255, guid: 42483656567e942669d0454b9b443a91, type: 3}
   polyspatialCamTransform: {fileID: 2026256748}
   highlightMaterial: {fileID: 2100000, guid: afed65409d0494206adc4526266433aa, type: 2}
+  handMenu: {fileID: 1993571174}
 --- !u!4 &1222491706
 Transform:
   m_ObjectHideFlags: 0
@@ -2298,6 +2307,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LipSyncDebugConsole
       objectReference: {fileID: 0}
+    - target: {fileID: 130260, guid: e4c63fc874ed2ed42b7808b1a310238a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 22402796, guid: e4c63fc874ed2ed42b7808b1a310238a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2651,6 +2664,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1716014632 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5437768868054998102, guid: da6e57a63d92541a9b47f1b99194ba1e, type: 3}
+  m_PrefabInstance: {fileID: 1968318307}
+  m_PrefabAsset: {fileID: 0}
 --- !u!82 &1838292312 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 8853934420594906814, guid: a4cfae9dec84a40d7aa411d4e923a8f6, type: 3}
@@ -2690,7 +2708,7 @@ PrefabInstance:
       objectReference: {fileID: 1701802645}
     - target: {fileID: 2094733081410129936, guid: da6e57a63d92541a9b47f1b99194ba1e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MoveAgentToNearestSeat
+      value: MoveAgentToNearestSeatPlane
       objectReference: {fileID: 0}
     - target: {fileID: 2094733081410129936, guid: da6e57a63d92541a9b47f1b99194ba1e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -2893,6 +2911,104 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da6e57a63d92541a9b47f1b99194ba1e, type: 3}
+--- !u!1 &1993571173
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1993571175}
+  - component: {fileID: 1993571174}
+  m_Layer: 0
+  m_Name: Debug Menu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1993571174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993571173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aceb12f22b4c45e59443ac967a8ece7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HandMenuUIGameObject: {fileID: 1716014632}
+  m_MenuHandedness: 1
+  m_HandMenuUpDirection: 1
+  m_LeftPalmAnchor: {fileID: 0}
+  m_RightPalmAnchor: {fileID: 0}
+  m_MinFollowDistance: 0.005
+  m_MaxFollowDistance: 0.03
+  m_MinToMaxDelaySeconds: 1
+  m_HideMenuWhenGazeDiverges: 1
+  m_MenuVisibleGazeAngleDivergenceThreshold: 35
+  m_AnimateMenuHideAndReveal: 1
+  m_RevealHideAnimationDuration: 0.15
+  m_HideMenuOnSelect: 1
+  m_InteractionManager: {fileID: 0}
+  m_HandTrackingFollowPreset:
+    m_UseConstant: 0
+    m_ConstantValue:
+      rightHandLocalPosition: {x: 0, y: 0, z: 0}
+      leftHandLocalPosition: {x: 0, y: 0, z: 0}
+      rightHandLocalRotation: {x: 0, y: 0, z: 0}
+      leftHandLocalRotation: {x: 0, y: 0, z: 0}
+      palmReferenceAxis: 4
+      invertAxisForRightHand: 0
+      requirePalmFacingUser: 0
+      palmFacingUserDegreeAngleThreshold: 0
+      requirePalmFacingUp: 0
+      palmFacingUpDegreeAngleThreshold: 0
+      snapToGaze: 0
+      snapToGazeAngleThreshold: 0
+      hideDelaySeconds: 0.25
+      allowSmoothing: 1
+      followLowerSmoothingValue: 10
+      followUpperSmoothingValue: 16
+    m_Variable: {fileID: 0}
+  m_ControllerFollowPreset:
+    m_UseConstant: 0
+    m_ConstantValue:
+      rightHandLocalPosition: {x: 0, y: 0, z: 0}
+      leftHandLocalPosition: {x: 0, y: 0, z: 0}
+      rightHandLocalRotation: {x: 0, y: 0, z: 0}
+      leftHandLocalRotation: {x: 0, y: 0, z: 0}
+      palmReferenceAxis: 4
+      invertAxisForRightHand: 0
+      requirePalmFacingUser: 0
+      palmFacingUserDegreeAngleThreshold: 0
+      requirePalmFacingUp: 0
+      palmFacingUpDegreeAngleThreshold: 0
+      snapToGaze: 0
+      snapToGazeAngleThreshold: 0
+      hideDelaySeconds: 0.25
+      allowSmoothing: 1
+      followLowerSmoothingValue: 10
+      followUpperSmoothingValue: 16
+    m_Variable: {fileID: 0}
+--- !u!4 &1993571175
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993571173}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.46649146, y: 0.29755443, z: -0.6435904}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2026256746
 GameObject:
   m_ObjectHideFlags: 0
@@ -3183,7 +3299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1760703bbd54c04488a8d10600262ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PlanePrefab: {fileID: 0}
+  m_PlanePrefab: {fileID: 680114521416276321, guid: 7d12a71c3fff74d2ea1448eb02f32d13, type: 3}
   m_DetectionMode: -1
 --- !u!1 &2121586913
 GameObject:
@@ -3544,3 +3660,4 @@ SceneRoots:
   - {fileID: 1968318307}
   - {fileID: 852542834}
   - {fileID: 1494442347}
+  - {fileID: 1993571175}

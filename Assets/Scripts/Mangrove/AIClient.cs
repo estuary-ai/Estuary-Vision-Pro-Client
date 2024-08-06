@@ -259,6 +259,7 @@ public class AIClient : MonoBehaviour
     {
         if (socket.Connected)
         {
+            Debug.Log("Emitting " + eventName);
             Thread thread = new Thread(() => {
                 socket.Emit(eventName, data);
             });

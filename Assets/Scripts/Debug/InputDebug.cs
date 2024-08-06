@@ -5,6 +5,7 @@ using UnityEngine.InputSystem.LowLevel;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 // #if UNITY_INCLUDE_XR_HANDS
 using UnityEngine.XR.Hands;
+using UnityEngine.XR.Interaction.Toolkit.UI.BodyUI;
 using UnityEngine.XR.Management;
 // #endif
 
@@ -17,6 +18,7 @@ namespace PolySpatial.Samples
         [SerializeField] private GameObject leftSpawnPrefab;
         [SerializeField] private Transform polyspatialCamTransform;
         [SerializeField] private Material highlightMaterial;
+        [SerializeField] private HandMenu handMenu;
 
 
 // #if UNITY_INCLUDE_XR_HANDS
@@ -25,6 +27,8 @@ namespace PolySpatial.Samples
         private XRHandJoint rightThumbTipJoint;
         private XRHandJoint leftIndexTipJoint;
         private XRHandJoint leftThumbTipJoint;
+        private XRHandJoint leftPalmJoint;
+        private Transform leftPalmTransform;
         private bool activeRightPinch;
         private bool activeLeftPinch;
         private float scaledThreshold;
@@ -41,6 +45,20 @@ namespace PolySpatial.Samples
 
         void Update()
         {
+            if (!CheckHandSubsystem()) return;
+
+            var updateSuccessFlags = handSubsystem.TryUpdateHands(XRHandSubsystem.UpdateType.Dynamic);
+            if ((updateSuccessFlags & XRHandSubsystem.UpdateSuccessFlags.LeftHandRootPose) != 0)
+            {
+                // assign joint values
+                leftPalmJoint = handSubsystem.leftHand.GetJoint(XRHandJointID.Palm);
+                if (leftPalmJoint.TryGetPose(out Pose leftPalmPose))
+                {
+                    leftPalmTransform.position = leftPalmPose.position;
+                    handMenu.leftPalmAnchor = leftPalmTransform;
+                }
+            }
+
             GameObject tappedObj = UpdateIndexThumb();
             if (tappedObj != null && tappedObj.CompareTag("Navigable"))
             {

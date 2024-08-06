@@ -52,7 +52,7 @@ public class NavManager : MonoBehaviour
     private bool DEBUG_MESH = false;
     private bool DEBUG_DISPLAY_MESH = false;
 
-    private bool IVA_DEMO = true;
+    private bool IVA_DEMO = false;
     private int IVA_STEP = 0;
 
     public void FixedUpdate()
@@ -95,7 +95,7 @@ public class NavManager : MonoBehaviour
 
 
 
-        if(navState == NavState.Walking && Vector3.Distance(navMeshAgent.gameObject.transform.position, navMeshAgent.destination) <= 0.2f)
+        if(navState == NavState.Walking && Vector3.Distance(navMeshAgent.gameObject.transform.position, navMeshAgent.destination) <= 0.5f)
         {
             Debug.Log(DEBUG_TAG + "Position: " + navMeshAgent.gameObject.transform.position);
             Debug.Log(DEBUG_TAG + "Destination: " + navMeshAgent.destination);
@@ -283,7 +283,7 @@ public class NavManager : MonoBehaviour
         Vector3 targetPos = Vector3.zero;
         foreach (GameObject seat in planes)
         {
-            if (seat.GetComponent<ARPlane>().classification == PlaneClassification.Seat)
+            if (seat.GetComponent<ARPlane>().classification == PlaneClassification.Seat && seat.GetComponent<ARPlane>().alignment == PlaneAlignment.HorizontalUp)
             {
                 Vector3 seatPos = seat.transform.position;
                 Debug.Log(DEBUG_TAG + "Seat plane position: " + seatPos);
