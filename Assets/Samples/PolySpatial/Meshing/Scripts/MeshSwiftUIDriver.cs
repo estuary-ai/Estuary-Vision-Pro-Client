@@ -58,6 +58,11 @@ namespace Samples.PolySpatial.SwiftUI.Scripts
         void OnDisable()
         {
             SetNativeCallback(null);
+            ForceCloseWindow();
+        }
+
+        public void ForceCloseWindow()
+        {
             CloseSwiftUIWindow("MeshSample");
         }
 

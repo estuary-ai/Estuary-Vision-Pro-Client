@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1802846, g: 0.22571594, b: 0.30692336, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1522,6 +1522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fe40c0e4d4824e0d99a20598b15a92e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camTrans: {fileID: 0}
   navManager: {fileID: 1701802645}
 --- !u!1 &1265836881
 GameObject:
@@ -1552,7 +1553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e64bded67c19642389ab313fd173c9e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JointPrefab: {fileID: 6507399986997092475, guid: 691e278a236cd4d66b00a7c2b5df48b4, type: 3}
+  m_JointVisualsPrefab: {fileID: 0}
 --- !u!4 &1265836883
 Transform:
   m_ObjectHideFlags: 0
@@ -2609,8 +2610,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b53280e2376da4fb7bdf5c34017f4600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  appRef: {fileID: 0}
+  groundDetectorOrigin: {fileID: 0}
   navMeshAgent: {fileID: 549449734}
+  agentAnimator: {fileID: 0}
   navNode: {fileID: 0}
+  debugNode: {fileID: 0}
+  classifiedDebugNode: {fileID: 0}
 --- !u!4 &1701802646
 Transform:
   m_ObjectHideFlags: 0
@@ -2679,18 +2685,6 @@ MonoBehaviour:
   OpenWindowOnLoad: 1
   m_ShowVolumeCameraEventsFoldout: 0
   OnWindowEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  OnWindowOpened:
-    m_PersistentCalls:
-      m_Calls: []
-  OnWindowClosed:
-    m_PersistentCalls:
-      m_Calls: []
-  OnWindowResized:
-    m_PersistentCalls:
-      m_Calls: []
-  OnWindowFocused:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &2105622931

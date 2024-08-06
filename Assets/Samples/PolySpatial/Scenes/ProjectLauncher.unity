@@ -1226,7 +1226,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LevelName: CharacterWalker
   m_LevelType: 0
-  m_ARSession: {fileID: 0}
 --- !u!114 &426081082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3421,7 +3420,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LevelName: SwiftUI
   m_LevelType: 7
-  m_ARSession: {fileID: 0}
 --- !u!135 &1530620391
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3558,7 +3556,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LevelName: Meshing
   m_LevelType: 8
-  m_ARSession: {fileID: 0}
 --- !u!135 &1565433088
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3787,7 +3784,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LevelName: InputDataVisualization
   m_LevelType: 5
-  m_ARSession: {fileID: 0}
 --- !u!114 &1657556529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4200,7 +4196,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LevelName: BalloonGallery
   m_LevelType: 1
-  m_ARSession: {fileID: 0}
 --- !u!114 &1745301107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4339,7 +4334,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LevelName: MixedReality
   m_LevelType: 6
-  m_ARSession: {fileID: 0}
 --- !u!114 &1814826759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5218,7 +5212,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LevelName: UGUI
   m_LevelType: 9
-  m_ARSession: {fileID: 0}
 --- !u!114 &2025572321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5384,7 +5377,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LevelName: ImageTracking
   m_LevelType: 2
-  m_ARSession: {fileID: 0}
 --- !u!135 &2083700660
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5578,7 +5570,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LevelName: Manipulation_XRI
   m_LevelType: 3
-  m_ARSession: {fileID: 0}
 --- !u!114 &2113541771
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -22,3 +22,8 @@ struct SwiftUISampleInjectedScene {
         }
     }
 }
+
+@Observable class ObjectCounter {
+    var cubeCount: Int = 0
+    var sphereCount: Int = 0
+}

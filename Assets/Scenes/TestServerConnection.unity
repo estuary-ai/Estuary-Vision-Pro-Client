@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1802846, g: 0.22571594, b: 0.30692336, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -749,8 +749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dc3946d7e737fb4b9780d3c7c19a8d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activateClip: {fileID: 0}
-  terminateClip: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!114 &1042757914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -856,9 +855,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1680cabf7863472cb8e2058ba0bb58f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  appRef: {fileID: 0}
   rightSpawnPrefab: {fileID: 3701147846425270125, guid: 91a438f9f36854aa4a5477fd3af6654f, type: 3}
   leftSpawnPrefab: {fileID: 9009630197473288010, guid: 6aaa1e21e33664d61ba03c06a3618c5e, type: 3}
   polyspatialCamTransform: {fileID: 2026256748}
+  highlightMaterial: {fileID: 0}
 --- !u!4 &1222491706
 Transform:
   m_ObjectHideFlags: 0
@@ -889,6 +890,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   m_Button: {fileID: 171432475}
   micController: {fileID: 1590167730}
+  autoStart: 0
 --- !u!1 &1265836881
 GameObject:
   m_ObjectHideFlags: 0
@@ -918,7 +920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e64bded67c19642389ab313fd173c9e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JointPrefab: {fileID: 6507399986997092475, guid: 691e278a236cd4d66b00a7c2b5df48b4, type: 3}
+  m_JointVisualsPrefab: {fileID: 0}
 --- !u!4 &1265836883
 Transform:
   m_ObjectHideFlags: 0
@@ -964,6 +966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDebugging: 0
+  appRef: {fileID: 0}
   api: ws://localhost:4000
 --- !u!4 &1386921066
 Transform:
@@ -1415,18 +1418,6 @@ MonoBehaviour:
   OpenWindowOnLoad: 1
   m_ShowVolumeCameraEventsFoldout: 0
   OnWindowEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  OnWindowOpened:
-    m_PersistentCalls:
-      m_Calls: []
-  OnWindowClosed:
-    m_PersistentCalls:
-      m_Calls: []
-  OnWindowResized:
-    m_PersistentCalls:
-      m_Calls: []
-  OnWindowFocused:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &2099502537

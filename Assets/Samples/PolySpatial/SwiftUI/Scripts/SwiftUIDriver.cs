@@ -1,8 +1,11 @@
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using AOT;
 using PolySpatial.Samples;
 using UnityEngine;
+
+#if UNITY_VISIONOS && !UNITY_EDITOR
+using System.Runtime.InteropServices;
+#endif
 
 namespace Samples.PolySpatial.SwiftUI.Scripts
 {
@@ -19,7 +22,12 @@ namespace Samples.PolySpatial.SwiftUI.Scripts
         [SerializeField]
         Transform m_SpawnPosition;
 
+        [SerializeField]
+        SwiftFPSCounter m_FPSCounter;
+
         bool m_SwiftUIWindowOpen = false;
+        int m_CubeCount= 0;
+        int m_SphereCount = 0;
 
         void OnEnable()
         {
@@ -33,7 +41,7 @@ namespace Samples.PolySpatial.SwiftUI.Scripts
             CloseSwiftUIWindow("HelloWorld");
         }
 
-        void WasPressed(string buttonText, MeshRenderer meshrenderer)
+        void WasPressed(string buttonText, MeshRenderer _)
         {
             if (m_SwiftUIWindowOpen)
             {
@@ -45,6 +53,14 @@ namespace Samples.PolySpatial.SwiftUI.Scripts
                 OpenSwiftUIWindow("HelloWorld");
                 m_SwiftUIWindowOpen = true;
             }
+
+            m_FPSCounter.enabled = m_SwiftUIWindowOpen;
+        }
+
+        public void ForceCloseWindow()
+        {
+            CloseSwiftUIWindow("HelloWorld");
+            m_SwiftUIWindowOpen = false;
         }
 
         delegate void CallbackDelegate(string command);
@@ -85,9 +101,20 @@ namespace Samples.PolySpatial.SwiftUI.Scripts
             var randomObject = Random.Range(0, m_ObjectsToSpawn.Count);
             var thing = Instantiate(m_ObjectsToSpawn[randomObject], m_SpawnPosition.position, Quaternion.identity);
             thing.GetComponent<MeshRenderer>().material.color = color;
+
+            if (randomObject == 0)
+            {
+                m_CubeCount++;
+                SetCubeCount(m_CubeCount);
+            }
+            else
+            {
+                m_SphereCount++;
+                SetSphereCount(m_SphereCount);
+            }
         }
 
-        #if UNITY_VISIONOS && !UNITY_EDITOR
+#if UNITY_VISIONOS && !UNITY_EDITOR
         [DllImport("__Internal")]
         static extern void SetNativeCallback(CallbackDelegate callback);
 
@@ -96,11 +123,20 @@ namespace Samples.PolySpatial.SwiftUI.Scripts
 
         [DllImport("__Internal")]
         static extern void CloseSwiftUIWindow(string name);
-        #else
+
+        [DllImport("__Internal")]
+        static extern void SetCubeCount(int count);
+
+        [DllImport("__Internal")]
+        static extern void SetSphereCount(int count);
+#else
         static void SetNativeCallback(CallbackDelegate callback) {}
         static void OpenSwiftUIWindow(string name) {}
         static void CloseSwiftUIWindow(string name) {}
-        #endif
 
+        static void SetCubeCount(int count) {}
+
+        static void SetSphereCount(int count) {}
+#endif
     }
 }

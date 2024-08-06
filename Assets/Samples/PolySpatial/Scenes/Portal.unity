@@ -1807,10 +1807,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8805378566288379837, guid: 18184386a48784570818c7a765714fb6, type: 3}
-      propertyPath: m_ARSession
-      value: 
-      objectReference: {fileID: 248604194}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
