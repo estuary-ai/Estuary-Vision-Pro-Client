@@ -18,7 +18,6 @@ namespace PolySpatial.Samples
         [SerializeField] private GameObject leftSpawnPrefab;
         [SerializeField] private Transform polyspatialCamTransform;
         [SerializeField] private Material highlightMaterial;
-        [SerializeField] private HandMenu handMenu;
 
 
 // #if UNITY_INCLUDE_XR_HANDS
@@ -55,7 +54,6 @@ namespace PolySpatial.Samples
                 if (leftPalmJoint.TryGetPose(out Pose leftPalmPose))
                 {
                     leftPalmTransform.position = leftPalmPose.position;
-                    handMenu.leftPalmAnchor = leftPalmTransform;
                 }
             }
 
