@@ -1518,7 +1518,6 @@ MonoBehaviour:
   leftSpawnPrefab: {fileID: 7334852416975427255, guid: 42483656567e942669d0454b9b443a91, type: 3}
   polyspatialCamTransform: {fileID: 2026256748}
   highlightMaterial: {fileID: 2100000, guid: afed65409d0494206adc4526266433aa, type: 2}
-  handMenu: {fileID: 1993571174}
 --- !u!4 &1222491706
 Transform:
   m_ObjectHideFlags: 0
