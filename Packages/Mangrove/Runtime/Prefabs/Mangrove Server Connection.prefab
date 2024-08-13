@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NumFramesInBatch: 1
-  FrameLength: 256
+  FrameLength: 64
   _micSource: {fileID: 0}
 --- !u!82 &8130205405596648124
 AudioSource:
@@ -348,7 +348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDebugging: 0
-  api: ws://localhost:4000
+  api: ws://127.0.0.1:4000
 --- !u!114 &5674033559398530494
 MonoBehaviour:
   m_ObjectHideFlags: 0

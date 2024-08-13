@@ -9,7 +9,7 @@ namespace Mangrove
 	public class MicController : MonoBehaviour
 	{
 		public int NumFramesInBatch = 1;
-		public int FrameLength = 256;
+		public int FrameLength = 64;
 		private bool isStreamAllowed = false;
 		private AudioPacket recentAudioPacket = null;
 		private AudioPacket audioToBeRecorded = null;
