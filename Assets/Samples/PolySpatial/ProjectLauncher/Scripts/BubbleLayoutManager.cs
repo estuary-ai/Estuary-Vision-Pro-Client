@@ -32,7 +32,7 @@ namespace PolySpatial.Samples
                 var radians = Mathf.Deg2Rad * (spacing * i);
                 var x = m_CarouselRadius * Mathf.Sin(radians);
                 var z = m_CarouselRadius * Mathf.Cos(radians);
-                m_LevelBubbles[i].position = new Vector3(x, m_StatingYOffset, z);
+                m_LevelBubbles[i].localPosition = new Vector3(x, m_StatingYOffset, z);
                 m_LevelBubbles[i].parent = m_BubbleRoot;
             }
         }

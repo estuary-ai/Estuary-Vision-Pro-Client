@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 4865283210833506963}
   - component: {fileID: 7075394709316224365}
   - component: {fileID: 6709778961499388624}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: AR Default Plane
-  m_TagString: Untagged
+  m_TagString: Plane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 1201304001932730168}
   - component: {fileID: 2848491744129892896}
   - component: {fileID: 8468572608148911420}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332,7 +332,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 953618417543664427}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: List Item Text Classification
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -371,7 +371,7 @@ GameObject:
   - component: {fileID: 4423566779951415369}
   - component: {fileID: 6309414883080503735}
   - component: {fileID: 7963618835253693426}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Data
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -540,7 +540,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3073037326089103357}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: List Item Text Alignment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -579,7 +579,7 @@ GameObject:
   - component: {fileID: 1242680279333078694}
   - component: {fileID: 903300547126378665}
   - component: {fileID: 3036435496782109483}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -833,7 +833,7 @@ GameObject:
   - component: {fileID: 901292365187319513}
   - component: {fileID: 7909526017125007491}
   - component: {fileID: 912424416095616942}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Data
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1002,7 +1002,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5421673965680166955}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Plane Data Tooltip
   m_TagString: Untagged
   m_Icon: {fileID: 0}

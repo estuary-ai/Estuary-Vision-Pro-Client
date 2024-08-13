@@ -7,27 +7,33 @@ namespace PolySpatial.Samples
 {
     public class LevelBubbleManager : MonoBehaviour
     {
-        [SerializeField] Transform m_BubbleRoot;
+        [SerializeField]
+        Transform m_BubbleRoot;
 
-        [SerializeField] BubbleLayoutManager m_BubbleLayoutManager;
+        [SerializeField]
+        BubbleLayoutManager m_BubbleLayoutManager;
 
-        [SerializeField] LevelData m_LevelData;
+        [SerializeField]
+        LevelData m_LevelData;
 
-        [SerializeField] float m_RotateSpeed = 300.0f;
+        [SerializeField]
+        float m_RotateSpeed = 300.0f;
 
-        [SerializeField] TMP_Text m_LevelTitle;
+        [SerializeField]
+        TMP_Text m_LevelTitle;
 
-        [SerializeField] TMP_Text m_LevelDescription;
+        [SerializeField]
+        TMP_Text m_LevelDescription;
 
         List<BubbleSize> m_BubbleSizes;
         List<GameObject> m_BubbleObjects;
         List<BubbleCircleNode> m_BubbleCircleNodes;
         float m_StartTime;
         float m_RotationLength;
-        int m_CurrentSelectedIndex;
         Vector3 m_TargetRotation;
         Vector3 m_PreviousRotation;
         const float k_StartingOffset = 180.0f;
+        static int s_CurrentSelectedIndex = 0;
 
         void Start()
         {
@@ -43,7 +49,10 @@ namespace PolySpatial.Samples
             UpdateLevelInfo();
             MakeBubbleCircle();
             SetBubbleScale();
-            m_TargetRotation = new Vector3(0, k_StartingOffset, 0);
+
+            // setup rotation for previous selection
+            var rotationValue = 360.0f / m_BubbleObjects.Count;
+            m_TargetRotation = new Vector3(0, k_StartingOffset - (s_CurrentSelectedIndex * rotationValue), 0);
         }
 
         void Update()
@@ -88,21 +97,21 @@ namespace PolySpatial.Samples
             m_TargetRotation += new Vector3(0, direction * m_BubbleLayoutManager.BubbleSpacing, 0);
 
             // cycle index around 0 depending on which button was pressed
-            if (m_CurrentSelectedIndex == m_BubbleSizes.Count - 1 && !left)
+            if (s_CurrentSelectedIndex == m_BubbleSizes.Count - 1 && !left)
             {
-                m_CurrentSelectedIndex = 0;
+                s_CurrentSelectedIndex = 0;
             }
             else
             {
-                m_CurrentSelectedIndex -= direction;
-                if (m_CurrentSelectedIndex < 0)
+                s_CurrentSelectedIndex -= direction;
+                if (s_CurrentSelectedIndex < 0)
                 {
-                    m_CurrentSelectedIndex = m_BubbleSizes.Count - 1;
+                    s_CurrentSelectedIndex = m_BubbleSizes.Count - 1;
                 }
 
-                if (m_CurrentSelectedIndex > m_BubbleSizes.Count)
+                if (s_CurrentSelectedIndex > m_BubbleSizes.Count)
                 {
-                    m_CurrentSelectedIndex = 0;
+                    s_CurrentSelectedIndex = 0;
                 }
             }
 
@@ -113,10 +122,10 @@ namespace PolySpatial.Samples
         void SetBubbleScale()
         {
             // large
-            var currentSelection = m_BubbleSizes[m_CurrentSelectedIndex];
+            var currentSelection = m_BubbleSizes[s_CurrentSelectedIndex];
             // medium
-            var nextBubble = m_BubbleCircleNodes[m_CurrentSelectedIndex].NextBubble;
-            var previousBubble = m_BubbleCircleNodes[m_CurrentSelectedIndex].PreviousBubble;
+            var nextBubble = m_BubbleCircleNodes[s_CurrentSelectedIndex].NextBubble;
+            var previousBubble = m_BubbleCircleNodes[s_CurrentSelectedIndex].PreviousBubble;
             // small
             GameObject nextNextBubble = null;
             GameObject previousPreviousBubble = null;
@@ -150,7 +159,7 @@ namespace PolySpatial.Samples
 
         public void LoadSelectedLevel()
         {
-            m_BubbleObjects[m_CurrentSelectedIndex].GetComponent<LoadLevelButton>().Press();
+            m_BubbleObjects[s_CurrentSelectedIndex].GetComponent<LoadLevelButton>().Press();
         }
 
         void MakeBubbleCircle()
@@ -181,7 +190,7 @@ namespace PolySpatial.Samples
 
         void UpdateLevelInfo()
         {
-            var levelType = m_BubbleObjects[m_CurrentSelectedIndex].GetComponent<LoadLevelButton>().LevelType;
+            var levelType = m_BubbleObjects[s_CurrentSelectedIndex].GetComponent<LoadLevelButton>().LevelType;
             m_LevelTitle.text = m_LevelData.GetLevelTitle(levelType);
             m_LevelDescription.text = m_LevelData.GetLevelDescription(levelType);
         }

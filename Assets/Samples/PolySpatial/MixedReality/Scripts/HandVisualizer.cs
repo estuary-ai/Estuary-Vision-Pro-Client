@@ -1,10 +1,10 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-#if UNITY_INCLUDE_XR_HANDS
+// Requires hands package and VisionOSHandExtensions which is only compiled for visionOS and Editor
+#if UNITY_INCLUDE_XR_HANDS && (UNITY_VISIONOS || UNITY_EDITOR)
+using System.Collections.Generic;
 using UnityEngine.XR.Hands;
+using UnityEngine.XR.VisionOS;
 #endif
 
 namespace PolySpatial.Samples
@@ -12,14 +12,14 @@ namespace PolySpatial.Samples
     public class HandVisualizer : MonoBehaviour
     {
         [SerializeField]
-        GameObject m_JointPrefab;
+        GameObject m_JointVisualsPrefab;
 
-#if UNITY_INCLUDE_XR_HANDS
+#if UNITY_INCLUDE_XR_HANDS && (UNITY_VISIONOS || UNITY_EDITOR)
         XRHandSubsystem m_Subsystem;
         HandGameObjects m_LeftHandGameObjects;
         HandGameObjects m_RightHandGameObjects;
 
-        static readonly List<XRHandSubsystem> s_SubsystemsReuse = new List<XRHandSubsystem>();
+        static readonly List<XRHandSubsystem> k_SubsystemsReuse = new();
 
         protected void OnEnable()
         {
@@ -33,15 +33,18 @@ namespace PolySpatial.Samples
         protected void OnDisable()
         {
             if (m_Subsystem != null)
-            {
-                m_Subsystem.trackingAcquired -= OnTrackingAcquired;
-                m_Subsystem.trackingLost -= OnTrackingLost;
-                m_Subsystem.updatedHands -= OnUpdatedHands;
-                m_Subsystem = null;
-            }
+                UnsubscribeSubsystem();
 
             UpdateRenderingVisibility(m_LeftHandGameObjects, false);
             UpdateRenderingVisibility(m_RightHandGameObjects, false);
+        }
+
+        void UnsubscribeSubsystem()
+        {
+            m_Subsystem.trackingAcquired -= OnTrackingAcquired;
+            m_Subsystem.trackingLost -= OnTrackingLost;
+            m_Subsystem.updatedHands -= OnUpdatedHands;
+            m_Subsystem = null;
         }
 
         protected void OnDestroy()
@@ -61,24 +64,30 @@ namespace PolySpatial.Samples
 
         protected void Update()
         {
-            if (m_Subsystem != null && m_Subsystem.running)
-                return;
-
-            SubsystemManager.GetSubsystems(s_SubsystemsReuse);
-            var foundRunningHandSubsystem = false;
-            for (var i = 0; i < s_SubsystemsReuse.Count; ++i)
+            if (m_Subsystem != null)
             {
-                var handSubsystem = s_SubsystemsReuse[i];
+                if (m_Subsystem.running)
+                    return;
+
+                UnsubscribeSubsystem();
+                UpdateRenderingVisibility(m_LeftHandGameObjects, false);
+                UpdateRenderingVisibility(m_RightHandGameObjects, false);
+                return;
+            }
+
+            SubsystemManager.GetSubsystems(k_SubsystemsReuse);
+            for (var i = 0; i < k_SubsystemsReuse.Count; ++i)
+            {
+                var handSubsystem = k_SubsystemsReuse[i];
                 if (handSubsystem.running)
                 {
                     UnsubscribeHandSubsystem();
                     m_Subsystem = handSubsystem;
-                    foundRunningHandSubsystem = true;
                     break;
                 }
             }
 
-            if (!foundRunningHandSubsystem)
+            if (m_Subsystem == null)
                 return;
 
             if (m_LeftHandGameObjects == null)
@@ -86,7 +95,7 @@ namespace PolySpatial.Samples
                 m_LeftHandGameObjects = new HandGameObjects(
                     Handedness.Left,
                     transform,
-                    m_JointPrefab);
+                    m_JointVisualsPrefab);
             }
 
             if (m_RightHandGameObjects == null)
@@ -94,7 +103,7 @@ namespace PolySpatial.Samples
                 m_RightHandGameObjects = new HandGameObjects(
                     Handedness.Right,
                     transform,
-                    m_JointPrefab);
+                    m_JointVisualsPrefab);
             }
 
             UpdateRenderingVisibility(m_LeftHandGameObjects, m_Subsystem.leftHand.isTracked);
@@ -128,7 +137,7 @@ namespace PolySpatial.Samples
             if (handGameObjects == null)
                 return;
 
-            handGameObjects.ToggleDebugDrawJoints(isTracked);
+            handGameObjects.SetHandActive(isTracked);
         }
 
         void OnTrackingAcquired(XRHand hand)
@@ -178,10 +187,9 @@ namespace PolySpatial.Samples
 
         class HandGameObjects
         {
-            GameObject m_DrawJointsParent;
+            GameObject m_JointVisualsParent;
 
-            readonly GameObject[] m_DrawJoints = new GameObject[XRHandJointID.EndMarker.ToIndex()];
-            readonly LineRenderer[] m_Lines = new LineRenderer[XRHandJointID.EndMarker.ToIndex()];
+            readonly JointVisuals[] m_JointVisuals = new JointVisuals[XRHandJointID.EndMarker.ToIndex() + VisionOSHandExtensions.NumVisionOSJoints];
 
             static Vector3[] s_LinePointsReuse = new Vector3[2];
             const float k_LineWidth = 0.005f;
@@ -189,31 +197,32 @@ namespace PolySpatial.Samples
             public HandGameObjects(
                 Handedness handedness,
                 Transform parent,
-                GameObject debugDrawPrefab)
+                GameObject jointVisualsPrefab)
             {
                 void AssignJoint(
-                    XRHandJointID jointId,
+                    XRHandJointID jointID,
                     Transform drawJointsParent)
                 {
-                    var jointIndex = jointId.ToIndex();
-                    var joint = Instantiate(debugDrawPrefab);
-                    var jointTransform = joint.transform;
-                    jointTransform.parent = drawJointsParent;
-                    joint.name = jointId.ToString();
-                    m_DrawJoints[jointIndex] = joint;
+                    var jointIndex = jointID.ToIndex();
+                    var jointVisualsObject = Instantiate(jointVisualsPrefab, drawJointsParent, false);
+                    var jointName = jointID < XRHandJointID.EndMarker ? jointID.ToString() : ((VisionOSHandJointID)jointID).ToString();
+                    jointVisualsObject.name = $"{jointName}";
+                    var jointVisuals = jointVisualsObject.GetComponent<JointVisuals>();
 
-                    m_Lines[jointIndex] = m_DrawJoints[jointIndex].GetComponent<LineRenderer>();
-                    m_Lines[jointIndex].startWidth = m_Lines[jointIndex].endWidth = k_LineWidth;
-                    s_LinePointsReuse[0] = s_LinePointsReuse[1] = jointTransform.position;
-                    m_Lines[jointIndex].SetPositions(s_LinePointsReuse);
+                    var line = jointVisuals.Line;
+                    line.startWidth = line.endWidth = k_LineWidth;
+                    s_LinePointsReuse[0] = s_LinePointsReuse[1] = jointVisuals.transform.position;
+                    line.SetPositions(s_LinePointsReuse);
+
+                    m_JointVisuals[jointIndex] = jointVisuals;
                 }
 
-                m_DrawJointsParent = new GameObject();
-                var parentTransform = m_DrawJointsParent.transform;
+                m_JointVisualsParent = new GameObject();
+                var parentTransform = m_JointVisualsParent.transform;
                 parentTransform.parent = parent;
                 parentTransform.localPosition = Vector3.zero;
                 parentTransform.localRotation = Quaternion.identity;
-                m_DrawJointsParent.name = handedness + "HandDebugDrawJoints";
+                m_JointVisualsParent.name = $"{handedness} Hand Joints";
 
                 AssignJoint(XRHandJointID.Wrist, parentTransform);
                 AssignJoint(XRHandJointID.Palm, parentTransform);
@@ -231,29 +240,28 @@ namespace PolySpatial.Samples
                         AssignJoint(XRHandJointIDUtility.FromIndex(jointIndex), parentTransform);
                     }
                 }
+
+                AssignJoint((XRHandJointID)VisionOSHandJointID.ForearmWrist, parentTransform);
+                AssignJoint((XRHandJointID)VisionOSHandJointID.ForearmArm, parentTransform);
             }
 
             public void OnDestroy()
             {
-                for (var jointIndex = 0; jointIndex < m_DrawJoints.Length; ++jointIndex)
+                var length = m_JointVisuals.Length;
+                for (var jointIndex = 0; jointIndex < length; ++jointIndex)
                 {
-                    Destroy(m_DrawJoints[jointIndex]);
-                    m_DrawJoints[jointIndex] = null;
+                    var visuals = m_JointVisuals[jointIndex];
+                    Destroy(visuals.gameObject);
+                    m_JointVisuals[jointIndex] = default;
                 }
 
-                Destroy(m_DrawJointsParent);
-                m_DrawJointsParent = null;
+                Destroy(m_JointVisualsParent);
+                m_JointVisualsParent = null;
             }
 
-            public void ToggleDebugDrawJoints(bool debugDrawJoints)
+            public void SetHandActive(bool isActive)
             {
-                for (var jointIndex = 0; jointIndex < m_DrawJoints.Length; ++jointIndex)
-                {
-                    ToggleRenderers<MeshRenderer>(debugDrawJoints, m_DrawJoints[jointIndex].transform);
-                    m_Lines[jointIndex].enabled = debugDrawJoints;
-                }
-
-                m_Lines[0].enabled = false;
+                m_JointVisualsParent.SetActive(isActive);
             }
 
             public void UpdateJoints(
@@ -284,6 +292,10 @@ namespace PolySpatial.Samples
                         UpdateJoint(hand.GetJoint(XRHandJointIDUtility.FromIndex(jointIndex)), ref parentPose, ref parentIndex);
                     }
                 }
+
+                parentIndex = XRHandJointID.Wrist.ToIndex();
+                UpdateJoint(hand.GetVisionOSJoint(VisionOSHandJointID.ForearmWrist), ref wristPose, ref parentIndex);
+                UpdateJoint(hand.GetVisionOSJoint(VisionOSHandJointID.ForearmArm), ref wristPose, ref parentIndex);
             }
 
             void UpdateJoint(
@@ -296,26 +308,24 @@ namespace PolySpatial.Samples
                     return;
 
                 var jointIndex = joint.id.ToIndex();
-                var drawJoint = m_DrawJoints[jointIndex];
-                var line = m_Lines[jointIndex];
-                if ((joint.trackingState & XRHandJointTrackingState.Pose) == 0 || !joint.TryGetPose(out var pose))
+                var visuals = m_JointVisuals[jointIndex];
+                if (!joint.TryGetPose(out var pose))
                 {
-                    drawJoint.SetActive(false);
-                    line.gameObject.SetActive(false);
+                    visuals.gameObject.SetActive(false);
                     return;
                 }
 
-                drawJoint.SetActive(true);
-                line.gameObject.SetActive(true);
-                var jointTransform = drawJoint.transform;
-                jointTransform.localPosition = pose.position;
-                jointTransform.localRotation = pose.rotation;
+                joint.TryGetVisionOSTrackingState(out var trackingState);
+                visuals.SetIsTracked(trackingState);
+                var visualsTransform = visuals.transform;
+                visualsTransform.SetLocalPositionAndRotation(pose.position, pose.rotation);
 
                 if (joint.id != XRHandJointID.Wrist)
                 {
-                    s_LinePointsReuse[0] = m_DrawJoints[parentIndex].transform.position;
-                    s_LinePointsReuse[1] = jointTransform.position;
-                    line.SetPositions(s_LinePointsReuse);
+                    var parentVisuals = m_JointVisuals[parentIndex];
+                    s_LinePointsReuse[0] = parentVisuals.transform.position;
+                    s_LinePointsReuse[1] = visualsTransform.position;
+                    visuals.Line.SetPositions(s_LinePointsReuse);
                 }
 
                 if (cacheParentPose)
@@ -323,16 +333,6 @@ namespace PolySpatial.Samples
                     parentPose = pose;
                     parentIndex = jointIndex;
                 }
-            }
-
-            static void ToggleRenderers<TRenderer>(bool toggle, Transform rendererTransform)
-                where TRenderer : Renderer
-            {
-                if (rendererTransform.TryGetComponent<TRenderer>(out var renderer))
-                    renderer.enabled = toggle;
-
-                for (var childIndex = 0; childIndex < rendererTransform.childCount; ++childIndex)
-                    ToggleRenderers<TRenderer>(toggle, rendererTransform.GetChild(childIndex));
             }
         }
 #endif

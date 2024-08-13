@@ -752,12 +752,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 727977843}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2115460895}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &727977846
 MonoBehaviour:
@@ -800,7 +800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e64bded67c19642389ab313fd173c9e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JointPrefab: {fileID: 6507399986997092475, guid: 691e278a236cd4d66b00a7c2b5df48b4, type: 3}
+  m_JointVisualsPrefab: {fileID: 6507399986997092475, guid: 691e278a236cd4d66b00a7c2b5df48b4, type: 3}
 --- !u!114 &727977849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1094,21 +1094,12 @@ MonoBehaviour:
   m_Dimensions: {x: 1, y: 1, z: 1}
   m_IsUniformScale: 0
   m_OutputConfiguration: {fileID: 11400000, guid: 724776171a2184c16b69358d20ac9b90, type: 2}
-  CullingMask:
+  m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
   OpenWindowOnLoad: 1
   m_ShowVolumeCameraEventsFoldout: 0
-  OnWindowOpened:
-    m_PersistentCalls:
-      m_Calls: []
-  OnWindowClosed:
-    m_PersistentCalls:
-      m_Calls: []
-  OnWindowResized:
-    m_PersistentCalls:
-      m_Calls: []
-  OnWindowFocused:
+  OnWindowEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &2115460893
@@ -1160,6 +1151,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1517854672}
+  - {fileID: 727977844}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2115460896
@@ -1422,7 +1414,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 203844589}
   - {fileID: 2115460895}
-  - {fileID: 727977844}
   - {fileID: 248604195}
   - {fileID: 2026256748}
   - {fileID: 1982171368}

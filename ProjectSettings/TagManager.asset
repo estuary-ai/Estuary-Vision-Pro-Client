@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Navigable
+  - Seat
+  - Plane
   layers:
   - Default
   - TransparentFX
@@ -34,7 +37,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Navigation
   - XR Simulation
   - PolySpatial
   m_SortingLayers:

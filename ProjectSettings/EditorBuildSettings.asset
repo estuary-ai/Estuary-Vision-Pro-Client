@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Samples/PolySpatial/Scenes/ProjectLauncher.unity
     guid: 8b8b8ea8b8131004382443fe7d26cba7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Samples/PolySpatial/Scenes/BalloonGallery.unity
     guid: 4c268b318e1821b4f8da83f415cac049
   - enabled: 0
@@ -18,16 +18,33 @@ EditorBuildSettings:
     path: Assets/Samples/PolySpatial/Scenes/InputDataVisualization.unity
     guid: 75f1bad34defd4c1cb72f9582141573c
   - enabled: 0
-    path: Assets/Samples/PolySpatial/Scenes/Manipulation.unity
+    path: Assets/Samples/PolySpatial/Scenes/Manipulation_XRI.unity
     guid: 139d55bb8d7b3fd4bbfbefe95464cc7f
   - enabled: 0
     path: Assets/Samples/PolySpatial/Scenes/SpatialUI.unity
     guid: 6f4448466bfd94eed8847ae973dbc228
   - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Samples/PolySpatial/Scenes/Meshing.unity
+    guid: 294dd2730251a4021a900b103e4d66a9
+  - enabled: 0
+    path: Assets/Samples/PolySpatial/Scenes/MixedReality.unity
+    guid: 4062257bd31be4dc980c3241c72cef79
+  - enabled: 0
+    path: Assets/Samples/PolySpatial/Scenes/ImageTracking.unity
+    guid: fa1b05869d02c2c44941fbd777088126
+  - enabled: 0
+    path: Assets/Scenes/SampleUnbounded.unity
+    guid: 333fadc7a9af24e65bce4222f72a19b4
+  - enabled: 0
+    path: Assets/Samples/XR Interaction Toolkit/3.0.3/visionOS/VolumeDemo.unity
+    guid: f8dac43642fcf437b9bd0239b89eb6db
+  - enabled: 1
+    path: Assets/Scenes/IVADemo.unity
+    guid: ce877fa5ee89bf04691196b59b800b2c
   m_configObjects:
+    UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 71e7c2998302442fa95f0eaa1a968151, type: 2}
     UnityEditor.XR.VisionOS.VisionOSSettings: {fileID: 11400000, guid: 25e1f68848051c946b9048e8426e646c, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: bb65518a4a80049acbc5e85e70dbbee0, type: 2}
+    com.unity.polyspatial.xr.xr_settings: {fileID: 11400000, guid: b7411f9a0d5db414998a52a3ca838e78, type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: d1b44b12dbc12554c862e577406554bd, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 91384b14c79fa804d924648a4e81b07c, type: 2}

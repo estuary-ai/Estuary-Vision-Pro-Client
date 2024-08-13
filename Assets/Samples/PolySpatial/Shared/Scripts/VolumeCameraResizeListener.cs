@@ -1,7 +1,5 @@
-using System;
 using Unity.PolySpatial;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace PolySpatial.Samples
 {
@@ -48,15 +46,13 @@ namespace PolySpatial.Samples
             // The first time a window is opened for a volume camera, a WindowOpened event will be triggered.
             // If the volume window changes size after that, a WindowResized event will be triggered.
             // We want to handle both in the same way, so we can just add the same listener to both events.
-            volumeCamera.OnWindowOpened.AddListener(VolumeWindowResized);
-            volumeCamera.OnWindowResized.AddListener(VolumeWindowResized);
+            volumeCamera.OnWindowEvent.AddListener(VolumeWindowResized);
         }
 
         void OnDisable()
         {
             var volumeCamera = GetComponent<VolumeCamera>();
-            volumeCamera.OnWindowOpened.RemoveListener(VolumeWindowResized);
-            volumeCamera.OnWindowResized.RemoveListener(VolumeWindowResized);
+            volumeCamera.OnWindowEvent.RemoveListener(VolumeWindowResized);
         }
 
         // We are being informed of the actual dimensions of the opened window (windowDimensions).
@@ -67,9 +63,10 @@ namespace PolySpatial.Samples
         // The windowDimensions are the dimensions of the output window, in the platform's units. The contentDimensions
         // are the dimensions that your Volume Camera's dimensions are mapped to, in Unity's coordinate units.
         // (On visionOS, these will typically be the same, but they may not be on other platforms.)
-        void VolumeWindowResized(Vector3 windowDimensions, Vector3 contentDimensions, VolumeCamera.PolySpatialVolumeCameraMode mode)
+
+        void VolumeWindowResized(VolumeCamera.WindowState windowState)
         {
-            if (mode == VolumeCamera.PolySpatialVolumeCameraMode.Unbounded)
+            if (windowState.Mode == VolumeCamera.PolySpatialVolumeCameraMode.Unbounded)
                 return;
 
             var volumeCamera = GetComponent<VolumeCamera>();
@@ -79,7 +76,7 @@ namespace PolySpatial.Samples
             var desiredOutputDimensions = volumeCamera.WindowConfiguration.Dimensions;
 
             // If they match, there's nothing to do; we got what we asked for.
-            if (contentDimensions == desiredOutputDimensions)
+            if (windowState.ContentDimensions == desiredOutputDimensions)
                 return;
 
             // This is the original scale factor between the window dimensions and the volume camera dimensions, in order
@@ -91,7 +88,8 @@ namespace PolySpatial.Samples
             // First, compute dimensions such that content remains the same size and shape as it would have if we had received
             // our requested dimensions. If we received smaller dimensions, this would cause the content to be cropped. If bigger,
             // surrounding content will be visible.
-            var newDimensions = contentDimensions;
+            var newDimensions = windowState.ContentDimensions;
+            var originalDimensions = windowState.ContentDimensions;
             newDimensions.Scale(originalScaleFactor);
 
             if (Mode == ResizeMode.ScaleToFit)
@@ -99,18 +97,18 @@ namespace PolySpatial.Samples
                 // If instead we want to scale the content to fit, further scale these
                 // dimensions based on the smallest output dimension. (This may not be
                 // correct depending on your content, but it's a reasonable default.)
-                var smallestSize = contentDimensions.x;
-                float scale = desiredOutputDimensions.x / contentDimensions.x;
+                var smallestSize = originalDimensions.x;
+                float scale = desiredOutputDimensions.x / originalDimensions.x;
 
-                if (contentDimensions.y < smallestSize)
+                if (originalDimensions.y < smallestSize)
                 {
-                    smallestSize = contentDimensions.y;
-                    scale = desiredOutputDimensions.y / contentDimensions.y;
+                    smallestSize = originalDimensions.y;
+                    scale = desiredOutputDimensions.y / originalDimensions.y;
                 }
 
-                if (contentDimensions.z < smallestSize)
+                if (originalDimensions.z < smallestSize)
                 {
-                    scale = desiredOutputDimensions.z / contentDimensions.z;
+                    scale = desiredOutputDimensions.z / originalDimensions.z;
                 }
 
                 newDimensions *= scale;
@@ -118,7 +116,7 @@ namespace PolySpatial.Samples
 
             volumeCamera.Dimensions = newDimensions;
 
-            Debug.Log($"Volume camera dimensions set to {newDimensions} (got window of size {contentDimensions}, expected {desiredOutputDimensions})");
+            Debug.Log($"Volume camera dimensions set to {newDimensions} (got window of size {originalDimensions}, expected {desiredOutputDimensions})");
         }
     }
 }
