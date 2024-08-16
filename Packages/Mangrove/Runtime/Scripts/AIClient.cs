@@ -268,8 +268,8 @@ namespace Mangrove
                 Debug.Log("Socket is null. Can't send audio packet");
                 return;
             }
-            Debug.Log($"{DEBUG_PREFIX} Emitting audio packet to server");
-            Debug.Log($"{DEBUG_PREFIX} AudioPacket SampleWidth {audioPacket.sampleWidth}");
+            // Debug.Log($"{DEBUG_PREFIX} Emitting audio packet to server");
+            // Debug.Log($"{DEBUG_PREFIX} AudioPacket SampleWidth {audioPacket.sampleWidth}");
             Emit(REQUESTS.AUDIO_STREAM, audioPacket);
         }
 
