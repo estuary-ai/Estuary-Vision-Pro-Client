@@ -257,7 +257,7 @@ namespace Mangrove
 
 		static void WriteHeader(FileStream fileStream, AudioClip clip)
 		{
-
+			// Debug.Log("[MicController] Writing header");
 			var hz = clip.frequency;
 			var channels = clip.channels;
 			var samples = clip.samples;

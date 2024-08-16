@@ -11,7 +11,7 @@ namespace Mangrove
     public class AIClient : MonoBehaviour
     {
         // Supported Events and Requests defined at the bottom
-        public bool isDebugging = false;
+        public bool autoConnectOnStart = true;
 
         private SocketIOUnity socket;
 
@@ -19,8 +19,9 @@ namespace Mangrove
         private BotResponseHandler botResponseHandler;
         private MicController micController;
         private BotVoice botVoice;
+        private string DEBUG_PREFIX = "[AIClient]";
 
-        [field: SerializeField] public string api = "ws://localhost:4000";
+        [field: SerializeField] public string api = "ws://127.0.0.1:4000";
 
         /// <summary>
         /// Singleton access
@@ -61,15 +62,14 @@ namespace Mangrove
             micController.OnAudioFrameCaptured += MicController_OnAudioPacketCaptured;
             // camController.OnVideoFrameCaptured += CamController_OnVideoFrameCaptured;
 
-            if (isDebugging)
+            if (autoConnectOnStart)
             {
                 // UnityThread.executeInLateUpdate(() =>
                 // {
-                Debug.Log("DigitalAssistant is in DEBUG mode!");
+                Debug.Log("Auto connecting to Mangrove!");
                 StartClient(api);
                 // });
             }
-
             micController.Init();
         }
 
@@ -268,7 +268,8 @@ namespace Mangrove
                 Debug.Log("Socket is null. Can't send audio packet");
                 return;
             }
-
+            Debug.Log($"{DEBUG_PREFIX} Emitting audio packet to server");
+            Debug.Log($"{DEBUG_PREFIX} AudioPacket SampleWidth {audioPacket.sampleWidth}");
             Emit(REQUESTS.AUDIO_STREAM, audioPacket);
         }
 

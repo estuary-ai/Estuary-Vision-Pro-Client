@@ -44,7 +44,7 @@ namespace Mangrove
         public static long currentPacketID = 0;
 
         // TODO: check sampleWidth default for mic
-        public AudioPacket(float[] audio, int numChannels, int sampleRate, double timestampMS, int sampleWidth = 2)
+        public AudioPacket(float[] audio, int numChannels, int sampleRate, double timestampMS, int sampleWidth = 4)
         {
             this.packetID = currentPacketID;
             currentPacketID += 1; // CLASS LEVEL
