@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028468, g: 0.22571594, b: 0.3069237, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1285,6 +1285,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae1e1ea4162824872a67aeb64c6cf077, type: 3}
+--- !u!1 &477630777 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7555753407630862037, guid: a4cfae9dec84a40d7aa411d4e923a8f6, type: 3}
+  m_PrefabInstance: {fileID: 1913524968269592765}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &486695290
 GameObject:
   m_ObjectHideFlags: 0
@@ -3433,6 +3438,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5650371729256867415, guid: d866fa07c3db34ad88facc8441b034f5, type: 3}
   m_PrefabInstance: {fileID: 1876503619}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1922643953
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1922643954}
+  m_Layer: 0
+  m_Name: debug_box
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1922643954
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1922643953}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.45761532, y: 0.10988467, z: -0.68798184}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1968318307
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4061,8 +4097,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1760703bbd54c04488a8d10600262ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PlanePrefab: {fileID: 680114521416276321, guid: 4f670e8dafe10433288ef12c82d36ce9, type: 3}
-  m_DetectionMode: 1
 --- !u!1 &2121586913
 GameObject:
   m_ObjectHideFlags: 0
@@ -4344,6 +4378,32 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 1125947144917293977, guid: a4cfae9dec84a40d7aa411d4e923a8f6, type: 3}
   m_PrefabInstance: {fileID: 1913524968269592765}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1116371902162564803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 477630777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab735a85afd037340861ab163308a934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentAnimator: {fileID: 1116371902162564801}
+--- !u!114 &1116371902162564804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 477630777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40d60c3dc1d351948b3b68cea3984bb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentAnimator: {fileID: 1116371902162564801}
 --- !u!1001 &1913524968269592765
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4415,7 +4475,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7555753407630862037, guid: a4cfae9dec84a40d7aa411d4e923a8f6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1116371902162564804}
+    - targetCorrespondingSourceObject: {fileID: 7555753407630862037, guid: a4cfae9dec84a40d7aa411d4e923a8f6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1116371902162564803}
   m_SourcePrefab: {fileID: 100100000, guid: a4cfae9dec84a40d7aa411d4e923a8f6, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -4439,3 +4505,4 @@ SceneRoots:
   - {fileID: 342268423}
   - {fileID: 222235164}
   - {fileID: 40576216}
+  - {fileID: 1922643954}
