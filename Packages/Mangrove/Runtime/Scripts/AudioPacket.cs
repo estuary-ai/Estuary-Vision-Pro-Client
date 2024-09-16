@@ -9,12 +9,13 @@ namespace Mangrove
         public int sampleRate;
         public int numChannels;
         public int sampleWidth;
+        public int timestamp; // miliseconds
         // public int packetID;
 
         public String ToString()
         {
             return "Audio Bytes:  " + bytes + " Sample Rate: " + sampleRate + " Num Channels: " + numChannels +
-                   " Sample Width: " + sampleWidth + " Length: " + bytes.Length;
+                   " Sample Width: " + sampleWidth + " Length: " + bytes.Length + " Timestamp: " + timestamp;
             // + " Packet ID: " + packetID;
         }
     }

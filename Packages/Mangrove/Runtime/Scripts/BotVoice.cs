@@ -11,9 +11,11 @@ namespace Mangrove
     {
         // public AudioClip activateClip;
         // public AudioClip terminateClip;
-        private Queue<AudioClip> _clipQueue;
+        private Queue<IncomingAudioPacket> _incomingAudioPacketQueue;
         [SerializeField] private AudioSource audioSource;
         private bool _isSpeaking;
+        private int _offset;
+        private int clipPlayedTimestamp;
 
         /// <summary>
         /// Singleton access
@@ -45,7 +47,7 @@ namespace Mangrove
         void Start()
         {
             if (!audioSource) audioSource = GetComponent<AudioSource>();
-            _clipQueue = new Queue<AudioClip>();
+            _incomingAudioPacketQueue = new Queue<IncomingAudioPacket>();
         }
 
 
@@ -54,18 +56,36 @@ namespace Mangrove
         {
             if (audioSource.isPlaying == false)
             {
-                lock (_clipQueue)
+                lock (_incomingAudioPacketQueue)
                 {
-                    if (_clipQueue.Count > 0)
+                    if (_incomingAudioPacketQueue.Count > 0)
                     {
-                        AudioClip clip = _clipQueue.Dequeue();
+                        IncomingAudioPacket packet = _incomingAudioPacketQueue.Dequeue();
+                        Debug.Log("Packet timestamp: " + packet.timestamp + " _offset: " + _offset + " audioSource.time: " + audioSource.time);
+                        if (packet.timestamp < _offset + audioSource.time)
+                        {
+                            Debug.Log("Packet skipping!");
+                            audioSource.Stop();
+                            return;
+                        }
+                        AudioClip convertedClip = CreateAudioClipFromAudioPacket(packet);
+                        if(convertedClip == null) return;
                         _isSpeaking = true;
-                        audioSource.PlayOneShot(clip);
+                        clipPlayedTimestamp = packet.timestamp;
+                        audioSource.PlayOneShot(convertedClip);
                     }
                     else
                     {
                         _isSpeaking = false;
                     }
+                }
+            }
+            else
+            {
+                if (clipPlayedTimestamp < _offset)
+                {
+                    audioSource.Stop();
+                    _isSpeaking = false;
                 }
             }
         }
@@ -76,11 +96,43 @@ namespace Mangrove
             return _isSpeaking;
         }
 
+        public void Interrupt(int timestamp)
+        {
+            _offset = timestamp;
+            // Debug.Log("Setting _offset to " + _offset);
+        }
+
+        public AudioClip CreateAudioClipFromAudioPacket(IncomingAudioPacket packet)
+        {
+            Debug.Log($"Playing SENVA voice.. recieved {packet.ToString()}");
+
+            float[] samples;
+            if (packet.sampleWidth == 2)
+            {
+                samples = BotVoice.Convert16BitByteArrayToAudioClipData(packet.bytes);
+            }
+            else
+            {
+                if (packet.sampleWidth != 4)
+                {
+                    Debug.LogError($"Unsupported sample width: {packet.sampleWidth}. Expected 2 or 4.");
+                    return null;
+                }
+
+                samples = new float[packet.bytes.Length / 4]; //size of a float is 4 bytes
+                Buffer.BlockCopy(packet.bytes, 0, samples, 0, packet.bytes.Length);
+            }
+
+            AudioClip clip = AudioClip.Create("ClipName", samples.Length, packet.numChannels, packet.sampleRate, false);
+            clip.SetData(samples, 0);
+            return clip;
+        }
+
         // public void PlayActivationSound()
         // {
         //     Log("Playing activation sound");
-        //     // lock(_clipQueue) {
-        //     // _clipQueue.Enqueue(activateClip);
+        //     // lock(_incomingAudioPacketQueue) {
+        //     // _incomingAudioPacketQueue.Enqueue(activateClip);
         //     // }
         //     if(audioSource.isPlaying) audioSource.Stop();
         //     audioSource.PlayOneShot(activateClip);
@@ -89,9 +141,9 @@ namespace Mangrove
         // public void PlayTerminationSound()
         // {
         //     Log("Playing termination sound");
-        //     // lock(_clipQueue) {
+        //     // lock(_incomingAudioPacketQueue) {
         //     // Log("Queueing termination sound 12");
-        //     // _clipQueue.Enqueue(terminateClip);
+        //     // _incomingAudioPacketQueue.Enqueue(terminateClip);
         //     // }
         //     if(audioSource.isPlaying) audioSource.Stop();
         //     audioSource.PlayOneShot(terminateClip);
@@ -128,8 +180,8 @@ namespace Mangrove
         //     clip.SetData(audioFloat, 0);
 
 
-        //     // lock(_clipQueue) {
-        //         _clipQueue.Enqueue(clip);
+        //     // lock(_incomingAudioPacketQueue) {
+        //         _incomingAudioPacketQueue.Enqueue(clip);
         //     // }
         // }
 
@@ -151,30 +203,9 @@ namespace Mangrove
         //     return audioClip;
         // }
 
-        public void ProcessAndPlayAudioBytes(IncomingAudioPacket packet)
+        public void EnqueueAudioPacket(IncomingAudioPacket packet)
         {
-            Debug.Log($"Playing SENVA voice.. recieved {packet.ToString()}");
-
-            float[] samples;
-            if (packet.sampleWidth == 2)
-            {
-                samples = BotVoice.Convert16BitByteArrayToAudioClipData(packet.bytes);
-            }
-            else
-            {
-                if (packet.sampleWidth != 4)
-                {
-                    Debug.LogError($"Unsupported sample width: {packet.sampleWidth}. Expected 2 or 4.");
-                    return;
-                }
-
-                samples = new float[packet.bytes.Length / 4]; //size of a float is 4 bytes
-                Buffer.BlockCopy(packet.bytes, 0, samples, 0, packet.bytes.Length);
-            }
-
-            AudioClip clip = AudioClip.Create("ClipName", samples.Length, packet.numChannels, packet.sampleRate, false);
-            clip.SetData(samples, 0);
-            _clipQueue.Enqueue(clip);
+            _incomingAudioPacketQueue.Enqueue(packet);
             // StartCoroutine(playAfterSilence(clip));
         }
 
@@ -190,8 +221,8 @@ namespace Mangrove
         // public void PlayAudioBytes(byte[] audioBytes, string audioName="bot-voice") {
         //     AudioClip clip = ConvertBytesToAudioClip(audioBytes, audioName);
         //
-        //     // lock(_clipQueue) {
-        //         _clipQueue.Enqueue(clip);
+        //     // lock(_incomingAudioPacketQueue) {
+        //         _incomingAudioPacketQueue.Enqueue(clip);
         //     // }
         // }
 
@@ -199,5 +230,6 @@ namespace Mangrove
         {
             Debug.Log("BotVoice.cs :: " + message);
         }
+
     }
 }

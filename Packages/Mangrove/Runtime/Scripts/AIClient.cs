@@ -209,9 +209,14 @@ namespace Mangrove
                 UnityThread.executeInUpdate(() =>
                 {
                     // botVoice.PlayAudioBytes(audioPacket.InComingBytes[0]);
-                    botVoice.ProcessAndPlayAudioBytes(packet);
+                    botVoice.EnqueueAudioPacket(packet);
                 });
 
+            });
+            socket.On(EVENTS.INTERRUPT, (result) =>
+            {
+                Debug.Log($"interrupt: {result.GetValue<int>()}");
+                botVoice.Interrupt(result.GetValue<int>());
             });
         }
 
@@ -292,6 +297,7 @@ namespace Mangrove
             public static readonly string BOT_RES = "bot_response";
             public static readonly string BOT_VOICE = "bot_voice";
             public static readonly string STT_RES = "stt_response";
+            public static readonly string INTERRUPT = "interrupt";
         }
 
         class REQUESTS
