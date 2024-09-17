@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028468, g: 0.22571594, b: 0.3069237, a: 1}
+  m_IndirectSpecularColor: {r: 0.1802846, g: 0.22571594, b: 0.30692336, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -877,7 +877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 968053edfd89749c48f4ea5d444abf64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MeshPrefab: {fileID: 1369762456386383400, guid: c6ae28a6043a7416d82af33a6f449dd6, type: 3}
+  m_MeshPrefab: {fileID: 6427989023023856471, guid: e32b0ed89bb0d427dad3686394925ae5, type: 3}
   m_Density: 0.5
   m_Normals: 1
   m_Tangents: 0
@@ -3586,6 +3586,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1760703bbd54c04488a8d10600262ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_PlanePrefab: {fileID: 680114521416276321, guid: 7d12a71c3fff74d2ea1448eb02f32d13, type: 3}
+  m_DetectionMode: -1
 --- !u!1 &2121586913
 GameObject:
   m_ObjectHideFlags: 0

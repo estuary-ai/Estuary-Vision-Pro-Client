@@ -2,13 +2,12 @@ using System.Collections;
 using UnityEngine;
 
 class SpeakingIdle : MonoBehaviour {
-    private BotVoice botVoice;
+    private Mangrove.BotVoice botVoice;
     [SerializeField] private Animator agentAnimator;
     private static readonly int IsSpeaking = Animator.StringToHash("isSpeaking");
 
     public void Start() {
-        // Get BotVoice instance
-        BotVoice botVoice = BotVoice.Instance;
+        botVoice = Mangrove.BotVoice.Instance;
     }
 
     public void Update() {

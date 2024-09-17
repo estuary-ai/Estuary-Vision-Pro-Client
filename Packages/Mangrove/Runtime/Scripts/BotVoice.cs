@@ -13,7 +13,7 @@ namespace Mangrove
         // public AudioClip terminateClip;
         private Queue<IncomingAudioPacket> _incomingAudioPacketQueue;
         [SerializeField] private AudioSource audioSource;
-        private bool _isSpeaking;
+        public bool _isSpeaking;
         private int _offset;
         private int clipPlayedTimestamp;
 
