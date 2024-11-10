@@ -22,3 +22,9 @@ struct SwiftUISampleInjectedScene {
         }
     }
 }
+
+// @Observable types can be used to store and update data that is presented in SwiftUI views
+@Observable class ObjectCounter {
+    var cubeCount: Int = 0
+    var sphereCount: Int = 0
+}

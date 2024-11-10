@@ -34,7 +34,7 @@ namespace PolySpatial.Samples
 
         void OnBoundaryChanged(ARPlaneBoundaryChangedEventArgs eventArgs)
         {
-            m_ClassificationText.text = m_Plane.classification.ToString();
+            m_ClassificationText.text = m_Plane.classifications.ToString();
             m_AlignmentText.text = m_Plane.alignment.ToString();
 
             transform.position = m_Plane.center;

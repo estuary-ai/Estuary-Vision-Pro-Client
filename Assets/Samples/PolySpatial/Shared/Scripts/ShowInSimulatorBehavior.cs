@@ -14,8 +14,11 @@ namespace PolySpatial.Samples
         void Start()
         {
             var simRoot = Environment.GetEnvironmentVariable("SIMULATOR_ROOT") != null;
-            m_ObjectToShow.SetActive(simRoot);
-            m_ObjectToHide.SetActive(!simRoot);
+            if (m_ObjectToShow)
+                m_ObjectToShow.SetActive(simRoot);
+
+            if (m_ObjectToHide)
+                m_ObjectToHide.SetActive(!simRoot);
         }
     }
 }

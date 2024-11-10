@@ -22,7 +22,7 @@ namespace PolySpatial.Samples
         void Awake()
         {
             m_CurrentScore = 0;
-            var balloons = FindObjectsOfType<BalloonBehavior>();
+            var balloons = FindObjectsByType<BalloonBehavior>(FindObjectsSortMode.None);
 
             foreach (var balloon in balloons)
             {

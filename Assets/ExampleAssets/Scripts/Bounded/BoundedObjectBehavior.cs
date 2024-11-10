@@ -75,7 +75,7 @@ namespace PolySpatial.Template
         {
             m_Return = false;
             m_Selected = selected;
-            m_Rigidbody.velocity = Vector3.zero;
+            m_Rigidbody.linearVelocity = Vector3.zero;
 
             m_MeshRenderer.material = selected ? m_SelectedMaterial : m_DefaultMaterial;
 
@@ -89,7 +89,7 @@ namespace PolySpatial.Template
         {
             var distance = worldPosition - m_Transform.position;
             var targetVelocity = Vector3.ClampMagnitude(k_ToVel * distance, k_MaxVel);
-            var error = targetVelocity - m_Rigidbody.velocity;
+            var error = targetVelocity - m_Rigidbody.linearVelocity;
             var force = Vector3.ClampMagnitude(k_Gain * error, k_MaxForce);
             m_Rigidbody.AddForce(force);
         }

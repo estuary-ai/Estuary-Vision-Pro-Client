@@ -20,15 +20,11 @@ namespace PolySpatial.Samples
             if (activeTouches.Count > 0)
             {
                 var primaryTouchData = EnhancedSpatialPointerSupport.GetPointerState(activeTouches[0]);
-                if (activeTouches[0].phase == TouchPhase.Began)
+                if (activeTouches[0].phase == TouchPhase.Began && primaryTouchData.targetObject != null && primaryTouchData.targetObject.scene == gameObject.scene)
                 {
-                    var buttonObject = primaryTouchData.targetObject;
-                    if (buttonObject != null)
+                    if (primaryTouchData.targetObject.TryGetComponent(out HubButton button))
                     {
-                        if (buttonObject.TryGetComponent(out HubButton button))
-                        {
-                            button.Press();
-                        }
+                        button.Press();
                     }
                 }
             }

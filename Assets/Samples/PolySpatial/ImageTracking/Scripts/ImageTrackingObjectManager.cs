@@ -50,15 +50,15 @@ namespace PolySpatial.Samples
 
         void OnEnable()
         {
-            m_ImageManager.trackedImagesChanged += ImageManagerOnTrackedImagesChanged;
+            m_ImageManager.trackablesChanged.AddListener(ImageManagerOnTrackedImagesChanged);
         }
 
         void OnDisable()
         {
-            m_ImageManager.trackedImagesChanged -= ImageManagerOnTrackedImagesChanged;
+            m_ImageManager.trackablesChanged.RemoveListener(ImageManagerOnTrackedImagesChanged);
         }
 
-        void ImageManagerOnTrackedImagesChanged(ARTrackedImagesChangedEventArgs obj)
+        void ImageManagerOnTrackedImagesChanged(ARTrackablesChangedEventArgs<ARTrackedImage> obj)
         {
             // added, spawn prefab
             foreach (var image in obj.added)
@@ -98,7 +98,7 @@ namespace PolySpatial.Samples
             // removed, destroy spawned instance
             foreach (var image in obj.removed)
             {
-                var guid = image.referenceImage.guid;
+                var guid = image.Value.referenceImage.guid;
                 if (m_SpawnedPrefabs.TryGetValue(guid, out var spawnedPrefab))
                 {
                     Destroy(spawnedPrefab);

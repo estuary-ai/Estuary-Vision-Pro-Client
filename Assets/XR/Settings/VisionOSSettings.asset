@@ -13,5 +13,15 @@ MonoBehaviour:
   m_Name: VisionOSSettings
   m_EditorClassIdentifier: 
   m_AppMode: 1
-  m_HandsTrackingUsageDescription: Hand tracking demo
-  m_WorldSensingUsageDescription: World sensing demo
+  m_HandsTrackingUsageDescription: Estuary needs access to hand tracking for character
+    interactions
+  m_WorldSensingUsageDescription: Estuary needs access to world sensing for semantic
+    understnding
+  m_RuntimeSettings: {fileID: 11400000, guid: 84c87b5d7b2fd4aea8965d0aa9b00fb0, type: 2}
+  m_UpperLimbVisibility: 0
+  m_FoveatedRendering: 1
+  m_MetalImmersionStyle: 0
+  m_RealityKitImmersionStyle: 0
+  m_MetalImmersiveOverlays: 0
+  m_RealityKitImmersiveOverlays: 0
+  m_IL2CPPLargeExeWorkaround: 1

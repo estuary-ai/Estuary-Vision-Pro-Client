@@ -4,7 +4,6 @@ using Unity.PolySpatial.InputDevices;
 using UnityEngine;
 using UnityEngine.InputSystem.LowLevel;
 #if UNITY_INCLUDE_XRI
-
 using UnityEngine.XR.Interaction.Toolkit.Filtering;
 #endif
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;

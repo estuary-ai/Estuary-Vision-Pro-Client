@@ -1,12 +1,14 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using AOT;
 using PolySpatial.Samples;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using Object = UnityEngine.Object;
+
+#if UNITY_VISIONOS && !UNITY_EDITOR
+using System.Runtime.InteropServices;
+#endif
 
 namespace Samples.PolySpatial.SwiftUI.Scripts
 {
@@ -41,11 +43,13 @@ namespace Samples.PolySpatial.SwiftUI.Scripts
         [SerializeField]
         int m_MaxSpawnedObjects = 150;
 
-        bool m_SwiftUIWindowOpen = false;
-        bool m_SpawningObjects = false;
+        [SerializeField]
+        SwiftFPSCounter m_FPSCounter;
+
+        bool m_SpawningObjects;
         bool m_ShowMesh = true;
-        List<GameObject> m_SpawnedObjects = new List<GameObject>();
-        float m_RealTimeAtSpawn = 0.0f;
+        List<GameObject> m_SpawnedObjects = new();
+        float m_RealTimeAtSpawn;
 
         const float k_SpawnDelay = 0.25f;
 
@@ -53,12 +57,19 @@ namespace Samples.PolySpatial.SwiftUI.Scripts
         {
             OpenSwiftUIWindow("MeshSample");
             SetNativeCallback(CallbackFromNative);
+            m_FPSCounter.enabled = true;
         }
 
         void OnDisable()
         {
             SetNativeCallback(null);
+            ForceCloseWindow();
+        }
+
+        public void ForceCloseWindow()
+        {
             CloseSwiftUIWindow("MeshSample");
+            m_FPSCounter.enabled = false;
         }
 
         void Update()
@@ -90,39 +101,46 @@ namespace Samples.PolySpatial.SwiftUI.Scripts
         [MonoPInvokeCallback(typeof(CallbackDelegate))]
         static void CallbackFromNative(string command)
         {
-            Debug.Log("Callback from native: " + command);
-
-            // This could be stored in a static field or a singleton.
-            // If you need to deal with multiple windows and need to distinguish between them,
-            // you could add an ID to this callback and use that to distinguish windows.
-            var self = Object.FindFirstObjectByType<MeshSwiftUIDriver>();
-
-            switch (command)
+            // MonoPInvokeCallback methods will leak exceptions and cause crashes; always use a try/catch in these methods
+            try
             {
-                case "closed":
-                    self.m_SwiftUIWindowOpen = false;
-                    break;
-                case "showmesh":
-                    self.ToggleMesh();
-                    break;
-                case "occlusionMat":
-                    self.SetMeshMaterial(self.m_OcclusionMaterial);
-                    break;
-                case "wireframeMat":
-                    self.SetMeshMaterial(self.m_WireFrameMaterial);
-                    break;
-                case "textureMat":
-                    self.SetMeshMaterial(self.m_TextureMaterial);
-                    break;
-                case "spawnObjects":
-                    self.SpawnObjects();
-                    break;
-                case "deleteObjects":
-                    self.DeleteObjects();
-                    break;
-                case "returnToMenu":
-                    self.LoadMenuScene();
-                    break;
+                Debug.Log("Callback from native: " + command);
+
+                // This could be stored in a static field or a singleton.
+                // If you need to deal with multiple windows and need to distinguish between them,
+                // you could add an ID to this callback and use that to distinguish windows.
+                var self = Object.FindFirstObjectByType<MeshSwiftUIDriver>();
+
+                switch (command)
+                {
+                    case "closed":
+                        break;
+                    case "showmesh":
+                        self.ToggleMesh();
+                        break;
+                    case "occlusionMat":
+                        self.SetMeshMaterial(self.m_OcclusionMaterial);
+                        break;
+                    case "wireframeMat":
+                        self.SetMeshMaterial(self.m_WireFrameMaterial);
+                        break;
+                    case "textureMat":
+                        self.SetMeshMaterial(self.m_TextureMaterial);
+                        break;
+                    case "spawnObjects":
+                        self.SpawnObjects();
+                        break;
+                    case "deleteObjects":
+                        self.DeleteObjects();
+                        break;
+                    case "returnToMenu":
+                        self.LoadMenuScene();
+                        break;
+                }
+            }
+            catch (Exception exception)
+            {
+                Debug.LogException(exception);
             }
         }
 
@@ -179,11 +197,10 @@ namespace Samples.PolySpatial.SwiftUI.Scripts
 
         [DllImport("__Internal")]
         static extern void CloseSwiftUIWindow(string name);
-        #else
+#else
         static void SetNativeCallback(CallbackDelegate callback) {}
         static void OpenSwiftUIWindow(string name) {}
         static void CloseSwiftUIWindow(string name) {}
-        #endif
-
+#endif
     }
 }
