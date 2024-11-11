@@ -6,7 +6,9 @@ using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+#if UNITY_VISIONOS && !UNITY_EDITOR
 using UnityEngine.XR.VisionOS;
+#endif // UNITY_VISIONOS && !UNITY_EDITOR
 
 
 // # if UNITY_VISIONOS && !UNITY_EDITOR

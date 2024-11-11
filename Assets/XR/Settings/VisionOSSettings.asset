@@ -18,7 +18,7 @@ MonoBehaviour:
   m_WorldSensingUsageDescription: Estuary needs access to world sensing for semantic
     understnding
   m_RuntimeSettings: {fileID: 11400000, guid: 84c87b5d7b2fd4aea8965d0aa9b00fb0, type: 2}
-  m_UpperLimbVisibility: 0
+  m_UpperLimbVisibility: 2
   m_FoveatedRendering: 1
   m_MetalImmersionStyle: 0
   m_RealityKitImmersionStyle: 0

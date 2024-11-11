@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8320835365685099229}
   - component: {fileID: 9104170259383892575}
   m_Layer: 29
-  m_Name: DefaultMeshPrefab 1
+  m_Name: TransprentMeshPrefab
   m_TagString: Navigable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 8100858329752637140}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.37642696, y: -0.11539541, z: 0.22205006}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -81,10 +81,13 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 932c62bd47f5e43c1bb604404867b736, type: 2}
+  - {fileID: 2100000, guid: b67bf2b7cb78445c989c307ebdb898a0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

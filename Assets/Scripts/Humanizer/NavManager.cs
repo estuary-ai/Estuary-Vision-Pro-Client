@@ -63,7 +63,7 @@ public class NavManager : MonoBehaviour
 
         // perform a raycast from groundDectorOrigin to the ground and add navigable
         RaycastHit hit;
-        if (Physics.Raycast(groundDetectorOrigin.position, Vector3.down, out hit, 10f))
+        if (Physics.Raycast(groundDetectorOrigin.position, Vector3.down, out hit, 100f))
         {
             if (hit.collider.gameObject.CompareTag("Navigable"))
             {
@@ -214,10 +214,6 @@ public class NavManager : MonoBehaviour
         navState = NavState.Walking;
 
         if (DEBUG_SEAT) Debug.Log(DEBUG_TAG + "Puppy has set destination: " + navMeshAgent.destination + " and is pending path?: " + navMeshAgent.pathPending);
-
-        if (navMeshAgent.gameObject.GetComponent<Animation>() != null) {
-            navMeshAgent.gameObject.GetComponent<Animation>().Play("Walking");
-        }
     }
 
     public void CallPuppy() {
@@ -281,18 +277,21 @@ public class NavManager : MonoBehaviour
         GameObject nearestSeat = null;
         float minDistance = Mathf.Infinity;
         Vector3 targetPos = Vector3.zero;
-        foreach (GameObject seat in planes)
+        foreach (GameObject plane in planes)
         {
-            if (seat.GetComponent<ARPlane>().classification == PlaneClassification.Seat && seat.GetComponent<ARPlane>().alignment == PlaneAlignment.HorizontalUp)
+            if (plane.GetComponent<ARPlane>().classifications == PlaneClassifications.SeatOfAnyType)
             {
-                Vector3 seatPos = seat.transform.position;
-                Debug.Log(DEBUG_TAG + "Seat plane position: " + seatPos);
-                float distance = Vector3.Distance(seatPos, appRef.camTrans.position);
-                if (distance < minDistance)
+                if (plane.GetComponent<ARPlane>().alignment == PlaneAlignment.HorizontalUp)
                 {
-                    nearestSeat = seat;
-                    targetPos = seatPos;
-                    minDistance = distance;
+                    Vector3 seatPos = plane.transform.position;
+                    Debug.Log(DEBUG_TAG + "Seat plane position: " + seatPos);
+                    float distance = Vector3.Distance(seatPos, appRef.camTrans.position);
+                    if (distance < minDistance)
+                    {
+                        nearestSeat = plane;
+                        targetPos = seatPos;
+                        minDistance = distance;
+                    }
                 }
             }
         }
@@ -501,7 +500,6 @@ public class NavManager : MonoBehaviour
             // disable panel
             panel.SetActive(false);
         }
-
     }
 
     private IEnumerator IVACoroutine()
@@ -536,9 +534,7 @@ public class NavManager : MonoBehaviour
 
             yield return new WaitForSecondsRealtime(3.0f);
         }
-
         yield return null;
-
     }
 
     private IEnumerator TurnToCamera()
@@ -555,6 +551,4 @@ public class NavManager : MonoBehaviour
             rotationTime += Time.fixedDeltaTime;
         }
     }
-
-
 }

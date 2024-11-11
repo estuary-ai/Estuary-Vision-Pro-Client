@@ -4,7 +4,9 @@ using UnityEngine.XR.ARFoundation;
 #if UNITY_IOS && !UNITY_EDITOR
 using UnityEngine.XR.ARKit;
 #endif // UNITY_IOS && !UNITY_EDITOR
+#if UNITY_VISIONOS && !UNITY_EDITOR
 using UnityEngine.XR.VisionOS;
+#endif // UNITY_VISIONOS && !UNITY_EDITOR
 
 namespace UnityEngine.XR.ARFoundation.Samples
 {

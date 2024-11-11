@@ -696,6 +696,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bec180ed0ef74440b93237e826654f13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Type: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_IntensityMultiplier: 1
+  m_FadeInDuration: 0
+  m_FadeOutDuration: 0
 --- !u!65 &494423929
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -896,7 +901,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 659567571}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 682f389d7a22a4a7ca6582cbc64ddbf0, type: 3}
   m_Name: 
@@ -929,7 +934,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 659567571}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f46ba24aa53f34cf5b4c06ba5508b7af, type: 3}
   m_Name: 
@@ -1487,12 +1492,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_DepthPass: 0
   m_Renderers:
-  - order: 0
-    renderer: {fileID: 1432219390}
-    applyToDescendants: 0
-  - order: 0
-    renderer: {fileID: 255893227}
-    applyToDescendants: 1
+  - Order: 0
+    Renderer: {fileID: 0}
+    ApplyToDescendants: 0
+  - Order: 0
+    Renderer: {fileID: 0}
+    ApplyToDescendants: 0
 --- !u!1 &1186544323
 GameObject:
   m_ObjectHideFlags: 0
@@ -2508,6 +2513,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bec180ed0ef74440b93237e826654f13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Type: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_IntensityMultiplier: 1
+  m_FadeInDuration: 0
+  m_FadeOutDuration: 0
 --- !u!1 &1477394259
 GameObject:
   m_ObjectHideFlags: 0
@@ -3382,14 +3392,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Dimensions: {x: 1, y: 1, z: 1}
+  m_ScaleWithWindow: 1
   m_IsUniformScale: 0
   m_OutputConfiguration: {fileID: 11400000, guid: 724776171a2184c16b69358d20ac9b90, type: 2}
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
   OpenWindowOnLoad: 1
+  m_TargetDisplay: 0
   m_ShowVolumeCameraEventsFoldout: 0
-  OnWindowEvent:
+  WindowStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  ViewpointChanged:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &2105622931
@@ -3632,7 +3647,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1760703bbd54c04488a8d10600262ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PlanePrefab: {fileID: 680114521416276321, guid: 7d12a71c3fff74d2ea1448eb02f32d13, type: 3}
+  <trackablesChanged>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
+  m_PlanePrefab: {fileID: 680114521416276321, guid: 2183d868db2b64c8c8a1dcb459160509, type: 3}
   m_DetectionMode: -1
 --- !u!1 &2121586913
 GameObject:
@@ -3847,6 +3865,7 @@ MonoBehaviour:
   m_FocusMode: -1
   m_LightEstimationMode: -1
   m_AutoFocus: 1
+  m_ImageStabilization: 0
   m_LightEstimation: 0
   m_FacingDirection: 1
   m_RenderMode: 0
@@ -5710,7 +5729,6 @@ SceneRoots:
   - {fileID: 248604195}
   - {fileID: 2026256748}
   - {fileID: 1222491706}
-  - {fileID: 1135184375}
   - {fileID: 1637393465}
   - {fileID: 1701802646}
   - {fileID: 2450525716015157940}
@@ -5718,6 +5736,7 @@ SceneRoots:
   - {fileID: 486695291}
   - {fileID: 982487320}
   - {fileID: 172609551}
+  - {fileID: 1135184375}
   - {fileID: 852542834}
   - {fileID: 1494442347}
   - {fileID: 4721277057838466715}
