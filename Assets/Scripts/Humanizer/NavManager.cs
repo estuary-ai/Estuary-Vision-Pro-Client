@@ -279,10 +279,15 @@ public class NavManager : MonoBehaviour
         Vector3 targetPos = Vector3.zero;
         foreach (GameObject plane in planes)
         {
-            if (plane.GetComponent<ARPlane>().classifications == PlaneClassifications.SeatOfAnyType)
+            // Debug.Log("Plane classification: " + plane.GetComponent<ARPlane>().classifications);
+            if (plane.GetComponent<ARPlane>().classifications == PlaneClassifications.SeatOfAnyType ||
+                plane.GetComponent<ARPlane>().classifications == PlaneClassifications.Seat ||
+                plane.GetComponent<ARPlane>().classifications == PlaneClassifications.Couch)
             {
+                // Debug.Log("Seat Alignment: " + plane.GetComponent<ARPlane>().alignment);
                 if (plane.GetComponent<ARPlane>().alignment == PlaneAlignment.HorizontalUp)
                 {
+                    // Debug.Log("Seat is Horizontal Up");
                     Vector3 seatPos = plane.transform.position;
                     Debug.Log(DEBUG_TAG + "Seat plane position: " + seatPos);
                     float distance = Vector3.Distance(seatPos, appRef.camTrans.position);
