@@ -13,6 +13,6 @@ public class DebugBallBehaviour : MonoBehaviour
     {
         camTrans = GameObject.Find("Main Camera").transform;
         rb = GetComponent<Rigidbody>();
-        rb.velocity = camTrans.forward * speed;
+        rb.linearVelocity = camTrans.forward * speed;
     }
 }

@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Mode: 0
   m_OutputDimensions: {x: 1, y: 1, z: 1}
+  m_WindowResizeLimit: 2
+  m_MinWindowSize: {x: 0.4, y: 0.4, z: 0.4}
+  m_MaxWindowSize: {x: 2, y: 2, z: 2}
   m_IsUniformScale: 0

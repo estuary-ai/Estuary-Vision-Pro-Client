@@ -1,8 +1,13 @@
+using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using AOT;
 using PolySpatial.Samples;
 using UnityEngine;
+using Random = UnityEngine.Random;
+
+#if UNITY_VISIONOS && !UNITY_EDITOR
+using System.Runtime.InteropServices;
+#endif
 
 namespace Samples.PolySpatial.SwiftUI.Scripts
 {
@@ -19,7 +24,12 @@ namespace Samples.PolySpatial.SwiftUI.Scripts
         [SerializeField]
         Transform m_SpawnPosition;
 
+        [SerializeField]
+        SwiftFPSCounter m_FPSCounter;
+
         bool m_SwiftUIWindowOpen = false;
+        int m_CubeCount= 0;
+        int m_SphereCount = 0;
 
         void OnEnable()
         {
@@ -33,7 +43,7 @@ namespace Samples.PolySpatial.SwiftUI.Scripts
             CloseSwiftUIWindow("HelloWorld");
         }
 
-        void WasPressed(string buttonText, MeshRenderer meshrenderer)
+        void WasPressed(string buttonText, MeshRenderer _)
         {
             if (m_SwiftUIWindowOpen)
             {
@@ -45,6 +55,14 @@ namespace Samples.PolySpatial.SwiftUI.Scripts
                 OpenSwiftUIWindow("HelloWorld");
                 m_SwiftUIWindowOpen = true;
             }
+
+            m_FPSCounter.enabled = m_SwiftUIWindowOpen;
+        }
+
+        public void ForceCloseWindow()
+        {
+            CloseSwiftUIWindow("HelloWorld");
+            m_SwiftUIWindowOpen = false;
         }
 
         delegate void CallbackDelegate(string command);
@@ -54,29 +72,37 @@ namespace Samples.PolySpatial.SwiftUI.Scripts
         [MonoPInvokeCallback(typeof(CallbackDelegate))]
         static void CallbackFromNative(string command)
         {
-            Debug.Log("Callback from native: " + command);
-
-            // This could be stored in a static field or a singleton.
-            // If you need to deal with multiple windows and need to distinguish between them,
-            // you could add an ID to this callback and use that to distinguish windows.
-            var self = Object.FindFirstObjectByType<SwiftUIDriver>();
-
-            if (command == "closed") {
-                self.m_SwiftUIWindowOpen = false;
-                return;
-            }
-
-            if (command == "spawn red")
+            // MonoPInvokeCallback methods will leak exceptions and cause crashes; always use a try/catch in these methods
+            try
             {
-                self.Spawn(Color.red);
+                Debug.Log("Callback from native: " + command);
+
+                // This could be stored in a static field or a singleton.
+                // If you need to deal with multiple windows and need to distinguish between them,
+                // you could add an ID to this callback and use that to distinguish windows.
+                var self = FindFirstObjectByType<SwiftUIDriver>();
+
+                if (command == "closed") {
+                    self.m_SwiftUIWindowOpen = false;
+                    return;
+                }
+
+                if (command == "spawn red")
+                {
+                    self.Spawn(Color.red);
+                }
+                else if (command == "spawn green")
+                {
+                    self.Spawn(Color.green);
+                }
+                else if (command == "spawn blue")
+                {
+                    self.Spawn(Color.blue);
+                }
             }
-            else if (command == "spawn green")
+            catch (Exception exception)
             {
-                self.Spawn(Color.green);
-            }
-            else if (command == "spawn blue")
-            {
-                self.Spawn(Color.blue);
+                Debug.LogException(exception);
             }
         }
 
@@ -85,9 +111,20 @@ namespace Samples.PolySpatial.SwiftUI.Scripts
             var randomObject = Random.Range(0, m_ObjectsToSpawn.Count);
             var thing = Instantiate(m_ObjectsToSpawn[randomObject], m_SpawnPosition.position, Quaternion.identity);
             thing.GetComponent<MeshRenderer>().material.color = color;
+
+            if (randomObject == 0)
+            {
+                m_CubeCount++;
+                SetCubeCount(m_CubeCount);
+            }
+            else
+            {
+                m_SphereCount++;
+                SetSphereCount(m_SphereCount);
+            }
         }
 
-        #if UNITY_VISIONOS && !UNITY_EDITOR
+#if UNITY_VISIONOS && !UNITY_EDITOR
         [DllImport("__Internal")]
         static extern void SetNativeCallback(CallbackDelegate callback);
 
@@ -96,11 +133,20 @@ namespace Samples.PolySpatial.SwiftUI.Scripts
 
         [DllImport("__Internal")]
         static extern void CloseSwiftUIWindow(string name);
-        #else
+
+        [DllImport("__Internal")]
+        static extern void SetCubeCount(int count);
+
+        [DllImport("__Internal")]
+        static extern void SetSphereCount(int count);
+#else
         static void SetNativeCallback(CallbackDelegate callback) {}
         static void OpenSwiftUIWindow(string name) {}
         static void CloseSwiftUIWindow(string name) {}
-        #endif
 
+        static void SetCubeCount(int count) {}
+
+        static void SetSphereCount(int count) {}
+#endif
     }
 }

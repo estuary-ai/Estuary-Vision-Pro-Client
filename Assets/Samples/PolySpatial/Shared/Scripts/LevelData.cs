@@ -16,7 +16,12 @@ namespace PolySpatial.Samples
             SwiftUI,
             Meshing,
             UGUI,
-            Portal
+            Portal,
+            Particles,
+            Lights,
+            Blendshapes,
+            ResizeVolume,
+            Billboard
         }
 
         const string CharacterNavigationTitle = "Character Navigation";
@@ -30,6 +35,11 @@ namespace PolySpatial.Samples
         const string MeshingTitle = "Meshing";
         const string UGUITitle = "uGUI";
         const string PortalTitle = "Portal";
+        const string ParticlesTitle = "Particles";
+        const string LightsTitle = "Lights";
+        const string BlendshapesTitle = "Blendshapes";
+        const string ResizeVolumeTitle = "Resizable Volumes";
+        const string BillboardTitle = "Billboard Component";
 
         const string CharacterNavigationDescription = "Scene demonstrating a character navigating around with a dynamic camera in a bounded volume.";
 
@@ -45,8 +55,13 @@ namespace PolySpatial.Samples
         const string MeshingDescription = "Scene showing ARKit mesh capabilities with unique ways to render the mesh.";
         const string UGUIDescription = "Scene demonstrating a UI setup with uGUI components.";
         const string PortalDescription = "Scene demonstrating a portal effect using Occlusion Material";
+        const string ParticlesDescription = "Scene with a Unity particle system, it supports both replicate properties and bake to mesh.";
+        const string LightsDescription = "Scene demonstrating dynamic lighting with point and directional lights.";
+        const string BlendshapesDescription = "Scene demonstrating blendshapes";
+        const string ResizeVolumeDescription = "Scene demonstrating a resizable volume and settings";
+        const string BillboardDescription = "Scene demonstrating a billboard component";
 
-                public string GetLevelTitle(LevelTypes levelType)
+        public string GetLevelTitle(LevelTypes levelType)
         {
             switch (levelType)
             {
@@ -72,6 +87,16 @@ namespace PolySpatial.Samples
                     return UGUITitle;
                 case LevelTypes.Portal:
                     return PortalTitle;
+                case LevelTypes.Particles:
+                    return ParticlesTitle;
+                case LevelTypes.Lights:
+                    return LightsTitle;
+                case LevelTypes.Blendshapes:
+                    return BlendshapesTitle;
+                case LevelTypes.ResizeVolume:
+                    return ResizeVolumeTitle;
+                case LevelTypes.Billboard:
+                    return BillboardTitle;
                 default:
                     return "";
             }
@@ -103,6 +128,16 @@ namespace PolySpatial.Samples
                     return UGUIDescription;
                 case LevelTypes.Portal:
                     return PortalDescription;
+                case LevelTypes.Particles:
+                    return ParticlesDescription;
+                case LevelTypes.Lights:
+                    return LightsDescription;
+                case LevelTypes.Blendshapes:
+                    return BlendshapesDescription;
+                case LevelTypes.ResizeVolume:
+                    return ResizeVolumeDescription;
+                case LevelTypes.Billboard:
+                    return BillboardDescription;
                 default:
                     return "";
             }

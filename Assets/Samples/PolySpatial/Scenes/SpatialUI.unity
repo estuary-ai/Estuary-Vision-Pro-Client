@@ -4702,7 +4702,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   OpenWindowOnLoad: 1
   m_ShowVolumeCameraEventsFoldout: 0
-  OnWindowEvent:
+  WindowStateChanged:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &2026256750
@@ -5583,12 +5583,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_DepthPass: 0
   m_Renderers:
-  - order: 0
-    renderer: {fileID: 5453723005451802310}
-    applyToDescendants: 0
-  - order: 1
-    renderer: {fileID: 548173382}
-    applyToDescendants: 1
+  - Order: 0
+    Renderer: {fileID: 5453723005451802310}
+    ApplyToDescendants: 0
+  - Order: 1
+    Renderer: {fileID: 548173382}
+    ApplyToDescendants: 1
 --- !u!33 &981248821212984386
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -6586,15 +6586,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_DepthPass: 0
   m_Renderers:
-  - order: 0
-    renderer: {fileID: 9182452365499925991}
-    applyToDescendants: 0
-  - order: 1
-    renderer: {fileID: 529888193}
-    applyToDescendants: 0
-  - order: 2
-    renderer: {fileID: 1516246953}
-    applyToDescendants: 1
+  - Order: 0
+    Renderer: {fileID: 9182452365499925991}
+    ApplyToDescendants: 0
+  - Order: 1
+    Renderer: {fileID: 529888193}
+    ApplyToDescendants: 0
+  - Order: 2
+    Renderer: {fileID: 1516246953}
+    ApplyToDescendants: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

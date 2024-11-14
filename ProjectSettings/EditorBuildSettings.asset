@@ -36,7 +36,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleUnbounded.unity
     guid: 333fadc7a9af24e65bce4222f72a19b4
   - enabled: 0
-    path: Assets/Samples/XR Interaction Toolkit/3.0.3/visionOS/VolumeDemo.unity
+    path: Assets/Samples/XR Interaction Toolkit/3.0.5/visionOS/VolumeDemo.unity
     guid: f8dac43642fcf437b9bd0239b89eb6db
   - enabled: 1
     path: Assets/Scenes/IVADemo.unity
@@ -48,3 +48,4 @@ EditorBuildSettings:
     com.unity.polyspatial.xr.xr_settings: {fileID: 11400000, guid: b7411f9a0d5db414998a52a3ca838e78, type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: d1b44b12dbc12554c862e577406554bd, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 91384b14c79fa804d924648a4e81b07c, type: 2}
+  m_UseUCBPForAssetBundles: 0

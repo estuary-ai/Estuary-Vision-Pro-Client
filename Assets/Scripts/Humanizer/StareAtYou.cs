@@ -20,8 +20,9 @@ class StareAtYou : MonoBehaviour {
     }
 
     public void LateUpdate() {
-        if (agentAnimator.GetBool(IsSpeaking) == true) {
-            float stepSize = 2.0f * Time.deltaTime;
+        if (agentAnimator.GetBool(IsSpeaking)) {
+            float stepSize = 1.7f * Time.deltaTime;
+            float bodyTurnSpeed = 0.1f;
             
             // turn head to face the camera
             // if not already facing the camera
@@ -30,12 +31,21 @@ class StareAtYou : MonoBehaviour {
                 Debug.Log("Not facing camera! Turning head to face the camera");
                 
                 Vector3 newStareDir = Vector3.RotateTowards(stareTransformer.transform.forward, targetStareDir, stepSize, 0.0f);
+                Vector3 newBillboardDir = Vector3.RotateTowards(transform.forward, targetStareDir, bodyTurnSpeed, 0.0f);
+                transform.rotation = Quaternion.LookRotation(newBillboardDir);
+                // set x and z of transform rotation to 0
+                transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
                 stareTransformer.transform.rotation = Quaternion.LookRotation(newStareDir);
             }
-            
 
             float nodAmount = Mathf.Sin(Time.time * nodSpeed) * nodAmplitude;
             nodTransformer.transform.localRotation = Quaternion.Euler(nodAmount, 0, 0);
+        }
+        else
+        {
+            // reset nodding
+            Debug.Log("Reset nod animation");
+            stareTransformer.transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
     }
 

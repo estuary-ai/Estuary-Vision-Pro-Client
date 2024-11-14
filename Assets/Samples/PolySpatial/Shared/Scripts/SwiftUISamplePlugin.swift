@@ -44,27 +44,31 @@ import SwiftUI
 //
 // Declared in C# as: delegate void CallbackDelegate(string command);
 typealias CallbackDelegateType = @convention(c) (UnsafePointer<CChar>) -> Void
+public typealias SetFPSDelegateType = (Float) -> Void
 
-var sCallbackDelegate: CallbackDelegateType? = nil
+var callbackDelegate: CallbackDelegateType? = nil
+var setFPSDelegate: SetFPSDelegateType? = nil
+var sphereCount: Int = 0
+var cubeCount: Int = 0
 
 // Declared in C# as: static extern void SetNativeCallback(CallbackDelegate callback);
 @_cdecl("SetNativeCallback")
 func setNativeCallback(_ delegate: CallbackDelegateType)
 {
     print("############ SET NATIVE CALLBACK")
-    sCallbackDelegate = delegate
+    callbackDelegate = delegate
 }
 
 // This is a function for your own use from the enclosing Unity-VisionOS app, to call the delegate
 // from your own windows/views (HelloWorldContentView uses this)
 public func CallCSharpCallback(_ str: String)
 {
-    if (sCallbackDelegate == nil) {
+    if (callbackDelegate == nil) {
         return
     }
 
     str.withCString {
-        sCallbackDelegate!($0)
+        callbackDelegate!($0)
     }
 }
 
@@ -90,3 +94,39 @@ func closeSwiftUIWindow(_ cname: UnsafePointer<CChar>)
     dismissWindow(id: name)
 }
 
+// Declared in C# as: static extern void SetSphereCount(int count);
+@_cdecl("SetSphereCount")
+func setSphereCount(_ count: Int)
+{
+    sphereCount = count
+}
+
+// Declared in C# as: static extern void SetCubeCount(int count);
+@_cdecl("SetCubeCount")
+func setCubeCount(_ count: Int)
+{
+    cubeCount = count
+}
+
+// Called by button callbacks in HelloWorldContentView
+public func GetCubeCount() -> Int {
+    return cubeCount
+}
+
+// Called by button callbacks in HelloWorldContentView
+public func GetSphereCount() -> Int {
+    return sphereCount
+}
+
+// Declared in C# as: static extern void SetFPS(float fps);
+@_cdecl("SetFPS")
+func setFPS(_ fps: Float) {
+    setFPSDelegate?(fps)
+}
+
+// ContentView should call this on appear, setting up a callback for when SwiftFPSCounter pushes new FPS values
+// Only one ContentView is supported. Calling SubscribeToSetFPS multiple times will overwrite setFPSDelegate,
+// so only the most recent caller will get FPS values.
+public func SubscribeToSetFPS(setFPSMethod: @escaping SetFPSDelegateType) {
+    setFPSDelegate = setFPSMethod
+}

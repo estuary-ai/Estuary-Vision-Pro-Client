@@ -46,13 +46,13 @@ namespace PolySpatial.Samples
             // The first time a window is opened for a volume camera, a WindowOpened event will be triggered.
             // If the volume window changes size after that, a WindowResized event will be triggered.
             // We want to handle both in the same way, so we can just add the same listener to both events.
-            volumeCamera.OnWindowEvent.AddListener(VolumeWindowResized);
+            volumeCamera.WindowStateChanged.AddListener(VolumeWindowResized);
         }
 
         void OnDisable()
         {
             var volumeCamera = GetComponent<VolumeCamera>();
-            volumeCamera.OnWindowEvent.RemoveListener(VolumeWindowResized);
+            volumeCamera.WindowStateChanged.RemoveListener(VolumeWindowResized);
         }
 
         // We are being informed of the actual dimensions of the opened window (windowDimensions).
@@ -64,12 +64,13 @@ namespace PolySpatial.Samples
         // are the dimensions that your Volume Camera's dimensions are mapped to, in Unity's coordinate units.
         // (On visionOS, these will typically be the same, but they may not be on other platforms.)
 
-        void VolumeWindowResized(VolumeCamera.WindowState windowState)
+        void VolumeWindowResized(VolumeCamera volumeCamera, VolumeCamera.WindowState windowState)
         {
-            if (windowState.Mode == VolumeCamera.PolySpatialVolumeCameraMode.Unbounded)
+            if (volumeCamera != GetComponent<VolumeCamera>())
                 return;
 
-            var volumeCamera = GetComponent<VolumeCamera>();
+            if (windowState.Mode == VolumeCamera.PolySpatialVolumeCameraMode.Unbounded)
+                return;
 
             // These are the desired output dimensions that we asked for. (volumeCamera.OutputDimensions will be the actual
             // dimensions, and will equal contentDimensions)
@@ -116,7 +117,7 @@ namespace PolySpatial.Samples
 
             volumeCamera.Dimensions = newDimensions;
 
-            Debug.Log($"Volume camera dimensions set to {newDimensions} (got window of size {originalDimensions}, expected {desiredOutputDimensions})");
+            Debug.Log($"Volume camera dimensions set to {newDimensions} (got window of size {originalDimensions}, originally requested {desiredOutputDimensions})");
         }
     }
 }

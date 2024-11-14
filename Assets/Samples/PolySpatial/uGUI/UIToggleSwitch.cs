@@ -9,6 +9,15 @@ namespace PolySpatial.Samples
 
         const float k_KnobOnPosition = 17f;
 
+        void Start()
+        {
+            var toggle = GetComponent<UnityEngine.UI.Toggle>();
+            if(toggle != null)
+            {
+                MoveKnob(toggle.isOn);
+            }
+        }
+
         public void MoveKnob(bool isOn)
         {
             if (isOn)

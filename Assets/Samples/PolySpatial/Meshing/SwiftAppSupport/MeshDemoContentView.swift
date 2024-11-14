@@ -10,19 +10,21 @@ import SwiftUI
 import UnityFramework
 
 struct MeshDemoContentView: View {
-    
     @State var isShowingMesh = true;
     @State var isSpawningObjects = false;
     @State var occlusionMaterialActive = true;
     @State var wireframeMaterialActive = false;
     @State var textureMaterialActive = false;
     @State var currentMeshViz: MeshVisualization = .texture
-
+    @State var fps = Float(90)
     
     var body: some View {
         VStack {
             Text("Mesh Demo")
                 .font(.title)
+            Divider()
+                .padding(10)
+            Text(String(format: "Unity Simulation FPS: %.1f", fps))
             Toggle("Mesh Enabled", isOn: $isShowingMesh)
                 .toggleStyle(.switch)
                 .frame(width:380)
@@ -69,13 +71,19 @@ struct MeshDemoContentView: View {
                 }
             }
             .frame(width:380)
-            
         }
         
         .onAppear {
             // Call the public function that was defined in SwiftUISamplePlugin
             // inside UnityFramework
             CallCSharpCallback("appeared")
+
+            // Subscribe to a callback in SwiftUISamplePlugin for this view to get FPS updates
+            // This indirect approach is needed because SwiftUI views are compiled into the main app target,
+            // While plugins that C# code can call into need to be built into UnityFramework
+            SubscribeToSetFPS() { fps in
+                self.fps = fps
+            }
         }
     }
 }
