@@ -1,0 +1,327 @@
+fileFormatVersion: 2
+guid: 84c019e994ad77c4bb556290096076bb
+timeCreated: 1506883782
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Bod
+    100002: Bot_teeth
+    100004: breathe
+    100006: breathe_back
+    100008: cave
+    100010: //RootNode
+    100012: joint1
+    100014: joint10
+    100016: joint11
+    100018: joint2
+    100020: joint3
+    100022: joint4
+    100024: joint5
+    100026: joint6
+    100028: joint7
+    100030: joint8
+    100032: joint9
+    100034: MASTER
+    100036: pCube1
+    100038: pCube2
+    100040: pCube3
+    100042: pCube3 1
+    100044: pCube4
+    100046: pCube4 1
+    100048: pCube5
+    100050: pCube6
+    100052: pCube7
+    100054: pCube7 1
+    100056: pCube8
+    100058: pCube8 1
+    100060: Spine_1
+    100062: Spine_1_offset
+    100064: Spine_2
+    100066: Spine_2_offset
+    100068: Spine_3
+    100070: Spine_3_offset
+    100072: Spine_4
+    100074: Spine_4_offset
+    100076: Tongue
+    100078: tongue_1
+    100080: tongue_1_offset
+    100082: tongue_2
+    100084: tongue_2_offset
+    100086: tongue_3
+    100088: tongue_3_offset
+    100090: tongue_Base
+    100092: tongue_Base_offset
+    100094: Top_teeth
+    400000: Bod
+    400002: Bot_teeth
+    400004: breathe
+    400006: breathe_back
+    400008: cave
+    400010: //RootNode
+    400012: joint1
+    400014: joint10
+    400016: joint11
+    400018: joint2
+    400020: joint3
+    400022: joint4
+    400024: joint5
+    400026: joint6
+    400028: joint7
+    400030: joint8
+    400032: joint9
+    400034: MASTER
+    400036: pCube1
+    400038: pCube2
+    400040: pCube3
+    400042: pCube3 1
+    400044: pCube4
+    400046: pCube4 1
+    400048: pCube5
+    400050: pCube6
+    400052: pCube7
+    400054: pCube7 1
+    400056: pCube8
+    400058: pCube8 1
+    400060: Spine_1
+    400062: Spine_1_offset
+    400064: Spine_2
+    400066: Spine_2_offset
+    400068: Spine_3
+    400070: Spine_3_offset
+    400072: Spine_4
+    400074: Spine_4_offset
+    400076: Tongue
+    400078: tongue_1
+    400080: tongue_1_offset
+    400082: tongue_2
+    400084: tongue_2_offset
+    400086: tongue_3
+    400088: tongue_3_offset
+    400090: tongue_Base
+    400092: tongue_Base_offset
+    400094: Top_teeth
+    4300000: Bod
+    4300002: Tongue
+    4300004: pCube4
+    4300006: pCube3
+    4300008: pCube7
+    4300010: pCube8
+    4300012: pCube4
+    4300014: pCube3
+    4300016: pCube2
+    4300018: pCube1
+    4300020: pCube5
+    4300022: pCube6
+    4300024: pCube7
+    4300026: pCube8
+    7400000: breath
+    9500000: //RootNode
+    13700000: Bod
+    13700002: pCube1
+    13700004: pCube2
+    13700006: pCube3
+    13700008: pCube3 1
+    13700010: pCube4
+    13700012: pCube4 1
+    13700014: pCube5
+    13700016: pCube6
+    13700018: pCube7
+    13700020: pCube7 1
+    13700022: pCube8
+    13700024: pCube8 1
+    13700026: Tongue
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: breath
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: breathe
+        weight: 1
+      - path: breathe_back
+        weight: 1
+      - path: cave
+        weight: 1
+      - path: cave/Bod
+        weight: 1
+      - path: cave/Bot_teeth
+        weight: 1
+      - path: cave/Bot_teeth/pCube3
+        weight: 1
+      - path: cave/Bot_teeth/pCube4
+        weight: 1
+      - path: cave/Bot_teeth/pCube7
+        weight: 1
+      - path: cave/Bot_teeth/pCube8
+        weight: 1
+      - path: cave/Tongue
+        weight: 1
+      - path: cave/Top_teeth
+        weight: 1
+      - path: cave/Top_teeth/pCube1
+        weight: 1
+      - path: cave/Top_teeth/pCube2
+        weight: 1
+      - path: cave/Top_teeth/pCube3 1
+        weight: 1
+      - path: cave/Top_teeth/pCube4 1
+        weight: 1
+      - path: cave/Top_teeth/pCube5
+        weight: 1
+      - path: cave/Top_teeth/pCube6
+        weight: 1
+      - path: cave/Top_teeth/pCube7 1
+        weight: 1
+      - path: cave/Top_teeth/pCube8 1
+        weight: 1
+      - path: joint1
+        weight: 1
+      - path: joint1/joint2
+        weight: 1
+      - path: joint1/joint2/joint3
+        weight: 1
+      - path: joint1/joint2/joint3/joint4
+        weight: 1
+      - path: joint1/joint2/joint3/joint4/joint5
+        weight: 1
+      - path: joint1/joint2/joint3/joint4/joint5/joint6
+        weight: 1
+      - path: joint1/joint2/joint7
+        weight: 1
+      - path: joint1/joint2/joint7/joint8
+        weight: 1
+      - path: joint1/joint2/joint7/joint8/joint9
+        weight: 1
+      - path: joint1/joint2/joint7/joint8/joint9/joint10
+        weight: 1
+      - path: joint1/joint2/joint7/joint8/joint9/joint10/joint11
+        weight: 1
+      - path: MASTER
+        weight: 1
+      - path: MASTER/Spine_1_offset
+        weight: 1
+      - path: MASTER/Spine_1_offset/Spine_1
+        weight: 1
+      - path: MASTER/Spine_1_offset/Spine_1/Spine_2_offset
+        weight: 1
+      - path: MASTER/Spine_1_offset/Spine_1/Spine_2_offset/Spine_2
+        weight: 1
+      - path: MASTER/Spine_1_offset/Spine_1/Spine_2_offset/Spine_2/Spine_3_offset
+        weight: 1
+      - path: MASTER/Spine_1_offset/Spine_1/Spine_2_offset/Spine_2/Spine_3_offset/Spine_3
+        weight: 1
+      - path: MASTER/Spine_1_offset/Spine_1/Spine_2_offset/Spine_2/Spine_3_offset/Spine_3/Spine_4_offset
+        weight: 1
+      - path: MASTER/Spine_1_offset/Spine_1/Spine_2_offset/Spine_2/Spine_3_offset/Spine_3/Spine_4_offset/Spine_4
+        weight: 1
+      - path: MASTER/Spine_1_offset/Spine_1/tongue_Base_offset
+        weight: 1
+      - path: MASTER/Spine_1_offset/Spine_1/tongue_Base_offset/tongue_Base
+        weight: 1
+      - path: MASTER/Spine_1_offset/Spine_1/tongue_Base_offset/tongue_Base/tongue_1_offset
+        weight: 1
+      - path: MASTER/Spine_1_offset/Spine_1/tongue_Base_offset/tongue_Base/tongue_1_offset/tongue_1
+        weight: 1
+      - path: MASTER/Spine_1_offset/Spine_1/tongue_Base_offset/tongue_Base/tongue_1_offset/tongue_1/tongue_2_offset
+        weight: 1
+      - path: MASTER/Spine_1_offset/Spine_1/tongue_Base_offset/tongue_Base/tongue_1_offset/tongue_1/tongue_2_offset/tongue_2
+        weight: 1
+      - path: MASTER/Spine_1_offset/Spine_1/tongue_Base_offset/tongue_Base/tongue_1_offset/tongue_1/tongue_2_offset/tongue_2/tongue_3_offset
+        weight: 1
+      - path: MASTER/Spine_1_offset/Spine_1/tongue_Base_offset/tongue_Base/tongue_1_offset/tongue_1/tongue_2_offset/tongue_2/tongue_3_offset/tongue_3
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

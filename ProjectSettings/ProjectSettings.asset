@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: Estuary
   productName: The Estuary
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -164,7 +164,7 @@ PlayerSettings:
   androidMinAspectRatio: 1
   applicationIdentifier:
     Standalone: com.DefaultCompany.The-Estuary
-    VisionOS: com.DefaultCompany.The-Estuary
+    VisionOS: com.Estuary.The-Estuary
     iPhone: com.DefaultCompany.PolySpatial-Project-Template
   buildNumber:
     Standalone: 0
@@ -240,7 +240,7 @@ PlayerSettings:
   metalCompileShaderBinary: 0
   iOSRenderExtraFrameOnPause: 0
   iosCopyPluginsCodeInsteadOfSymlink: 0
-  appleDeveloperTeamID: 3GZJ5PUQD6
+  appleDeveloperTeamID: 3KZKL9H3HQ
   iOSManualSigningProvisioningProfileID: 
   tvOSManualSigningProvisioningProfileID: 
   VisionOSManualSigningProvisioningProfileID: 

@@ -1,0 +1,1063 @@
+fileFormatVersion: 2
+guid: 1985d4bc85e33ac42b72b422284825c3
+timeCreated: 1493598826
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: column_L
+    100002: column_R
+    100004: conncetors_L
+    100006: conncetors_R
+    100008: connector_L
+    100010: connector_R
+    100012: fence_L
+    100014: fence_R
+    100016: group2
+    100018: group3
+    100020: group4
+    100022: joint1
+    100024: joint10
+    100026: joint11
+    100028: joint12
+    100030: joint13
+    100032: joint14
+    100034: joint15
+    100036: joint16
+    100038: joint17
+    100040: joint18
+    100042: joint19
+    100044: joint2
+    100046: joint20
+    100048: joint21
+    100050: joint22
+    100052: joint23
+    100054: joint24
+    100056: joint25
+    100058: joint26
+    100060: joint27
+    100062: joint28
+    100064: joint29
+    100066: joint3
+    100068: joint30
+    100070: joint31
+    100072: joint32
+    100074: joint33
+    100076: joint34
+    100078: joint35
+    100080: joint36
+    100082: joint37
+    100084: joint38
+    100086: joint39
+    100088: joint4
+    100090: joint40
+    100092: joint41
+    100094: joint42
+    100096: joint43
+    100098: joint44
+    100100: joint45
+    100102: joint46
+    100104: joint47
+    100106: joint5
+    100108: joint6
+    100110: joint7
+    100112: joint8
+    100114: joint9
+    100116: pCube12
+    100118: pCube12 1
+    100120: pCube13
+    100122: pCube14
+    100124: pCube14 1
+    100126: pCube15
+    100128: pCube15 1
+    100130: pCube16
+    100132: pCube16 1
+    100134: pCube17
+    100136: pCube17 1
+    100138: pCube18
+    100140: pCube18 1
+    100142: pCube19
+    100144: pCube19 1
+    100146: pCube20
+    100148: pCube20 1
+    100150: pCube21
+    100152: pCube21 1
+    100154: pCube22
+    100156: pCube22 1
+    100158: pCube23
+    100160: pCube23 1
+    100162: pCube24
+    100164: pCube24 1
+    100166: pCube25
+    100168: pCube25 1
+    100170: pCube26
+    100172: pCube26 1
+    100174: pCube27
+    100176: pCube27 1
+    100178: pCube28
+    100180: pCube28 1
+    100182: pCube29
+    100184: pCube29 1
+    100186: pCube30
+    100188: pCube35
+    100190: pCube35 1
+    100192: pCube36
+    100194: pCube36 1
+    100196: pCube37
+    100198: pCube37 1
+    100200: pCube38
+    100202: pCube38 1
+    100204: pCube42
+    100206: pCylinder5
+    100208: pCylinder6
+    100210: pCylinder7
+    100212: poll_L
+    100214: poll_R
+    100216: polySurface1
+    100218: polySurface10
+    100220: polySurface11
+    100222: polySurface12
+    100224: polySurface13
+    100226: polySurface14
+    100228: polySurface15
+    100230: polySurface16
+    100232: polySurface2
+    100234: polySurface3
+    100236: polySurface4
+    100238: polySurface5
+    100240: polySurface6
+    100242: polySurface9
+    100244: roof1
+    100246: sign
+    100248: SKELE
+    100250: string1
+    100252: top1_L
+    100254: top1R
+    100256: top2_L
+    100258: top2R
+    100260: top_roof
+    100262: //RootNode
+    400000: column_L
+    400002: column_R
+    400004: conncetors_L
+    400006: conncetors_R
+    400008: connector_L
+    400010: connector_R
+    400012: fence_L
+    400014: fence_R
+    400016: group2
+    400018: group3
+    400020: group4
+    400022: joint1
+    400024: joint10
+    400026: joint11
+    400028: joint12
+    400030: joint13
+    400032: joint14
+    400034: joint15
+    400036: joint16
+    400038: joint17
+    400040: joint18
+    400042: joint19
+    400044: joint2
+    400046: joint20
+    400048: joint21
+    400050: joint22
+    400052: joint23
+    400054: joint24
+    400056: joint25
+    400058: joint26
+    400060: joint27
+    400062: joint28
+    400064: joint29
+    400066: joint3
+    400068: joint30
+    400070: joint31
+    400072: joint32
+    400074: joint33
+    400076: joint34
+    400078: joint35
+    400080: joint36
+    400082: joint37
+    400084: joint38
+    400086: joint39
+    400088: joint4
+    400090: joint40
+    400092: joint41
+    400094: joint42
+    400096: joint43
+    400098: joint44
+    400100: joint45
+    400102: joint46
+    400104: joint47
+    400106: joint5
+    400108: joint6
+    400110: joint7
+    400112: joint8
+    400114: joint9
+    400116: pCube12
+    400118: pCube12 1
+    400120: pCube13
+    400122: pCube14
+    400124: pCube14 1
+    400126: pCube15
+    400128: pCube15 1
+    400130: pCube16
+    400132: pCube16 1
+    400134: pCube17
+    400136: pCube17 1
+    400138: pCube18
+    400140: pCube18 1
+    400142: pCube19
+    400144: pCube19 1
+    400146: pCube20
+    400148: pCube20 1
+    400150: pCube21
+    400152: pCube21 1
+    400154: pCube22
+    400156: pCube22 1
+    400158: pCube23
+    400160: pCube23 1
+    400162: pCube24
+    400164: pCube24 1
+    400166: pCube25
+    400168: pCube25 1
+    400170: pCube26
+    400172: pCube26 1
+    400174: pCube27
+    400176: pCube27 1
+    400178: pCube28
+    400180: pCube28 1
+    400182: pCube29
+    400184: pCube29 1
+    400186: pCube30
+    400188: pCube35
+    400190: pCube35 1
+    400192: pCube36
+    400194: pCube36 1
+    400196: pCube37
+    400198: pCube37 1
+    400200: pCube38
+    400202: pCube38 1
+    400204: pCube42
+    400206: pCylinder5
+    400208: pCylinder6
+    400210: pCylinder7
+    400212: poll_L
+    400214: poll_R
+    400216: polySurface1
+    400218: polySurface10
+    400220: polySurface11
+    400222: polySurface12
+    400224: polySurface13
+    400226: polySurface14
+    400228: polySurface15
+    400230: polySurface16
+    400232: polySurface2
+    400234: polySurface3
+    400236: polySurface4
+    400238: polySurface5
+    400240: polySurface6
+    400242: polySurface9
+    400244: roof1
+    400246: sign
+    400248: SKELE
+    400250: string1
+    400252: top1_L
+    400254: top1R
+    400256: top2_L
+    400258: top2R
+    400260: top_roof
+    400262: //RootNode
+    4300000: pCube15
+    4300002: pCube21
+    4300004: pCube20
+    4300006: pCube19
+    4300008: pCube18
+    4300010: pCube16
+    4300012: pCube17
+    4300014: pCube12
+    4300016: pCube14
+    4300018: pCube42
+    4300020: pCube36
+    4300022: pCube35
+    4300024: pCube38
+    4300026: pCube37
+    4300028: pCube22
+    4300030: pCube23
+    4300032: pCube24
+    4300034: pCube25
+    4300036: pCube26
+    4300038: pCube27
+    4300040: pCube28
+    4300042: pCube29
+    4300044: pCube19
+    4300046: pCube20
+    4300048: pCube21
+    4300050: pCube15
+    4300052: pCube36
+    4300054: pCube35
+    4300056: pCube38
+    4300058: pCube37
+    4300060: pCube22
+    4300062: pCube23
+    4300064: pCube24
+    4300066: pCube25
+    4300068: pCube26
+    4300070: pCube27
+    4300072: pCube28
+    4300074: pCube29
+    4300076: pCube16
+    4300078: pCube17
+    4300080: pCube18
+    4300082: pCube12
+    4300084: pCube13
+    4300086: pCube14
+    4300088: pCube30
+    4300090: pCylinder5
+    4300092: pCylinder6
+    4300094: pCylinder7
+    4300096: string1
+    4300098: polySurface4
+    4300100: polySurface3
+    4300102: polySurface15
+    4300104: polySurface16
+    4300106: polySurface2
+    4300108: polySurface1
+    4300110: polySurface12
+    4300112: polySurface14
+    4300114: polySurface9
+    4300116: polySurface6
+    4300118: polySurface5
+    4300120: polySurface10
+    4300122: polySurface11
+    4300124: polySurface13
+    4300126: connector_L
+    4300128: column_L
+    4300130: column_R
+    4300132: connector_R
+    7400000: Take 001
+    7400002: idle
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: column_L
+    13700002: column_R
+    13700004: connector_L
+    13700006: connector_R
+    13700008: pCube12
+    13700010: pCube12 1
+    13700012: pCube13
+    13700014: pCube14
+    13700016: pCube14 1
+    13700018: pCube15
+    13700020: pCube15 1
+    13700022: pCube16
+    13700024: pCube16 1
+    13700026: pCube17
+    13700028: pCube17 1
+    13700030: pCube18
+    13700032: pCube18 1
+    13700034: pCube19
+    13700036: pCube19 1
+    13700038: pCube20
+    13700040: pCube20 1
+    13700042: pCube21
+    13700044: pCube21 1
+    13700046: pCube22
+    13700048: pCube22 1
+    13700050: pCube23
+    13700052: pCube23 1
+    13700054: pCube24
+    13700056: pCube24 1
+    13700058: pCube25
+    13700060: pCube25 1
+    13700062: pCube26
+    13700064: pCube26 1
+    13700066: pCube27
+    13700068: pCube27 1
+    13700070: pCube28
+    13700072: pCube28 1
+    13700074: pCube29
+    13700076: pCube29 1
+    13700078: pCube30
+    13700080: pCube35
+    13700082: pCube35 1
+    13700084: pCube36
+    13700086: pCube36 1
+    13700088: pCube37
+    13700090: pCube37 1
+    13700092: pCube38
+    13700094: pCube38 1
+    13700096: pCube42
+    13700098: pCylinder5
+    13700100: pCylinder6
+    13700102: pCylinder7
+    13700104: polySurface1
+    13700106: polySurface10
+    13700108: polySurface11
+    13700110: polySurface12
+    13700112: polySurface13
+    13700114: polySurface14
+    13700116: polySurface15
+    13700118: polySurface16
+    13700120: polySurface2
+    13700122: polySurface3
+    13700124: polySurface4
+    13700126: polySurface5
+    13700128: polySurface6
+    13700130: polySurface9
+    13700132: string1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 45
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: fence_L
+        weight: 1
+      - path: fence_L/conncetors_L
+        weight: 1
+      - path: fence_L/conncetors_L/pCube22
+        weight: 1
+      - path: fence_L/conncetors_L/pCube23
+        weight: 1
+      - path: fence_L/conncetors_L/pCube24
+        weight: 1
+      - path: fence_L/conncetors_L/pCube25
+        weight: 1
+      - path: fence_L/conncetors_L/pCube26
+        weight: 1
+      - path: fence_L/conncetors_L/pCube27
+        weight: 1
+      - path: fence_L/conncetors_L/pCube28
+        weight: 1
+      - path: fence_L/conncetors_L/pCube29
+        weight: 1
+      - path: fence_L/conncetors_L/pCube35
+        weight: 1
+      - path: fence_L/conncetors_L/pCube36
+        weight: 1
+      - path: fence_L/conncetors_L/pCube37
+        weight: 1
+      - path: fence_L/conncetors_L/pCube38
+        weight: 1
+      - path: fence_L/pCube15
+        weight: 1
+      - path: fence_L/pCube19
+        weight: 1
+      - path: fence_L/pCube20
+        weight: 1
+      - path: fence_L/pCube21
+        weight: 1
+      - path: fence_L/top1_L
+        weight: 1
+      - path: fence_L/top1_L/pCube16
+        weight: 1
+      - path: fence_L/top1_L/pCube17
+        weight: 1
+      - path: fence_L/top1_L/pCube18
+        weight: 1
+      - path: fence_L/top2_L
+        weight: 1
+      - path: fence_L/top2_L/pCube12
+        weight: 1
+      - path: fence_L/top2_L/pCube14
+        weight: 1
+      - path: fence_L/top2_L/pCube42
+        weight: 1
+      - path: fence_R
+        weight: 1
+      - path: fence_R/conncetors_R
+        weight: 1
+      - path: fence_R/conncetors_R/pCube22 1
+        weight: 1
+      - path: fence_R/conncetors_R/pCube23 1
+        weight: 1
+      - path: fence_R/conncetors_R/pCube24 1
+        weight: 1
+      - path: fence_R/conncetors_R/pCube25 1
+        weight: 1
+      - path: fence_R/conncetors_R/pCube26 1
+        weight: 1
+      - path: fence_R/conncetors_R/pCube27 1
+        weight: 1
+      - path: fence_R/conncetors_R/pCube28 1
+        weight: 1
+      - path: fence_R/conncetors_R/pCube29 1
+        weight: 1
+      - path: fence_R/conncetors_R/pCube35 1
+        weight: 1
+      - path: fence_R/conncetors_R/pCube36 1
+        weight: 1
+      - path: fence_R/conncetors_R/pCube37 1
+        weight: 1
+      - path: fence_R/conncetors_R/pCube38 1
+        weight: 1
+      - path: fence_R/pCube15 1
+        weight: 1
+      - path: fence_R/pCube19 1
+        weight: 1
+      - path: fence_R/pCube20 1
+        weight: 1
+      - path: fence_R/pCube21 1
+        weight: 1
+      - path: fence_R/top1R
+        weight: 1
+      - path: fence_R/top1R/pCube16 1
+        weight: 1
+      - path: fence_R/top1R/pCube17 1
+        weight: 1
+      - path: fence_R/top1R/pCube18 1
+        weight: 1
+      - path: fence_R/top2R
+        weight: 1
+      - path: fence_R/top2R/pCube12 1
+        weight: 1
+      - path: fence_R/top2R/pCube13
+        weight: 1
+      - path: fence_R/top2R/pCube14 1
+        weight: 1
+      - path: poll_L
+        weight: 1
+      - path: poll_L/column_R
+        weight: 1
+      - path: poll_L/connector_R
+        weight: 1
+      - path: poll_R
+        weight: 1
+      - path: poll_R/column_L
+        weight: 1
+      - path: poll_R/connector_L
+        weight: 1
+      - path: roof1
+        weight: 1
+      - path: roof1/group2
+        weight: 1
+      - path: roof1/group2/polySurface3
+        weight: 1
+      - path: roof1/group2/polySurface4
+        weight: 1
+      - path: roof1/group3
+        weight: 1
+      - path: roof1/group3/polySurface1
+        weight: 1
+      - path: roof1/group3/polySurface2
+        weight: 1
+      - path: roof1/group4
+        weight: 1
+      - path: roof1/group4/polySurface5
+        weight: 1
+      - path: roof1/group4/polySurface6
+        weight: 1
+      - path: roof1/group4/polySurface9
+        weight: 1
+      - path: roof1/group4/polySurface10
+        weight: 1
+      - path: roof1/group4/polySurface11
+        weight: 1
+      - path: roof1/group4/polySurface12
+        weight: 1
+      - path: roof1/group4/polySurface13
+        weight: 1
+      - path: roof1/group4/polySurface14
+        weight: 1
+      - path: roof1/top_roof
+        weight: 1
+      - path: roof1/top_roof/polySurface15
+        weight: 1
+      - path: roof1/top_roof/polySurface16
+        weight: 1
+      - path: sign
+        weight: 1
+      - path: sign/pCube30
+        weight: 1
+      - path: sign/pCylinder5
+        weight: 1
+      - path: sign/pCylinder6
+        weight: 1
+      - path: sign/pCylinder7
+        weight: 1
+      - path: SKELE
+        weight: 1
+      - path: SKELE/joint1
+        weight: 1
+      - path: SKELE/joint2
+        weight: 1
+      - path: SKELE/joint3
+        weight: 1
+      - path: SKELE/joint4
+        weight: 1
+      - path: SKELE/joint5
+        weight: 1
+      - path: SKELE/joint6
+        weight: 1
+      - path: SKELE/joint7
+        weight: 1
+      - path: SKELE/joint8
+        weight: 1
+      - path: SKELE/joint9
+        weight: 1
+      - path: SKELE/joint10
+        weight: 1
+      - path: SKELE/joint11
+        weight: 1
+      - path: SKELE/joint12
+        weight: 1
+      - path: SKELE/joint13
+        weight: 1
+      - path: SKELE/joint14
+        weight: 1
+      - path: SKELE/joint15
+        weight: 1
+      - path: SKELE/joint16
+        weight: 1
+      - path: SKELE/joint17
+        weight: 1
+      - path: SKELE/joint18
+        weight: 1
+      - path: SKELE/joint19
+        weight: 1
+      - path: SKELE/joint20
+        weight: 1
+      - path: SKELE/joint21
+        weight: 1
+      - path: SKELE/joint22
+        weight: 1
+      - path: SKELE/joint23
+        weight: 1
+      - path: SKELE/joint24
+        weight: 1
+      - path: SKELE/joint25
+        weight: 1
+      - path: SKELE/joint26
+        weight: 1
+      - path: SKELE/joint27
+        weight: 1
+      - path: SKELE/joint28
+        weight: 1
+      - path: SKELE/joint29
+        weight: 1
+      - path: SKELE/joint30
+        weight: 1
+      - path: SKELE/joint31
+        weight: 1
+      - path: SKELE/joint32
+        weight: 1
+      - path: SKELE/joint33
+        weight: 1
+      - path: SKELE/joint34
+        weight: 1
+      - path: SKELE/joint35
+        weight: 1
+      - path: SKELE/joint36
+        weight: 1
+      - path: SKELE/joint37
+        weight: 1
+      - path: SKELE/joint38
+        weight: 1
+      - path: SKELE/joint39
+        weight: 1
+      - path: SKELE/joint40
+        weight: 1
+      - path: SKELE/joint41
+        weight: 1
+      - path: SKELE/joint42
+        weight: 1
+      - path: SKELE/joint43
+        weight: 1
+      - path: SKELE/joint44
+        weight: 1
+      - path: SKELE/joint45
+        weight: 1
+      - path: SKELE/joint46
+        weight: 1
+      - path: SKELE/joint47
+        weight: 1
+      - path: string1
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: idle
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: fence_L
+        weight: 1
+      - path: fence_L/conncetors_L
+        weight: 1
+      - path: fence_L/conncetors_L/pCube22
+        weight: 1
+      - path: fence_L/conncetors_L/pCube23
+        weight: 1
+      - path: fence_L/conncetors_L/pCube24
+        weight: 1
+      - path: fence_L/conncetors_L/pCube25
+        weight: 1
+      - path: fence_L/conncetors_L/pCube26
+        weight: 1
+      - path: fence_L/conncetors_L/pCube27
+        weight: 1
+      - path: fence_L/conncetors_L/pCube28
+        weight: 1
+      - path: fence_L/conncetors_L/pCube29
+        weight: 1
+      - path: fence_L/conncetors_L/pCube35
+        weight: 1
+      - path: fence_L/conncetors_L/pCube36
+        weight: 1
+      - path: fence_L/conncetors_L/pCube37
+        weight: 1
+      - path: fence_L/conncetors_L/pCube38
+        weight: 1
+      - path: fence_L/pCube15
+        weight: 1
+      - path: fence_L/pCube19
+        weight: 1
+      - path: fence_L/pCube20
+        weight: 1
+      - path: fence_L/pCube21
+        weight: 1
+      - path: fence_L/top1_L
+        weight: 1
+      - path: fence_L/top1_L/pCube16
+        weight: 1
+      - path: fence_L/top1_L/pCube17
+        weight: 1
+      - path: fence_L/top1_L/pCube18
+        weight: 1
+      - path: fence_L/top2_L
+        weight: 1
+      - path: fence_L/top2_L/pCube12
+        weight: 1
+      - path: fence_L/top2_L/pCube14
+        weight: 1
+      - path: fence_L/top2_L/pCube42
+        weight: 1
+      - path: fence_R
+        weight: 1
+      - path: fence_R/conncetors_R
+        weight: 1
+      - path: fence_R/conncetors_R/pCube22 1
+        weight: 1
+      - path: fence_R/conncetors_R/pCube23 1
+        weight: 1
+      - path: fence_R/conncetors_R/pCube24 1
+        weight: 1
+      - path: fence_R/conncetors_R/pCube25 1
+        weight: 1
+      - path: fence_R/conncetors_R/pCube26 1
+        weight: 1
+      - path: fence_R/conncetors_R/pCube27 1
+        weight: 1
+      - path: fence_R/conncetors_R/pCube28 1
+        weight: 1
+      - path: fence_R/conncetors_R/pCube29 1
+        weight: 1
+      - path: fence_R/conncetors_R/pCube35 1
+        weight: 1
+      - path: fence_R/conncetors_R/pCube36 1
+        weight: 1
+      - path: fence_R/conncetors_R/pCube37 1
+        weight: 1
+      - path: fence_R/conncetors_R/pCube38 1
+        weight: 1
+      - path: fence_R/pCube15 1
+        weight: 1
+      - path: fence_R/pCube19 1
+        weight: 1
+      - path: fence_R/pCube20 1
+        weight: 1
+      - path: fence_R/pCube21 1
+        weight: 1
+      - path: fence_R/top1R
+        weight: 1
+      - path: fence_R/top1R/pCube16 1
+        weight: 1
+      - path: fence_R/top1R/pCube17 1
+        weight: 1
+      - path: fence_R/top1R/pCube18 1
+        weight: 1
+      - path: fence_R/top2R
+        weight: 1
+      - path: fence_R/top2R/pCube12 1
+        weight: 1
+      - path: fence_R/top2R/pCube13
+        weight: 1
+      - path: fence_R/top2R/pCube14 1
+        weight: 1
+      - path: poll_L
+        weight: 1
+      - path: poll_L/column_R
+        weight: 1
+      - path: poll_L/connector_R
+        weight: 1
+      - path: poll_R
+        weight: 1
+      - path: poll_R/column_L
+        weight: 1
+      - path: poll_R/connector_L
+        weight: 1
+      - path: roof1
+        weight: 1
+      - path: roof1/group2
+        weight: 1
+      - path: roof1/group2/polySurface3
+        weight: 1
+      - path: roof1/group2/polySurface4
+        weight: 1
+      - path: roof1/group3
+        weight: 1
+      - path: roof1/group3/polySurface1
+        weight: 1
+      - path: roof1/group3/polySurface2
+        weight: 1
+      - path: roof1/group4
+        weight: 1
+      - path: roof1/group4/polySurface5
+        weight: 1
+      - path: roof1/group4/polySurface6
+        weight: 1
+      - path: roof1/group4/polySurface9
+        weight: 1
+      - path: roof1/group4/polySurface10
+        weight: 1
+      - path: roof1/group4/polySurface11
+        weight: 1
+      - path: roof1/group4/polySurface12
+        weight: 1
+      - path: roof1/group4/polySurface13
+        weight: 1
+      - path: roof1/group4/polySurface14
+        weight: 1
+      - path: roof1/top_roof
+        weight: 1
+      - path: roof1/top_roof/polySurface15
+        weight: 1
+      - path: roof1/top_roof/polySurface16
+        weight: 1
+      - path: sign
+        weight: 1
+      - path: sign/pCube30
+        weight: 1
+      - path: sign/pCylinder5
+        weight: 1
+      - path: sign/pCylinder6
+        weight: 1
+      - path: sign/pCylinder7
+        weight: 1
+      - path: SKELE
+        weight: 1
+      - path: SKELE/joint1
+        weight: 1
+      - path: SKELE/joint2
+        weight: 1
+      - path: SKELE/joint3
+        weight: 1
+      - path: SKELE/joint4
+        weight: 1
+      - path: SKELE/joint5
+        weight: 1
+      - path: SKELE/joint6
+        weight: 1
+      - path: SKELE/joint7
+        weight: 1
+      - path: SKELE/joint8
+        weight: 1
+      - path: SKELE/joint9
+        weight: 1
+      - path: SKELE/joint10
+        weight: 1
+      - path: SKELE/joint11
+        weight: 1
+      - path: SKELE/joint12
+        weight: 1
+      - path: SKELE/joint13
+        weight: 1
+      - path: SKELE/joint14
+        weight: 1
+      - path: SKELE/joint15
+        weight: 1
+      - path: SKELE/joint16
+        weight: 1
+      - path: SKELE/joint17
+        weight: 1
+      - path: SKELE/joint18
+        weight: 1
+      - path: SKELE/joint19
+        weight: 1
+      - path: SKELE/joint20
+        weight: 1
+      - path: SKELE/joint21
+        weight: 1
+      - path: SKELE/joint22
+        weight: 1
+      - path: SKELE/joint23
+        weight: 1
+      - path: SKELE/joint24
+        weight: 1
+      - path: SKELE/joint25
+        weight: 1
+      - path: SKELE/joint26
+        weight: 1
+      - path: SKELE/joint27
+        weight: 1
+      - path: SKELE/joint28
+        weight: 1
+      - path: SKELE/joint29
+        weight: 1
+      - path: SKELE/joint30
+        weight: 1
+      - path: SKELE/joint31
+        weight: 1
+      - path: SKELE/joint32
+        weight: 1
+      - path: SKELE/joint33
+        weight: 1
+      - path: SKELE/joint34
+        weight: 1
+      - path: SKELE/joint35
+        weight: 1
+      - path: SKELE/joint36
+        weight: 1
+      - path: SKELE/joint37
+        weight: 1
+      - path: SKELE/joint38
+        weight: 1
+      - path: SKELE/joint39
+        weight: 1
+      - path: SKELE/joint40
+        weight: 1
+      - path: SKELE/joint41
+        weight: 1
+      - path: SKELE/joint42
+        weight: 1
+      - path: SKELE/joint43
+        weight: 1
+      - path: SKELE/joint44
+        weight: 1
+      - path: SKELE/joint45
+        weight: 1
+      - path: SKELE/joint46
+        weight: 1
+      - path: SKELE/joint47
+        weight: 1
+      - path: string1
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

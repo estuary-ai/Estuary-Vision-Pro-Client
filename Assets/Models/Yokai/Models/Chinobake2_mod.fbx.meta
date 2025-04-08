@@ -1,0 +1,285 @@
+fileFormatVersion: 2
+guid: ea556f0090d604141b17ec246aa68898
+timeCreated: 1493850959
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: BotTeeth
+    100002: botTeeth2
+    100004: //RootNode
+    100006: dangles
+    100008: eye
+    100010: handle
+    100012: LANTERN
+    100014: lantern_inner
+    100016: lantern_outer
+    100018: pasted__dangle1
+    100020: pasted__dangle2
+    100022: pasted__dangle3
+    100024: pasted__dangle4
+    100026: pasted__hanger1
+    100028: pasted__hanger2
+    100030: pasted__hanger3
+    100032: pasted__hanger4
+    100034: pCube1
+    100036: Teeth
+    100038: tepTeeth2
+    100040: tooth
+    100042: tooth 1
+    100044: tooth 2
+    100046: tooth 3
+    100048: tooth1
+    100050: tooth1 1
+    100052: tooth2
+    100054: tooth2 1
+    100056: tooth2 2
+    100058: tooth2 3
+    100060: tooth3
+    100062: tooth3 1
+    100064: tooth3 2
+    100066: tooth3 3
+    100068: tooth4
+    100070: tooth4 1
+    100072: tooth5
+    100074: tooth5 1
+    100076: tooth5 2
+    100078: tooth5 3
+    100080: tooth6
+    100082: tooth6 1
+    100084: tooth6 2
+    100086: tooth6 3
+    100088: topLid
+    100090: TopTeeth
+    100092: topTeeth1
+    400000: BotTeeth
+    400002: botTeeth2
+    400004: //RootNode
+    400006: dangles
+    400008: eye
+    400010: handle
+    400012: LANTERN
+    400014: lantern_inner
+    400016: lantern_outer
+    400018: pasted__dangle1
+    400020: pasted__dangle2
+    400022: pasted__dangle3
+    400024: pasted__dangle4
+    400026: pasted__hanger1
+    400028: pasted__hanger2
+    400030: pasted__hanger3
+    400032: pasted__hanger4
+    400034: pCube1
+    400036: Teeth
+    400038: tepTeeth2
+    400040: tooth
+    400042: tooth 1
+    400044: tooth 2
+    400046: tooth 3
+    400048: tooth1
+    400050: tooth1 1
+    400052: tooth2
+    400054: tooth2 1
+    400056: tooth2 2
+    400058: tooth2 3
+    400060: tooth3
+    400062: tooth3 1
+    400064: tooth3 2
+    400066: tooth3 3
+    400068: tooth4
+    400070: tooth4 1
+    400072: tooth5
+    400074: tooth5 1
+    400076: tooth5 2
+    400078: tooth5 3
+    400080: tooth6
+    400082: tooth6 1
+    400084: tooth6 2
+    400086: tooth6 3
+    400088: topLid
+    400090: TopTeeth
+    400092: topTeeth1
+    2300000: eye
+    2300002: handle
+    2300004: lantern_inner
+    2300006: lantern_outer
+    2300008: pasted__dangle1
+    2300010: pasted__dangle2
+    2300012: pasted__dangle3
+    2300014: pasted__dangle4
+    2300016: pasted__hanger1
+    2300018: pasted__hanger2
+    2300020: pasted__hanger3
+    2300022: pasted__hanger4
+    2300024: pCube1
+    2300026: tooth
+    2300028: tooth 1
+    2300030: tooth 2
+    2300032: tooth 3
+    2300034: tooth1
+    2300036: tooth1 1
+    2300038: tooth2
+    2300040: tooth2 1
+    2300042: tooth2 2
+    2300044: tooth2 3
+    2300046: tooth3
+    2300048: tooth3 1
+    2300050: tooth3 2
+    2300052: tooth3 3
+    2300054: tooth4
+    2300056: tooth4 1
+    2300058: tooth5
+    2300060: tooth5 1
+    2300062: tooth5 2
+    2300064: tooth5 3
+    2300066: tooth6
+    2300068: tooth6 1
+    2300070: tooth6 2
+    2300072: tooth6 3
+    2300074: topLid
+    3300000: eye
+    3300002: handle
+    3300004: lantern_inner
+    3300006: lantern_outer
+    3300008: pasted__dangle1
+    3300010: pasted__dangle2
+    3300012: pasted__dangle3
+    3300014: pasted__dangle4
+    3300016: pasted__hanger1
+    3300018: pasted__hanger2
+    3300020: pasted__hanger3
+    3300022: pasted__hanger4
+    3300024: pCube1
+    3300026: tooth
+    3300028: tooth 1
+    3300030: tooth 2
+    3300032: tooth 3
+    3300034: tooth1
+    3300036: tooth1 1
+    3300038: tooth2
+    3300040: tooth2 1
+    3300042: tooth2 2
+    3300044: tooth2 3
+    3300046: tooth3
+    3300048: tooth3 1
+    3300050: tooth3 2
+    3300052: tooth3 3
+    3300054: tooth4
+    3300056: tooth4 1
+    3300058: tooth5
+    3300060: tooth5 1
+    3300062: tooth5 2
+    3300064: tooth5 3
+    3300066: tooth6
+    3300068: tooth6 1
+    3300070: tooth6 2
+    3300072: tooth6 3
+    3300074: topLid
+    4300000: lantern_outer
+    4300002: topLid
+    4300004: handle
+    4300006: eye
+    4300008: lantern_inner
+    4300010: tooth
+    4300012: tooth2
+    4300014: tooth3
+    4300016: tooth6
+    4300018: tooth5
+    4300020: tooth
+    4300022: tooth2
+    4300024: tooth3
+    4300026: tooth6
+    4300028: tooth5
+    4300030: tooth
+    4300032: tooth1
+    4300034: tooth2
+    4300036: tooth3
+    4300038: tooth4
+    4300040: tooth6
+    4300042: tooth5
+    4300044: tooth
+    4300046: tooth1
+    4300048: tooth2
+    4300050: tooth3
+    4300052: tooth4
+    4300054: tooth6
+    4300056: tooth5
+    4300058: pasted__dangle4
+    4300060: pasted__hanger4
+    4300062: pasted__dangle3
+    4300064: pasted__hanger3
+    4300066: pasted__dangle2
+    4300068: pasted__hanger2
+    4300070: pasted__dangle1
+    4300072: pasted__hanger1
+    4300074: pCube1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
