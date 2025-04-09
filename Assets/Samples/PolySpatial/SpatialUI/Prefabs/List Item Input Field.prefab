@@ -154,15 +154,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 00000000
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -188,34 +190,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2023072299727504307}
     m_Modifications:
-    - target: {fileID: 4297420317864066865, guid: 48e2cee497f58e349adce509e90fdf2d, type: 3}
-      propertyPath: m_OnSelect.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4297420317864066865, guid: 48e2cee497f58e349adce509e90fdf2d, type: 3}
-      propertyPath: m_OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4297420317864066865, guid: 48e2cee497f58e349adce509e90fdf2d, type: 3}
-      propertyPath: m_OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4297420317864066865, guid: 48e2cee497f58e349adce509e90fdf2d, type: 3}
-      propertyPath: m_OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4297420317864066865, guid: 48e2cee497f58e349adce509e90fdf2d, type: 3}
-      propertyPath: m_OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: KeyboardOn
-      objectReference: {fileID: 0}
-    - target: {fileID: 4297420317864066865, guid: 48e2cee497f58e349adce509e90fdf2d, type: 3}
-      propertyPath: m_OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: KeyboardController, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 4297420317864066865, guid: 48e2cee497f58e349adce509e90fdf2d, type: 3}
-      propertyPath: m_OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 4297420317864066870, guid: a9f778c325f9c46998ab7e8a2b86fcf8, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -303,6 +277,34 @@ PrefabInstance:
     - target: {fileID: 4297420317864066871, guid: a9f778c325f9c46998ab7e8a2b86fcf8, type: 3}
       propertyPath: m_Name
       value: InputField
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297420317864066865, guid: 48e2cee497f58e349adce509e90fdf2d, type: 3}
+      propertyPath: m_OnSelect.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297420317864066865, guid: 48e2cee497f58e349adce509e90fdf2d, type: 3}
+      propertyPath: m_OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297420317864066865, guid: 48e2cee497f58e349adce509e90fdf2d, type: 3}
+      propertyPath: m_OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297420317864066865, guid: 48e2cee497f58e349adce509e90fdf2d, type: 3}
+      propertyPath: m_OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297420317864066865, guid: 48e2cee497f58e349adce509e90fdf2d, type: 3}
+      propertyPath: m_OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: KeyboardOn
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297420317864066865, guid: 48e2cee497f58e349adce509e90fdf2d, type: 3}
+      propertyPath: m_OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: KeyboardController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297420317864066865, guid: 48e2cee497f58e349adce509e90fdf2d, type: 3}
+      propertyPath: m_OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
