@@ -906,7 +906,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7753147258609537286, guid: f30d027c30aca42a285c89b89640aafb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CallPuppy
+      value: MoveAgentToUser
       objectReference: {fileID: 0}
     - target: {fileID: 7753147258609537286, guid: f30d027c30aca42a285c89b89640aafb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName

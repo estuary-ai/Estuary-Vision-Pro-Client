@@ -28,12 +28,14 @@ public class NavManager : MonoBehaviour
     [SerializeField] private Animator agentAnimator;
     public GameObject navNode;
     public GameObject debugNode;
-    public GameObject classifiedDebugNode;
+    [SerializeField] private float followUpdateInterval = 0.5f;
+    private float lastFollowUpdateTime = 0;
+    private float minFollowDistance = 1.5f;
+
     private static readonly int IsWalking = Animator.StringToHash("isRunning");
     private static readonly int DoJump = Animator.StringToHash("doJump");
 
     private Vector3 lastFloorPos;
-    private bool wantToSit = false;
     private Vector3 seatPos = Vector3.zero;
 
     enum NavState
@@ -41,10 +43,18 @@ public class NavManager : MonoBehaviour
         Standing,       // idling on floor
         Walking,        // walking on floor
         IsJumping,      // jumping to or from seat
-        Seated          // idling on chair
+        Seated         // idling on chair
+    }
+
+    enum IntentState
+    {
+        WantToSit,
+        WantToFollow,
+        None
     }
 
     NavState navState = NavState.Standing;
+    IntentState intentState = IntentState.None;
 
 
     private bool DEBUG_SEAT = false;
@@ -57,10 +67,59 @@ public class NavManager : MonoBehaviour
 
     public void FixedUpdate()
     {
-        // // find all game objects that use the Navigable tag
-        //     // mesh will be generated from prefab with "Navigable" tag
-        // navigableObjects = GameObject.FindGameObjectsWithTag("Navigable");
+        BuildNavMesh();
+        UpdateFollowing();
 
+        if(navState == NavState.Walking &&
+           Vector3.Distance(navMeshAgent.gameObject.transform.position, navMeshAgent.destination) <= 0.5f)
+        {
+            Debug.Log(DEBUG_TAG + "Position: " + navMeshAgent.gameObject.transform.position);
+            Debug.Log(DEBUG_TAG + "Destination: " + navMeshAgent.destination);
+            Debug.Log(DEBUG_TAG + "Reached destination");
+            navMeshAgent.ResetPath();
+
+            agentAnimator.SetBool(IsWalking, false);
+
+            // check if agent is close enough to jump on the chair
+            if (intentState == IntentState.WantToSit &&
+                Vector3.Distance(navMeshAgent.gameObject.transform.position, seatPos) <= 1.0f)
+            {
+                intentState = IntentState.None;
+                IVA_DEMO = false;
+
+                Debug.Log(DEBUG_TAG + "Seating animation to position: " + seatPos);
+                StartCoroutine(MoveAgentUpToSeat(seatPos));
+            }
+            // check if agent is unable to sit
+            // else if (intentState == IntentState.WantToSit)
+            // {
+            //     IVA_STEP = 0;
+            //     // want to sit, but not at seat yet... keep trying!
+            //     Debug.Log(DEBUG_TAG + "Want to sit, but not at seat yet :( Not trying again.");
+            //     Debug.Log(DEBUG_TAG + "Position: " + navMeshAgent.gameObject.transform.position);
+            //     Debug.Log(DEBUG_TAG + "Seat Pos: " + seatPos);
+            //     Debug.Log(DEBUG_TAG + "Distance: " + Vector3.Distance(navMeshAgent.gameObject.transform.position, seatPos));
+            //     // MoveAgentToNearestSeatMesh();
+            //     intentState = IntentState.None;
+            //     navState = NavState.Standing;
+            // }
+            // stop moving, destination reached
+            else
+            {
+                if (intentState != IntentState.WantToFollow) navState = NavState.Standing;
+                StartCoroutine(TurnToCamera());
+            }
+        }
+    }
+
+    /// <summary>
+    /// find all game objects that use the Navigable tag
+    /// mesh will be generated from prefab with "Navigable" tag
+    /// navigableObjects = GameObject.FindGameObjectsWithTag("Navigable");
+    /// </summary>
+
+    private void BuildNavMesh()
+    {
         // perform a raycast from groundDectorOrigin to the ground and add navigable
         RaycastHit hit;
         if (Physics.Raycast(groundDetectorOrigin.position, Vector3.down, out hit, 100f))
@@ -92,46 +151,48 @@ public class NavManager : MonoBehaviour
                 StartCoroutine(UpdateNavMesh(pair.Value));
             }
         }
+    }
 
+    /// <summary>
+    /// Updates the path of the agent to follow the user.
+    /// </summary>
 
+    private void UpdateFollowing()
+    {
+        if (intentState != IntentState.WantToFollow) return;
 
-        if(navState == NavState.Walking && Vector3.Distance(navMeshAgent.gameObject.transform.position, navMeshAgent.destination) <= 0.5f)
+        // Only update path periodically to avoid performance issues
+        if (Time.time - lastFollowUpdateTime < followUpdateInterval) return;
+
+        Vector3 userPosition = appRef.camTrans.position;
+        Vector3 agentPosition = navMeshAgent.transform.position;
+
+        // Check distance on the horizontal plane
+        float distToUser = Vector2.Distance(
+            new Vector2(userPosition.x, userPosition.z),
+            new Vector2(agentPosition.x, agentPosition.z)
+        );
+
+        if (distToUser > minFollowDistance)
         {
-            Debug.Log(DEBUG_TAG + "Position: " + navMeshAgent.gameObject.transform.position);
-            Debug.Log(DEBUG_TAG + "Destination: " + navMeshAgent.destination);
-            Debug.Log(DEBUG_TAG + "Reached destination");
-            navMeshAgent.ResetPath();
-
-            agentAnimator.SetBool(IsWalking, false);
-
-            if (wantToSit && Vector3.Distance(navMeshAgent.gameObject.transform.position, seatPos) <= 1.0f)
+            // Update destination to follow user
+            MakeNavigate(userPosition);
+            if (navMeshAgent.hasPath)
             {
-                wantToSit = false;
-                IVA_DEMO = false;
-
-                Debug.Log(DEBUG_TAG + "Seating animation to position: " + seatPos);
-                StartCoroutine(MoveAgentUpToSeat(seatPos));
-            }
-            else if (wantToSit)
-            {
-                IVA_STEP = 0;
-                // want to sit, but not at seat yet... keep trying!
-                Debug.Log(DEBUG_TAG + "Want to sit, but not at seat yet :( Not trying again.");
-                Debug.Log(DEBUG_TAG + "Position: " + navMeshAgent.gameObject.transform.position);
-                Debug.Log(DEBUG_TAG + "Seat Pos: " + seatPos);
-                Debug.Log(DEBUG_TAG + "Distance: " + Vector3.Distance(navMeshAgent.gameObject.transform.position, seatPos));
-                // MoveAgentToNearestSeatMesh();
-                wantToSit = false;
-                navState = NavState.Standing;
-            }
-            else
-            {
-                navState = NavState.Standing;
-
-                StartCoroutine(TurnToCamera());
+                agentAnimator.SetBool(IsWalking, true);
+                navState = NavState.Walking;
             }
         }
+        // else
+        // {
+        //     // We're close enough, just stop and turn toward user
+        //     navMeshAgent.ResetPath();
+        //     agentAnimator.SetBool(IsWalking, false);
+        //     navState = NavState.Standing;
+        //     StartCoroutine(TurnToCamera());
+        // }
 
+        lastFollowUpdateTime = Time.time;
     }
 
     /**
@@ -165,31 +226,6 @@ public class NavManager : MonoBehaviour
         }
     }
 
-    public void MakeNavigate(GameObject destNode) {
-        // TODO: assumes that navagent is on floor!!!
-
-        if (destNode != null)
-        {
-            Vector3 destPos = destNode.transform.position;
-            Debug.Log(DEBUG_TAG + "Navigating to: " + destPos);
-            // move the user to the selected position
-            navMeshAgent.SetDestination(destPos);
-            navNode = destNode;
-
-            // animations
-            agentAnimator.SetBool(IsWalking, true);
-            navState = NavState.Walking;
-
-            if (navMeshAgent.gameObject.GetComponent<Animation>() != null) {
-                navMeshAgent.gameObject.GetComponent<Animation>().Play("Walking");
-            }
-        }
-        else
-        {
-            Debug.Log(DEBUG_TAG + "No navigation position found");
-        }
-    }
-
     public void MakeNavigate(Vector3 destCoords) {
         // TODO: assumes that navagent is on the floor!!!!
         // if (navState == NavState.Seated)
@@ -199,7 +235,7 @@ public class NavManager : MonoBehaviour
         // }
 
         Vector3 destPos = new Vector3(destCoords.x, 0, destCoords.z);
-        if (wantToSit)
+        if (intentState == IntentState.WantToSit)
         {
             if (DEBUG_SEAT) Debug.Log(DEBUG_TAG + "Remembering seat height to: " + destCoords.y);
             seatPos = destCoords;
@@ -216,25 +252,23 @@ public class NavManager : MonoBehaviour
         if (DEBUG_SEAT) Debug.Log(DEBUG_TAG + "Puppy has set destination: " + navMeshAgent.destination + " and is pending path?: " + navMeshAgent.pathPending);
     }
 
-    public void CallPuppy() {
+    public void MoveAgentToUser() {
         if (navState == NavState.IsJumping)
         {
             Debug.Log(DEBUG_TAG + "Ignoring call to puppy while jumping");
             return;
         }
         Debug.Log(DEBUG_TAG + "Calling the puppy to you");
-        GameObject yourPos = new GameObject();
-        yourPos.transform.position = appRef.camTrans.position;
-        Debug.Log(DEBUG_TAG + "Your position: " + yourPos.transform.position);
+        var yourPos = appRef.camTrans.position;
+        Debug.Log(DEBUG_TAG + "Your position: " + yourPos);
         if (navState == NavState.Seated)
         {
-            Debug.Log(DEBUG_TAG + "Puppy is seated, delaying navigation until after finishing jumping, then headed to position: " + yourPos.transform.position);
-            StartCoroutine(MoveAgentDownFromSeatThenMove(yourPos.transform.position));
-            return;
+            Debug.Log(DEBUG_TAG + "Puppy is seated, delaying navigation until after finishing jumping, then headed to position: " + yourPos);
+            StartCoroutine(MoveAgentDownFromSeatThenMove(yourPos));
         }
         else
         {
-            MakeNavigate(yourPos.transform.position);
+            MakeNavigate(yourPos);
             Debug.Log(DEBUG_TAG + "Puppy is on the way!");
         }
     }
@@ -285,7 +319,7 @@ public class NavManager : MonoBehaviour
                 plane.GetComponent<ARPlane>().classifications == PlaneClassifications.Couch)
             {
                 // Debug.Log("Seat Alignment: " + plane.GetComponent<ARPlane>().alignment);
-                if (plane.GetComponent<ARPlane>().alignment == PlaneAlignment.HorizontalUp)
+                if (plane.GetComponent<ARPlane>().alignment != PlaneAlignment.Vertical)
                 {
                     // Debug.Log("Seat is Horizontal Up");
                     Vector3 seatPos = plane.transform.position;
@@ -304,12 +338,12 @@ public class NavManager : MonoBehaviour
         if (nearestSeat || DEBUG_SEAT)
         {
             Debug.Log(DEBUG_TAG + "Navigating to seat plane at position " + targetPos);
-            wantToSit = true;
+            intentState = IntentState.WantToSit;
         }
         else
         {
             Debug.Log(DEBUG_TAG + "No seat plane found. Calling puppy to you instead.");
-            CallPuppy();
+            MoveAgentToUser();
             if (IVA_DEMO) IVA_STEP = 0;
             return;
         }
@@ -419,23 +453,6 @@ public class NavManager : MonoBehaviour
             yield return null;
             rotationTime += Time.fixedDeltaTime;
         }
-
-
-        // Vector3 startPos = navMeshAgent.gameObject.transform.position;
-        // Vector3 targetPos = new Vector3(appRef.camTrans.position.x, navMeshAgent.gameObject.transform.position.y, appRef.camTrans.position.z);
-        //
-        // float temp = 0.0f;
-        // float speed = 0.01f;
-        // while (navMeshAgent.gameObject.transform.rotation.eulerAngles.y < appRef.camTrans.rotation.eulerAngles.y - 180.0f + 0.01f &&
-        //        navMeshAgent.gameObject.transform.rotation.eulerAngles.y > appRef.camTrans.rotation.eulerAngles.y - 180.0f - 0.01f)
-        // {
-        //     navMeshAgent.gameObject.transform.LookAt(Vector3.Lerp(startPos, targetPos, speed * temp));
-        //     temp += Time.fixedDeltaTime;
-        //     // navMeshAgent.gameObject.transform.LookAt(new Vector3(appRef.camTrans.position.x, navMeshAgent.gameObject.transform.position.y, appRef.camTrans.position.z));
-        //     yield return new WaitForFixedUpdate();
-        // }
-
-
         yield return null;
     }
 
@@ -493,6 +510,22 @@ public class NavManager : MonoBehaviour
         yield return null;
     }
 
+    public void SetFollowMode(bool toFollow)
+    {
+        navMeshAgent.ResetPath();
+        if (!toFollow)
+        {
+            agentAnimator.SetBool(IsWalking, false);
+            navState = NavState.Standing;
+            intentState = IntentState.None;
+        }
+        else
+        {
+            MoveAgentToUser();
+            intentState = IntentState.WantToFollow;
+        }
+    }
+
     public void ResetIVA()
     {
         IVA_DEMO = true;
@@ -527,7 +560,7 @@ public class NavManager : MonoBehaviour
                     else
                     {
                         Debug.Log(DEBUG_TAG + "IVA DEMO: Puppy is not near camera, calling puppy to camera. Distance: " + Vector3.Distance(navMeshAgent.gameObject.transform.position, new Vector3(appRef.camTrans.position.x, 0, appRef.camTrans.position.z)));
-                        CallPuppy();
+                        MoveAgentToUser();
                     }
                 } else if (IVA_STEP == 1)
                 {

@@ -172,7 +172,7 @@ public class AIClient : MonoBehaviour
         //     Debug.Log("WAKE UP EVENT RECEIVED");
         //     // result.GetValue<IncomingDataPacket<short>>();
         //     // Debug.Log($"WakeUp: {result}");
-        //     if(appRef && appRef.navManager) appRef.navManager.CallPuppy();
+        //     if(appRef && appRef.navManager) appRef.navManager.MoveAgentToUser();
         //     Debug.Log("before StartCommandTransmission");
         //     StartCommandTransmission();
         //     Debug.Log("after StartCommandTransmission");
