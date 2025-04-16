@@ -13,6 +13,8 @@ namespace Mangrove
         // Supported Events and Requests defined at the bottom
         public bool autoConnectOnStart = true;
 
+        public static event Action<string> OnBotResponseReceived;
+
         private SocketIOUnity socket;
 
         // private bool isAwake = false;
@@ -198,6 +200,7 @@ namespace Mangrove
             socket.On(EVENTS.BOT_RES, (result) =>
             {
                 Debug.Log($"bot-response: {result}");
+                OnBotResponseReceived?.Invoke(result.ToString());
                 botResponseHandler.Handle(result.GetValue<BotResponse>());
             });
             socket.On(EVENTS.BOT_VOICE, (result) =>
