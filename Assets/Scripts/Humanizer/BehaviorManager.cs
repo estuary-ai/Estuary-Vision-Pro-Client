@@ -19,19 +19,30 @@ public class BehaviorManager : MonoBehaviour
     private void HandleAction(string msg)
     {
         // Debug.Log("Got bot response: " + msg);
-        var command = ParseCommand(msg);
-        Debug.Log("Parsed command: " + command);
-        switch("Sit Down")
+        string command = ParseCommand(msg);
+        Debug.Log($"Parsed command: '{command}'");
+
+        if (string.IsNullOrEmpty(command)) {
+            Debug.Log("No valid parsed command found in message");
+            return;
+        }
+
+        if (command == "Sit Down")
         {
-            case "Sit Down":
-                appRef.navManager.MoveAgentToNearestSeatPlane();
-                break;
-            case "Follow User":
-                appRef.navManager.SetFollowMode(true);
-                break;
-            case "Stop Following User":
-                appRef.navManager.SetFollowMode(false);
-                break;
+            appRef.navManager.MoveAgentToNearestSeatPlane();
+        }
+        else if (command == "Follow User")
+        {
+            Debug.Log("[Parsed] following user now");
+            appRef.navManager.SetFollowMode(true);
+        }
+        else if (command == "Stop Following User")
+        {
+            appRef.navManager.SetFollowMode(false);
+        }
+        else
+        {
+            Debug.Log($"Parsed unrecognized command: '{command}'");
         }
     }
 

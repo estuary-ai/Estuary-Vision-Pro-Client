@@ -512,6 +512,7 @@ public class NavManager : MonoBehaviour
 
     public void SetFollowMode(bool toFollow)
     {
+        Debug.Log("[Parsed] SetFollowMode: " + toFollow);
         navMeshAgent.ResetPath();
         if (!toFollow)
         {
