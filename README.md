@@ -8,6 +8,10 @@ If you find any bugs or would like to request a new feature, feel free to open a
 issue!
 
 ## Acknowledgements
-The Estuary team would like to acknowledge the following authors, developers, and creatives whose work contributed to the success of this project:
+The Estuary team would like to acknowledge the Mobile & Environmental Media Lab (MEML) for allowing the usage of Yokai! project assets.
+* [MEML](https://mobilemedia.usc.edu/projects/yokai/)
+* [Yokai!](https://www.maryyann.com/yokai.html)
+
+The following authors, developers, and creatives whose work have also contributed to the success of this project:
 * [SocketIOUnity](https://github.com/itisnajim/SocketIOUnity?tab=readme-ov-file)
 * [Mini Simple Characters | Skeleton](https://assetstore.unity.com/packages/3d/characters/humanoids/fantasy/mini-simple-characters-skeleton-free-demo-262897)
