@@ -105,7 +105,7 @@ namespace Mangrove
                     { "token", "UNITY" },
                     { "AutoUpgrade", "true" }
                 },
-                EIO = 4,
+                EIO = (EngineIO)4,
                 Transport = SocketIOClient.Transport.TransportProtocol.WebSocket
             });
 

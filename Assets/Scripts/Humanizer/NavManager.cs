@@ -316,10 +316,13 @@ public class NavManager : MonoBehaviour
             // Debug.Log("Plane classification: " + plane.GetComponent<ARPlane>().classifications);
             if (plane.GetComponent<ARPlane>().classifications == PlaneClassifications.SeatOfAnyType ||
                 plane.GetComponent<ARPlane>().classifications == PlaneClassifications.Seat ||
-                plane.GetComponent<ARPlane>().classifications == PlaneClassifications.Couch)
+                plane.GetComponent<ARPlane>().classifications == PlaneClassifications.Couch||
+                plane.GetComponent<ARPlane>().classifications == PlaneClassifications.Seat)
             {
                 // Debug.Log("Seat Alignment: " + plane.GetComponent<ARPlane>().alignment);
-                if (plane.GetComponent<ARPlane>().alignment != PlaneAlignment.Vertical)
+                if (plane.GetComponent<ARPlane>().alignment == PlaneAlignment.HorizontalUp ||
+                    plane.GetComponent<ARPlane>().alignment == PlaneAlignment.None ||
+                    plane.GetComponent<ARPlane>().alignment == PlaneAlignment.NotAxisAligned)
                 {
                     // Debug.Log("Seat is Horizontal Up");
                     Vector3 seatPos = plane.transform.position;

@@ -40,6 +40,14 @@ public class BehaviorManager : MonoBehaviour
         {
             appRef.navManager.SetFollowMode(false);
         }
+        else if (command == "Summon Karakasa")
+        {
+            appRef.yokaiManager.SummonKarakasa();
+        }
+        else if (command == "Summon Zashiki")
+        {
+
+        }
         else
         {
             Debug.Log($"Parsed unrecognized command: '{command}'");
