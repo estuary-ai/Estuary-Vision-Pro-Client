@@ -206,14 +206,22 @@ namespace Mangrove
             socket.On(EVENTS.BOT_VOICE, (result) =>
             {
                 Debug.Log($"bot-voice: {result}");
-                IncomingAudioPacket packet = result.GetValue<IncomingAudioPacket>();
-
-                // TODO verify and debug audioBytes / test FixedUpdate
-                UnityThread.executeInUpdate(() =>
+                try
                 {
-                    // botVoice.PlayAudioBytes(audioPacket.InComingBytes[0]);
-                    botVoice.EnqueueAudioPacket(packet);
-                });
+                    IncomingAudioPacket packet = result.GetValue<IncomingAudioPacket>();
+                    Debug.Log($"incoming-audio-packet: {packet}");
+                    UnityThread.executeInUpdate(() =>
+                    {
+                        // botVoice.PlayAudioBytes(audioPacket.InComingBytes[0]);
+                        botVoice.EnqueueAudioPacket(packet);
+                    });
+                }
+                
+                // TODO verify and debug audioBytes / test FixedUpdate
+                catch (Exception e)
+                {
+                    Debug.LogError($"Error parsing bot voice packet: {e.Message}");
+                }
 
             });
             socket.On(EVENTS.INTERRUPT, (result) =>
