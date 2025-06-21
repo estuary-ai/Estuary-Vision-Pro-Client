@@ -1903,7 +1903,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6787377178621495856, guid: a769a5a07fbdd459b81c7774c4b96e0b, type: 3}
       propertyPath: api
-      value: ws://192.168.1.232:4000
+      value: https://firm-weasel-tough.ngrok-free.app
       objectReference: {fileID: 0}
     - target: {fileID: 7354960032820204744, guid: a769a5a07fbdd459b81c7774c4b96e0b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1911,11 +1911,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7354960032820204744, guid: a769a5a07fbdd459b81c7774c4b96e0b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.3384183
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7354960032820204744, guid: a769a5a07fbdd459b81c7774c4b96e0b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.012043886
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7354960032820204744, guid: a769a5a07fbdd459b81c7774c4b96e0b, type: 3}
       propertyPath: m_LocalRotation.w

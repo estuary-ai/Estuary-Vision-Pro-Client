@@ -15,7 +15,7 @@ namespace Mangrove
         [SerializeField] private AudioSource audioSource;
         public bool _isSpeaking;
         private int _offset;
-        private int clipPlayedTimestamp;
+        private long clipPlayedTimestamp;
 
         /// <summary>
         /// Singleton access
@@ -205,6 +205,21 @@ namespace Mangrove
 
         public void EnqueueAudioPacket(IncomingAudioPacket packet)
         {
+            if (packet == null)
+            {
+                Debug.LogError("EnqueueAudioPacket: Incoming packet is null!");
+                return;
+            }
+            // Example checks for common fields (customize as needed)
+            if (packet.bytes == null || packet.bytes.Length == 0)
+            {
+                Debug.LogError("EnqueueAudioPacket: Incoming packet has no audio data!");
+            }
+            if (packet.sampleRate != 48000)
+            {
+                Debug.LogWarning($"EnqueueAudioPacket: Unexpected sample rate: {packet.sampleRate}");
+            }
+            Debug.Log("Enqueuing audio packet: " + packet.ToString());
             _incomingAudioPacketQueue.Enqueue(packet);
             // StartCoroutine(playAfterSilence(clip));
         }
