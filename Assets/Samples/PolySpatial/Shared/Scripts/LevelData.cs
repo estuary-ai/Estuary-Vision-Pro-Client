@@ -21,12 +21,14 @@ namespace PolySpatial.Samples
             Lights,
             Blendshapes,
             ResizeVolume,
-            Billboard
+            Billboard,
+            ObjectTracking
         }
 
         const string CharacterNavigationTitle = "Character Navigation";
         const string TargetedInputTitle = "Targeted Input";
         const string ImageTrackingTitle = "Image Tracking";
+        const string ObjectTrackingTitle = "Object Tracking";
         const string ObjectManipulationTitle = "Object Manipulation";
         const string SpatialUITitle = "Spatial UI";
         const string InputDebugTitle = "Input Debug";
@@ -47,6 +49,7 @@ namespace PolySpatial.Samples
             "Scene demonstrating targeted input and particle systems through the use of a simple balloon gallery mini game.";
 
         const string ImageTrackingDescription = "Scene demonstrating spawning content relative to unique tracked images in an unbounded space.";
+        const string ObjectTrackingDescription = "Scene demonstrating spawning content relative to unique tracked ojbect in an unbounded space.";
         const string ObjectManipulationDescription = "Scene demonstrating manipulating 3D assets within a bounded volume using XRI.";
         const string SpatialUIDescription = "Scene demonstrating interactions with common spatial UI elements within a bounded volume.";
         const string InputDebugDescription = "Scene displaying input data generated from direct and indirect touches within a bounded volume.";
@@ -97,6 +100,8 @@ namespace PolySpatial.Samples
                     return ResizeVolumeTitle;
                 case LevelTypes.Billboard:
                     return BillboardTitle;
+                case LevelTypes.ObjectTracking:
+                    return ObjectTrackingTitle;
                 default:
                     return "";
             }
@@ -112,6 +117,8 @@ namespace PolySpatial.Samples
                     return TargetedInputDescription;
                 case LevelTypes.ImageTracking:
                     return ImageTrackingDescription;
+                case LevelTypes.ObjectTracking:
+                    return ObjectTrackingDescription;
                 case LevelTypes.ObjectManipulation:
                     return ObjectManipulationDescription;
                 case LevelTypes.SpatialUI:

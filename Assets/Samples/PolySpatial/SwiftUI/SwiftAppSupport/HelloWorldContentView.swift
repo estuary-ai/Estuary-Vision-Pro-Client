@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import UnityFramework
+import PolySpatialRealityKit
 
 struct HelloWorldContentView: View {
     @State var counterObject = ObjectCounter()
@@ -31,6 +32,15 @@ struct HelloWorldContentView: View {
                 CallCSharpCallback("spawn blue")
                 UpdateValues(counter: counterObject)
             }
+            Button("Make It Pink") {
+                let instanceId = GetLastObjectInstanceID()
+                let entities = PolySpatialWindowManagerAccess.entitiesForUnityInstanceId(id: instanceId)
+                for entity in entities {
+                    if let identifier = PolySpatialWindowManagerAccess.identifierForEntity(entity: entity) {
+                        CallCSharpCallback("recolor", identifier.unityInstanceId)
+                    }
+                }
+            }.disabled(counterObject.cubeCount == 0 && counterObject.sphereCount == 0)
         }
         .onAppear {
             // Call the public function that was defined in SwiftUISamplePlugin

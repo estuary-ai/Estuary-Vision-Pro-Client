@@ -1049,7 +1049,6 @@ GameObject:
   m_Component:
   - component: {fileID: 491723881}
   - component: {fileID: 491723882}
-  - component: {fileID: 491723883}
   m_Layer: 0
   m_Name: VolumeCamera
   m_TagString: Untagged
@@ -1100,19 +1099,6 @@ MonoBehaviour:
   ViewpointChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &491723883
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 491723879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b0e24161653434389cbc153211c7545, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Mode: 0
 --- !u!1001 &517096370
 PrefabInstance:
   m_ObjectHideFlags: 0

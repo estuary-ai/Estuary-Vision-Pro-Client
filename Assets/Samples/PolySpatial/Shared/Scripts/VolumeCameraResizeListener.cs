@@ -1,3 +1,4 @@
+using System;
 using Unity.PolySpatial;
 using UnityEngine;
 
@@ -55,6 +56,18 @@ namespace PolySpatial.Samples
             volumeCamera.WindowStateChanged.RemoveListener(VolumeWindowResized);
         }
 
+        bool ApproximatelyEqual(float a, float b, float epsilon = 1e-3f)
+        {
+            return Mathf.Abs(a - b) < epsilon;
+        }
+
+        bool ApproximatelyEqual(Vector3 lhs, Vector3 rhs)
+        {
+            return ApproximatelyEqual(lhs.x, rhs.x) &&
+                   ApproximatelyEqual(lhs.y, rhs.y) &&
+                   ApproximatelyEqual(lhs.z, rhs.z);
+        }
+
         // We are being informed of the actual dimensions of the opened window (windowDimensions).
         // In this function, the only thing that we can manipulate is the volume camera dimensions/scale/position itself,
         // or to change to an entirely different output configuration. We cannot affect the output window dimensions
@@ -72,12 +85,11 @@ namespace PolySpatial.Samples
             if (windowState.Mode == VolumeCamera.PolySpatialVolumeCameraMode.Unbounded)
                 return;
 
-            // These are the desired output dimensions that we asked for. (volumeCamera.OutputDimensions will be the actual
-            // dimensions, and will equal contentDimensions)
+            // These are the desired output dimensions that we asked for.
             var desiredOutputDimensions = volumeCamera.WindowConfiguration.Dimensions;
 
             // If they match, there's nothing to do; we got what we asked for.
-            if (windowState.ContentDimensions == desiredOutputDimensions)
+            if (ApproximatelyEqual(windowState.OutputDimensions, desiredOutputDimensions))
                 return;
 
             // This is the original scale factor between the window dimensions and the volume camera dimensions, in order
@@ -85,6 +97,9 @@ namespace PolySpatial.Samples
             var originalScaleFactor = new Vector3(m_OriginalVolumeCameraDimensions.x / desiredOutputDimensions.x,
                     m_OriginalVolumeCameraDimensions.y / desiredOutputDimensions.y,
                     m_OriginalVolumeCameraDimensions.z / desiredOutputDimensions.z);
+
+            if (ApproximatelyEqual(windowState.ContentDimensions, originalScaleFactor))
+                return;
 
             // First, compute dimensions such that content remains the same size and shape as it would have if we had received
             // our requested dimensions. If we received smaller dimensions, this would cause the content to be cropped. If bigger,

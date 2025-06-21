@@ -47,8 +47,8 @@ namespace PolySpatial.Samples
         {
             if (state.WindowEvent == VolumeCamera.WindowEvent.Resized && !m_VolumeCamera.ScaleWithWindow)
             {
-                var contentSize = state.ContentDimensions;
-                var yPosition = -state.ContentDimensions.y / 2;
+                var contentSize = state.OutputDimensions;
+                var yPosition = -state.OutputDimensions.y / 2;
                 m_BottomCenterAnchor.position = new Vector3(m_BottomCenterAnchor.position.x, yPosition + 0.05f, m_BottomCenterAnchor.position.z);
 
                 m_FrontLeftCornerB.position = new Vector3(-contentSize.x / 2, -contentSize.y / 2, -contentSize.z / 2);

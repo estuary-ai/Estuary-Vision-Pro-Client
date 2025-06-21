@@ -2050,7 +2050,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2026256748}
   - component: {fileID: 2026256749}
-  - component: {fileID: 2026256750}
   m_Layer: 0
   m_Name: VolumeCamera
   m_TagString: Untagged
@@ -2101,19 +2100,6 @@ MonoBehaviour:
   ViewpointChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2026256750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2026256746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b0e24161653434389cbc153211c7545, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Mode: 0
 --- !u!1001 &2103716276
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2812,8 +2798,7 @@ MonoBehaviour:
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f675742eaf9c20a4f909d78ee7a14fed, type: 2}
   m_sharedMaterial: {fileID: 4687939059374929122, guid: f675742eaf9c20a4f909d78ee7a14fed, type: 2}
-  m_fontSharedMaterials:
-  - {fileID: 4687939059374929122, guid: f675742eaf9c20a4f909d78ee7a14fed, type: 2}
+  m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
