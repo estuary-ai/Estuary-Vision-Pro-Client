@@ -14,7 +14,7 @@ namespace Mangrove
         private Queue<IncomingAudioPacket> _incomingAudioPacketQueue;
         [SerializeField] private AudioSource audioSource;
         public bool _isSpeaking;
-        private int _offset;
+        private long _offset;
         private long clipPlayedTimestamp;
 
         /// <summary>
@@ -54,37 +54,43 @@ namespace Mangrove
 
         void Update()
         {
-            if (audioSource.isPlaying == false)
+            // 1) Drop any queued packets older than the offset
+            lock (_incomingAudioPacketQueue)
             {
-                lock (_incomingAudioPacketQueue)
+                while (_incomingAudioPacketQueue.Count > 0 &&
+                       _incomingAudioPacketQueue.Peek().timestamp < _offset)
                 {
-                    if (_incomingAudioPacketQueue.Count > 0)
-                    {
-                        IncomingAudioPacket packet = _incomingAudioPacketQueue.Dequeue();
-                        Debug.Log("Packet timestamp: " + packet.timestamp + " _offset: " + _offset + " audioSource.time: " + audioSource.time);
-                        if (packet.timestamp < _offset + audioSource.time)
-                        {
-                            Debug.Log("Packet skipping!");
-                            audioSource.Stop();
-                            return;
-                        }
-                        AudioClip convertedClip = CreateAudioClipFromAudioPacket(packet);
-                        if(convertedClip == null) return;
-                        _isSpeaking = true;
-                        clipPlayedTimestamp = packet.timestamp;
-                        audioSource.PlayOneShot(convertedClip);
-                    }
-                    else
-                    {
-                        _isSpeaking = false;
-                    }
+                    _incomingAudioPacketQueue.Dequeue();
                 }
             }
-            else
+
+            // 2) If currently playing, check if it started before the offset
+            if (audioSource.isPlaying)
             {
                 if (clipPlayedTimestamp < _offset)
                 {
                     audioSource.Stop();
+                    _isSpeaking = false;
+                }
+                return;
+            }
+
+            // 3) Otherwise, dequeue and play the next packet
+            lock (_incomingAudioPacketQueue)
+            {
+                if (_incomingAudioPacketQueue.Count > 0)
+                {
+                    var packet = _incomingAudioPacketQueue.Dequeue();
+                    _isSpeaking = true;
+                    clipPlayedTimestamp = packet.timestamp;
+                    var clip = CreateAudioClipFromAudioPacket(packet);
+                    if (clip != null)
+                    {
+                        audioSource.PlayOneShot(clip);
+                    }
+                }
+                else
+                {
                     _isSpeaking = false;
                 }
             }
@@ -96,10 +102,21 @@ namespace Mangrove
             return _isSpeaking;
         }
 
-        public void Interrupt(int timestamp)
+        public void Interrupt(long timestamp)
         {
             _offset = timestamp;
-            // Debug.Log("Setting _offset to " + _offset);
+            Debug.Log("[Interruption] Setting _offset to " + _offset);
+            
+            lock (_incomingAudioPacketQueue)
+            {
+                _incomingAudioPacketQueue.Clear();    // drop pending packets
+            }
+
+            if (audioSource.isPlaying)
+            {
+                audioSource.Stop();                   // stop current clip
+                _isSpeaking = false;
+            }
         }
 
         public AudioClip CreateAudioClipFromAudioPacket(IncomingAudioPacket packet)

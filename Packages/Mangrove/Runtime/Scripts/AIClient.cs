@@ -226,8 +226,18 @@ namespace Mangrove
             });
             socket.On(EVENTS.INTERRUPT, (result) =>
             {
-                Debug.Log($"interrupt: {result.GetValue<int>()}");
-                botVoice.Interrupt(result.GetValue<int>());
+                try 
+                {
+                    Debug.Log($"[Interrupt]: {result}");
+                    UnityThread.executeInUpdate(() =>
+                    {
+                        botVoice.Interrupt(result.GetValue<long>());
+                    });
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError($"Error parsing interrupt event: {e.Message}");
+                }
             });
         }
 
