@@ -162,7 +162,6 @@ public class HandMenu : MonoBehaviour
         }
         else
         {
-            serverConnectionMenu.SetActive(false);
             commandMenu.SetActive(true);
         }
     }
@@ -175,7 +174,6 @@ public class HandMenu : MonoBehaviour
         }
         else
         {
-            commandMenu.SetActive(false);
             serverConnectionMenu.SetActive(true);
         }
     }

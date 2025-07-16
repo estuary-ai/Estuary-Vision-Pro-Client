@@ -41,7 +41,7 @@ public class ButtonHandler : MonoBehaviour
         }
         else if (m_ButtonType == ButtonType.OpenServerConnection)
         {
-            
+            appRef.mainMenuController.ToggleServerConnectionMenuVisibility();
         }
     }
 }
