@@ -6,7 +6,11 @@ using UnityEngine.XR.Management;
 
 public class HandMenu : MonoBehaviour
 {
-    [SerializeField] private GameObject handMenu;
+    public ApplicationReferences appRef;
+    [Header("Menus")]
+    [SerializeField] GameObject handMenu;
+    [SerializeField] GameObject commandMenu;
+    [SerializeField] GameObject serverConnectionMenu;
     [SerializeField] Transform m_PolySpatialCameraTransform;
 
 // #if UNITY_INCLUDE_XR_HANDS
@@ -149,4 +153,30 @@ public class HandMenu : MonoBehaviour
         }
     }
 // #endif
+    public void ToggleCommandsMenuVisibility()
+    {
+        Debug.Log("Toggle commands menu visibility");
+        if (commandMenu.activeInHierarchy)
+        {
+            commandMenu.SetActive(false);
+        }
+        else
+        {
+            serverConnectionMenu.SetActive(false);
+            commandMenu.SetActive(true);
+        }
+    }
+    public void ToggleServerConnectionMenuVisibility()
+    {
+        Debug.Log("Toggle server connection menu visibility");
+        if (serverConnectionMenu.activeInHierarchy)
+        {
+            serverConnectionMenu.SetActive(false);
+        }
+        else
+        {
+            commandMenu.SetActive(false);
+            serverConnectionMenu.SetActive(true);
+        }
+    }
 }
