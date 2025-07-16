@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a014fb26f42dfc46937c175544fe894, type: 3}
   m_Name: Icon Library
   m_EditorClassIdentifier: 
-  alwaysUpdate: 0
+  alwaysUpdate: 1
   optimizeUpdates: 1
   searchIcon: {fileID: 2800000, guid: fb98fbe62e3a3304584516ade7506fce, type: 3}
   icons:
@@ -458,8 +458,7 @@ MonoBehaviour:
     iconPreview: {fileID: 2800000, guid: 87258a2e98839004986e33d9a04e825e, type: 3}
     iconSprite32: {fileID: 0}
     iconSprite64: {fileID: 0}
-    iconSprite128: {fileID: 5670732621190257608, guid: 87258a2e98839004986e33d9a04e825e,
-      type: 3}
+    iconSprite128: {fileID: 5670732621190257608, guid: 87258a2e98839004986e33d9a04e825e, type: 3}
     iconSprite256: {fileID: 0}
   - iconTitle: Money (Filled)
     iconPreview: {fileID: 2800000, guid: a934e30ca800d4e4b8e377b5e5ba7f04, type: 3}
