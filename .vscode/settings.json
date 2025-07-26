@@ -56,5 +56,8 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Estuary-Vision-Pro-Client.sln"
+    "dotnet.defaultSolution": "Estuary-Vision-Pro-Client.sln",
+    "dotrush.roslyn.projectOrSolutionFiles": [
+        "c:\\Users\\unico\\Documents\\Projects\\Estuary\\Estuary-Vision-Pro-Client\\Estuary-Vision-Pro-Client.sln"
+    ]
 }
