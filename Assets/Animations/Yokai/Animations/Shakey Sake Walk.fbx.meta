@@ -1,0 +1,530 @@
+fileFormatVersion: 2
+guid: 150194bd6a2813b43b7b57ea1f6d2642
+timeCreated: 1503345555
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: ankle_L
+    100002: ankle_R
+    100004: ankleHelper_L
+    100006: ankleHelper_R
+    100008: BodyMid
+    100010: BodyTip
+    100012: bottle_leg_L
+    100014: bottle_leg_R
+    100016: foot_L
+    100018: foot_R
+    100020: footHelper_L
+    100022: footHelper_R
+    100024: GEO
+    100026: hip_L
+    100028: hip_R
+    100030: hipHelper_L
+    100032: hipHelper_R
+    100034: joint1
+    100036: joint2
+    100038: L_ankleHandle_IK
+    100040: L_footHandle_IK
+    100042: L_HelperHandle_IK
+    100044: L_Hind_Flex_Offset
+    100046: L_Hind_Flex_Pivot
+    100048: L_legHandle_IK
+    100050: L_Swivel
+    100052: L_Toe_Tap
+    100054: L_Toe_Tip
+    100056: leg_L
+    100058: leg_R
+    100060: legHelper_L
+    100062: legHelper_R
+    100064: Mid_Direct_L
+    100066: Mid_Direct_R
+    100068: R_ankleHandle_IK
+    100070: R_footHandle_IK
+    100072: R_HelperHandle_IK
+    100074: R_Hind_Flex_Offset
+    100076: R_Hind_Flex_Pivot
+    100078: R_legHandle_IK
+    100080: R_Swivel
+    100082: R_Toe_Tap
+    100084: R_Toe_Tip
+    100086: RIG
+    100088: root
+    100090: sake_bottle
+    100092: Sake_FOOT_L
+    100094: Sake_FOOT_R
+    100096: Sake_HIP_L
+    100098: Sake_HIP_R
+    100100: Sake_KNEE_L
+    100102: Sake_KNEE_R
+    100104: Sake_L_toe_L
+    100106: Sake_L_toe_R
+    100108: Sake_M_toe_L
+    100110: Sake_M_toe_R
+    100112: Sake_MASTER
+    100114: Sake_R_toe_L
+    100116: Sake_R_toe_R
+    100118: Sake_ROOT
+    100120: sake_Yokai
+    100122: Sakel_BOTTLE
+    100124: //RootNode
+    100126: SKELE
+    100128: toeLBase_L
+    100130: toeLBase_R
+    100132: toeLMid_L
+    100134: toeLMid_R
+    100136: toeLTip_L
+    100138: toeLTip_R
+    100140: toeMid_L
+    100142: toeMid_R
+    100144: toeMidBase_L
+    100146: toeMidBase_R
+    100148: toeRBase_L
+    100150: toeRBase_R
+    100152: toeRMid_L
+    100154: toeRMid_R
+    100156: toeRTip_L
+    100158: toeRTip_R
+    400000: ankle_L
+    400002: ankle_R
+    400004: ankleHelper_L
+    400006: ankleHelper_R
+    400008: BodyMid
+    400010: BodyTip
+    400012: bottle_leg_L
+    400014: bottle_leg_R
+    400016: foot_L
+    400018: foot_R
+    400020: footHelper_L
+    400022: footHelper_R
+    400024: GEO
+    400026: hip_L
+    400028: hip_R
+    400030: hipHelper_L
+    400032: hipHelper_R
+    400034: joint1
+    400036: joint2
+    400038: L_ankleHandle_IK
+    400040: L_footHandle_IK
+    400042: L_HelperHandle_IK
+    400044: L_Hind_Flex_Offset
+    400046: L_Hind_Flex_Pivot
+    400048: L_legHandle_IK
+    400050: L_Swivel
+    400052: L_Toe_Tap
+    400054: L_Toe_Tip
+    400056: leg_L
+    400058: leg_R
+    400060: legHelper_L
+    400062: legHelper_R
+    400064: Mid_Direct_L
+    400066: Mid_Direct_R
+    400068: R_ankleHandle_IK
+    400070: R_footHandle_IK
+    400072: R_HelperHandle_IK
+    400074: R_Hind_Flex_Offset
+    400076: R_Hind_Flex_Pivot
+    400078: R_legHandle_IK
+    400080: R_Swivel
+    400082: R_Toe_Tap
+    400084: R_Toe_Tip
+    400086: RIG
+    400088: root
+    400090: sake_bottle
+    400092: Sake_FOOT_L
+    400094: Sake_FOOT_R
+    400096: Sake_HIP_L
+    400098: Sake_HIP_R
+    400100: Sake_KNEE_L
+    400102: Sake_KNEE_R
+    400104: Sake_L_toe_L
+    400106: Sake_L_toe_R
+    400108: Sake_M_toe_L
+    400110: Sake_M_toe_R
+    400112: Sake_MASTER
+    400114: Sake_R_toe_L
+    400116: Sake_R_toe_R
+    400118: Sake_ROOT
+    400120: sake_Yokai
+    400122: Sakel_BOTTLE
+    400124: //RootNode
+    400126: SKELE
+    400128: toeLBase_L
+    400130: toeLBase_R
+    400132: toeLMid_L
+    400134: toeLMid_R
+    400136: toeLTip_L
+    400138: toeLTip_R
+    400140: toeMid_L
+    400142: toeMid_R
+    400144: toeMidBase_L
+    400146: toeMidBase_R
+    400148: toeRBase_L
+    400150: toeRBase_R
+    400152: toeRMid_L
+    400154: toeRMid_R
+    400156: toeRTip_L
+    400158: toeRTip_R
+    4300000: bottle_leg_L
+    4300002: sake_bottle
+    4300004: bottle_leg_R
+    7400000: Walk
+    9500000: //RootNode
+    13700000: bottle_leg_L
+    13700002: bottle_leg_R
+    13700004: sake_bottle
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Walk
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves:
+      - name: Speed
+        curve:
+          serializedVersion: 2
+          curve:
+          - serializedVersion: 2
+            time: 0
+            value: 0
+            inSlope: 0.018256381
+            outSlope: 0.017280182
+            tangentMode: 1
+          - serializedVersion: 2
+            time: 0.13477089
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          - serializedVersion: 2
+            time: 0.29
+            value: 0.993557
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          - serializedVersion: 2
+            time: 0.46091643
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          - serializedVersion: 2
+            time: 0.6280323
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          - serializedVersion: 2
+            time: 0.794
+            value: 0.9852507
+            inSlope: -0.0035273843
+            outSlope: -0.0035273843
+            tangentMode: 0
+          - serializedVersion: 2
+            time: 0.9568733
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          - serializedVersion: 2
+            time: 0.9955327
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          preInfinity: 3
+          postInfinity: 3
+          rotationOrder: 0
+      events:
+      - time: 0.077932745
+        functionName: ToggleShouldTranslate
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.50079834
+        functionName: ToggleShouldTranslate
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.61601865
+        functionName: ToggleShouldTranslate
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 1
+        functionName: ToggleShouldTranslate
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.07816712
+        functionName: HopSound
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.6172507
+        functionName: HopSound
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask:
+      - path: 
+        weight: 1
+      - path: GEO
+        weight: 1
+      - path: GEO/sake_Yokai
+        weight: 1
+      - path: GEO/sake_Yokai/bottle_leg_L
+        weight: 1
+      - path: GEO/sake_Yokai/bottle_leg_R
+        weight: 1
+      - path: GEO/sake_Yokai/sake_bottle
+        weight: 1
+      - path: RIG
+        weight: 1
+      - path: RIG/Sake_MASTER
+        weight: 1
+      - path: RIG/Sake_MASTER/Sake_FOOT_L
+        weight: 1
+      - path: RIG/Sake_MASTER/Sake_FOOT_L/L_Swivel
+        weight: 1
+      - path: RIG/Sake_MASTER/Sake_FOOT_L/L_Swivel/L_Toe_Tip
+        weight: 1
+      - path: RIG/Sake_MASTER/Sake_FOOT_L/L_Swivel/L_Toe_Tip/L_Hind_Flex_Offset
+        weight: 1
+      - path: RIG/Sake_MASTER/Sake_FOOT_L/L_Swivel/L_Toe_Tip/L_Hind_Flex_Offset/L_Hind_Flex_Pivot
+        weight: 1
+      - path: RIG/Sake_MASTER/Sake_FOOT_L/L_Swivel/L_Toe_Tip/L_Hind_Flex_Offset/L_Hind_Flex_Pivot/L_ankleHandle_IK
+        weight: 1
+      - path: RIG/Sake_MASTER/Sake_FOOT_L/L_Swivel/L_Toe_Tip/L_Hind_Flex_Offset/L_Hind_Flex_Pivot/L_legHandle_IK
+        weight: 1
+      - path: RIG/Sake_MASTER/Sake_FOOT_L/L_Swivel/L_Toe_Tip/L_Toe_Tap
+        weight: 1
+      - path: RIG/Sake_MASTER/Sake_FOOT_L/L_Swivel/L_Toe_Tip/L_Toe_Tap/L_footHandle_IK
+        weight: 1
+      - path: RIG/Sake_MASTER/Sake_FOOT_L/L_Swivel/L_Toe_Tip/L_Toe_Tap/L_HelperHandle_IK
+        weight: 1
+      - path: RIG/Sake_MASTER/Sake_FOOT_L/L_Swivel/Sake_KNEE_L
+        weight: 1
+      - path: RIG/Sake_MASTER/Sake_FOOT_L/Sake_L_toe_L
+        weight: 1
+      - path: RIG/Sake_MASTER/Sake_FOOT_L/Sake_M_toe_L
+        weight: 1
+      - path: RIG/Sake_MASTER/Sake_FOOT_L/Sake_R_toe_L
+        weight: 1
+      - path: RIG/Sake_MASTER/Sake_FOOT_R
+        weight: 1
+      - path: RIG/Sake_MASTER/Sake_FOOT_R/R_Swivel
+        weight: 1
+      - path: RIG/Sake_MASTER/Sake_FOOT_R/R_Swivel/R_Toe_Tip
+        weight: 1
+      - path: RIG/Sake_MASTER/Sake_FOOT_R/R_Swivel/R_Toe_Tip/R_Hind_Flex_Offset
+        weight: 1
+      - path: RIG/Sake_MASTER/Sake_FOOT_R/R_Swivel/R_Toe_Tip/R_Hind_Flex_Offset/R_Hind_Flex_Pivot
+        weight: 1
+      - path: RIG/Sake_MASTER/Sake_FOOT_R/R_Swivel/R_Toe_Tip/R_Hind_Flex_Offset/R_Hind_Flex_Pivot/R_ankleHandle_IK
+        weight: 1
+      - path: RIG/Sake_MASTER/Sake_FOOT_R/R_Swivel/R_Toe_Tip/R_Hind_Flex_Offset/R_Hind_Flex_Pivot/R_legHandle_IK
+        weight: 1
+      - path: RIG/Sake_MASTER/Sake_FOOT_R/R_Swivel/R_Toe_Tip/R_Toe_Tap
+        weight: 1
+      - path: RIG/Sake_MASTER/Sake_FOOT_R/R_Swivel/R_Toe_Tip/R_Toe_Tap/R_footHandle_IK
+        weight: 1
+      - path: RIG/Sake_MASTER/Sake_FOOT_R/R_Swivel/R_Toe_Tip/R_Toe_Tap/R_HelperHandle_IK
+        weight: 1
+      - path: RIG/Sake_MASTER/Sake_FOOT_R/R_Swivel/Sake_KNEE_R
+        weight: 1
+      - path: RIG/Sake_MASTER/Sake_FOOT_R/Sake_L_toe_R
+        weight: 1
+      - path: RIG/Sake_MASTER/Sake_FOOT_R/Sake_M_toe_R
+        weight: 1
+      - path: RIG/Sake_MASTER/Sake_FOOT_R/Sake_R_toe_R
+        weight: 1
+      - path: RIG/Sake_MASTER/Sake_ROOT
+        weight: 1
+      - path: RIG/Sake_MASTER/Sake_ROOT/Sake_HIP_L
+        weight: 1
+      - path: RIG/Sake_MASTER/Sake_ROOT/Sake_HIP_R
+        weight: 1
+      - path: RIG/Sake_MASTER/Sake_ROOT/Sakel_BOTTLE
+        weight: 1
+      - path: SKELE
+        weight: 1
+      - path: SKELE/root
+        weight: 1
+      - path: SKELE/root/BodyMid
+        weight: 1
+      - path: SKELE/root/BodyMid/BodyTip
+        weight: 1
+      - path: SKELE/root/hip_L
+        weight: 1
+      - path: SKELE/root/hip_L/leg_L
+        weight: 1
+      - path: SKELE/root/hip_L/leg_L/ankle_L
+        weight: 1
+      - path: SKELE/root/hip_L/leg_L/ankle_L/foot_L
+        weight: 1
+      - path: SKELE/root/hip_L/leg_L/ankle_L/foot_L/Mid_Direct_L
+        weight: 1
+      - path: SKELE/root/hip_L/leg_L/ankle_L/foot_L/toeLBase_L
+        weight: 1
+      - path: SKELE/root/hip_L/leg_L/ankle_L/foot_L/toeLBase_L/toeLMid_L
+        weight: 1
+      - path: SKELE/root/hip_L/leg_L/ankle_L/foot_L/toeLBase_L/toeLMid_L/toeLTip_L
+        weight: 1
+      - path: SKELE/root/hip_L/leg_L/ankle_L/foot_L/toeMidBase_L
+        weight: 1
+      - path: SKELE/root/hip_L/leg_L/ankle_L/foot_L/toeMidBase_L/toeMid_L
+        weight: 1
+      - path: SKELE/root/hip_L/leg_L/ankle_L/foot_L/toeMidBase_L/toeMid_L/joint1
+        weight: 1
+      - path: SKELE/root/hip_L/leg_L/ankle_L/foot_L/toeRBase_L
+        weight: 1
+      - path: SKELE/root/hip_L/leg_L/ankle_L/foot_L/toeRBase_L/toeRMid_L
+        weight: 1
+      - path: SKELE/root/hip_L/leg_L/ankle_L/foot_L/toeRBase_L/toeRMid_L/toeRTip_L
+        weight: 1
+      - path: SKELE/root/hip_R
+        weight: 1
+      - path: SKELE/root/hip_R/leg_R
+        weight: 1
+      - path: SKELE/root/hip_R/leg_R/ankle_R
+        weight: 1
+      - path: SKELE/root/hip_R/leg_R/ankle_R/foot_R
+        weight: 1
+      - path: SKELE/root/hip_R/leg_R/ankle_R/foot_R/Mid_Direct_R
+        weight: 1
+      - path: SKELE/root/hip_R/leg_R/ankle_R/foot_R/toeLBase_R
+        weight: 1
+      - path: SKELE/root/hip_R/leg_R/ankle_R/foot_R/toeLBase_R/toeLMid_R
+        weight: 1
+      - path: SKELE/root/hip_R/leg_R/ankle_R/foot_R/toeLBase_R/toeLMid_R/toeLTip_R
+        weight: 1
+      - path: SKELE/root/hip_R/leg_R/ankle_R/foot_R/toeMidBase_R
+        weight: 1
+      - path: SKELE/root/hip_R/leg_R/ankle_R/foot_R/toeMidBase_R/toeMid_R
+        weight: 1
+      - path: SKELE/root/hip_R/leg_R/ankle_R/foot_R/toeMidBase_R/toeMid_R/joint2
+        weight: 1
+      - path: SKELE/root/hip_R/leg_R/ankle_R/foot_R/toeRBase_R
+        weight: 1
+      - path: SKELE/root/hip_R/leg_R/ankle_R/foot_R/toeRBase_R/toeRMid_R
+        weight: 1
+      - path: SKELE/root/hip_R/leg_R/ankle_R/foot_R/toeRBase_R/toeRMid_R/toeRTip_R
+        weight: 1
+      - path: SKELE/root/hipHelper_L
+        weight: 1
+      - path: SKELE/root/hipHelper_L/legHelper_L
+        weight: 1
+      - path: SKELE/root/hipHelper_L/legHelper_L/ankleHelper_L
+        weight: 1
+      - path: SKELE/root/hipHelper_L/legHelper_L/ankleHelper_L/footHelper_L
+        weight: 1
+      - path: SKELE/root/hipHelper_R
+        weight: 1
+      - path: SKELE/root/hipHelper_R/legHelper_R
+        weight: 1
+      - path: SKELE/root/hipHelper_R/legHelper_R/ankleHelper_R
+        weight: 1
+      - path: SKELE/root/hipHelper_R/legHelper_R/ankleHelper_R/footHelper_R
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

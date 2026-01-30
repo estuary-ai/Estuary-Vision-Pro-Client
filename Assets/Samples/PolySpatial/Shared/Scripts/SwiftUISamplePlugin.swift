@@ -43,13 +43,14 @@ import SwiftUI
 // many, as appropriate for your application.
 //
 // Declared in C# as: delegate void CallbackDelegate(string command);
-typealias CallbackDelegateType = @convention(c) (UnsafePointer<CChar>) -> Void
+typealias CallbackDelegateType = @convention(c) (UnsafePointer<CChar>, Int32) -> Void
 public typealias SetFPSDelegateType = (Float) -> Void
 
 var callbackDelegate: CallbackDelegateType? = nil
 var setFPSDelegate: SetFPSDelegateType? = nil
 var sphereCount: Int = 0
 var cubeCount: Int = 0
+var lastObjectInstanceId: Int32 = 0
 
 // Declared in C# as: static extern void SetNativeCallback(CallbackDelegate callback);
 @_cdecl("SetNativeCallback")
@@ -61,14 +62,14 @@ func setNativeCallback(_ delegate: CallbackDelegateType)
 
 // This is a function for your own use from the enclosing Unity-VisionOS app, to call the delegate
 // from your own windows/views (HelloWorldContentView uses this)
-public func CallCSharpCallback(_ str: String)
+public func CallCSharpCallback(_ str: String, _ value: Int32 = 0)
 {
     if (callbackDelegate == nil) {
         return
     }
 
     str.withCString {
-        callbackDelegate!($0)
+        callbackDelegate!($0, value)
     }
 }
 
@@ -108,6 +109,13 @@ func setCubeCount(_ count: Int)
     cubeCount = count
 }
 
+// Declared in C# as: static extern void SetLastObjectInstanceID(int instanceId);
+@_cdecl("SetLastObjectInstanceID")
+func setLastObjectInstanceID(_ instanceId: Int32)
+{
+    lastObjectInstanceId = instanceId
+}
+
 // Called by button callbacks in HelloWorldContentView
 public func GetCubeCount() -> Int {
     return cubeCount
@@ -116,6 +124,11 @@ public func GetCubeCount() -> Int {
 // Called by button callbacks in HelloWorldContentView
 public func GetSphereCount() -> Int {
     return sphereCount
+}
+
+// Called by button callbacks in HelloWorldContentView
+public func GetLastObjectInstanceID() -> Int32 {
+    return lastObjectInstanceId
 }
 
 // Declared in C# as: static extern void SetFPS(float fps);

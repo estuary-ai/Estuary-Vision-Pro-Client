@@ -29,7 +29,7 @@
         },
         {
             "name": "com.unity.xr.interaction.toolkit",
-            "expression": "2.3.0",
+            "expression": "3",
             "define": "UNITY_INCLUDE_XRI"
         },
         {

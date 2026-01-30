@@ -16,7 +16,6 @@ public class AIClient : MonoBehaviour
     private BotResponseHandler botResponseHandler;
     private MicController micController;
     private BotVoice botVoice;
-    [SerializeField] private ApplicationReferences appRef;
 
     [field:SerializeField]
     public string api = "ws://localhost:4000";
@@ -97,7 +96,7 @@ public class AIClient : MonoBehaviour
                 {"token", "UNITY" },
                 {"AutoUpgrade", "true"}
             },
-            EIO=4,
+            EIO=(EngineIO)4,
             Transport = SocketIOClient.Transport.TransportProtocol.WebSocket
         });
 
@@ -165,18 +164,6 @@ public class AIClient : MonoBehaviour
             //     StopCommandTransmission();
             // }
         };
-        /////////////////////
-
-        // socket.On(EVENTS.WAKE_UP, (result) =>
-        // {
-        //     Debug.Log("WAKE UP EVENT RECEIVED");
-        //     // result.GetValue<IncomingDataPacket<short>>();
-        //     // Debug.Log($"WakeUp: {result}");
-        //     if(appRef && appRef.navManager) appRef.navManager.CallPuppy();
-        //     Debug.Log("before StartCommandTransmission");
-        //     StartCommandTransmission();
-        //     Debug.Log("after StartCommandTransmission");
-        // });
 
         socket.On(EVENTS.STT_RES, (result) =>
         {

@@ -207,7 +207,7 @@
 //         }
 //     }
 //
-//     public void CallPuppy() {
+//     public void MoveAgentToUser() {
 //         Debug.Log(DEBUG_TAG + "Calling the puppy to you");
 //         GameObject yourPos = new GameObject();
 //         yourPos.transform.position = appRef.camTrans.position;

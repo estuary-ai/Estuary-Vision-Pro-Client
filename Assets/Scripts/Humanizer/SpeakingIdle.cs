@@ -5,6 +5,7 @@ class SpeakingIdle : MonoBehaviour {
     private Mangrove.BotVoice botVoice;
     [SerializeField] private Animator agentAnimator;
     private static readonly int IsSpeaking = Animator.StringToHash("isSpeaking");
+    private static readonly int IsWalking = Animator.StringToHash("IsWalking");
 
     public void Start() {
         botVoice = Mangrove.BotVoice.Instance;
@@ -12,7 +13,7 @@ class SpeakingIdle : MonoBehaviour {
 
     public void Update() {
         // Check if BotVoice is speaking
-        if (botVoice.IsSpeaking()) {
+        if (botVoice.IsSpeaking() && agentAnimator.GetBool(IsWalking) == false) {
             // Only change if not already speaking
             // if (agentAnimator.GetBool(IsSpeaking) == false) {
                 Debug.Log("Starting speaking animation");

@@ -1,0 +1,470 @@
+fileFormatVersion: 2
+guid: 1bf17d7784027404c8054977def38aae
+timeCreated: 1503345556
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: ankle_L
+    100002: ankle_R
+    100004: ankleHelper_L
+    100006: ankleHelper_R
+    100008: BodyTip
+    100010: foot_L
+    100012: foot_R
+    100014: footHelper_L
+    100016: footHelper_R
+    100018: GEO
+    100020: hip_L
+    100022: hip_R
+    100024: hipHelper_L
+    100026: hipHelper_R
+    100028: L_ankleHandle_IK
+    100030: L_footHandle_IK
+    100032: L_Hind_Flex_Offset
+    100034: L_Hind_Flex_Pivot
+    100036: L_legHandle_IK
+    100038: L_legHelperHandle_IK
+    100040: L_Swivel
+    100042: L_Toe_Tap
+    100044: L_Toe_Tip
+    100046: Leg_L
+    100048: leg_L
+    100050: Leg_R
+    100052: leg_R
+    100054: legHelper_L
+    100056: legHelper_R
+    100058: Plate
+    100060: //RootNode
+    100062: Plate_FOOT_L
+    100064: Plate_FOOT_R
+    100066: Plate_HIP_L
+    100068: Plate_HIP_R
+    100070: Plate_KNEE_L
+    100072: Plate_KNEE_R
+    100074: Plate_L_toe_L
+    100076: Plate_L_toe_R
+    100078: Plate_M_toe_L
+    100080: Plate_M_toe_R
+    100082: Plate_MASTER
+    100084: Plate_R_toe_L
+    100086: Plate_R_toe_R
+    100088: R_ankleHandle_IK
+    100090: R_footHandle_IK
+    100092: R_Hind_Flex_Offset
+    100094: R_Hind_Flex_Pivot
+    100096: R_legHandle_IK
+    100098: R_legHelperHandle_IK
+    100100: R_Swivel
+    100102: R_Toe_Tap
+    100104: R_Toe_Tip
+    100106: ROOT
+    100108: root
+    100110: SKELE
+    100112: toeLBase_L
+    100114: toeLBase_R
+    100116: toeLMid_L
+    100118: toeLMid_R
+    100120: toeLTip_L
+    100122: toeLTip_R
+    100124: toeMid_Direct
+    100126: toeMid_Direct_R
+    100128: toeMid_L
+    100130: toeMid_R
+    100132: toeMidBase_L
+    100134: toeMidBase_R
+    100136: toeMidTip_L
+    100138: toeMidTip_R
+    100140: toeRBase_L
+    100142: toeRBase_R
+    100144: toeRMid_L
+    100146: toeRMid_R
+    100148: toeRTip_L
+    100150: toeRTip_R
+    400000: ankle_L
+    400002: ankle_R
+    400004: ankleHelper_L
+    400006: ankleHelper_R
+    400008: BodyTip
+    400010: foot_L
+    400012: foot_R
+    400014: footHelper_L
+    400016: footHelper_R
+    400018: GEO
+    400020: hip_L
+    400022: hip_R
+    400024: hipHelper_L
+    400026: hipHelper_R
+    400028: L_ankleHandle_IK
+    400030: L_footHandle_IK
+    400032: L_Hind_Flex_Offset
+    400034: L_Hind_Flex_Pivot
+    400036: L_legHandle_IK
+    400038: L_legHelperHandle_IK
+    400040: L_Swivel
+    400042: L_Toe_Tap
+    400044: L_Toe_Tip
+    400046: Leg_L
+    400048: leg_L
+    400050: Leg_R
+    400052: leg_R
+    400054: legHelper_L
+    400056: legHelper_R
+    400058: Plate
+    400060: //RootNode
+    400062: Plate_FOOT_L
+    400064: Plate_FOOT_R
+    400066: Plate_HIP_L
+    400068: Plate_HIP_R
+    400070: Plate_KNEE_L
+    400072: Plate_KNEE_R
+    400074: Plate_L_toe_L
+    400076: Plate_L_toe_R
+    400078: Plate_M_toe_L
+    400080: Plate_M_toe_R
+    400082: Plate_MASTER
+    400084: Plate_R_toe_L
+    400086: Plate_R_toe_R
+    400088: R_ankleHandle_IK
+    400090: R_footHandle_IK
+    400092: R_Hind_Flex_Offset
+    400094: R_Hind_Flex_Pivot
+    400096: R_legHandle_IK
+    400098: R_legHelperHandle_IK
+    400100: R_Swivel
+    400102: R_Toe_Tap
+    400104: R_Toe_Tip
+    400106: ROOT
+    400108: root
+    400110: SKELE
+    400112: toeLBase_L
+    400114: toeLBase_R
+    400116: toeLMid_L
+    400118: toeLMid_R
+    400120: toeLTip_L
+    400122: toeLTip_R
+    400124: toeMid_Direct
+    400126: toeMid_Direct_R
+    400128: toeMid_L
+    400130: toeMid_R
+    400132: toeMidBase_L
+    400134: toeMidBase_R
+    400136: toeMidTip_L
+    400138: toeMidTip_R
+    400140: toeRBase_L
+    400142: toeRBase_R
+    400144: toeRMid_L
+    400146: toeRMid_R
+    400148: toeRTip_L
+    400150: toeRTip_R
+    4300000: Plate
+    4300002: Leg_L
+    4300004: Leg_R
+    7400000: Hop
+    9500000: //RootNode
+    13700000: Leg_L
+    13700002: Leg_R
+    13700004: Plate
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Hop
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 23
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves:
+      - name: Speed
+        curve:
+          serializedVersion: 2
+          curve:
+          - serializedVersion: 2
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          - serializedVersion: 2
+            time: 0.5
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          - serializedVersion: 2
+            time: 1
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          preInfinity: 3
+          postInfinity: 3
+          rotationOrder: 0
+      events:
+      - time: 0.18598382
+        functionName: HopSound
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.33384994
+        functionName: ToggleShouldTranslate
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.6928478
+        functionName: ToggleShouldTranslate
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.70843375
+        functionName: LandSound
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask:
+      - path: 
+        weight: 1
+      - path: GEO
+        weight: 1
+      - path: GEO/Leg_L
+        weight: 1
+      - path: GEO/Leg_R
+        weight: 1
+      - path: GEO/Plate
+        weight: 1
+      - path: Plate_MASTER
+        weight: 1
+      - path: Plate_MASTER/Plate_FOOT_L
+        weight: 1
+      - path: Plate_MASTER/Plate_FOOT_L/L_Swivel
+        weight: 1
+      - path: Plate_MASTER/Plate_FOOT_L/L_Swivel/L_Toe_Tip
+        weight: 1
+      - path: Plate_MASTER/Plate_FOOT_L/L_Swivel/L_Toe_Tip/L_Hind_Flex_Offset
+        weight: 1
+      - path: Plate_MASTER/Plate_FOOT_L/L_Swivel/L_Toe_Tip/L_Hind_Flex_Offset/L_Hind_Flex_Pivot
+        weight: 1
+      - path: Plate_MASTER/Plate_FOOT_L/L_Swivel/L_Toe_Tip/L_Hind_Flex_Offset/L_Hind_Flex_Pivot/L_ankleHandle_IK
+        weight: 1
+      - path: Plate_MASTER/Plate_FOOT_L/L_Swivel/L_Toe_Tip/L_Hind_Flex_Offset/L_Hind_Flex_Pivot/L_legHandle_IK
+        weight: 1
+      - path: Plate_MASTER/Plate_FOOT_L/L_Swivel/L_Toe_Tip/L_Toe_Tap
+        weight: 1
+      - path: Plate_MASTER/Plate_FOOT_L/L_Swivel/L_Toe_Tip/L_Toe_Tap/L_footHandle_IK
+        weight: 1
+      - path: Plate_MASTER/Plate_FOOT_L/L_Swivel/L_Toe_Tip/L_Toe_Tap/L_legHelperHandle_IK
+        weight: 1
+      - path: Plate_MASTER/Plate_FOOT_L/L_Swivel/Plate_KNEE_L
+        weight: 1
+      - path: Plate_MASTER/Plate_FOOT_L/Plate_L_toe_L
+        weight: 1
+      - path: Plate_MASTER/Plate_FOOT_L/Plate_M_toe_L
+        weight: 1
+      - path: Plate_MASTER/Plate_FOOT_L/Plate_R_toe_L
+        weight: 1
+      - path: Plate_MASTER/Plate_FOOT_R
+        weight: 1
+      - path: Plate_MASTER/Plate_FOOT_R/Plate_L_toe_R
+        weight: 1
+      - path: Plate_MASTER/Plate_FOOT_R/Plate_M_toe_R
+        weight: 1
+      - path: Plate_MASTER/Plate_FOOT_R/Plate_R_toe_R
+        weight: 1
+      - path: Plate_MASTER/Plate_FOOT_R/R_Swivel
+        weight: 1
+      - path: Plate_MASTER/Plate_FOOT_R/R_Swivel/Plate_KNEE_R
+        weight: 1
+      - path: Plate_MASTER/Plate_FOOT_R/R_Swivel/R_Toe_Tip
+        weight: 1
+      - path: Plate_MASTER/Plate_FOOT_R/R_Swivel/R_Toe_Tip/R_Hind_Flex_Offset
+        weight: 1
+      - path: Plate_MASTER/Plate_FOOT_R/R_Swivel/R_Toe_Tip/R_Hind_Flex_Offset/R_Hind_Flex_Pivot
+        weight: 1
+      - path: Plate_MASTER/Plate_FOOT_R/R_Swivel/R_Toe_Tip/R_Hind_Flex_Offset/R_Hind_Flex_Pivot/R_ankleHandle_IK
+        weight: 1
+      - path: Plate_MASTER/Plate_FOOT_R/R_Swivel/R_Toe_Tip/R_Hind_Flex_Offset/R_Hind_Flex_Pivot/R_legHandle_IK
+        weight: 1
+      - path: Plate_MASTER/Plate_FOOT_R/R_Swivel/R_Toe_Tip/R_Toe_Tap
+        weight: 1
+      - path: Plate_MASTER/Plate_FOOT_R/R_Swivel/R_Toe_Tip/R_Toe_Tap/R_footHandle_IK
+        weight: 1
+      - path: Plate_MASTER/Plate_FOOT_R/R_Swivel/R_Toe_Tip/R_Toe_Tap/R_legHelperHandle_IK
+        weight: 1
+      - path: Plate_MASTER/ROOT
+        weight: 1
+      - path: Plate_MASTER/ROOT/Plate_HIP_L
+        weight: 1
+      - path: Plate_MASTER/ROOT/Plate_HIP_R
+        weight: 1
+      - path: SKELE
+        weight: 1
+      - path: SKELE/root
+        weight: 1
+      - path: SKELE/root/BodyTip
+        weight: 1
+      - path: SKELE/root/hip_L
+        weight: 1
+      - path: SKELE/root/hip_L/leg_L
+        weight: 1
+      - path: SKELE/root/hip_L/leg_L/ankle_L
+        weight: 1
+      - path: SKELE/root/hip_L/leg_L/ankle_L/foot_L
+        weight: 1
+      - path: SKELE/root/hip_L/leg_L/ankle_L/foot_L/toeLBase_L
+        weight: 1
+      - path: SKELE/root/hip_L/leg_L/ankle_L/foot_L/toeLBase_L/toeLMid_L
+        weight: 1
+      - path: SKELE/root/hip_L/leg_L/ankle_L/foot_L/toeLBase_L/toeLMid_L/toeLTip_L
+        weight: 1
+      - path: SKELE/root/hip_L/leg_L/ankle_L/foot_L/toeMid_Direct
+        weight: 1
+      - path: SKELE/root/hip_L/leg_L/ankle_L/foot_L/toeMidBase_L
+        weight: 1
+      - path: SKELE/root/hip_L/leg_L/ankle_L/foot_L/toeMidBase_L/toeMid_L
+        weight: 1
+      - path: SKELE/root/hip_L/leg_L/ankle_L/foot_L/toeMidBase_L/toeMid_L/toeMidTip_L
+        weight: 1
+      - path: SKELE/root/hip_L/leg_L/ankle_L/foot_L/toeRBase_L
+        weight: 1
+      - path: SKELE/root/hip_L/leg_L/ankle_L/foot_L/toeRBase_L/toeRMid_L
+        weight: 1
+      - path: SKELE/root/hip_L/leg_L/ankle_L/foot_L/toeRBase_L/toeRMid_L/toeRTip_L
+        weight: 1
+      - path: SKELE/root/hip_R
+        weight: 1
+      - path: SKELE/root/hip_R/leg_R
+        weight: 1
+      - path: SKELE/root/hip_R/leg_R/ankle_R
+        weight: 1
+      - path: SKELE/root/hip_R/leg_R/ankle_R/foot_R
+        weight: 1
+      - path: SKELE/root/hip_R/leg_R/ankle_R/foot_R/toeLBase_R
+        weight: 1
+      - path: SKELE/root/hip_R/leg_R/ankle_R/foot_R/toeLBase_R/toeLMid_R
+        weight: 1
+      - path: SKELE/root/hip_R/leg_R/ankle_R/foot_R/toeLBase_R/toeLMid_R/toeLTip_R
+        weight: 1
+      - path: SKELE/root/hip_R/leg_R/ankle_R/foot_R/toeMid_Direct_R
+        weight: 1
+      - path: SKELE/root/hip_R/leg_R/ankle_R/foot_R/toeMidBase_R
+        weight: 1
+      - path: SKELE/root/hip_R/leg_R/ankle_R/foot_R/toeMidBase_R/toeMid_R
+        weight: 1
+      - path: SKELE/root/hip_R/leg_R/ankle_R/foot_R/toeMidBase_R/toeMid_R/toeMidTip_R
+        weight: 1
+      - path: SKELE/root/hip_R/leg_R/ankle_R/foot_R/toeRBase_R
+        weight: 1
+      - path: SKELE/root/hip_R/leg_R/ankle_R/foot_R/toeRBase_R/toeRMid_R
+        weight: 1
+      - path: SKELE/root/hip_R/leg_R/ankle_R/foot_R/toeRBase_R/toeRMid_R/toeRTip_R
+        weight: 1
+      - path: SKELE/root/hipHelper_L
+        weight: 1
+      - path: SKELE/root/hipHelper_L/legHelper_L
+        weight: 1
+      - path: SKELE/root/hipHelper_L/legHelper_L/ankleHelper_L
+        weight: 1
+      - path: SKELE/root/hipHelper_L/legHelper_L/ankleHelper_L/footHelper_L
+        weight: 1
+      - path: SKELE/root/hipHelper_R
+        weight: 1
+      - path: SKELE/root/hipHelper_R/legHelper_R
+        weight: 1
+      - path: SKELE/root/hipHelper_R/legHelper_R/ankleHelper_R
+        weight: 1
+      - path: SKELE/root/hipHelper_R/legHelper_R/ankleHelper_R/footHelper_R
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

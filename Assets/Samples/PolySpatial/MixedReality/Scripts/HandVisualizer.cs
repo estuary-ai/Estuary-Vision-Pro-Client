@@ -314,6 +314,7 @@ namespace PolySpatial.Samples
                     visuals.gameObject.SetActive(false);
                     return;
                 }
+                visuals.gameObject.SetActive(true);
 
                 joint.TryGetVisionOSTrackingState(out var trackingState);
                 visuals.SetIsTracked(trackingState);

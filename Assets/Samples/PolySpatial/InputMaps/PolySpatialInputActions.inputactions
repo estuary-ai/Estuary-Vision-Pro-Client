@@ -46,7 +46,7 @@
                 {
                     "name": "",
                     "id": "74c3f666-c665-47f5-b043-4050eb5ec865",
-                    "path": "<SpatialPointerDevice>/primarySpatialPointer",
+                    "path": "<SpatialPointerDevice>/spatialPointer0",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -57,7 +57,7 @@
                 {
                     "name": "",
                     "id": "46e2aa62-d6a8-4c60-85ec-aab4c1b87c94",
-                    "path": "<SpatialPointerDevice>/primarySpatialPointer/phase",
+                    "path": "<SpatialPointerDevice>/spatialPointer0/phase",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -116,7 +116,7 @@
                 {
                     "name": "",
                     "id": "0d6427d7-8ec4-4722-af22-80204f05c36f",
-                    "path": "<PolySpatialXRHMD>/devicePosition",
+                    "path": "<XRHMD>/devicePosition",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -127,11 +127,79 @@
                 {
                     "name": "",
                     "id": "e830475f-8161-40b2-90ab-1dc682b02018",
-                    "path": "<PolySpatialXRHMD>/deviceRotation",
+                    "path": "<XRHMD>/deviceRotation",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "DeviceRotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "XRController",
+            "id": "26dc4db9-c5ae-4c82-8227-1ab666daad47",
+            "actions": [
+                {
+                    "name": "Fire",
+                    "type": "Button",
+                    "id": "fa2088bf-aacb-473e-8a3c-203cceccc342",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Grab",
+                    "type": "Button",
+                    "id": "b54f6b07-eafe-4162-b89b-672cdd0cc9b5",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "c5c2ebfb-c50f-4901-b333-acb9939c4dae",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1ed1c43e-0956-4948-afe8-a21ec47774ea",
+                    "path": "<PolySpatialRemoteControllerDevice>/triggerButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b4521534-5a24-4b02-bb14-f90741d5abdb",
+                    "path": "<PolySpatialRemoteControllerDevice>/gripButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ceb78bdb-b669-4bf5-a43d-5a67418d9ff7",
+                    "path": "<PolySpatialRemoteControllerDevice>/primary2DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

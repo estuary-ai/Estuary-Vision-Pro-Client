@@ -1,0 +1,404 @@
+fileFormatVersion: 2
+guid: 1da7f4837e601d1438f242132b2db94e
+timeCreated: 1497391116
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: blendshapes
+    100002: BROW_L
+    100004: brow_L
+    100006: brow_L 1
+    100008: BROW_R
+    100010: brow_R
+    100012: brow_R 1
+    100014: bun_m_L
+    100016: bun_m_R
+    100018: bun_root_L
+    100020: bun_root_R
+    100022: bun_tip_R
+    100024: bun_tip_R 1
+    100026: cheek_L
+    100028: cheek_R
+    100030: eye_L
+    100032: eye_R
+    100034: forehead
+    100036: Geometry
+    100038: girl_mod
+    100040: head
+    100042: head_tip
+    100044: MOVE_ALL
+    100046: neck
+    100048: rig
+    100050: ROOT
+    100052: sideburn_m_L
+    100054: sideburn_m_R
+    100056: sideburn_root_L
+    100058: sideburn_root_R
+    100060: sideburn_tip_L
+    100062: sideburn_tip_L1
+    100064: skele
+    100066: smile
+    100068: spine
+    100070: spine_root
+    100072: tail1
+    100074: TAIL1_CNTRL
+    100076: TAIL1_CNTRL_OFFSET
+    100078: tail2
+    100080: TAIL2_CNTRL
+    100082: TAIL2_CNTRL_OFFSET
+    100084: tail3
+    100086: TAIL3_CNTRL
+    100088: TAIL3_CNTRL_OFFSET
+    100090: TAIL_CNRL
+    100092: tail_root
+    100094: tailtip
+    100096: Zashiki_BUN_L
+    100098: Zashiki_BUN_L_group
+    100100: Zashiki_BUN_R
+    100102: Zashiki_BUN_R_group
+    100104: Zashiki_BUN_TIP_L
+    100106: Zashiki_BUN_TIP_L_group
+    100108: Zashiki_BUN_TIP_R
+    100110: Zashiki_BUN_TIP_R_group
+    100112: Zashiki_HAIR_END_L
+    100114: Zashiki_HAIR_END_L_group
+    100116: Zashiki_HAIR_END_R
+    100118: Zashiki_HAIR_END_R_group
+    100120: Zashiki_HAIR_L
+    100122: Zashiki_HAIR_L_group
+    100124: Zashiki_HAIR_R
+    100126: Zashiki_HAIR_R_group
+    100128: Zashiki_HEAD
+    100130: Zashiki_NECK
+    100132: //RootNode
+    100134: Zashiki_SPINE
+    100136: Zashiki_tail_root_group
+    100138: Zashiki_TAILROOT
+    400000: blendshapes
+    400002: BROW_L
+    400004: brow_L
+    400006: brow_L 1
+    400008: BROW_R
+    400010: brow_R
+    400012: brow_R 1
+    400014: bun_m_L
+    400016: bun_m_R
+    400018: bun_root_L
+    400020: bun_root_R
+    400022: bun_tip_R
+    400024: bun_tip_R 1
+    400026: cheek_L
+    400028: cheek_R
+    400030: eye_L
+    400032: eye_R
+    400034: forehead
+    400036: Geometry
+    400038: girl_mod
+    400040: head
+    400042: head_tip
+    400044: MOVE_ALL
+    400046: neck
+    400048: rig
+    400050: ROOT
+    400052: sideburn_m_L
+    400054: sideburn_m_R
+    400056: sideburn_root_L
+    400058: sideburn_root_R
+    400060: sideburn_tip_L
+    400062: sideburn_tip_L1
+    400064: skele
+    400066: smile
+    400068: spine
+    400070: spine_root
+    400072: tail1
+    400074: TAIL1_CNTRL
+    400076: TAIL1_CNTRL_OFFSET
+    400078: tail2
+    400080: TAIL2_CNTRL
+    400082: TAIL2_CNTRL_OFFSET
+    400084: tail3
+    400086: TAIL3_CNTRL
+    400088: TAIL3_CNTRL_OFFSET
+    400090: TAIL_CNRL
+    400092: tail_root
+    400094: tailtip
+    400096: Zashiki_BUN_L
+    400098: Zashiki_BUN_L_group
+    400100: Zashiki_BUN_R
+    400102: Zashiki_BUN_R_group
+    400104: Zashiki_BUN_TIP_L
+    400106: Zashiki_BUN_TIP_L_group
+    400108: Zashiki_BUN_TIP_R
+    400110: Zashiki_BUN_TIP_R_group
+    400112: Zashiki_HAIR_END_L
+    400114: Zashiki_HAIR_END_L_group
+    400116: Zashiki_HAIR_END_R
+    400118: Zashiki_HAIR_END_R_group
+    400120: Zashiki_HAIR_L
+    400122: Zashiki_HAIR_L_group
+    400124: Zashiki_HAIR_R
+    400126: Zashiki_HAIR_R_group
+    400128: Zashiki_HEAD
+    400130: Zashiki_NECK
+    400132: //RootNode
+    400134: Zashiki_SPINE
+    400136: Zashiki_tail_root_group
+    400138: Zashiki_TAILROOT
+    4300000: girl_mod
+    4300002: eye_L
+    4300004: eye_R
+    4300006: cheek_L
+    4300008: cheek_R
+    4300010: brow_L
+    4300012: brow_R
+    4300014: smile
+    7400000: SadIdle
+    9500000: //RootNode
+    13700000: brow_L
+    13700002: brow_R
+    13700004: cheek_L
+    13700006: cheek_R
+    13700008: eye_L
+    13700010: eye_R
+    13700012: girl_mod
+    13700014: smile
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: SadIdle
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Geometry
+        weight: 1
+      - path: Geometry/blendshapes
+        weight: 1
+      - path: Geometry/brow_L
+        weight: 1
+      - path: Geometry/brow_R
+        weight: 1
+      - path: Geometry/cheek_L
+        weight: 1
+      - path: Geometry/cheek_R
+        weight: 1
+      - path: Geometry/eye_L
+        weight: 1
+      - path: Geometry/eye_R
+        weight: 1
+      - path: Geometry/girl_mod
+        weight: 1
+      - path: Geometry/smile
+        weight: 1
+      - path: rig
+        weight: 1
+      - path: rig/MOVE_ALL
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/BROW_L
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/BROW_R
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/Zashiki_BUN_L_group
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/Zashiki_BUN_L_group/Zashiki_BUN_L
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/Zashiki_BUN_L_group/Zashiki_BUN_L/Zashiki_BUN_TIP_L_group
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/Zashiki_BUN_L_group/Zashiki_BUN_L/Zashiki_BUN_TIP_L_group/Zashiki_BUN_TIP_L
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/Zashiki_BUN_R_group
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/Zashiki_BUN_R_group/Zashiki_BUN_R
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/Zashiki_BUN_R_group/Zashiki_BUN_R/Zashiki_BUN_TIP_R_group
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/Zashiki_BUN_R_group/Zashiki_BUN_R/Zashiki_BUN_TIP_R_group/Zashiki_BUN_TIP_R
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/Zashiki_HAIR_L_group
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/Zashiki_HAIR_L_group/Zashiki_HAIR_L
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/Zashiki_HAIR_L_group/Zashiki_HAIR_L/Zashiki_HAIR_END_L_group
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/Zashiki_HAIR_L_group/Zashiki_HAIR_L/Zashiki_HAIR_END_L_group/Zashiki_HAIR_END_L
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/Zashiki_HAIR_R_group
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/Zashiki_HAIR_R_group/Zashiki_HAIR_R
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/Zashiki_HAIR_R_group/Zashiki_HAIR_R/Zashiki_HAIR_END_R_group
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/Zashiki_HAIR_R_group/Zashiki_HAIR_R/Zashiki_HAIR_END_R_group/Zashiki_HAIR_END_R
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_tail_root_group
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_tail_root_group/Zashiki_TAILROOT
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_tail_root_group/Zashiki_TAILROOT/TAIL_CNRL
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_tail_root_group/Zashiki_TAILROOT/TAIL_CNRL/TAIL1_CNTRL_OFFSET
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_tail_root_group/Zashiki_TAILROOT/TAIL_CNRL/TAIL1_CNTRL_OFFSET/TAIL1_CNTRL
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_tail_root_group/Zashiki_TAILROOT/TAIL_CNRL/TAIL1_CNTRL_OFFSET/TAIL1_CNTRL/TAIL2_CNTRL_OFFSET
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_tail_root_group/Zashiki_TAILROOT/TAIL_CNRL/TAIL1_CNTRL_OFFSET/TAIL1_CNTRL/TAIL2_CNTRL_OFFSET/TAIL2_CNTRL
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_tail_root_group/Zashiki_TAILROOT/TAIL_CNRL/TAIL1_CNTRL_OFFSET/TAIL1_CNTRL/TAIL2_CNTRL_OFFSET/TAIL2_CNTRL/TAIL3_CNTRL_OFFSET
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_tail_root_group/Zashiki_TAILROOT/TAIL_CNRL/TAIL1_CNTRL_OFFSET/TAIL1_CNTRL/TAIL2_CNTRL_OFFSET/TAIL2_CNTRL/TAIL3_CNTRL_OFFSET/TAIL3_CNTRL
+        weight: 1
+      - path: skele
+        weight: 1
+      - path: skele/spine_root
+        weight: 1
+      - path: skele/spine_root/spine
+        weight: 1
+      - path: skele/spine_root/spine/neck
+        weight: 1
+      - path: skele/spine_root/spine/neck/head
+        weight: 1
+      - path: skele/spine_root/spine/neck/head/head_tip
+        weight: 1
+      - path: skele/spine_root/spine/neck/head/head_tip/brow_L 1
+        weight: 1
+      - path: skele/spine_root/spine/neck/head/head_tip/brow_R 1
+        weight: 1
+      - path: skele/spine_root/spine/neck/head/head_tip/bun_root_L
+        weight: 1
+      - path: skele/spine_root/spine/neck/head/head_tip/bun_root_L/bun_m_L
+        weight: 1
+      - path: skele/spine_root/spine/neck/head/head_tip/bun_root_L/bun_m_L/bun_tip_R
+        weight: 1
+      - path: skele/spine_root/spine/neck/head/head_tip/bun_root_R
+        weight: 1
+      - path: skele/spine_root/spine/neck/head/head_tip/bun_root_R/bun_m_R
+        weight: 1
+      - path: skele/spine_root/spine/neck/head/head_tip/bun_root_R/bun_m_R/bun_tip_R
+          1
+        weight: 1
+      - path: skele/spine_root/spine/neck/head/head_tip/forehead
+        weight: 1
+      - path: skele/spine_root/spine/neck/head/head_tip/sideburn_root_L
+        weight: 1
+      - path: skele/spine_root/spine/neck/head/head_tip/sideburn_root_L/sideburn_m_L
+        weight: 1
+      - path: skele/spine_root/spine/neck/head/head_tip/sideburn_root_L/sideburn_m_L/sideburn_tip_L
+        weight: 1
+      - path: skele/spine_root/spine/neck/head/head_tip/sideburn_root_R
+        weight: 1
+      - path: skele/spine_root/spine/neck/head/head_tip/sideburn_root_R/sideburn_m_R
+        weight: 1
+      - path: skele/spine_root/spine/neck/head/head_tip/sideburn_root_R/sideburn_m_R/sideburn_tip_L1
+        weight: 1
+      - path: skele/spine_root/tail_root
+        weight: 1
+      - path: skele/spine_root/tail_root/tail1
+        weight: 1
+      - path: skele/spine_root/tail_root/tail1/tail2
+        weight: 1
+      - path: skele/spine_root/tail_root/tail1/tail2/tail3
+        weight: 1
+      - path: skele/spine_root/tail_root/tail1/tail2/tail3/tailtip
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

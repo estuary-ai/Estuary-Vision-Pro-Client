@@ -6,4 +6,12 @@ public class ApplicationReferences : MonoBehaviour
 {
     public Transform camTrans;
     public NavManager navManager;
+
+    [Header("Menus")]
+    public HandMenu mainMenuController;
+    
+
+    [Header("Yokai")]
+    public YokaiManager yokaiManager;
+    public MischiefManager mischiefManager;
 }

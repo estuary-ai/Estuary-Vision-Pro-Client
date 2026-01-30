@@ -1,0 +1,348 @@
+fileFormatVersion: 2
+guid: 8378fe2b7b5bdd7429d86cd7135cb476
+timeCreated: 1504201486
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: BROW_L
+    100002: brow_L
+    100004: BROW_R
+    100006: brow_R
+    100008: bun_m_L
+    100010: bun_m_R
+    100012: bun_root_L
+    100014: bun_root_R
+    100016: bun_tip_R
+    100018: bun_tip_R 1
+    100020: forehead
+    100022: head
+    100024: head_tip
+    100026: MOVE_ALL
+    100028: neck
+    100030: rig
+    100032: ROOT
+    100034: sideburn_m_L
+    100036: sideburn_m_R
+    100038: sideburn_root_L
+    100040: sideburn_root_R
+    100042: sideburn_tip_L
+    100044: sideburn_tip_L1
+    100046: skele
+    100048: spine
+    100050: spine_root
+    100052: tail1
+    100054: TAIL1_CNTRL
+    100056: TAIL1_CNTRL_OFFSET
+    100058: tail2
+    100060: TAIL2_CNTRL
+    100062: TAIL2_CNTRL_OFFSET
+    100064: tail3
+    100066: TAIL3_CNTRL
+    100068: TAIL3_CNTRL_OFFSET
+    100070: TAIL_CNRL
+    100072: tail_root
+    100074: tailtip
+    100076: Zashiki_BUN_L
+    100078: Zashiki_BUN_L_group
+    100080: Zashiki_BUN_R
+    100082: Zashiki_BUN_R_group
+    100084: Zashiki_BUN_TIP_L
+    100086: Zashiki_BUN_TIP_L_group
+    100088: Zashiki_BUN_TIP_R
+    100090: Zashiki_BUN_TIP_R_group
+    100092: //RootNode
+    100094: Zashiki_HAIR_END_L
+    100096: Zashiki_HAIR_END_L_group
+    100098: Zashiki_HAIR_END_R
+    100100: Zashiki_HAIR_END_R_group
+    100102: Zashiki_HAIR_L
+    100104: Zashiki_HAIR_L_group
+    100106: Zashiki_HAIR_R
+    100108: Zashiki_HAIR_R_group
+    100110: Zashiki_HEAD
+    100112: Zashiki_NECK
+    100114: Zashiki_SPINE
+    100116: Zashiki_tail_root_group
+    100118: Zashiki_TAILROOT
+    400000: BROW_L
+    400002: brow_L
+    400004: BROW_R
+    400006: brow_R
+    400008: bun_m_L
+    400010: bun_m_R
+    400012: bun_root_L
+    400014: bun_root_R
+    400016: bun_tip_R
+    400018: bun_tip_R 1
+    400020: forehead
+    400022: head
+    400024: head_tip
+    400026: MOVE_ALL
+    400028: neck
+    400030: rig
+    400032: ROOT
+    400034: sideburn_m_L
+    400036: sideburn_m_R
+    400038: sideburn_root_L
+    400040: sideburn_root_R
+    400042: sideburn_tip_L
+    400044: sideburn_tip_L1
+    400046: skele
+    400048: spine
+    400050: spine_root
+    400052: tail1
+    400054: TAIL1_CNTRL
+    400056: TAIL1_CNTRL_OFFSET
+    400058: tail2
+    400060: TAIL2_CNTRL
+    400062: TAIL2_CNTRL_OFFSET
+    400064: tail3
+    400066: TAIL3_CNTRL
+    400068: TAIL3_CNTRL_OFFSET
+    400070: TAIL_CNRL
+    400072: tail_root
+    400074: tailtip
+    400076: Zashiki_BUN_L
+    400078: Zashiki_BUN_L_group
+    400080: Zashiki_BUN_R
+    400082: Zashiki_BUN_R_group
+    400084: Zashiki_BUN_TIP_L
+    400086: Zashiki_BUN_TIP_L_group
+    400088: Zashiki_BUN_TIP_R
+    400090: Zashiki_BUN_TIP_R_group
+    400092: //RootNode
+    400094: Zashiki_HAIR_END_L
+    400096: Zashiki_HAIR_END_L_group
+    400098: Zashiki_HAIR_END_R
+    400100: Zashiki_HAIR_END_R_group
+    400102: Zashiki_HAIR_L
+    400104: Zashiki_HAIR_L_group
+    400106: Zashiki_HAIR_R
+    400108: Zashiki_HAIR_R_group
+    400110: Zashiki_HEAD
+    400112: Zashiki_NECK
+    400114: Zashiki_SPINE
+    400116: Zashiki_tail_root_group
+    400118: Zashiki_TAILROOT
+    7400000: Give_Coin
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Give_Coin
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: rig
+        weight: 1
+      - path: rig/MOVE_ALL
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/BROW_L
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/BROW_R
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/Zashiki_BUN_L_group
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/Zashiki_BUN_L_group/Zashiki_BUN_L
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/Zashiki_BUN_L_group/Zashiki_BUN_L/Zashiki_BUN_TIP_L_group
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/Zashiki_BUN_L_group/Zashiki_BUN_L/Zashiki_BUN_TIP_L_group/Zashiki_BUN_TIP_L
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/Zashiki_BUN_R_group
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/Zashiki_BUN_R_group/Zashiki_BUN_R
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/Zashiki_BUN_R_group/Zashiki_BUN_R/Zashiki_BUN_TIP_R_group
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/Zashiki_BUN_R_group/Zashiki_BUN_R/Zashiki_BUN_TIP_R_group/Zashiki_BUN_TIP_R
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/Zashiki_HAIR_L_group
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/Zashiki_HAIR_L_group/Zashiki_HAIR_L
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/Zashiki_HAIR_L_group/Zashiki_HAIR_L/Zashiki_HAIR_END_L_group
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/Zashiki_HAIR_L_group/Zashiki_HAIR_L/Zashiki_HAIR_END_L_group/Zashiki_HAIR_END_L
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/Zashiki_HAIR_R_group
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/Zashiki_HAIR_R_group/Zashiki_HAIR_R
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/Zashiki_HAIR_R_group/Zashiki_HAIR_R/Zashiki_HAIR_END_R_group
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_SPINE/Zashiki_NECK/Zashiki_HEAD/Zashiki_HAIR_R_group/Zashiki_HAIR_R/Zashiki_HAIR_END_R_group/Zashiki_HAIR_END_R
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_tail_root_group
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_tail_root_group/Zashiki_TAILROOT
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_tail_root_group/Zashiki_TAILROOT/TAIL_CNRL
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_tail_root_group/Zashiki_TAILROOT/TAIL_CNRL/TAIL1_CNTRL_OFFSET
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_tail_root_group/Zashiki_TAILROOT/TAIL_CNRL/TAIL1_CNTRL_OFFSET/TAIL1_CNTRL
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_tail_root_group/Zashiki_TAILROOT/TAIL_CNRL/TAIL1_CNTRL_OFFSET/TAIL1_CNTRL/TAIL2_CNTRL_OFFSET
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_tail_root_group/Zashiki_TAILROOT/TAIL_CNRL/TAIL1_CNTRL_OFFSET/TAIL1_CNTRL/TAIL2_CNTRL_OFFSET/TAIL2_CNTRL
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_tail_root_group/Zashiki_TAILROOT/TAIL_CNRL/TAIL1_CNTRL_OFFSET/TAIL1_CNTRL/TAIL2_CNTRL_OFFSET/TAIL2_CNTRL/TAIL3_CNTRL_OFFSET
+        weight: 1
+      - path: rig/MOVE_ALL/ROOT/Zashiki_tail_root_group/Zashiki_TAILROOT/TAIL_CNRL/TAIL1_CNTRL_OFFSET/TAIL1_CNTRL/TAIL2_CNTRL_OFFSET/TAIL2_CNTRL/TAIL3_CNTRL_OFFSET/TAIL3_CNTRL
+        weight: 1
+      - path: skele
+        weight: 1
+      - path: skele/spine_root
+        weight: 1
+      - path: skele/spine_root/spine
+        weight: 1
+      - path: skele/spine_root/spine/neck
+        weight: 1
+      - path: skele/spine_root/spine/neck/head
+        weight: 1
+      - path: skele/spine_root/spine/neck/head/head_tip
+        weight: 1
+      - path: skele/spine_root/spine/neck/head/head_tip/brow_L
+        weight: 1
+      - path: skele/spine_root/spine/neck/head/head_tip/brow_R
+        weight: 1
+      - path: skele/spine_root/spine/neck/head/head_tip/bun_root_L
+        weight: 1
+      - path: skele/spine_root/spine/neck/head/head_tip/bun_root_L/bun_m_L
+        weight: 1
+      - path: skele/spine_root/spine/neck/head/head_tip/bun_root_L/bun_m_L/bun_tip_R
+        weight: 1
+      - path: skele/spine_root/spine/neck/head/head_tip/bun_root_R
+        weight: 1
+      - path: skele/spine_root/spine/neck/head/head_tip/bun_root_R/bun_m_R
+        weight: 1
+      - path: skele/spine_root/spine/neck/head/head_tip/bun_root_R/bun_m_R/bun_tip_R
+          1
+        weight: 1
+      - path: skele/spine_root/spine/neck/head/head_tip/forehead
+        weight: 1
+      - path: skele/spine_root/spine/neck/head/head_tip/sideburn_root_L
+        weight: 1
+      - path: skele/spine_root/spine/neck/head/head_tip/sideburn_root_L/sideburn_m_L
+        weight: 1
+      - path: skele/spine_root/spine/neck/head/head_tip/sideburn_root_L/sideburn_m_L/sideburn_tip_L
+        weight: 1
+      - path: skele/spine_root/spine/neck/head/head_tip/sideburn_root_R
+        weight: 1
+      - path: skele/spine_root/spine/neck/head/head_tip/sideburn_root_R/sideburn_m_R
+        weight: 1
+      - path: skele/spine_root/spine/neck/head/head_tip/sideburn_root_R/sideburn_m_R/sideburn_tip_L1
+        weight: 1
+      - path: skele/spine_root/tail_root
+        weight: 1
+      - path: skele/spine_root/tail_root/tail1
+        weight: 1
+      - path: skele/spine_root/tail_root/tail1/tail2
+        weight: 1
+      - path: skele/spine_root/tail_root/tail1/tail2/tail3
+        weight: 1
+      - path: skele/spine_root/tail_root/tail1/tail2/tail3/tailtip
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

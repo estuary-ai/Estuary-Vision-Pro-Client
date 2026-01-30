@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using AOT;
 using PolySpatial.Samples;
+using Unity.PolySpatial;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -65,17 +66,17 @@ namespace Samples.PolySpatial.SwiftUI.Scripts
             m_SwiftUIWindowOpen = false;
         }
 
-        delegate void CallbackDelegate(string command);
+        delegate void CallbackDelegate(string command, int value);
 
         // This attribute is required for methods that are going to be called from native code
         // via a function pointer.
         [MonoPInvokeCallback(typeof(CallbackDelegate))]
-        static void CallbackFromNative(string command)
+        static void CallbackFromNative(string command, int value)
         {
             // MonoPInvokeCallback methods will leak exceptions and cause crashes; always use a try/catch in these methods
             try
             {
-                Debug.Log("Callback from native: " + command);
+                Debug.Log($"Callback from native: {command} {value}");
 
                 // This could be stored in a static field or a singleton.
                 // If you need to deal with multiple windows and need to distinguish between them,
@@ -99,6 +100,11 @@ namespace Samples.PolySpatial.SwiftUI.Scripts
                 {
                     self.Spawn(Color.blue);
                 }
+                else if (command == "recolor")
+                {
+                    var thing = PolySpatialObjectUtils.GetGameObjectForPolySpatialIdentifier((ulong)value);
+                    thing.GetComponent<MeshRenderer>().material.color = Color.magenta;
+                }
             }
             catch (Exception exception)
             {
@@ -111,6 +117,8 @@ namespace Samples.PolySpatial.SwiftUI.Scripts
             var randomObject = Random.Range(0, m_ObjectsToSpawn.Count);
             var thing = Instantiate(m_ObjectsToSpawn[randomObject], m_SpawnPosition.position, Quaternion.identity);
             thing.GetComponent<MeshRenderer>().material.color = color;
+
+            SetLastObjectInstanceID(thing.GetInstanceID());
 
             if (randomObject == 0)
             {
@@ -139,6 +147,10 @@ namespace Samples.PolySpatial.SwiftUI.Scripts
 
         [DllImport("__Internal")]
         static extern void SetSphereCount(int count);
+
+        [DllImport("__Internal")]
+        static extern void SetLastObjectInstanceID(int instanceId);
+
 #else
         static void SetNativeCallback(CallbackDelegate callback) {}
         static void OpenSwiftUIWindow(string name) {}
@@ -147,6 +159,8 @@ namespace Samples.PolySpatial.SwiftUI.Scripts
         static void SetCubeCount(int count) {}
 
         static void SetSphereCount(int count) {}
+
+        static void SetLastObjectInstanceID(int instanceId) {}
 #endif
     }
 }

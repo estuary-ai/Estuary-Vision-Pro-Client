@@ -1,0 +1,458 @@
+fileFormatVersion: 2
+guid: 9434c716a22980341b635564ac4bcdda
+timeCreated: 1497391255
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: BotTeeth
+    100002: botTeeth1
+    100004: botTeeth2
+    100006: dangle1
+    100008: dangle2
+    100010: dangle3
+    100012: dangle4
+    100014: dangles
+    100016: eye
+    100018: eye 1
+    100020: handle
+    100022: hanger1
+    100024: hanger2
+    100026: hanger3
+    100028: hanger4
+    100030: joint1
+    100032: joint11
+    100034: joint12
+    100036: joint13
+    100038: joint14
+    100040: joint15
+    100042: joint16
+    100044: joint2
+    100046: joint3
+    100048: LANTERN
+    100050: lantern_inner
+    100052: lantern_outer
+    100054: //RootNode
+    100056: MASTER
+    100058: Teeth
+    100060: tepTeeth2
+    100062: TONGUE_BASE
+    100064: TONGUE_CURL
+    100066: TONGUE_CURL1
+    100068: TONGUE_CURL2
+    100070: TONGUE_CURL_TIP
+    100072: tongue_geo
+    100074: tooth
+    100076: tooth 1
+    100078: tooth 2
+    100080: tooth 3
+    100082: tooth1
+    100084: tooth1 1
+    100086: tooth2
+    100088: tooth2 1
+    100090: tooth2 2
+    100092: tooth2 3
+    100094: tooth3
+    100096: tooth3 1
+    100098: tooth3 2
+    100100: tooth3 3
+    100102: tooth4
+    100104: tooth4 1
+    100106: tooth5
+    100108: tooth5 1
+    100110: tooth5 2
+    100112: tooth5 3
+    100114: tooth6
+    100116: tooth6 1
+    100118: tooth6 2
+    100120: tooth6 3
+    100122: topLid
+    100124: TopTeeth
+    100126: topTeeth1
+    400000: BotTeeth
+    400002: botTeeth1
+    400004: botTeeth2
+    400006: dangle1
+    400008: dangle2
+    400010: dangle3
+    400012: dangle4
+    400014: dangles
+    400016: eye
+    400018: eye 1
+    400020: handle
+    400022: hanger1
+    400024: hanger2
+    400026: hanger3
+    400028: hanger4
+    400030: joint1
+    400032: joint11
+    400034: joint12
+    400036: joint13
+    400038: joint14
+    400040: joint15
+    400042: joint16
+    400044: joint2
+    400046: joint3
+    400048: LANTERN
+    400050: lantern_inner
+    400052: lantern_outer
+    400054: //RootNode
+    400056: MASTER
+    400058: Teeth
+    400060: tepTeeth2
+    400062: TONGUE_BASE
+    400064: TONGUE_CURL
+    400066: TONGUE_CURL1
+    400068: TONGUE_CURL2
+    400070: TONGUE_CURL_TIP
+    400072: tongue_geo
+    400074: tooth
+    400076: tooth 1
+    400078: tooth 2
+    400080: tooth 3
+    400082: tooth1
+    400084: tooth1 1
+    400086: tooth2
+    400088: tooth2 1
+    400090: tooth2 2
+    400092: tooth2 3
+    400094: tooth3
+    400096: tooth3 1
+    400098: tooth3 2
+    400100: tooth3 3
+    400102: tooth4
+    400104: tooth4 1
+    400106: tooth5
+    400108: tooth5 1
+    400110: tooth5 2
+    400112: tooth5 3
+    400114: tooth6
+    400116: tooth6 1
+    400118: tooth6 2
+    400120: tooth6 3
+    400122: topLid
+    400124: TopTeeth
+    400126: topTeeth1
+    4300000: lantern_outer
+    4300002: topLid
+    4300004: handle
+    4300006: eye
+    4300008: lantern_inner
+    4300010: tooth
+    4300012: tooth2
+    4300014: tooth3
+    4300016: tooth6
+    4300018: tooth5
+    4300020: tooth
+    4300022: tooth2
+    4300024: tooth3
+    4300026: tooth6
+    4300028: tooth5
+    4300030: tooth
+    4300032: tooth1
+    4300034: tooth2
+    4300036: tooth3
+    4300038: tooth4
+    4300040: tooth6
+    4300042: tooth5
+    4300044: tooth
+    4300046: tooth1
+    4300048: tooth2
+    4300050: tooth3
+    4300052: tooth4
+    4300054: tooth6
+    4300056: tooth5
+    4300058: dangle4
+    4300060: hanger4
+    4300062: dangle3
+    4300064: hanger3
+    4300066: dangle2
+    4300068: hanger2
+    4300070: dangle1
+    4300072: hanger1
+    4300074: tongue_geo
+    7400000: Idle
+    9500000: //RootNode
+    13700000: dangle1
+    13700002: dangle2
+    13700004: dangle3
+    13700006: dangle4
+    13700008: eye
+    13700010: handle
+    13700012: hanger1
+    13700014: hanger2
+    13700016: hanger3
+    13700018: hanger4
+    13700020: lantern_inner
+    13700022: lantern_outer
+    13700024: tongue_geo
+    13700026: tooth
+    13700028: tooth 1
+    13700030: tooth 2
+    13700032: tooth 3
+    13700034: tooth1
+    13700036: tooth1 1
+    13700038: tooth2
+    13700040: tooth2 1
+    13700042: tooth2 2
+    13700044: tooth2 3
+    13700046: tooth3
+    13700048: tooth3 1
+    13700050: tooth3 2
+    13700052: tooth3 3
+    13700054: tooth4
+    13700056: tooth4 1
+    13700058: tooth5
+    13700060: tooth5 1
+    13700062: tooth5 2
+    13700064: tooth5 3
+    13700066: tooth6
+    13700068: tooth6 1
+    13700070: tooth6 2
+    13700072: tooth6 3
+    13700074: topLid
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 98
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves:
+      - name: Speed
+        curve:
+          serializedVersion: 2
+          curve:
+          - serializedVersion: 2
+            time: 0
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          - serializedVersion: 2
+            time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          preInfinity: 3
+          postInfinity: 3
+          rotationOrder: 0
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: joint1
+        weight: 1
+      - path: joint1/eye 1
+        weight: 1
+      - path: joint1/joint2
+        weight: 1
+      - path: joint1/joint2/joint3
+        weight: 1
+      - path: joint1/joint11
+        weight: 1
+      - path: joint1/joint11/joint12
+        weight: 1
+      - path: joint1/joint11/joint12/joint13
+        weight: 1
+      - path: joint1/joint11/joint12/joint13/joint14
+        weight: 1
+      - path: joint1/joint11/joint12/joint13/joint14/joint15
+        weight: 1
+      - path: joint1/joint11/joint12/joint13/joint14/joint15/joint16
+        weight: 1
+      - path: LANTERN
+        weight: 1
+      - path: LANTERN/dangles
+        weight: 1
+      - path: LANTERN/dangles/dangle1
+        weight: 1
+      - path: LANTERN/dangles/dangle2
+        weight: 1
+      - path: LANTERN/dangles/dangle3
+        weight: 1
+      - path: LANTERN/dangles/dangle4
+        weight: 1
+      - path: LANTERN/dangles/hanger1
+        weight: 1
+      - path: LANTERN/dangles/hanger2
+        weight: 1
+      - path: LANTERN/dangles/hanger3
+        weight: 1
+      - path: LANTERN/dangles/hanger4
+        weight: 1
+      - path: LANTERN/eye
+        weight: 1
+      - path: LANTERN/handle
+        weight: 1
+      - path: LANTERN/lantern_inner
+        weight: 1
+      - path: LANTERN/lantern_outer
+        weight: 1
+      - path: LANTERN/Teeth
+        weight: 1
+      - path: LANTERN/Teeth/BotTeeth
+        weight: 1
+      - path: LANTERN/Teeth/BotTeeth/botTeeth1
+        weight: 1
+      - path: LANTERN/Teeth/BotTeeth/botTeeth2
+        weight: 1
+      - path: LANTERN/Teeth/BotTeeth/botTeeth2/tooth 1
+        weight: 1
+      - path: LANTERN/Teeth/BotTeeth/botTeeth2/tooth1 1
+        weight: 1
+      - path: LANTERN/Teeth/BotTeeth/botTeeth2/tooth2 1
+        weight: 1
+      - path: LANTERN/Teeth/BotTeeth/botTeeth2/tooth3 1
+        weight: 1
+      - path: LANTERN/Teeth/BotTeeth/botTeeth2/tooth4 1
+        weight: 1
+      - path: LANTERN/Teeth/BotTeeth/botTeeth2/tooth5 1
+        weight: 1
+      - path: LANTERN/Teeth/BotTeeth/botTeeth2/tooth6 1
+        weight: 1
+      - path: LANTERN/Teeth/BotTeeth/tooth
+        weight: 1
+      - path: LANTERN/Teeth/BotTeeth/tooth1
+        weight: 1
+      - path: LANTERN/Teeth/BotTeeth/tooth2
+        weight: 1
+      - path: LANTERN/Teeth/BotTeeth/tooth3
+        weight: 1
+      - path: LANTERN/Teeth/BotTeeth/tooth4
+        weight: 1
+      - path: LANTERN/Teeth/BotTeeth/tooth5
+        weight: 1
+      - path: LANTERN/Teeth/BotTeeth/tooth6
+        weight: 1
+      - path: LANTERN/Teeth/TopTeeth
+        weight: 1
+      - path: LANTERN/Teeth/TopTeeth/tepTeeth2
+        weight: 1
+      - path: LANTERN/Teeth/TopTeeth/tepTeeth2/tooth 2
+        weight: 1
+      - path: LANTERN/Teeth/TopTeeth/tepTeeth2/tooth2 2
+        weight: 1
+      - path: LANTERN/Teeth/TopTeeth/tepTeeth2/tooth3 2
+        weight: 1
+      - path: LANTERN/Teeth/TopTeeth/tepTeeth2/tooth5 2
+        weight: 1
+      - path: LANTERN/Teeth/TopTeeth/tepTeeth2/tooth6 2
+        weight: 1
+      - path: LANTERN/Teeth/TopTeeth/topTeeth1
+        weight: 1
+      - path: LANTERN/Teeth/TopTeeth/topTeeth1/tooth 3
+        weight: 1
+      - path: LANTERN/Teeth/TopTeeth/topTeeth1/tooth2 3
+        weight: 1
+      - path: LANTERN/Teeth/TopTeeth/topTeeth1/tooth3 3
+        weight: 1
+      - path: LANTERN/Teeth/TopTeeth/topTeeth1/tooth5 3
+        weight: 1
+      - path: LANTERN/Teeth/TopTeeth/topTeeth1/tooth6 3
+        weight: 1
+      - path: LANTERN/tongue_geo
+        weight: 1
+      - path: LANTERN/topLid
+        weight: 1
+      - path: MASTER
+        weight: 1
+      - path: MASTER/TONGUE_BASE
+        weight: 1
+      - path: MASTER/TONGUE_BASE/TONGUE_CURL
+        weight: 1
+      - path: MASTER/TONGUE_BASE/TONGUE_CURL/TONGUE_CURL1
+        weight: 1
+      - path: MASTER/TONGUE_BASE/TONGUE_CURL/TONGUE_CURL1/TONGUE_CURL2
+        weight: 1
+      - path: MASTER/TONGUE_BASE/TONGUE_CURL/TONGUE_CURL1/TONGUE_CURL2/TONGUE_CURL_TIP
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

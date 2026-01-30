@@ -1,0 +1,267 @@
+fileFormatVersion: 2
+guid: c14d010a473efec48baec46a73ef52db
+timeCreated: 1493318201
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: AMPLITUDE
+    100002: AMPLITUDE_CNTRL
+    100004: blendshapes
+    100006: BROW_L
+    100008: brow_L
+    100010: brow_L 1
+    100012: BROW_R
+    100014: brow_R
+    100016: brow_R 1
+    100018: bun_m_L
+    100020: bun_m_R
+    100022: bun_root_L
+    100024: bun_root_R
+    100026: bun_tip_R
+    100028: bun_tip_R 1
+    100030: CHEEK_CNTRL_L
+    100032: CHEEK_CNTRL_R
+    100034: cheek_L
+    100036: cheek_R
+    100038: curve1
+    100040: EYE_CNTRL_L
+    100042: EYE_CNTRL_R
+    100044: eye_L
+    100046: eye_R
+    100048: EYEPLATE_L
+    100050: EYEPLATE_R
+    100052: FKIK_CNTRL
+    100054: forehead
+    100056: Geometry
+    100058: girl_mod
+    100060: head
+    100062: head_tip
+    100064: ikHandle1
+    100066: IKtail_Curve
+    100068: MOVE_ALL
+    100070: neck
+    100072: nurbsCircle3
+    100074: rig
+    100076: ROOT
+    100078: sideburn_m_L
+    100080: sideburn_m_R
+    100082: sideburn_root_L
+    100084: sideburn_root_R
+    100086: sideburn_tip_L
+    100088: sideburn_tip_L1
+    100090: sine1Handle
+    100092: skele
+    100094: smile
+    100096: spine
+    100098: spine_root
+    100100: tail1
+    100102: TAIL1_CNTRL
+    100104: TAIL1_CNTRL_OFFSET
+    100106: tail2
+    100108: TAIL2_CNTRL
+    100110: TAIL2_CNTRL_OFFSET
+    100112: tail3
+    100114: TAIL3_CNTRL
+    100116: TAIL3_CNTRL_OFFSET
+    100118: TAIL_CNRL
+    100120: tail_root
+    100122: tail_sin_group
+    100124: tailtip
+    100126: Zashiki_BUN_L
+    100128: Zashiki_BUN_L_group
+    100130: Zashiki_BUN_R
+    100132: Zashiki_BUN_R_group
+    100134: Zashiki_BUN_TIP_L
+    100136: Zashiki_BUN_TIP_L_group
+    100138: Zashiki_BUN_TIP_R
+    100140: Zashiki_BUN_TIP_R_group
+    100142: Zashiki_HAIR_END_L
+    100144: Zashiki_HAIR_END_L_group
+    100146: Zashiki_HAIR_END_R
+    100148: Zashiki_HAIR_END_R_group
+    100150: Zashiki_HAIR_L
+    100152: Zashiki_HAIR_L_group
+    100154: Zashiki_HAIR_R
+    100156: Zashiki_HAIR_R_group
+    100158: Zashiki_HEAD
+    100160: Zashiki_NECK
+    100162: Zashiki_SPINE
+    100164: Zashiki_tail1_group
+    100166: Zashiki_tail_root_group
+    100168: Zashiki_TAILROOT
+    100170: //RootNode
+    400000: AMPLITUDE
+    400002: AMPLITUDE_CNTRL
+    400004: blendshapes
+    400006: BROW_L
+    400008: brow_L
+    400010: brow_L 1
+    400012: BROW_R
+    400014: brow_R
+    400016: brow_R 1
+    400018: bun_m_L
+    400020: bun_m_R
+    400022: bun_root_L
+    400024: bun_root_R
+    400026: bun_tip_R
+    400028: bun_tip_R 1
+    400030: CHEEK_CNTRL_L
+    400032: CHEEK_CNTRL_R
+    400034: cheek_L
+    400036: cheek_R
+    400038: curve1
+    400040: EYE_CNTRL_L
+    400042: EYE_CNTRL_R
+    400044: eye_L
+    400046: eye_R
+    400048: EYEPLATE_L
+    400050: EYEPLATE_R
+    400052: FKIK_CNTRL
+    400054: forehead
+    400056: Geometry
+    400058: girl_mod
+    400060: head
+    400062: head_tip
+    400064: ikHandle1
+    400066: IKtail_Curve
+    400068: MOVE_ALL
+    400070: neck
+    400072: nurbsCircle3
+    400074: rig
+    400076: ROOT
+    400078: sideburn_m_L
+    400080: sideburn_m_R
+    400082: sideburn_root_L
+    400084: sideburn_root_R
+    400086: sideburn_tip_L
+    400088: sideburn_tip_L1
+    400090: sine1Handle
+    400092: skele
+    400094: smile
+    400096: spine
+    400098: spine_root
+    400100: tail1
+    400102: TAIL1_CNTRL
+    400104: TAIL1_CNTRL_OFFSET
+    400106: tail2
+    400108: TAIL2_CNTRL
+    400110: TAIL2_CNTRL_OFFSET
+    400112: tail3
+    400114: TAIL3_CNTRL
+    400116: TAIL3_CNTRL_OFFSET
+    400118: TAIL_CNRL
+    400120: tail_root
+    400122: tail_sin_group
+    400124: tailtip
+    400126: Zashiki_BUN_L
+    400128: Zashiki_BUN_L_group
+    400130: Zashiki_BUN_R
+    400132: Zashiki_BUN_R_group
+    400134: Zashiki_BUN_TIP_L
+    400136: Zashiki_BUN_TIP_L_group
+    400138: Zashiki_BUN_TIP_R
+    400140: Zashiki_BUN_TIP_R_group
+    400142: Zashiki_HAIR_END_L
+    400144: Zashiki_HAIR_END_L_group
+    400146: Zashiki_HAIR_END_R
+    400148: Zashiki_HAIR_END_R_group
+    400150: Zashiki_HAIR_L
+    400152: Zashiki_HAIR_L_group
+    400154: Zashiki_HAIR_R
+    400156: Zashiki_HAIR_R_group
+    400158: Zashiki_HEAD
+    400160: Zashiki_NECK
+    400162: Zashiki_SPINE
+    400164: Zashiki_tail1_group
+    400166: Zashiki_tail_root_group
+    400168: Zashiki_TAILROOT
+    400170: //RootNode
+    4300000: girl_mod
+    4300002: eye_L
+    4300004: eye_R
+    4300006: cheek_L
+    4300008: cheek_R
+    4300010: brow_L
+    4300012: brow_R
+    4300014: smile
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: brow_L
+    13700002: brow_R
+    13700004: cheek_L
+    13700006: cheek_R
+    13700008: eye_L
+    13700010: eye_R
+    13700012: girl_mod
+    13700014: smile
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -13,6 +13,8 @@ namespace Mangrove
         // Supported Events and Requests defined at the bottom
         public bool autoConnectOnStart = true;
 
+        public static event Action<string> OnBotResponseReceived;
+
         private SocketIOUnity socket;
 
         // private bool isAwake = false;
@@ -103,7 +105,7 @@ namespace Mangrove
                     { "token", "UNITY" },
                     { "AutoUpgrade", "true" }
                 },
-                EIO = 4,
+                EIO = (EngineIO)4,
                 Transport = SocketIOClient.Transport.TransportProtocol.WebSocket
             });
 
@@ -198,25 +200,44 @@ namespace Mangrove
             socket.On(EVENTS.BOT_RES, (result) =>
             {
                 Debug.Log($"bot-response: {result}");
+                OnBotResponseReceived?.Invoke(result.ToString());
                 botResponseHandler.Handle(result.GetValue<BotResponse>());
             });
             socket.On(EVENTS.BOT_VOICE, (result) =>
             {
                 Debug.Log($"bot-voice: {result}");
-                IncomingAudioPacket packet = result.GetValue<IncomingAudioPacket>();
-
-                // TODO verify and debug audioBytes / test FixedUpdate
-                UnityThread.executeInUpdate(() =>
+                try
                 {
-                    // botVoice.PlayAudioBytes(audioPacket.InComingBytes[0]);
-                    botVoice.EnqueueAudioPacket(packet);
-                });
+                    IncomingAudioPacket packet = result.GetValue<IncomingAudioPacket>();
+                    Debug.Log($"incoming-audio-packet: {packet}");
+                    UnityThread.executeInUpdate(() =>
+                    {
+                        // botVoice.PlayAudioBytes(audioPacket.InComingBytes[0]);
+                        botVoice.EnqueueAudioPacket(packet);
+                    });
+                }
+                
+                // TODO verify and debug audioBytes / test FixedUpdate
+                catch (Exception e)
+                {
+                    Debug.LogError($"Error parsing bot voice packet: {e.Message}");
+                }
 
             });
             socket.On(EVENTS.INTERRUPT, (result) =>
             {
-                Debug.Log($"interrupt: {result.GetValue<int>()}");
-                botVoice.Interrupt(result.GetValue<int>());
+                try 
+                {
+                    Debug.Log($"[Interrupt]: {result}");
+                    UnityThread.executeInUpdate(() =>
+                    {
+                        botVoice.Interrupt(result.GetValue<long>());
+                    });
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError($"Error parsing interrupt event: {e.Message}");
+                }
             });
         }
 

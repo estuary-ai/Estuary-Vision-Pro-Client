@@ -1,4 +1,5 @@
 using System;
+using System.Numerics;
 
 namespace Mangrove
 {
@@ -9,8 +10,12 @@ namespace Mangrove
         public int sampleRate;
         public int numChannels;
         public int sampleWidth;
-        public int timestamp; // miliseconds
-        // public int packetID;
+        public long timestamp; // miliseconds
+        public float duration;
+        public int packetID;
+        
+        // future reference:
+        // bot-voice: [{"timestamp":1750492790853,"bytes":{"_placeholder":true,"num":0},"sampleRate":48000,"sampleWidth":2,"numChannels":1,"duration":2965.333333333333,"packetID":0}]
 
         public String ToString()
         {
